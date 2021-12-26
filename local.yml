@@ -35,6 +35,8 @@ services:
       - local_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.local/.postgres
+    ports:
+      - "5432:5432"
 
   docs:
     image: one_local_docs
