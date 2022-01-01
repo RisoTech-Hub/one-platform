@@ -28,7 +28,7 @@ django.setup()
 # -- Project information -----------------------------------------------------
 
 project = "Riso Tech one platform"
-copyright = """2021, Bin Nguyen"""
+copyright = """2022, Bin Nguyen"""
 author = "Bin Nguyen"
 
 
