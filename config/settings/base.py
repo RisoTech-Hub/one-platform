@@ -148,7 +148,7 @@ STATIC_ROOT = str(ROOT_DIR / "staticfiles")
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 # TODO: update static folder name
-STATICFILES_DIRS = [str(APPS_DIR / "static" / "metronic")]
+STATICFILES_DIRS = [str(APPS_DIR / "static" / "metronic"), str(APPS_DIR / "static")]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -171,7 +171,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         # https://docs.djangoproject.com/en/dev/ref/settings/#dirs
         # TODO: update template folder name
-        "DIRS": [str(APPS_DIR / "templates" / "metronic")],
+        "DIRS": [str(APPS_DIR / "templates" / "metronic"), str(APPS_DIR / "templates")],
         # https://docs.djangoproject.com/en/dev/ref/settings/#app-dirs
         "APP_DIRS": True,
         "OPTIONS": {
