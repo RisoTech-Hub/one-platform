@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Metronic/html/theme/demo1/dist/.idea/dist.iml" filepath="$PROJECT_DIR$/../Metronic/html/theme/demo1/dist/.idea/dist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Metronic/html/theme/demo1/src/js/.idea/js.iml" filepath="$PROJECT_DIR$/../Metronic/html/theme/demo1/src/js/.idea/js.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/one.iml" filepath="$PROJECT_DIR$/.idea/one.iml" />
     </modules>
   </component>
