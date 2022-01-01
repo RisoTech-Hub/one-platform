@@ -328,3 +328,4 @@ one/media/
 
 .pytest_cache/
 .ipython/
+/one/templates/metronic/_base-full.html

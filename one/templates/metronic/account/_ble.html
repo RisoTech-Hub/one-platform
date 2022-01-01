@@ -1,0 +1,25 @@
+// Simulate ajax request
+          setTimeout(function () {
+            // Hide loading indication
+            submitButton.removeAttribute('data-kt-indicator');
+
+            // Enable button
+            submitButton.disabled = false;
+
+            // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+            Swal.fire({
+              text: "You have successfully reset your password!",
+              icon: "success",
+              buttonsStyling: false,
+              confirmButtonText: "Ok, got it!",
+              customClass: {
+                confirmButton: "btn btn-primary"
+              }
+            }).then(function (result) {
+              if (result.isConfirmed) {
+                form.reset();  // reset form
+                passwordMeter.reset();  // reset password meter
+                //form.submit();
+              }
+            });
+          }, 1500);

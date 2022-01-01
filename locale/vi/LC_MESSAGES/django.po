@@ -1,0 +1,559 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-01 03:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: one/templates/account/account_inactive.html:5
+#: one/templates/account/account_inactive.html:8
+#: one/templates/metronic/account/account_inactive.html:5
+#: one/templates/metronic/account/email_confirm.html:6
+msgid "Account Inactive"
+msgstr ""
+
+#: one/templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr ""
+
+#: one/templates/account/email.html:7
+#: one/templates/metronic/account/email.html:6
+msgid "Account"
+msgstr ""
+
+#: one/templates/account/email.html:10
+#: one/templates/metronic/account/email.html:9
+msgid "E-mail Addresses"
+msgstr ""
+
+#: one/templates/account/email.html:13
+#: one/templates/metronic/account/email.html:12
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: one/templates/account/email.html:27
+#: one/templates/metronic/account/email.html:26
+msgid "Verified"
+msgstr ""
+
+#: one/templates/account/email.html:29
+#: one/templates/metronic/account/email.html:28
+msgid "Unverified"
+msgstr ""
+
+#: one/templates/account/email.html:31
+#: one/templates/metronic/account/email.html:30
+msgid "Primary"
+msgstr ""
+
+#: one/templates/account/email.html:37
+#: one/templates/metronic/account/email.html:36
+msgid "Make Primary"
+msgstr ""
+
+#: one/templates/account/email.html:38
+#: one/templates/metronic/account/email.html:37
+msgid "Re-send Verification"
+msgstr ""
+
+#: one/templates/account/email.html:39
+#: one/templates/metronic/account/email.html:38
+msgid "Remove"
+msgstr ""
+
+#: one/templates/account/email.html:46
+#: one/templates/metronic/account/email.html:45
+msgid "Warning:"
+msgstr ""
+
+#: one/templates/account/email.html:46
+#: one/templates/metronic/account/email.html:45
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: one/templates/account/email.html:51
+#: one/templates/metronic/account/email.html:50
+msgid "Add E-mail Address"
+msgstr ""
+
+#: one/templates/account/email.html:56
+#: one/templates/metronic/account/email.html:55
+msgid "Add E-mail"
+msgstr ""
+
+#: one/templates/account/email.html:66
+#: one/templates/metronic/account/email.html:65
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: one/templates/account/email_confirm.html:6
+#: one/templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: one/templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: one/templates/account/email_confirm.html:20
+#: one/templates/metronic/account/email_confirm.html:25
+msgid "Confirm"
+msgstr ""
+
+#: one/templates/account/email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: one/templates/account/login.html:7 one/templates/account/login.html:11
+#: one/templates/account/login.html:44 one/templates/base.html:70
+#: one/templates/metronic/account/login.html:6
+#: one/templates/metronic/base.html:70
+msgid "Sign In"
+msgstr ""
+
+#: one/templates/account/login.html:16
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
+"up</a>\n"
+"for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: one/templates/account/login.html:26
+msgid "or"
+msgstr ""
+
+#: one/templates/account/login.html:33
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"<a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+
+#: one/templates/account/login.html:43
+msgid "Forgot Password?"
+msgstr ""
+
+#: one/templates/account/logout.html:5 one/templates/account/logout.html:8
+#: one/templates/account/logout.html:17 one/templates/base.html:61
+#: one/templates/metronic/account/logout.html:5
+#: one/templates/metronic/account/logout.html:11
+#: one/templates/metronic/account/logout.html:23
+#: one/templates/metronic/base.html:61
+msgid "Sign Out"
+msgstr ""
+
+#: one/templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: one/templates/account/password_change.html:6
+#: one/templates/account/password_change.html:9
+#: one/templates/account/password_change.html:14
+#: one/templates/account/password_reset_from_key.html:5
+#: one/templates/account/password_reset_from_key.html:8
+#: one/templates/account/password_reset_from_key_done.html:4
+#: one/templates/account/password_reset_from_key_done.html:7
+#: one/templates/metronic/account/password_change.html:6
+#: one/templates/metronic/account/password_change.html:9
+#: one/templates/metronic/account/password_change.html:14
+#: one/templates/metronic/account/password_reset_from_key.html:4
+#: one/templates/metronic/account/password_reset_from_key.html:38
+#: one/templates/metronic/account/password_reset_from_key_done.html:4
+#: one/templates/metronic/account/password_reset_from_key_done.html:10
+msgid "Change Password"
+msgstr ""
+
+#: one/templates/account/password_reset.html:7
+#: one/templates/account/password_reset.html:11
+#: one/templates/account/password_reset_done.html:6
+#: one/templates/account/password_reset_done.html:9
+#: one/templates/metronic/account/password_reset.html:6
+#: one/templates/metronic/account/password_reset_done.html:6
+#: one/templates/metronic/account/password_reset_done.html:17
+msgid "Password Reset"
+msgstr ""
+
+#: one/templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: one/templates/account/password_reset.html:21
+msgid "Reset My Password"
+msgstr ""
+
+#: one/templates/account/password_reset.html:24
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: one/templates/account/password_reset_done.html:15
+#: one/templates/metronic/account/password_reset_done.html:23
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:8
+#: one/templates/metronic/account/password_reset_from_key.html:19
+msgid "Bad Token"
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:12
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:18
+msgid "change password"
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:21
+#: one/templates/account/password_reset_from_key_done.html:8
+#: one/templates/metronic/account/password_reset_from_key.html:46
+#: one/templates/metronic/account/password_reset_from_key_done.html:13
+msgid "Your password is now changed."
+msgstr ""
+
+#: one/templates/account/password_set.html:6
+#: one/templates/account/password_set.html:9
+#: one/templates/account/password_set.html:14
+#: one/templates/metronic/account/password_set.html:6
+#: one/templates/metronic/account/password_set.html:9
+#: one/templates/metronic/account/password_set.html:14
+msgid "Set Password"
+msgstr ""
+
+#: one/templates/account/signup.html:6
+#: one/templates/metronic/account/signup.html:6
+msgid "Signup"
+msgstr ""
+
+#: one/templates/account/signup.html:9 one/templates/account/signup.html:19
+#: one/templates/base.html:66 one/templates/metronic/base.html:66
+msgid "Sign Up"
+msgstr ""
+
+#: one/templates/account/signup.html:11
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: one/templates/account/signup_closed.html:5
+#: one/templates/account/signup_closed.html:8
+#: one/templates/metronic/account/signup_closed.html:5
+#: one/templates/metronic/account/signup_closed.html:11
+msgid "Sign Up Closed"
+msgstr ""
+
+#: one/templates/account/signup_closed.html:10
+#: one/templates/metronic/account/signup_closed.html:14
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: one/templates/account/verification_sent.html:5
+#: one/templates/account/verification_sent.html:8
+#: one/templates/account/verified_email_required.html:5
+#: one/templates/account/verified_email_required.html:8
+#: one/templates/metronic/account/verification_sent.html:5
+#: one/templates/metronic/account/verification_sent.html:11
+#: one/templates/metronic/account/verified_email_required.html:5
+#: one/templates/metronic/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: one/templates/account/verification_sent.html:10
+#: one/templates/metronic/account/verification_sent.html:14
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: one/templates/account/verified_email_required.html:12
+#: one/templates/metronic/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: one/templates/account/verified_email_required.html:16
+#: one/templates/metronic/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: one/templates/account/verified_email_required.html:20
+#: one/templates/metronic/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: one/templates/base.html:57 one/templates/metronic/base.html:57
+msgid "My Profile"
+msgstr ""
+
+#: one/templates/metronic/account/account_inactive.html:11
+msgid "Your account is deactivated"
+msgstr ""
+
+#: one/templates/metronic/account/account_inactive.html:14
+msgid ""
+"Plan your blog post by choosing a topic creating\n"
+"    <br />an outline and checking facts"
+msgstr ""
+
+#: one/templates/metronic/account/account_inactive.html:19
+msgid "Go to homepage"
+msgstr ""
+
+#: one/templates/metronic/account/email_confirm.html:12
+msgid "Verify Your Email"
+msgstr ""
+
+#: one/templates/metronic/account/email_confirm.html:17
+#, python-format
+msgid ""
+"We have sent an email to\n"
+"    <a href=\"mailto:%(email)s\" class=\"link-primary fw-bolder\">%(email)s</"
+"a>\n"
+"    <br />please follow a link to verify your email."
+msgstr ""
+
+#: one/templates/metronic/account/email_confirm.html:33
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please\n"
+"      <a href=\"%(email_url)s\" class=\"link-primary fw-bolder\">issue a new "
+"e-mail confirmation request</a>."
+msgstr ""
+
+#: one/templates/metronic/account/login.html:21
+msgid "Sign In to Metronic"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:24
+msgid "New Here"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:26
+#: one/templates/metronic/account/signup.html:22
+msgid "Create an Account"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:33
+#: one/templates/metronic/account/signup.html:55
+msgid "Username"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:47
+#: one/templates/metronic/account/password_reset_from_key.html:59
+#: one/templates/metronic/account/signup.html:66
+msgid "Password"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:52
+msgid "Forgot Password"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:67
+msgid "Remember me"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:131
+msgid "The username is required"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:134
+#: one/templates/metronic/account/password_reset.html:73
+#: one/templates/metronic/account/signup.html:165
+msgid "The value is not a valid email address"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:141
+#: one/templates/metronic/account/password_reset_from_key.html:140
+#: one/templates/metronic/account/signup.html:172
+msgid "The password is required"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:174
+#: one/templates/metronic/account/password_reset.html:105
+#: one/templates/metronic/account/password_reset_from_key.html:199
+#: one/templates/metronic/account/signup.html:238
+msgid "Sorry, looks like there are some errors detected, please try again"
+msgstr ""
+
+#: one/templates/metronic/account/login.html:177
+#: one/templates/metronic/account/password_reset.html:108
+#: one/templates/metronic/account/password_reset_from_key.html:202
+#: one/templates/metronic/account/signup.html:241
+msgid "Ok, got it"
+msgstr ""
+
+#: one/templates/metronic/account/logout.html:14
+msgid "Are you sure you want to sign out"
+msgstr ""
+
+#: one/templates/metronic/account/password_reset.html:19
+msgid "Forgot Password ?"
+msgstr ""
+
+#: one/templates/metronic/account/password_reset.html:25
+msgid ""
+"Enter your email to reset your\n"
+"          password."
+msgstr ""
+
+#: one/templates/metronic/account/password_reset.html:42
+#: one/templates/metronic/account/password_reset_from_key.html:110
+#: one/templates/metronic/account/signup.html:126
+msgid "Submit"
+msgstr ""
+
+#: one/templates/metronic/account/password_reset.html:43
+#: one/templates/metronic/account/password_reset_from_key.html:111
+#: one/templates/metronic/account/signup.html:127
+msgid "Please wait"
+msgstr ""
+
+#: one/templates/metronic/account/password_reset.html:70
+#: one/templates/metronic/account/signup.html:162
+msgid "Email address is required"
+msgstr ""
+
+#: one/templates/metronic/account/password_reset_from_key.html:24
+#, python-format
+msgid ""
+"The\n"
+"            password reset link was invalid, possibly\n"
+"            because it has already been used.  Please request a\n"
+"            <a href=\"%(passwd_reset_url)s\">new password reset</a>\n"
+"            ."
+msgstr ""
+
+#: one/templates/metronic/account/password_reset_from_key.html:90
+msgid ""
+"Use 8 or more\n"
+"              characters with a mix of letters, numbers &amp;\n"
+"              symbols."
+msgstr ""
+
+#: one/templates/metronic/account/password_reset_from_key.html:100
+#: one/templates/metronic/account/signup.html:105
+msgid "Confirm Password"
+msgstr ""
+
+#: one/templates/metronic/account/password_reset_from_key.html:143
+#: one/templates/metronic/account/signup.html:175
+msgid "Please enter valid password"
+msgstr ""
+
+#: one/templates/metronic/account/password_reset_from_key.html:155
+#: one/templates/metronic/account/signup.html:187
+msgid "The password confirmation is required"
+msgstr ""
+
+#: one/templates/metronic/account/password_reset_from_key.html:161
+#: one/templates/metronic/account/signup.html:193
+msgid "The password and its confirm are not the same"
+msgstr ""
+
+#: one/templates/metronic/account/password_reset_from_key_done.html:17
+msgid "Login"
+msgstr ""
+
+#: one/templates/metronic/account/root.html:49
+#: one/templates/metronic/account/root.html:75
+msgid "Ok"
+msgstr ""
+
+#: one/templates/metronic/account/signup.html:25
+msgid "Already have an account"
+msgstr ""
+
+#: one/templates/metronic/account/signup.html:27
+msgid "Sign in here"
+msgstr ""
+
+#: one/templates/metronic/account/signup.html:47
+msgid "Email"
+msgstr ""
+
+#: one/templates/metronic/account/signup.html:97
+msgid ""
+"Use 8 or more characters with a mix of letters,\n"
+"          numbers &amp; symbols."
+msgstr ""
+
+#: one/templates/metronic/account/signup.html:155
+msgid "Username is required"
+msgstr ""
+
+#: one/templates/metronic/account/snippets/already_logged_in.html:6
+msgid "Note"
+msgstr ""
+
+#: one/templates/metronic/account/snippets/already_logged_in.html:6
+#, python-format
+msgid "You are already logged in as %(user_display)s."
+msgstr ""
+
+#: one/users/admin.py:18
+msgid "Personal info"
+msgstr ""
+
+#: one/users/admin.py:20
+msgid "Permissions"
+msgstr ""
+
+#: one/users/admin.py:31
+msgid "Important dates"
+msgstr ""
+
+#: one/users/apps.py:7
+msgid "Users"
+msgstr ""
+
+#: one/users/forms.py:18 one/users/tests/test_forms.py:39
+msgid "This username has already been taken."
+msgstr ""
+
+#: one/users/models.py:11
+msgid "Name of User"
+msgstr ""
+
+#: one/users/views.py:25
+msgid "Information successfully updated"
+msgstr ""

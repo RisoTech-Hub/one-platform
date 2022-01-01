@@ -14,7 +14,10 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="Python 3.9 (cookie-venv)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="dist" />
+    <orderEntry type="module" module-name="js" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="requirementsPath" value="$MODULE_DIR$/requirements/local.txt" />
