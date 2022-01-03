@@ -1,0 +1,108 @@
+from uuid import uuid4
+
+from django.conf import settings
+from django.db.models import (
+    CASCADE,
+    CharField,
+    DateTimeField,
+    ForeignKey,
+    Model,
+    UUIDField,
+)
+from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
+
+# from one.components.managers import LingualManager
+
+
+class BaseModel(Model):
+    """
+    Abstract Base model
+
+    :var id: UUIDField, random UUID
+    :var time_created: DateTimeField, Created time of object
+    :var time_modified: DateTimeField, Last modified time of object
+    :var creator: User, created by
+    :var last_modified_by: User, Last modified by
+    """
+
+    id = UUIDField(primary_key=True, default=uuid4, editable=False)
+    time_created = DateTimeField(
+        verbose_name=_("Created on"), auto_now_add=True, null=True
+    )
+    time_modified = DateTimeField(
+        verbose_name=_("Last modified on"), auto_now=True, null=True
+    )
+    creator = ForeignKey(
+        "users.User",
+        verbose_name=_("Created by"),
+        related_name="%(app_label)s_%(class)s_creator",
+        null=True,
+        blank=True,
+        on_delete=CASCADE,
+    )
+    last_modified_by = ForeignKey(
+        "users.User",
+        verbose_name="Last modified by",
+        related_name="%(app_label)s_%(class)s_last_modified_by",
+        null=True,
+        blank=True,
+        on_delete=CASCADE,
+    )
+
+    class Meta:
+        abstract = True
+
+    def save(self, *args, **kwargs):
+        """
+        Auto update time_modified
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        if not self.time_created:
+            self.time_created = timezone.now()
+
+        self.time_modified = timezone.now()
+        return super(BaseModel, self).save(*args, **kwargs)
+
+
+class NameModel(BaseModel):
+    """
+    Abstract Base model
+
+    :var name: CharField, name of object
+    """
+
+    name = CharField(
+        max_length=500, verbose_name=_("Name of %(class)s"), null=True, blank=True
+    )
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return "%(class)s " + self.name
+
+
+class LingualModel(BaseModel):
+    """
+    Abstract Multi language Model
+
+    :var language: CharField, language of object
+    """
+
+    language = CharField(
+        max_length=2,
+        verbose_name=_("Language of %(class)s"),
+        choices=settings.LANGUAGES,
+        default=settings.VIETNAMESE,
+    )
+    # objects = LingualManager()
+
+    class Meta:
+        abstract = True
+
+    @property
+    def language_verbose(self):
+        return dict(settings.LANGUAGES)[self.language]

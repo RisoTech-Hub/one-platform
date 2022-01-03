@@ -18,6 +18,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="dist" />
     <orderEntry type="module" module-name="js" />
+    <orderEntry type="module" module-name="allauth" />
+    <orderEntry type="module" module-name="wab" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="requirementsPath" value="$MODULE_DIR$/requirements/local.txt" />
