@@ -19,8 +19,9 @@ def add_email_template_forward(apps, schema_editor):
             code=subject, language='en',
             subject=open("{0}/{1}_subject.txt".format(path, subjects[subject]),
                          "r", encoding='utf-8').read(),
-            content=open("{0}/{1}_message.html".format(path, subjects[subject]),
-                         "r", encoding='utf-8').read(),
+            content=open(
+                "{0}/{1}_message.html".format(path, subjects[subject]),
+                "r", encoding='utf-8').read(),
         )
 
 
