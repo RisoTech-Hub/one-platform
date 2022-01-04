@@ -1,6 +1,6 @@
 {% extends "account/base-col-2.html" %}
 
-{% load i18n %}
+{% load static i18n %}
 {% load crispy_forms_tags %}
 
 {% block head_title %}{% translate "Signup" %}{% endblock %}
@@ -31,7 +31,7 @@
       <!--begin::Action-->
       <!--<button type="button"
               class="btn btn-light-primary fw-bolder w-100 mb-10">
-        <img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg"
+        <img alt="Logo" src="{% static 'media/svg/brand-logos/google-icon.svg' %}"
              class="h-20px me-3"/>Sign in with Google
       </button>-->
       <!--end::Action-->

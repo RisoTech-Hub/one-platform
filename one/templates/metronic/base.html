@@ -1,109 +1,603 @@
 {% load static i18n %}<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}Riso Tech one platform{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Behold My Awesome Project!">
-    <meta name="author" content="Bin Nguyen">
+<!--begin::Head-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}{% endblock title %}</title>
+  <meta name="description"
+        content="{% block description %}{% endblock description %}"/>
+  <meta name="keywords" content="{% block keywords %}{% endblock keywords %}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:type"
+        content="{% block og_type %}{% endblock og_type %}"/>
+  <meta property="og:title"
+        content="{% block og_title %}{% endblock og_title %}"/>
+  <meta property="og:url" content="https://example.com"/>
+  <meta property="og:site_name" content="example.com"/>
+  <link rel="canonical" href="https://example.com"/>
+  <link rel="shortcut icon" href="{% static 'media/logos/favicon.ico' %}"/>
+  <!--begin::Fonts-->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
+  <!--end::Fonts-->
+  {% block css %}
+    <!--begin::Page Vendor Stylesheets(used by this page)-->
+    <link
+      href="{% static 'plugins/custom/fullcalendar/fullcalendar.bundle.css' %}"
+      rel="stylesheet" type="text/css"/>
+    <link href="{% static 'plugins/custom/datatables/datatables.bundle.css' %}"
+          rel="stylesheet" type="text/css"/>
+    <!--end::Page Vendor Stylesheets-->
+  {% endblock %}
+  <!--begin::Global Stylesheets Bundle(used by all pages)-->
+  <link href="{% static 'plugins/global/plugins.bundle.css' %}"
+        rel="stylesheet" type="text/css"/>
+  <link href="{% static 'css/style.bundle.css' %}" rel="stylesheet"
+        type="text/css"/>
+  <!--end::Global Stylesheets Bundle-->
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body"
+      class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed"
+      style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
 
-    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+<!--begin::Main-->
+<!--begin::Root-->
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="page d-flex flex-row flex-column-fluid">
 
-    {% block css %}
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--layout-partial:layout/aside/_base.html-->
+    {% include 'layout/aside/_base.html' %}
+    {% block content %}
+    <!--begin::Wrapper-->
+    <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
-    <!-- Your stuff: Third-party CSS libraries go here -->
-    <!-- This file stores project-specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    {% endblock %}
-    <!-- Le javascript
-    ================================================== -->
-    {# Placed at the top of the document so pages load faster with defer #}
-    {% block javascript %}
-      <!-- Bootstrap JS -->
-      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-      <!-- Your stuff: Third-party javascript libraries go here -->
+      <!--layout-partial:layout/header/_base.html-->
 
-      <!-- place project specific Javascript in this file -->
-      <script defer src="{% static 'js/project.js' %}"></script>
+      <!--begin::Content-->
+      <div class="content d-flex flex-column flex-column-fluid"
+           id="kt_content">
 
-    {% endblock javascript %}
+        <!--layout-partial:layout/toolbars/_toolbar-1.html-->
 
-  </head>
+        <!--begin::Post-->
+        <div class="post d-flex flex-column-fluid" id="kt_post">
 
-  <body>
+          <!--layout-partial:layout/_content.html-->
 
-    <div class="mb-1">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="container-fluid">
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'home' %}">Riso Tech one platform</a>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-              </li>
-              {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>
-                </li>
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
-                </li>
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
-                </li>
-              {% endif %}
-            </ul>
-          </div>
         </div>
-      </nav>
+        <!--end::Post-->
+      </div>
+      <!--end::Content-->
+
+      <!--layout-partial:layout/_footer.html-->
 
     </div>
+    <!--end::Wrapper-->
+    {% endblock content %}
 
-    <div class="container">
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::Root-->
+<!--begin::Drawers-->
 
-      {% if messages %}
-        {% for message in messages %}
-          <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<!--layout-partial:layout/topbar/partials/_activity-drawer.html-->
+
+
+<!--begin::Chat drawer-->
+<div id="kt_drawer_chat" class="bg-body" data-kt-drawer="true"
+     data-kt-drawer-name="chat" data-kt-drawer-activate="true"
+     data-kt-drawer-overlay="true"
+     data-kt-drawer-width="{default:'300px', 'md': '500px'}"
+     data-kt-drawer-direction="end"
+     data-kt-drawer-toggle="#kt_drawer_chat_toggle"
+     data-kt-drawer-close="#kt_drawer_chat_close">
+  <!--begin::Messenger-->
+  <div class="card w-100 rounded-0 border-0" id="kt_drawer_chat_messenger">
+    <!--begin::Card header-->
+    <div class="card-header pe-5" id="kt_drawer_chat_messenger_header">
+      <!--begin::Title-->
+      <div class="card-title">
+        <!--begin::User-->
+        <div class="d-flex justify-content-center flex-column me-3">
+          <a href="#"
+             class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">Brian
+            Cox</a>
+          <!--begin::Info-->
+          <div class="mb-0 lh-1">
+            <span
+              class="badge badge-success badge-circle w-10px h-10px me-1"></span>
+            <span class="fs-7 fw-bold text-muted">Active</span>
           </div>
-        {% endfor %}
-      {% endif %}
+          <!--end::Info-->
+        </div>
+        <!--end::User-->
+      </div>
+      <!--end::Title-->
+      <!--begin::Card toolbar-->
+      <div class="card-toolbar">
+        <!--begin::Menu-->
+        <div class="me-2">
+          <button class="btn btn-sm btn-icon btn-active-light-primary"
+                  data-kt-menu-trigger="click"
+                  data-kt-menu-placement="bottom-end">
+            <i class="bi bi-three-dots fs-3"></i>
+          </button>
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+          <!--begin::Menu 3-->
+          <div
+            class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3"
+            data-kt-menu="true">
+            <!--begin::Heading-->
+            <div class="menu-item px-3">
+              <div
+                class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">
+                Contacts
+              </div>
+            </div>
+            <!--end::Heading-->
+            <!--begin::Menu item-->
+            <div class="menu-item px-3">
+              <a href="#" class="menu-link px-3" data-bs-toggle="modal"
+                 data-bs-target="#kt_modal_users_search">Add Contact</a>
+            </div>
+            <!--end::Menu item-->
+            <!--begin::Menu item-->
+            <div class="menu-item px-3">
+              <a href="#" class="menu-link flex-stack px-3"
+                 data-bs-toggle="modal"
+                 data-bs-target="#kt_modal_invite_friends">Invite Contacts
+                <i class="fas fa-exclamation-circle ms-2 fs-7"
+                   data-bs-toggle="tooltip"
+                   title="Specify a contact email to send an invitation"></i></a>
+            </div>
+            <!--end::Menu item-->
+            <!--begin::Menu item-->
+            <div class="menu-item px-3" data-kt-menu-trigger="hover"
+                 data-kt-menu-placement="right-start">
+              <a href="#" class="menu-link px-3">
+                <span class="menu-title">Groups</span>
+                <span class="menu-arrow"></span>
+              </a>
+              <!--begin::Menu sub-->
+              <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                <!--begin::Menu item-->
+                <div class="menu-item px-3">
+                  <a href="#" class="menu-link px-3" data-bs-toggle="tooltip"
+                     title="Coming soon">Create Group</a>
+                </div>
+                <!--end::Menu item-->
+                <!--begin::Menu item-->
+                <div class="menu-item px-3">
+                  <a href="#" class="menu-link px-3" data-bs-toggle="tooltip"
+                     title="Coming soon">Invite Members</a>
+                </div>
+                <!--end::Menu item-->
+                <!--begin::Menu item-->
+                <div class="menu-item px-3">
+                  <a href="#" class="menu-link px-3" data-bs-toggle="tooltip"
+                     title="Coming soon">Settings</a>
+                </div>
+                <!--end::Menu item-->
+              </div>
+              <!--end::Menu sub-->
+            </div>
+            <!--end::Menu item-->
+            <!--begin::Menu item-->
+            <div class="menu-item px-3 my-1">
+              <a href="#" class="menu-link px-3" data-bs-toggle="tooltip"
+                 title="Coming soon">Settings</a>
+            </div>
+            <!--end::Menu item-->
+          </div>
+          <!--end::Menu 3-->
 
-    </div> <!-- /container -->
+        </div>
+        <!--end::Menu-->
+        <!--begin::Close-->
+        <div class="btn btn-sm btn-icon btn-active-light-primary"
+             id="kt_drawer_chat_close">
+          <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+          <span class="svg-icon svg-icon-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none">
+									<rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
+                        rx="1" transform="rotate(-45 6 17.3137)" fill="black"/>
+									<rect x="7.41422" y="6" width="16" height="2" rx="1"
+                        transform="rotate(45 7.41422 6)" fill="black"/>
+								</svg>
+							</span>
+          <!--end::Svg Icon-->
+        </div>
+        <!--end::Close-->
+      </div>
+      <!--end::Card toolbar-->
+    </div>
+    <!--end::Card header-->
+    <!--begin::Card body-->
+    <div class="card-body" id="kt_drawer_chat_messenger_body">
+      <!--begin::Messages-->
+      <div class="scroll-y me-n5 pe-5" data-kt-element="messages"
+           data-kt-scroll="true" data-kt-scroll-activate="true"
+           data-kt-scroll-height="auto"
+           data-kt-scroll-dependencies="#kt_drawer_chat_messenger_header, #kt_drawer_chat_messenger_footer"
+           data-kt-scroll-wrappers="#kt_drawer_chat_messenger_body"
+           data-kt-scroll-offset="0px">
 
-    {% block modal %}{% endblock modal %}
+        <!--begin::Message(in)-->
+        <div class="d-flex justify-content-start mb-10">
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle">
+                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+              </div>
+              <!--end::Avatar-->
+              <!--begin::Details-->
+              <div class="ms-3">
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+                  Cox</a>
+                <span class="text-muted fs-7 mb-1">2 mins</span>
+              </div>
+              <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div
+              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+              data-kt-element="message-text">How likely are you to recommend
+              our company to your friends and family ?
+            </div>
+            <!--end::Text-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Message(in)-->
+        <!--begin::Message(out)-->
+        <div class="d-flex justify-content-end mb-10">
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column align-items-end">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+              <!--begin::Details-->
+              <div class="me-3">
+                <span class="text-muted fs-7 mb-1">5 mins</span>
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+              </div>
+              <!--end::Details-->
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle">
+                <img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}"/>
+              </div>
+              <!--end::Avatar-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div
+              class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end"
+              data-kt-element="message-text">Hey there, we’re just writing to
+              let you know that you’ve been subscribed to a repository on
+              GitHub.
+            </div>
+            <!--end::Text-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Message(out)-->
+        <!--begin::Message(in)-->
+        <div class="d-flex justify-content-start mb-10">
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle">
+                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+              </div>
+              <!--end::Avatar-->
+              <!--begin::Details-->
+              <div class="ms-3">
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+                  Cox</a>
+                <span class="text-muted fs-7 mb-1">1 Hour</span>
+              </div>
+              <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div
+              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+              data-kt-element="message-text">Ok, Understood!
+            </div>
+            <!--end::Text-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Message(in)-->
+        <!--begin::Message(out)-->
+        <div class="d-flex justify-content-end mb-10">
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column align-items-end">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+              <!--begin::Details-->
+              <div class="me-3">
+                <span class="text-muted fs-7 mb-1">2 Hours</span>
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+              </div>
+              <!--end::Details-->
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle">
+                <img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}"/>
+              </div>
+              <!--end::Avatar-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div
+              class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end"
+              data-kt-element="message-text">You’ll receive notifications for
+              all issues, pull requests!
+            </div>
+            <!--end::Text-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Message(out)-->
+        <!--begin::Message(in)-->
+        <div class="d-flex justify-content-start mb-10">
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle">
+                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+              </div>
+              <!--end::Avatar-->
+              <!--begin::Details-->
+              <div class="ms-3">
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+                  Cox</a>
+                <span class="text-muted fs-7 mb-1">3 Hours</span>
+              </div>
+              <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div
+              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+              data-kt-element="message-text">You can unwatch this repository
+              immediately by clicking here:
+              <a href="https://keenthemes.com">Keenthemes.com</a></div>
+            <!--end::Text-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Message(in)-->
+        <!--begin::Message(out)-->
+        <div class="d-flex justify-content-end mb-10">
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column align-items-end">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+              <!--begin::Details-->
+              <div class="me-3">
+                <span class="text-muted fs-7 mb-1">4 Hours</span>
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+              </div>
+              <!--end::Details-->
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle">
+                <img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}"/>
+              </div>
+              <!--end::Avatar-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div
+              class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end"
+              data-kt-element="message-text">Most purchased Business courses
+              during this sale!
+            </div>
+            <!--end::Text-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Message(out)-->
+        <!--begin::Message(in)-->
+        <div class="d-flex justify-content-start mb-10">
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle">
+                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+              </div>
+              <!--end::Avatar-->
+              <!--begin::Details-->
+              <div class="ms-3">
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+                  Cox</a>
+                <span class="text-muted fs-7 mb-1">5 Hours</span>
+              </div>
+              <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div
+              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+              data-kt-element="message-text">Company BBQ to celebrate the last
+              quater achievements and goals. Food and drinks provided
+            </div>
+            <!--end::Text-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Message(in)-->
+        <!--begin::Message(template for out)-->
+        <div class="d-flex justify-content-end mb-10 d-none"
+             data-kt-element="template-out">
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column align-items-end">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+              <!--begin::Details-->
+              <div class="me-3">
+                <span class="text-muted fs-7 mb-1">Just now</span>
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+              </div>
+              <!--end::Details-->
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle">
+                <img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}"/>
+              </div>
+              <!--end::Avatar-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div
+              class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end"
+              data-kt-element="message-text"></div>
+            <!--end::Text-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Message(template for out)-->
+        <!--begin::Message(template for in)-->
+        <div class="d-flex justify-content-start mb-10 d-none"
+             data-kt-element="template-in">
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column align-items-start">
+            <!--begin::User-->
+            <div class="d-flex align-items-center mb-2">
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle">
+                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+              </div>
+              <!--end::Avatar-->
+              <!--begin::Details-->
+              <div class="ms-3">
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+                  Cox</a>
+                <span class="text-muted fs-7 mb-1">Just now</span>
+              </div>
+              <!--end::Details-->
+            </div>
+            <!--end::User-->
+            <!--begin::Text-->
+            <div
+              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+              data-kt-element="message-text">Right before vacation season we
+              have the next Big Deal for you.
+            </div>
+            <!--end::Text-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Message(template for in)-->
 
-    {% block inline_javascript %}
-    {% comment %}
-    Script tags with only code, no src (defer by default). To run
-    with a "defer" so that you run run inline code:
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
-    </script>
-    {% endcomment %}
-    {% endblock inline_javascript %}
-  </body>
+      </div>
+      <!--end::Messages-->
+    </div>
+    <!--end::Card body-->
+    <!--begin::Card footer-->
+    <div class="card-footer pt-4" id="kt_drawer_chat_messenger_footer">
+      <!--begin::Input-->
+      <textarea class="form-control form-control-flush mb-3" rows="1"
+                data-kt-element="input"
+                placeholder="Type a message"></textarea>
+      <!--end::Input-->
+      <!--begin:Toolbar-->
+      <div class="d-flex flex-stack">
+        <!--begin::Actions-->
+        <div class="d-flex align-items-center me-2">
+          <button class="btn btn-sm btn-icon btn-active-light-primary me-1"
+                  type="button" data-bs-toggle="tooltip" title="Coming soon">
+            <i class="bi bi-paperclip fs-3"></i>
+          </button>
+          <button class="btn btn-sm btn-icon btn-active-light-primary me-1"
+                  type="button" data-bs-toggle="tooltip" title="Coming soon">
+            <i class="bi bi-upload fs-3"></i>
+          </button>
+        </div>
+        <!--end::Actions-->
+        <!--begin::Send-->
+        <button class="btn btn-primary" type="button" data-kt-element="send">
+          Send
+        </button>
+        <!--end::Send-->
+      </div>
+      <!--end::Toolbar-->
+    </div>
+    <!--end::Card footer-->
+  </div>
+  <!--end::Messenger-->
+</div>
+<!--end::Chat drawer-->
+
+<!--end::Drawers-->
+<!--end::Main-->
+
+<!--layout-partial:layout/engage/_main.html-->
+
+<!--layout-partial:layout/_scrolltop.html-->
+{% include 'layout/_scrolltop.html' %}
+<!--begin::Modals-->
+{% block modal %}
+  <!--layout-partial:partials/modals/_upgrade-plan.html-->
+
+
+  <!--layout-partial:partials/modals/create-app/_main.html-->
+
+
+  <!--layout-partial:partials/modals/_invite-friends.html-->
+
+
+  <!--layout-partial:partials/modals/users-search/_main.html-->
+{% endblock modal %}
+<!--end::Modals-->
+<!--begin::Javascript-->
+<!--begin::Global Javascript Bundle(used by all pages)-->
+<script src="{% static 'plugins/global/plugins.bundle.js' %}"></script>
+<script src="{% static 'js/scripts.bundle.js' %}"></script>
+<!--end::Global Javascript Bundle-->
+{% block javascript %}
+  <!--begin::Page Vendors Javascript(used by this page)-->
+  <script
+    src="{% static 'plugins/custom/fullcalendar/fullcalendar.bundle.js' %}"></script>
+  <script
+    src="{% static 'plugins/custom/datatables/datatables.bundle.js' %}"></script>
+  <!--end::Page Vendors Javascript-->
+{% endblock javascript %}
+{% block inline_javascript %}
+  <!--begin::Page Custom Javascript(used by this page)-->
+  <script src="{% static 'js/custom/widgets.js' %}"></script>
+  <script src="{% static 'js/custom/apps/chat/chat.js' %}"></script>
+  <script src="{% static 'js/custom/intro.js' %}"></script>
+  <script src="{% static 'js/custom/modals/upgrade-plan.js' %}"></script>
+  <script src="{% static 'js/custom/modals/create-app.js' %}"></script>
+  <script src="{% static 'js/custom/modals/users-search.js' %}"></script>
+  <!--end::Page Custom Javascript-->
+{% endblock inline_javascript %}
+<!--end::Javascript-->
+</body>
+<!--end::Body-->
 </html>
