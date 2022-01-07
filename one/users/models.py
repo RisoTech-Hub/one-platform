@@ -20,3 +20,26 @@ class User(AbstractUser):
 
         """
         return reverse("users:detail", kwargs={"username": self.username})
+
+    @property
+    def display_name_html(self):
+        return self.name if self.name else self.username
+
+    @property
+    def display_level_html(self):
+        if self.is_superuser:
+            return """
+                <span class='badge badge-light-danger fw-bolder fs-8 px-2 py-1
+                ms-2'>Administrator</span>
+            """
+        elif self.is_staff:
+            return """
+                <span class='badge badge-light-warning fw-bolder fs-8 px-2 py-1
+                ms-2'>Staff
+                </span>
+            """
+        else:
+            return """
+                <span class='badge badge-light-info fw-bolder fs-8 px-2 py-1
+                ms-2'>Member</span>
+            """

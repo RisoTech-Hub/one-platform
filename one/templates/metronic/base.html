@@ -52,12 +52,13 @@
 
     <!--layout-partial:layout/aside/_base.html-->
     {% include 'layout/aside/_base.html' %}
-    {% block content %}
+
     <!--begin::Wrapper-->
     <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
       <!--layout-partial:layout/header/_base.html-->
-
+      {% include 'layout/header/_base.html' %}
+      {% block content %}
       <!--begin::Content-->
       <div class="content d-flex flex-column flex-column-fluid"
            id="kt_content">
@@ -73,12 +74,12 @@
         <!--end::Post-->
       </div>
       <!--end::Content-->
-
+      {% endblock content %}
       <!--layout-partial:layout/_footer.html-->
 
     </div>
     <!--end::Wrapper-->
-    {% endblock content %}
+
 
   </div>
   <!--end::Page-->
@@ -87,8 +88,9 @@
 <!--begin::Drawers-->
 
 <!--layout-partial:layout/topbar/partials/_activity-drawer.html-->
+{% include 'layout/topbar/partials/_activity-drawer.html' %}
 
-
+{% if ENABLE_LIVE_CHAT_APPLICATION %}
 <!--begin::Chat drawer-->
 <div id="kt_drawer_chat" class="bg-body" data-kt-drawer="true"
      data-kt-drawer-name="chat" data-kt-drawer-activate="true"
@@ -552,7 +554,7 @@
   <!--end::Messenger-->
 </div>
 <!--end::Chat drawer-->
-
+{% endif %}
 <!--end::Drawers-->
 <!--end::Main-->
 
@@ -587,6 +589,47 @@
     src="{% static 'plugins/custom/datatables/datatables.bundle.js' %}"></script>
   <!--end::Page Vendors Javascript-->
 {% endblock javascript %}
+{% if messages %}
+    {% for message in messages %}
+    <script>
+      // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+      Swal.fire({
+        text: "{{ message }}!",
+        icon: "{% if message.tags %}{{ message.tags }}{% else %}success{% endif %}",
+        buttonsStyling: false,
+        confirmButtonText: "{% translate 'Ok' %}!",
+        customClass: {
+          confirmButton: "btn btn-primary"
+        }
+      });
+    </script>
+    {% endfor %}
+  {% endif %}
+{% if form.errors %}
+  <script id="id_form_error" type="application/json">
+    {{ form.errors.as_json }}
+  </script>
+  <script>
+    const form_errors = JSON.parse(document.getElementById('id_form_error').textContent.replaceAll('&quot;', '"'));
+    let html = '<ul class="list-inline">';
+    $.each(form_errors, function (index, value){
+      $.each(value, function (index, _value){
+        html += _value.message;
+      });
+    });
+    html += '</ul>'
+    // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+    Swal.fire({
+      html: html,
+      icon: "error",
+      buttonsStyling: false,
+      confirmButtonText: "{% translate 'Ok' %}!",
+      customClass: {
+        confirmButton: "btn btn-danger"
+      }
+    });
+  </script>
+{% endif %}
 {% block inline_javascript %}
   <!--begin::Page Custom Javascript(used by this page)-->
   <script src="{% static 'js/custom/widgets.js' %}"></script>
