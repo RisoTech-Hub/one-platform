@@ -576,6 +576,27 @@
   <!--layout-partial:partials/modals/users-search/_main.html-->
 {% endblock modal %}
 <!--end::Modals-->
+<!--begin::hidden form-->
+<div style="display: none">
+<form action="{% url 'set_language' %}"
+      method="post" id="change_language_form_id">
+  {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select name="language" id="change_language_select_id">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go">
+  </form>
+
+</div>
+<!--end::hidden form-->
 <!--begin::Javascript-->
 <!--begin::Global Javascript Bundle(used by all pages)-->
 <script src="{% static 'plugins/global/plugins.bundle.js' %}"></script>
@@ -630,6 +651,12 @@
     });
   </script>
 {% endif %}
+<script>
+function submitChangeLanguageForm(language) {
+     $('#change_language_select_id').val(language).change();
+     $('#change_language_form_id').submit()
+  }
+</script>
 {% block inline_javascript %}
   <!--begin::Page Custom Javascript(used by this page)-->
   <script src="{% static 'js/custom/widgets.js' %}"></script>

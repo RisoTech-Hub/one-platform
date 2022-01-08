@@ -30,16 +30,16 @@ class User(AbstractUser):
         if self.is_superuser:
             return """
                 <span class='badge badge-light-danger fw-bolder fs-8 px-2 py-1
-                ms-2'>Administrator</span>
+                '>Administrator</span>
             """
         elif self.is_staff:
             return """
                 <span class='badge badge-light-warning fw-bolder fs-8 px-2 py-1
-                ms-2'>Staff
+                '>Staff
                 </span>
             """
         else:
             return """
                 <span class='badge badge-light-info fw-bolder fs-8 px-2 py-1
-                ms-2'>Member</span>
+                '>Member</span>
             """

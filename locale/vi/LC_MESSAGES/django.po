@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-01 03:29+0000\n"
+"POT-Creation-Date: 2022-01-08 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,56 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: config/settings/base.py:32
+#: one/templates/metronic/layout/topbar/partials/_user-menu.html:122
+#: one/templates/metronic/layout/topbar/partials/_user-menu.html:149
+msgid "Vietnamese"
+msgstr "Tiếng Việt Nam"
+
+#: config/settings/base.py:33
+#: one/templates/metronic/layout/topbar/partials/_user-menu.html:116
+#: one/templates/metronic/layout/topbar/partials/_user-menu.html:138
+msgid "English"
+msgstr "Tiếng Anh"
+
+#: one/components/models.py:31
+msgid "Created on"
+msgstr "Ngày tạo"
+
+#: one/components/models.py:34
+msgid "Last modified on"
+msgstr "Sửa lần cuối"
+
+#: one/components/models.py:38
+msgid "Created by"
+msgstr "Tạo bởi"
+
+#: one/components/models.py:78
+#, python-format
+msgid "Name of %(class)s"
+msgstr "Tên của lớp %(class)s"
+
+#: one/components/models.py:97
+#, python-format
+msgid "Language of %(class)s"
+msgstr "Ngôn ngữ của %(class)s"
+
+#: one/emails/models.py:18
+msgid "Specific code for core app"
+msgstr "Mã đặc biệt của ứng dụng"
+
+#: one/emails/models.py:25
+msgid "Subject of email"
+msgstr "Tiêu đề"
+
+#: one/emails/models.py:26
+msgid "Is protected"
+msgstr "Được bảo vệ"
+
+#: one/emails/models.py:27
+msgid "Html content"
+msgstr "Nội dung html"
 
 #: one/templates/account/account_inactive.html:5
 #: one/templates/account/account_inactive.html:8
@@ -126,48 +176,49 @@ msgid ""
 msgstr ""
 
 #: one/templates/account/login.html:7 one/templates/account/login.html:11
-#: one/templates/account/login.html:44 one/templates/base.html:70
+#: one/templates/account/login.html:56 one/templates/base.html:73
 #: one/templates/metronic/account/login.html:6
-#: one/templates/metronic/base.html:70
 msgid "Sign In"
+msgstr "Đăng nhập"
+
+#: one/templates/account/login.html:17
+msgid "Please sign in with one of your existing third party accounts:"
 msgstr ""
 
-#: one/templates/account/login.html:16
+#: one/templates/account/login.html:19
 #, python-format
 msgid ""
-"Please sign in with one\n"
-"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
-"up</a>\n"
-"for a %(site_name)s account and sign in below:"
+"Or, <a href=\"%(signup_url)s\">sign up</a> for a %(site_name)s account and "
+"sign in below:"
 msgstr ""
 
-#: one/templates/account/login.html:26
+#: one/templates/account/login.html:32
 msgid "or"
-msgstr ""
+msgstr "hoặc"
 
-#: one/templates/account/login.html:33
+#: one/templates/account/login.html:41
 #, python-format
 msgid ""
-"If you have not created an account yet, then please\n"
-"<a href=\"%(signup_url)s\">sign up</a> first."
+"If you have not created an account yet, then please <a href=\"%(signup_url)s"
+"\">sign up</a> first."
 msgstr ""
 
-#: one/templates/account/login.html:43
+#: one/templates/account/login.html:55
 msgid "Forgot Password?"
-msgstr ""
+msgstr "Quên mật khẩu?"
 
 #: one/templates/account/logout.html:5 one/templates/account/logout.html:8
-#: one/templates/account/logout.html:17 one/templates/base.html:61
+#: one/templates/account/logout.html:17 one/templates/base.html:62
 #: one/templates/metronic/account/logout.html:5
 #: one/templates/metronic/account/logout.html:11
 #: one/templates/metronic/account/logout.html:23
-#: one/templates/metronic/base.html:61
+#: one/templates/metronic/layout/topbar/partials/_user-menu.html:194
 msgid "Sign Out"
-msgstr ""
+msgstr "Đăng xuất"
 
 #: one/templates/account/logout.html:10
 msgid "Are you sure you want to sign out?"
-msgstr ""
+msgstr "Bạn có chắc rằng muốn đăng xuất?"
 
 #: one/templates/account/password_change.html:6
 #: one/templates/account/password_change.html:9
@@ -176,9 +227,7 @@ msgstr ""
 #: one/templates/account/password_reset_from_key.html:8
 #: one/templates/account/password_reset_from_key_done.html:4
 #: one/templates/account/password_reset_from_key_done.html:7
-#: one/templates/metronic/account/password_change.html:6
-#: one/templates/metronic/account/password_change.html:9
-#: one/templates/metronic/account/password_change.html:14
+#: one/templates/metronic/account/password_change.html:5
 #: one/templates/metronic/account/password_reset_from_key.html:4
 #: one/templates/metronic/account/password_reset_from_key.html:38
 #: one/templates/metronic/account/password_reset_from_key_done.html:4
@@ -253,12 +302,12 @@ msgstr ""
 #: one/templates/account/signup.html:6
 #: one/templates/metronic/account/signup.html:6
 msgid "Signup"
-msgstr ""
+msgstr "Đăng ký"
 
 #: one/templates/account/signup.html:9 one/templates/account/signup.html:19
-#: one/templates/base.html:66 one/templates/metronic/base.html:66
+#: one/templates/base.html:68
 msgid "Sign Up"
-msgstr ""
+msgstr "Đăng ký"
 
 #: one/templates/account/signup.html:11
 #, python-format
@@ -321,8 +370,42 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: one/templates/base.html:57 one/templates/metronic/base.html:57
+#: one/templates/base.html:58
+#: one/templates/metronic/layout/topbar/partials/_user-menu.html:35
 msgid "My Profile"
+msgstr "Thông tin cá nhân"
+
+#: one/templates/metronic/403.html:5 one/templates/metronic/403.html:12
+msgid "Forbidden (403)"
+msgstr "Không có quyền truy cập(403)"
+
+#: one/templates/metronic/403.html:15 one/templates/metronic/404.html:15
+msgid "You're not allowed to access this page."
+msgstr "Bạn không được cấp quyền để vào trang này"
+
+#: one/templates/metronic/403.html:20 one/templates/metronic/404.html:20
+#: one/templates/metronic/500.html:22
+#: one/templates/metronic/account/account_inactive.html:19
+msgid "Go to homepage"
+msgstr "Trở về trang chính"
+
+#: one/templates/metronic/404.html:5 one/templates/metronic/404.html:12
+msgid "Page not found"
+msgstr "Không tìm thấy trang"
+
+#: one/templates/metronic/500.html:5
+msgid "Server Error"
+msgstr "Lỗi hệ thống"
+
+#: one/templates/metronic/500.html:12
+msgid "Looks like something went wrong!"
+msgstr "Có vẻ hệ thống đã sập"
+
+#: one/templates/metronic/500.html:15
+msgid ""
+"We track\n"
+"      these errors automatically, but if the problem persists feel free to\n"
+"      contact us. In the meantime, try refreshing."
 msgstr ""
 
 #: one/templates/metronic/account/account_inactive.html:11
@@ -335,13 +418,9 @@ msgid ""
 "    <br />an outline and checking facts"
 msgstr ""
 
-#: one/templates/metronic/account/account_inactive.html:19
-msgid "Go to homepage"
-msgstr ""
-
 #: one/templates/metronic/account/email_confirm.html:12
 msgid "Verify Your Email"
-msgstr ""
+msgstr "Xác nhận e-mail của bạn"
 
 #: one/templates/metronic/account/email_confirm.html:17
 #, python-format
@@ -376,76 +455,125 @@ msgstr ""
 #: one/templates/metronic/account/login.html:33
 #: one/templates/metronic/account/signup.html:55
 msgid "Username"
-msgstr ""
+msgstr "Tài khoản"
 
 #: one/templates/metronic/account/login.html:47
+#: one/templates/metronic/account/password_change.html:34
 #: one/templates/metronic/account/password_reset_from_key.html:59
 #: one/templates/metronic/account/signup.html:66
 msgid "Password"
-msgstr ""
+msgstr "Mật khẩu"
 
 #: one/templates/metronic/account/login.html:52
 msgid "Forgot Password"
-msgstr ""
+msgstr "Quên mật khẩu"
 
 #: one/templates/metronic/account/login.html:67
 msgid "Remember me"
-msgstr ""
+msgstr "Ghi nhớ đăng nhập"
 
 #: one/templates/metronic/account/login.html:131
 msgid "The username is required"
-msgstr ""
+msgstr "Tài khoản là trường bắt buộc"
 
 #: one/templates/metronic/account/login.html:134
 #: one/templates/metronic/account/password_reset.html:73
 #: one/templates/metronic/account/signup.html:165
 msgid "The value is not a valid email address"
-msgstr ""
+msgstr "Thông tin không đúng định dạng email"
 
 #: one/templates/metronic/account/login.html:141
+#: one/templates/metronic/account/password_change.html:118
 #: one/templates/metronic/account/password_reset_from_key.html:140
 #: one/templates/metronic/account/signup.html:172
 msgid "The password is required"
-msgstr ""
+msgstr "Mật khẩu là trường bắt buộc"
 
 #: one/templates/metronic/account/login.html:174
+#: one/templates/metronic/account/password_change.html:177
 #: one/templates/metronic/account/password_reset.html:105
 #: one/templates/metronic/account/password_reset_from_key.html:199
 #: one/templates/metronic/account/signup.html:238
 msgid "Sorry, looks like there are some errors detected, please try again"
-msgstr ""
+msgstr "Đã xảy ra lỗi, vui lòng thử lại"
 
 #: one/templates/metronic/account/login.html:177
+#: one/templates/metronic/account/password_change.html:180
 #: one/templates/metronic/account/password_reset.html:108
 #: one/templates/metronic/account/password_reset_from_key.html:202
 #: one/templates/metronic/account/signup.html:241
 msgid "Ok, got it"
-msgstr ""
+msgstr "Đã hiểu"
 
 #: one/templates/metronic/account/logout.html:14
 msgid "Are you sure you want to sign out"
+msgstr "Bạn có muốn đăng xuất"
+
+#: one/templates/metronic/account/password_change.html:17
+msgid "Change password"
+msgstr "Thay đổi mật khẩu"
+
+#: one/templates/metronic/account/password_change.html:23
+msgid "Current Password"
+msgstr "Mật khẩu hiện tại"
+
+#: one/templates/metronic/account/password_change.html:65
+#: one/templates/metronic/account/signup.html:97
+msgid ""
+"Use 8 or more characters with a mix of letters,\n"
+"          numbers &amp; symbols."
 msgstr ""
+
+#: one/templates/metronic/account/password_change.html:73
+#: one/templates/metronic/account/password_reset_from_key.html:100
+#: one/templates/metronic/account/signup.html:105
+msgid "Confirm Password"
+msgstr "Xác nhận mật khẩu"
+
+#: one/templates/metronic/account/password_change.html:83
+#: one/templates/metronic/account/password_reset.html:42
+#: one/templates/metronic/account/password_reset_from_key.html:110
+#: one/templates/metronic/account/signup.html:126
+msgid "Submit"
+msgstr "Gửi"
+
+#: one/templates/metronic/account/password_change.html:84
+#: one/templates/metronic/account/password_reset.html:43
+#: one/templates/metronic/account/password_reset_from_key.html:111
+#: one/templates/metronic/account/signup.html:127
+msgid "Please wait"
+msgstr "Vui lòng chờ"
+
+#: one/templates/metronic/account/password_change.html:111
+msgid "Current password is required"
+msgstr "Mật khẩu hiện tại là trường bắt buộc"
+
+#: one/templates/metronic/account/password_change.html:121
+#: one/templates/metronic/account/password_reset_from_key.html:143
+#: one/templates/metronic/account/signup.html:175
+msgid "Please enter valid password"
+msgstr "Vui lòng điền đúng thông tin"
+
+#: one/templates/metronic/account/password_change.html:133
+#: one/templates/metronic/account/password_reset_from_key.html:155
+#: one/templates/metronic/account/signup.html:187
+msgid "The password confirmation is required"
+msgstr "Mật khẩu là trường bắt buộc"
+
+#: one/templates/metronic/account/password_change.html:139
+#: one/templates/metronic/account/password_reset_from_key.html:161
+#: one/templates/metronic/account/signup.html:193
+msgid "The password and its confirm are not the same"
+msgstr "Trường mật khẩu không khớp"
 
 #: one/templates/metronic/account/password_reset.html:19
 msgid "Forgot Password ?"
-msgstr ""
+msgstr "Quên mật khẩu ?"
 
 #: one/templates/metronic/account/password_reset.html:25
 msgid ""
 "Enter your email to reset your\n"
 "          password."
-msgstr ""
-
-#: one/templates/metronic/account/password_reset.html:42
-#: one/templates/metronic/account/password_reset_from_key.html:110
-#: one/templates/metronic/account/signup.html:126
-msgid "Submit"
-msgstr ""
-
-#: one/templates/metronic/account/password_reset.html:43
-#: one/templates/metronic/account/password_reset_from_key.html:111
-#: one/templates/metronic/account/signup.html:127
-msgid "Please wait"
 msgstr ""
 
 #: one/templates/metronic/account/password_reset.html:70
@@ -470,73 +598,52 @@ msgid ""
 "              symbols."
 msgstr ""
 
-#: one/templates/metronic/account/password_reset_from_key.html:100
-#: one/templates/metronic/account/signup.html:105
-msgid "Confirm Password"
-msgstr ""
-
-#: one/templates/metronic/account/password_reset_from_key.html:143
-#: one/templates/metronic/account/signup.html:175
-msgid "Please enter valid password"
-msgstr ""
-
-#: one/templates/metronic/account/password_reset_from_key.html:155
-#: one/templates/metronic/account/signup.html:187
-msgid "The password confirmation is required"
-msgstr ""
-
-#: one/templates/metronic/account/password_reset_from_key.html:161
-#: one/templates/metronic/account/signup.html:193
-msgid "The password and its confirm are not the same"
-msgstr ""
-
 #: one/templates/metronic/account/password_reset_from_key_done.html:17
 msgid "Login"
-msgstr ""
+msgstr "Đăng nhập"
 
 #: one/templates/metronic/account/root.html:49
 #: one/templates/metronic/account/root.html:75
+#: one/templates/metronic/base.html:621 one/templates/metronic/base.html:647
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: one/templates/metronic/account/signup.html:25
 msgid "Already have an account"
-msgstr ""
+msgstr "Đã có tài khoản"
 
 #: one/templates/metronic/account/signup.html:27
 msgid "Sign in here"
-msgstr ""
+msgstr "Đăng nhập tại đây"
 
 #: one/templates/metronic/account/signup.html:47
 msgid "Email"
 msgstr ""
 
-#: one/templates/metronic/account/signup.html:97
-msgid ""
-"Use 8 or more characters with a mix of letters,\n"
-"          numbers &amp; symbols."
-msgstr ""
-
 #: one/templates/metronic/account/signup.html:155
 msgid "Username is required"
-msgstr ""
+msgstr "Tài khoản là trường bắt buộc"
 
 #: one/templates/metronic/account/snippets/already_logged_in.html:6
 msgid "Note"
-msgstr ""
+msgstr "Ghi chú"
 
 #: one/templates/metronic/account/snippets/already_logged_in.html:6
 #, python-format
 msgid "You are already logged in as %(user_display)s."
-msgstr ""
+msgstr "Bạn đã đăng nhập tài khoản %(user_display)s."
+
+#: one/templates/metronic/layout/topbar/partials/_user-menu.html:112
+msgid "Language"
+msgstr "Ngôn ngữ"
 
 #: one/users/admin.py:18
 msgid "Personal info"
-msgstr ""
+msgstr "Thông tin cá nhân"
 
 #: one/users/admin.py:20
 msgid "Permissions"
-msgstr ""
+msgstr "Quyền"
 
 #: one/users/admin.py:31
 msgid "Important dates"
