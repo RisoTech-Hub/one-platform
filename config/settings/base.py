@@ -4,7 +4,6 @@ Base settings to build other settings files upon.
 from pathlib import Path
 
 import environ
-from django.utils.translation import ugettext_lazy as _
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # one/
@@ -26,12 +25,6 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 # In Windows, this must be set to your system time zone.
 TIME_ZONE = "Asia/Ho_Chi_Minh"
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-VIETNAMESE = "vi"
-ENGLISH = "en"
-LANGUAGES = [
-    (VIETNAMESE, _("Vietnamese")),
-    (ENGLISH, _("English")),
-]
 LANGUAGE_CODE = "en-us"
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -85,8 +78,6 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "one.components",
-    "one.emails",
     "one.users",
     # Your stuff: custom apps go here
 ]
@@ -156,8 +147,7 @@ STATIC_ROOT = str(ROOT_DIR / "staticfiles")
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-# TODO: update static folder name
-STATICFILES_DIRS = [str(APPS_DIR / "static" / "metronic"), str(APPS_DIR / "static")]
+STATICFILES_DIRS = [str(APPS_DIR / "static")]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -194,7 +184,6 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "one.users.context_processors.allauth_settings",
             ],
         },
     }
