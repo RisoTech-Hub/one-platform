@@ -1,0 +1,1977 @@
+Index: .idea/one.iml
+===================================================================
+diff --git a/.idea/one.iml b/.idea/one.iml
+deleted file mode 100644
+--- a/.idea/one.iml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,44 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="PYTHON_MODULE" version="4">
+-  <component name="FacetManager">
+-    <facet type="django" name="Django">
+-      <configuration>
+-        <option name="rootFolder" value="$MODULE_DIR$" />
+-        <option name="settingsModule" value="config/settings/local.py" />
+-        <option name="manageScript" value="$MODULE_DIR$/manage.py" />
+-        <option name="environment" value="&lt;map/&gt;" />
+-        <option name="doNotUseTestRunner" value="false" />
+-        <option name="trackFilePattern" value="migrations" />
+-      </configuration>
+-    </facet>
+-  </component>
+-  <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="jdk" jdkName="Python 3.9 (cookie-venv)" jdkType="Python SDK" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="module" module-name="dist" />
+-    <orderEntry type="module" module-name="js" />
+-    <orderEntry type="module" module-name="wab" />
+-    <orderEntry type="module" module-name="metronic_html" />
+-  </component>
+-  <component name="PackageRequirementsSettings">
+-    <option name="requirementsPath" value="$MODULE_DIR$/requirements/local.txt" />
+-  </component>
+-  <component name="PyDocumentationSettings">
+-    <option name="renderExternalDocumentation" value="true" />
+-  </component>
+-  <component name="ReSTService">
+-    <option name="DOC_DIR" value="$MODULE_DIR$/docs" />
+-  </component>
+-  <component name="TemplatesService">
+-    <option name="TEMPLATE_CONFIGURATION" value="Django" />
+-    <option name="TEMPLATE_FOLDERS">
+-      <list>
+-        <option value="$MODULE_DIR$/one/templates" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="TestRunnerService">
+-    <option name="PROJECT_TEST_RUNNER" value="pytest" />
+-  </component>
+-</module>
+Index: .idea/runConfigurations/runserver.xml
+===================================================================
+diff --git a/.idea/runConfigurations/runserver.xml b/.idea/runConfigurations/runserver.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations/runserver.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,33 +0,0 @@
+-<component name="ProjectRunConfigurationManager">
+-  <configuration default="false" name="runserver" type="Python.DjangoServer" factoryName="Django server" singleton="true">
+-    <module name="one" />
+-    <option name="INTERPRETER_OPTIONS" value="" />
+-    <option name="PARENT_ENVS" value="true" />
+-    <envs>
+-      <env name="PYTHONUNBUFFERED" value="1" />
+-      <env name="DJANGO_SETTINGS_MODULE" value="config.settings.local" />
+-    </envs>
+-    <option name="SDK_HOME" value="" />
+-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+-    <option name="IS_MODULE_SDK" value="true" />
+-    <option name="ADD_CONTENT_ROOTS" value="true" />
+-    <option name="ADD_SOURCE_ROOTS" value="true" />
+-    <PathMappingSettings>
+-      <option name="pathMappings">
+-        <list>
+-          <mapping local-root="$PROJECT_DIR$" remote-root="/app" />
+-        </list>
+-      </option>
+-    </PathMappingSettings>
+-    <option name="launchJavascriptDebuger" value="false" />
+-    <option name="port" value="8000" />
+-    <option name="host" value="0.0.0.0" />
+-    <option name="additionalOptions" value="" />
+-    <option name="browserUrl" value="" />
+-    <option name="runTestServer" value="false" />
+-    <option name="runNoReload" value="false" />
+-    <option name="useCustomRunCommand" value="false" />
+-    <option name="customRunCommand" value="" />
+-    <method />
+-  </configuration>
+-</component>
+Index: .idea/runConfigurations/pytest__users.xml
+===================================================================
+diff --git a/.idea/runConfigurations/pytest__users.xml b/.idea/runConfigurations/pytest__users.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations/pytest__users.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,25 +0,0 @@
+-<component name="ProjectRunConfigurationManager">
+-  <configuration default="false" name="pytest: users" type="tests" factoryName="py.test" singleton="true">
+-    <module name="one" />
+-    <option name="INTERPRETER_OPTIONS" value="" />
+-    <option name="PARENT_ENVS" value="true" />
+-    <option name="SDK_HOME" value="" />
+-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+-    <option name="IS_MODULE_SDK" value="true" />
+-    <option name="ADD_CONTENT_ROOTS" value="true" />
+-    <option name="ADD_SOURCE_ROOTS" value="true" />
+-    <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+-    <PathMappingSettings>
+-      <option name="pathMappings">
+-        <list>
+-          <mapping local-root="$PROJECT_DIR$" remote-root="/app" />
+-        </list>
+-      </option>
+-    </PathMappingSettings>
+-    <option name="_new_keywords" value="&quot;&quot;" />
+-    <option name="_new_additionalArguments" value="&quot;&quot;" />
+-    <option name="_new_target" value="&quot;./one/users/&quot;" />
+-    <option name="_new_targetType" value="&quot;PATH&quot;" />
+-    <method />
+-  </configuration>
+-</component>
+Index: .idea/runConfigurations/pytest___.xml
+===================================================================
+diff --git a/.idea/runConfigurations/pytest___.xml b/.idea/runConfigurations/pytest___.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations/pytest___.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,25 +0,0 @@
+-<component name="ProjectRunConfigurationManager">
+-  <configuration default="false" name="pytest: ." type="tests" factoryName="py.test" singleton="true">
+-    <module name="one" />
+-    <option name="INTERPRETER_OPTIONS" value="" />
+-    <option name="PARENT_ENVS" value="true" />
+-    <option name="SDK_HOME" value="" />
+-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+-    <option name="IS_MODULE_SDK" value="true" />
+-    <option name="ADD_CONTENT_ROOTS" value="true" />
+-    <option name="ADD_SOURCE_ROOTS" value="true" />
+-    <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+-    <PathMappingSettings>
+-      <option name="pathMappings">
+-        <list>
+-          <mapping local-root="$PROJECT_DIR$" remote-root="/app" />
+-        </list>
+-      </option>
+-    </PathMappingSettings>
+-    <option name="_new_keywords" value="&quot;&quot;" />
+-    <option name="_new_additionalArguments" value="&quot;&quot;" />
+-    <option name="_new_target" value="&quot;.&quot;" />
+-    <option name="_new_targetType" value="&quot;PATH&quot;" />
+-    <method />
+-  </configuration>
+-</component>
+Index: .idea/runConfigurations/docker_compose_up_docs.xml
+===================================================================
+diff --git a/.idea/runConfigurations/docker_compose_up_docs.xml b/.idea/runConfigurations/docker_compose_up_docs.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations/docker_compose_up_docs.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,16 +0,0 @@
+-<component name="ProjectRunConfigurationManager">
+-  <configuration name="docker-compose up docs" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+-    <deployment type="docker-compose.yml">
+-      <settings>
+-        <option name="envFilePath" value=""/>
+-        <option name="services">
+-          <list>
+-            <option value="docs"/>
+-          </list>
+-        </option>
+-        <option name="sourceFilePath" value="local.yml"/>
+-      </settings>
+-    </deployment>
+-    <method v="2"/>
+-  </configuration>
+-</component>
+Index: .idea/runConfigurations/merge_production_dotenvs_in_dotenv.xml
+===================================================================
+diff --git a/.idea/runConfigurations/merge_production_dotenvs_in_dotenv.xml b/.idea/runConfigurations/merge_production_dotenvs_in_dotenv.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations/merge_production_dotenvs_in_dotenv.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,21 +0,0 @@
+-<component name="ProjectRunConfigurationManager">
+-  <configuration default="false" name="merge_production_dotenvs_in_dotenv" type="PythonConfigurationType" factoryName="Python" singleton="true">
+-    <module name="one" />
+-    <option name="INTERPRETER_OPTIONS" value="" />
+-    <option name="PARENT_ENVS" value="true" />
+-    <envs>
+-      <env name="PYTHONUNBUFFERED" value="1" />
+-    </envs>
+-    <option name="SDK_HOME" value="" />
+-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+-    <option name="IS_MODULE_SDK" value="true" />
+-    <option name="ADD_CONTENT_ROOTS" value="true" />
+-    <option name="ADD_SOURCE_ROOTS" value="true" />
+-    <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+-    <option name="SCRIPT_NAME" value="merge_production_dotenvs_in_dotenv.py" />
+-    <option name="PARAMETERS" value="" />
+-    <option name="SHOW_COMMAND_LINE" value="false" />
+-    <option name="EMULATE_TERMINAL" value="false" />
+-    <method />
+-  </configuration>
+-</component>
+Index: .idea/runConfigurations/runserver_plus.xml
+===================================================================
+diff --git a/.idea/runConfigurations/runserver_plus.xml b/.idea/runConfigurations/runserver_plus.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations/runserver_plus.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,33 +0,0 @@
+-<component name="ProjectRunConfigurationManager">
+-  <configuration default="false" name="runserver_plus" type="Python.DjangoServer" factoryName="Django server" singleton="true">
+-    <module name="one" />
+-    <option name="INTERPRETER_OPTIONS" value="" />
+-    <option name="PARENT_ENVS" value="true" />
+-    <envs>
+-      <env name="PYTHONUNBUFFERED" value="1" />
+-      <env name="DJANGO_SETTINGS_MODULE" value="config.settings.local" />
+-    </envs>
+-    <option name="SDK_HOME" value="" />
+-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+-    <option name="IS_MODULE_SDK" value="true" />
+-    <option name="ADD_CONTENT_ROOTS" value="true" />
+-    <option name="ADD_SOURCE_ROOTS" value="true" />
+-    <PathMappingSettings>
+-      <option name="pathMappings">
+-        <list>
+-          <mapping local-root="$PROJECT_DIR$" remote-root="/app" />
+-        </list>
+-      </option>
+-    </PathMappingSettings>
+-    <option name="launchJavascriptDebuger" value="false" />
+-    <option name="port" value="8000" />
+-    <option name="host" value="0.0.0.0" />
+-    <option name="additionalOptions" value="" />
+-    <option name="browserUrl" value="" />
+-    <option name="runTestServer" value="false" />
+-    <option name="runNoReload" value="false" />
+-    <option name="useCustomRunCommand" value="true" />
+-    <option name="customRunCommand" value="runserver_plus" />
+-    <method />
+-  </configuration>
+-</component>
+Index: .idea/webResources.xml
+===================================================================
+diff --git a/.idea/webResources.xml b/.idea/webResources.xml
+deleted file mode 100644
+--- a/.idea/webResources.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,14 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="WebResourcesPaths">
+-    <contentEntries>
+-      <entry url="file://$PROJECT_DIR$">
+-        <entryData>
+-          <resourceRoots>
+-            <path value="file://$PROJECT_DIR$/one/static" />
+-          </resourceRoots>
+-        </entryData>
+-      </entry>
+-    </contentEntries>
+-  </component>
+-</project>
+Index: .idea/runConfigurations/docker_compose_up_django.xml
+===================================================================
+diff --git a/.idea/runConfigurations/docker_compose_up_django.xml b/.idea/runConfigurations/docker_compose_up_django.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations/docker_compose_up_django.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,18 +0,0 @@
+-<component name="ProjectRunConfigurationManager">
+-  <configuration name="docker-compose up django" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+-    <deployment type="docker-compose.yml">
+-      <settings>
+-        <option name="envFilePath" value=""/>
+-        <option name="services">
+-          <list>
+-            <option value="django"/>
+-            <option value="celeryworker"/>
+-            <option value="celerybeat"/>
+-          </list>
+-        </option>
+-        <option name="sourceFilePath" value="local.yml"/>
+-      </settings>
+-    </deployment>
+-    <method v="2"/>
+-  </configuration>
+-</component>
+Index: .idea/runConfigurations/migrate.xml
+===================================================================
+diff --git a/.idea/runConfigurations/migrate.xml b/.idea/runConfigurations/migrate.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations/migrate.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ /dev/null	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
+@@ -1,32 +0,0 @@
+-<component name="ProjectRunConfigurationManager">
+-  <configuration default="false" name="migrate" type="Python.DjangoServer" factoryName="Django server" singleton="true">
+-    <module name="one" />
+-    <option name="INTERPRETER_OPTIONS" value="" />
+-    <option name="PARENT_ENVS" value="true" />
+-    <envs>
+-      <env name="PYTHONUNBUFFERED" value="1" />
+-      <env name="DJANGO_SETTINGS_MODULE" value="config.settings.local" />
+-    </envs>
+-    <option name="SDK_HOME" value="" />
+-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+-    <option name="IS_MODULE_SDK" value="true" />
+-    <option name="ADD_CONTENT_ROOTS" value="true" />
+-    <option name="ADD_SOURCE_ROOTS" value="true" />
+-    <PathMappingSettings>
+-      <option name="pathMappings">
+-        <list>
+-          <mapping local-root="$PROJECT_DIR$" remote-root="/app" />
+-        </list>
+-      </option>
+-    </PathMappingSettings>
+-    <option name="launchJavascriptDebuger" value="false" />
+-    <option name="host" value="" />
+-    <option name="additionalOptions" value="" />
+-    <option name="browserUrl" value="" />
+-    <option name="runTestServer" value="false" />
+-    <option name="runNoReload" value="false" />
+-    <option name="useCustomRunCommand" value="true" />
+-    <option name="customRunCommand" value="migrate" />
+-    <method />
+-  </configuration>
+-</component>
+Index: one/templates/metronic/base.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% load static i18n %}<!DOCTYPE html>\n<html lang=\"en\">\n<!--begin::Head-->\n<head>\n  <meta charset=\"utf-8\">\n  <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n  <title>{% block title %}{% endblock title %}</title>\n  <meta name=\"description\"\n        content=\"{% block description %}{% endblock description %}\"/>\n  <meta name=\"keywords\" content=\"{% block keywords %}{% endblock keywords %}\"/>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <meta property=\"og:locale\" content=\"en_US\"/>\n  <meta property=\"og:type\"\n        content=\"{% block og_type %}{% endblock og_type %}\"/>\n  <meta property=\"og:title\"\n        content=\"{% block og_title %}{% endblock og_title %}\"/>\n  <meta property=\"og:url\" content=\"https://example.com\"/>\n  <meta property=\"og:site_name\" content=\"example.com\"/>\n  <link rel=\"canonical\" href=\"https://example.com\"/>\n  <link rel=\"shortcut icon\" href=\"{% static 'media/logos/favicon.ico' %}\"/>\n  <!--begin::Fonts-->\n  <link rel=\"stylesheet\"\n        href=\"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700\"/>\n  <!--end::Fonts-->\n  {% block css %}\n    <!--begin::Page Vendor Stylesheets(used by this page)-->\n    <link\n      href=\"{% static 'plugins/custom/fullcalendar/fullcalendar.bundle.css' %}\"\n      rel=\"stylesheet\" type=\"text/css\"/>\n    <link href=\"{% static 'plugins/custom/datatables/datatables.bundle.css' %}\"\n          rel=\"stylesheet\" type=\"text/css\"/>\n    <!--end::Page Vendor Stylesheets-->\n  {% endblock %}\n  <!--begin::Global Stylesheets Bundle(used by all pages)-->\n  <link href=\"{% static 'plugins/global/plugins.bundle.css' %}\"\n        rel=\"stylesheet\" type=\"text/css\"/>\n  <link href=\"{% static 'css/style.bundle.css' %}\" rel=\"stylesheet\"\n        type=\"text/css\"/>\n  <!--end::Global Stylesheets Bundle-->\n</head>\n<!--end::Head-->\n<!--begin::Body-->\n<body id=\"kt_body\"\n      class=\"header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed\"\n      style=\"--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px\">\n\n<!--begin::Main-->\n<!--begin::Root-->\n<div class=\"d-flex flex-column flex-root\">\n  <!--begin::Page-->\n  <div class=\"page d-flex flex-row flex-column-fluid\">\n\n    <!--layout-partial:layout/aside/_base.html-->\n    {% include 'layout/aside/_base.html' %}\n\n    <!--begin::Wrapper-->\n    <div class=\"wrapper d-flex flex-column flex-row-fluid\" id=\"kt_wrapper\">\n\n      <!--layout-partial:layout/header/_base.html-->\n      {% include 'layout/header/_base.html' %}\n      {% block content %}\n      <!--begin::Content-->\n      <div class=\"content d-flex flex-column flex-column-fluid\"\n           id=\"kt_content\">\n\n        <!--layout-partial:layout/toolbars/_toolbar-1.html-->\n\n        <!--begin::Post-->\n        <div class=\"post d-flex flex-column-fluid\" id=\"kt_post\">\n\n          <!--layout-partial:layout/_content.html-->\n\n        </div>\n        <!--end::Post-->\n      </div>\n      <!--end::Content-->\n      {% endblock content %}\n      <!--layout-partial:layout/_footer.html-->\n\n    </div>\n    <!--end::Wrapper-->\n\n\n  </div>\n  <!--end::Page-->\n</div>\n<!--end::Root-->\n<!--begin::Drawers-->\n\n<!--layout-partial:layout/topbar/partials/_activity-drawer.html-->\n{% include 'layout/topbar/partials/_activity-drawer.html' %}\n\n{% if ENABLE_LIVE_CHAT_APPLICATION %}\n<!--begin::Chat drawer-->\n<div id=\"kt_drawer_chat\" class=\"bg-body\" data-kt-drawer=\"true\"\n     data-kt-drawer-name=\"chat\" data-kt-drawer-activate=\"true\"\n     data-kt-drawer-overlay=\"true\"\n     data-kt-drawer-width=\"{default:'300px', 'md': '500px'}\"\n     data-kt-drawer-direction=\"end\"\n     data-kt-drawer-toggle=\"#kt_drawer_chat_toggle\"\n     data-kt-drawer-close=\"#kt_drawer_chat_close\">\n  <!--begin::Messenger-->\n  <div class=\"card w-100 rounded-0 border-0\" id=\"kt_drawer_chat_messenger\">\n    <!--begin::Card header-->\n    <div class=\"card-header pe-5\" id=\"kt_drawer_chat_messenger_header\">\n      <!--begin::Title-->\n      <div class=\"card-title\">\n        <!--begin::User-->\n        <div class=\"d-flex justify-content-center flex-column me-3\">\n          <a href=\"#\"\n             class=\"fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1\">Brian\n            Cox</a>\n          <!--begin::Info-->\n          <div class=\"mb-0 lh-1\">\n            <span\n              class=\"badge badge-success badge-circle w-10px h-10px me-1\"></span>\n            <span class=\"fs-7 fw-bold text-muted\">Active</span>\n          </div>\n          <!--end::Info-->\n        </div>\n        <!--end::User-->\n      </div>\n      <!--end::Title-->\n      <!--begin::Card toolbar-->\n      <div class=\"card-toolbar\">\n        <!--begin::Menu-->\n        <div class=\"me-2\">\n          <button class=\"btn btn-sm btn-icon btn-active-light-primary\"\n                  data-kt-menu-trigger=\"click\"\n                  data-kt-menu-placement=\"bottom-end\">\n            <i class=\"bi bi-three-dots fs-3\"></i>\n          </button>\n\n          <!--begin::Menu 3-->\n          <div\n            class=\"menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3\"\n            data-kt-menu=\"true\">\n            <!--begin::Heading-->\n            <div class=\"menu-item px-3\">\n              <div\n                class=\"menu-content text-muted pb-2 px-3 fs-7 text-uppercase\">\n                Contacts\n              </div>\n            </div>\n            <!--end::Heading-->\n            <!--begin::Menu item-->\n            <div class=\"menu-item px-3\">\n              <a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"modal\"\n                 data-bs-target=\"#kt_modal_users_search\">Add Contact</a>\n            </div>\n            <!--end::Menu item-->\n            <!--begin::Menu item-->\n            <div class=\"menu-item px-3\">\n              <a href=\"#\" class=\"menu-link flex-stack px-3\"\n                 data-bs-toggle=\"modal\"\n                 data-bs-target=\"#kt_modal_invite_friends\">Invite Contacts\n                <i class=\"fas fa-exclamation-circle ms-2 fs-7\"\n                   data-bs-toggle=\"tooltip\"\n                   title=\"Specify a contact email to send an invitation\"></i></a>\n            </div>\n            <!--end::Menu item-->\n            <!--begin::Menu item-->\n            <div class=\"menu-item px-3\" data-kt-menu-trigger=\"hover\"\n                 data-kt-menu-placement=\"right-start\">\n              <a href=\"#\" class=\"menu-link px-3\">\n                <span class=\"menu-title\">Groups</span>\n                <span class=\"menu-arrow\"></span>\n              </a>\n              <!--begin::Menu sub-->\n              <div class=\"menu-sub menu-sub-dropdown w-175px py-4\">\n                <!--begin::Menu item-->\n                <div class=\"menu-item px-3\">\n                  <a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"tooltip\"\n                     title=\"Coming soon\">Create Group</a>\n                </div>\n                <!--end::Menu item-->\n                <!--begin::Menu item-->\n                <div class=\"menu-item px-3\">\n                  <a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"tooltip\"\n                     title=\"Coming soon\">Invite Members</a>\n                </div>\n                <!--end::Menu item-->\n                <!--begin::Menu item-->\n                <div class=\"menu-item px-3\">\n                  <a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"tooltip\"\n                     title=\"Coming soon\">Settings</a>\n                </div>\n                <!--end::Menu item-->\n              </div>\n              <!--end::Menu sub-->\n            </div>\n            <!--end::Menu item-->\n            <!--begin::Menu item-->\n            <div class=\"menu-item px-3 my-1\">\n              <a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"tooltip\"\n                 title=\"Coming soon\">Settings</a>\n            </div>\n            <!--end::Menu item-->\n          </div>\n          <!--end::Menu 3-->\n\n        </div>\n        <!--end::Menu-->\n        <!--begin::Close-->\n        <div class=\"btn btn-sm btn-icon btn-active-light-primary\"\n             id=\"kt_drawer_chat_close\">\n          <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->\n          <span class=\"svg-icon svg-icon-2\">\n\t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"\n                     viewBox=\"0 0 24 24\" fill=\"none\">\n\t\t\t\t\t\t\t\t\t<rect opacity=\"0.5\" x=\"6\" y=\"17.3137\" width=\"16\" height=\"2\"\n                        rx=\"1\" transform=\"rotate(-45 6 17.3137)\" fill=\"black\"/>\n\t\t\t\t\t\t\t\t\t<rect x=\"7.41422\" y=\"6\" width=\"16\" height=\"2\" rx=\"1\"\n                        transform=\"rotate(45 7.41422 6)\" fill=\"black\"/>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</span>\n          <!--end::Svg Icon-->\n        </div>\n        <!--end::Close-->\n      </div>\n      <!--end::Card toolbar-->\n    </div>\n    <!--end::Card header-->\n    <!--begin::Card body-->\n    <div class=\"card-body\" id=\"kt_drawer_chat_messenger_body\">\n      <!--begin::Messages-->\n      <div class=\"scroll-y me-n5 pe-5\" data-kt-element=\"messages\"\n           data-kt-scroll=\"true\" data-kt-scroll-activate=\"true\"\n           data-kt-scroll-height=\"auto\"\n           data-kt-scroll-dependencies=\"#kt_drawer_chat_messenger_header, #kt_drawer_chat_messenger_footer\"\n           data-kt-scroll-wrappers=\"#kt_drawer_chat_messenger_body\"\n           data-kt-scroll-offset=\"0px\">\n\n        <!--begin::Message(in)-->\n        <div class=\"d-flex justify-content-start mb-10\">\n          <!--begin::Wrapper-->\n          <div class=\"d-flex flex-column align-items-start\">\n            <!--begin::User-->\n            <div class=\"d-flex align-items-center mb-2\">\n              <!--begin::Avatar-->\n              <div class=\"symbol symbol-35px symbol-circle\">\n                <img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\"/>\n              </div>\n              <!--end::Avatar-->\n              <!--begin::Details-->\n              <div class=\"ms-3\">\n                <a href=\"#\"\n                   class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian\n                  Cox</a>\n                <span class=\"text-muted fs-7 mb-1\">2 mins</span>\n              </div>\n              <!--end::Details-->\n            </div>\n            <!--end::User-->\n            <!--begin::Text-->\n            <div\n              class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\"\n              data-kt-element=\"message-text\">How likely are you to recommend\n              our company to your friends and family ?\n            </div>\n            <!--end::Text-->\n          </div>\n          <!--end::Wrapper-->\n        </div>\n        <!--end::Message(in)-->\n        <!--begin::Message(out)-->\n        <div class=\"d-flex justify-content-end mb-10\">\n          <!--begin::Wrapper-->\n          <div class=\"d-flex flex-column align-items-end\">\n            <!--begin::User-->\n            <div class=\"d-flex align-items-center mb-2\">\n              <!--begin::Details-->\n              <div class=\"me-3\">\n                <span class=\"text-muted fs-7 mb-1\">5 mins</span>\n                <a href=\"#\"\n                   class=\"fs-5 fw-bolder text-gray-900 text-hover-primary ms-1\">You</a>\n              </div>\n              <!--end::Details-->\n              <!--begin::Avatar-->\n              <div class=\"symbol symbol-35px symbol-circle\">\n                <img alt=\"Pic\" src=\"{% static 'media/avatars/150-26.jpg' %}\"/>\n              </div>\n              <!--end::Avatar-->\n            </div>\n            <!--end::User-->\n            <!--begin::Text-->\n            <div\n              class=\"p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end\"\n              data-kt-element=\"message-text\">Hey there, we’re just writing to\n              let you know that you’ve been subscribed to a repository on\n              GitHub.\n            </div>\n            <!--end::Text-->\n          </div>\n          <!--end::Wrapper-->\n        </div>\n        <!--end::Message(out)-->\n        <!--begin::Message(in)-->\n        <div class=\"d-flex justify-content-start mb-10\">\n          <!--begin::Wrapper-->\n          <div class=\"d-flex flex-column align-items-start\">\n            <!--begin::User-->\n            <div class=\"d-flex align-items-center mb-2\">\n              <!--begin::Avatar-->\n              <div class=\"symbol symbol-35px symbol-circle\">\n                <img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\"/>\n              </div>\n              <!--end::Avatar-->\n              <!--begin::Details-->\n              <div class=\"ms-3\">\n                <a href=\"#\"\n                   class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian\n                  Cox</a>\n                <span class=\"text-muted fs-7 mb-1\">1 Hour</span>\n              </div>\n              <!--end::Details-->\n            </div>\n            <!--end::User-->\n            <!--begin::Text-->\n            <div\n              class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\"\n              data-kt-element=\"message-text\">Ok, Understood!\n            </div>\n            <!--end::Text-->\n          </div>\n          <!--end::Wrapper-->\n        </div>\n        <!--end::Message(in)-->\n        <!--begin::Message(out)-->\n        <div class=\"d-flex justify-content-end mb-10\">\n          <!--begin::Wrapper-->\n          <div class=\"d-flex flex-column align-items-end\">\n            <!--begin::User-->\n            <div class=\"d-flex align-items-center mb-2\">\n              <!--begin::Details-->\n              <div class=\"me-3\">\n                <span class=\"text-muted fs-7 mb-1\">2 Hours</span>\n                <a href=\"#\"\n                   class=\"fs-5 fw-bolder text-gray-900 text-hover-primary ms-1\">You</a>\n              </div>\n              <!--end::Details-->\n              <!--begin::Avatar-->\n              <div class=\"symbol symbol-35px symbol-circle\">\n                <img alt=\"Pic\" src=\"{% static 'media/avatars/150-26.jpg' %}\"/>\n              </div>\n              <!--end::Avatar-->\n            </div>\n            <!--end::User-->\n            <!--begin::Text-->\n            <div\n              class=\"p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end\"\n              data-kt-element=\"message-text\">You’ll receive notifications for\n              all issues, pull requests!\n            </div>\n            <!--end::Text-->\n          </div>\n          <!--end::Wrapper-->\n        </div>\n        <!--end::Message(out)-->\n        <!--begin::Message(in)-->\n        <div class=\"d-flex justify-content-start mb-10\">\n          <!--begin::Wrapper-->\n          <div class=\"d-flex flex-column align-items-start\">\n            <!--begin::User-->\n            <div class=\"d-flex align-items-center mb-2\">\n              <!--begin::Avatar-->\n              <div class=\"symbol symbol-35px symbol-circle\">\n                <img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\"/>\n              </div>\n              <!--end::Avatar-->\n              <!--begin::Details-->\n              <div class=\"ms-3\">\n                <a href=\"#\"\n                   class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian\n                  Cox</a>\n                <span class=\"text-muted fs-7 mb-1\">3 Hours</span>\n              </div>\n              <!--end::Details-->\n            </div>\n            <!--end::User-->\n            <!--begin::Text-->\n            <div\n              class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\"\n              data-kt-element=\"message-text\">You can unwatch this repository\n              immediately by clicking here:\n              <a href=\"https://keenthemes.com\">Keenthemes.com</a></div>\n            <!--end::Text-->\n          </div>\n          <!--end::Wrapper-->\n        </div>\n        <!--end::Message(in)-->\n        <!--begin::Message(out)-->\n        <div class=\"d-flex justify-content-end mb-10\">\n          <!--begin::Wrapper-->\n          <div class=\"d-flex flex-column align-items-end\">\n            <!--begin::User-->\n            <div class=\"d-flex align-items-center mb-2\">\n              <!--begin::Details-->\n              <div class=\"me-3\">\n                <span class=\"text-muted fs-7 mb-1\">4 Hours</span>\n                <a href=\"#\"\n                   class=\"fs-5 fw-bolder text-gray-900 text-hover-primary ms-1\">You</a>\n              </div>\n              <!--end::Details-->\n              <!--begin::Avatar-->\n              <div class=\"symbol symbol-35px symbol-circle\">\n                <img alt=\"Pic\" src=\"{% static 'media/avatars/150-26.jpg' %}\"/>\n              </div>\n              <!--end::Avatar-->\n            </div>\n            <!--end::User-->\n            <!--begin::Text-->\n            <div\n              class=\"p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end\"\n              data-kt-element=\"message-text\">Most purchased Business courses\n              during this sale!\n            </div>\n            <!--end::Text-->\n          </div>\n          <!--end::Wrapper-->\n        </div>\n        <!--end::Message(out)-->\n        <!--begin::Message(in)-->\n        <div class=\"d-flex justify-content-start mb-10\">\n          <!--begin::Wrapper-->\n          <div class=\"d-flex flex-column align-items-start\">\n            <!--begin::User-->\n            <div class=\"d-flex align-items-center mb-2\">\n              <!--begin::Avatar-->\n              <div class=\"symbol symbol-35px symbol-circle\">\n                <img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\"/>\n              </div>\n              <!--end::Avatar-->\n              <!--begin::Details-->\n              <div class=\"ms-3\">\n                <a href=\"#\"\n                   class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian\n                  Cox</a>\n                <span class=\"text-muted fs-7 mb-1\">5 Hours</span>\n              </div>\n              <!--end::Details-->\n            </div>\n            <!--end::User-->\n            <!--begin::Text-->\n            <div\n              class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\"\n              data-kt-element=\"message-text\">Company BBQ to celebrate the last\n              quater achievements and goals. Food and drinks provided\n            </div>\n            <!--end::Text-->\n          </div>\n          <!--end::Wrapper-->\n        </div>\n        <!--end::Message(in)-->\n        <!--begin::Message(template for out)-->\n        <div class=\"d-flex justify-content-end mb-10 d-none\"\n             data-kt-element=\"template-out\">\n          <!--begin::Wrapper-->\n          <div class=\"d-flex flex-column align-items-end\">\n            <!--begin::User-->\n            <div class=\"d-flex align-items-center mb-2\">\n              <!--begin::Details-->\n              <div class=\"me-3\">\n                <span class=\"text-muted fs-7 mb-1\">Just now</span>\n                <a href=\"#\"\n                   class=\"fs-5 fw-bolder text-gray-900 text-hover-primary ms-1\">You</a>\n              </div>\n              <!--end::Details-->\n              <!--begin::Avatar-->\n              <div class=\"symbol symbol-35px symbol-circle\">\n                <img alt=\"Pic\" src=\"{% static 'media/avatars/150-26.jpg' %}\"/>\n              </div>\n              <!--end::Avatar-->\n            </div>\n            <!--end::User-->\n            <!--begin::Text-->\n            <div\n              class=\"p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end\"\n              data-kt-element=\"message-text\"></div>\n            <!--end::Text-->\n          </div>\n          <!--end::Wrapper-->\n        </div>\n        <!--end::Message(template for out)-->\n        <!--begin::Message(template for in)-->\n        <div class=\"d-flex justify-content-start mb-10 d-none\"\n             data-kt-element=\"template-in\">\n          <!--begin::Wrapper-->\n          <div class=\"d-flex flex-column align-items-start\">\n            <!--begin::User-->\n            <div class=\"d-flex align-items-center mb-2\">\n              <!--begin::Avatar-->\n              <div class=\"symbol symbol-35px symbol-circle\">\n                <img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\"/>\n              </div>\n              <!--end::Avatar-->\n              <!--begin::Details-->\n              <div class=\"ms-3\">\n                <a href=\"#\"\n                   class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian\n                  Cox</a>\n                <span class=\"text-muted fs-7 mb-1\">Just now</span>\n              </div>\n              <!--end::Details-->\n            </div>\n            <!--end::User-->\n            <!--begin::Text-->\n            <div\n              class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\"\n              data-kt-element=\"message-text\">Right before vacation season we\n              have the next Big Deal for you.\n            </div>\n            <!--end::Text-->\n          </div>\n          <!--end::Wrapper-->\n        </div>\n        <!--end::Message(template for in)-->\n\n      </div>\n      <!--end::Messages-->\n    </div>\n    <!--end::Card body-->\n    <!--begin::Card footer-->\n    <div class=\"card-footer pt-4\" id=\"kt_drawer_chat_messenger_footer\">\n      <!--begin::Input-->\n      <textarea class=\"form-control form-control-flush mb-3\" rows=\"1\"\n                data-kt-element=\"input\"\n                placeholder=\"Type a message\"></textarea>\n      <!--end::Input-->\n      <!--begin:Toolbar-->\n      <div class=\"d-flex flex-stack\">\n        <!--begin::Actions-->\n        <div class=\"d-flex align-items-center me-2\">\n          <button class=\"btn btn-sm btn-icon btn-active-light-primary me-1\"\n                  type=\"button\" data-bs-toggle=\"tooltip\" title=\"Coming soon\">\n            <i class=\"bi bi-paperclip fs-3\"></i>\n          </button>\n          <button class=\"btn btn-sm btn-icon btn-active-light-primary me-1\"\n                  type=\"button\" data-bs-toggle=\"tooltip\" title=\"Coming soon\">\n            <i class=\"bi bi-upload fs-3\"></i>\n          </button>\n        </div>\n        <!--end::Actions-->\n        <!--begin::Send-->\n        <button class=\"btn btn-primary\" type=\"button\" data-kt-element=\"send\">\n          Send\n        </button>\n        <!--end::Send-->\n      </div>\n      <!--end::Toolbar-->\n    </div>\n    <!--end::Card footer-->\n  </div>\n  <!--end::Messenger-->\n</div>\n<!--end::Chat drawer-->\n{% endif %}\n<!--end::Drawers-->\n<!--end::Main-->\n\n<!--layout-partial:layout/engage/_main.html-->\n\n<!--layout-partial:layout/_scrolltop.html-->\n{% include 'layout/_scrolltop.html' %}\n<!--begin::Modals-->\n{% block modal %}\n  <!--layout-partial:partials/modals/_upgrade-plan.html-->\n\n\n  <!--layout-partial:partials/modals/create-app/_main.html-->\n\n\n  <!--layout-partial:partials/modals/_invite-friends.html-->\n\n\n  <!--layout-partial:partials/modals/users-search/_main.html-->\n{% endblock modal %}\n<!--end::Modals-->\n<!--begin::hidden form-->\n<div style=\"display: none\">\n<form action=\"{% url 'set_language' %}\"\n      method=\"post\" id=\"change_language_form_id\">\n  {% csrf_token %}\n    <input name=\"next\" type=\"hidden\" value=\"{{ redirect_to }}\">\n    <select name=\"language\" id=\"change_language_select_id\">\n        {% get_current_language as LANGUAGE_CODE %}\n        {% get_available_languages as LANGUAGES %}\n        {% get_language_info_list for LANGUAGES as languages %}\n        {% for language in languages %}\n            <option value=\"{{ language.code }}\"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>\n                {{ language.name_local }} ({{ language.code }})\n            </option>\n        {% endfor %}\n    </select>\n    <input type=\"submit\" value=\"Go\">\n  </form>\n\n</div>\n<!--end::hidden form-->\n<!--begin::Javascript-->\n<!--begin::Global Javascript Bundle(used by all pages)-->\n<script src=\"{% static 'plugins/global/plugins.bundle.js' %}\"></script>\n<script src=\"{% static 'js/scripts.bundle.js' %}\"></script>\n<!--end::Global Javascript Bundle-->\n{% block javascript %}\n  <!--begin::Page Vendors Javascript(used by this page)-->\n  <script\n    src=\"{% static 'plugins/custom/fullcalendar/fullcalendar.bundle.js' %}\"></script>\n  <script\n    src=\"{% static 'plugins/custom/datatables/datatables.bundle.js' %}\"></script>\n  <!--end::Page Vendors Javascript-->\n{% endblock javascript %}\n{% if messages %}\n    {% for message in messages %}\n    <script>\n      // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/\n      Swal.fire({\n        text: \"{{ message }}!\",\n        icon: \"{% if message.tags %}{{ message.tags }}{% else %}success{% endif %}\",\n        buttonsStyling: false,\n        confirmButtonText: \"{% translate 'Ok' %}!\",\n        customClass: {\n          confirmButton: \"btn btn-primary\"\n        }\n      });\n    </script>\n    {% endfor %}\n  {% endif %}\n{% if form.errors %}\n  <script id=\"id_form_error\" type=\"application/json\">\n    {{ form.errors.as_json }}\n  </script>\n  <script>\n    const form_errors = JSON.parse(document.getElementById('id_form_error').textContent.replaceAll('&quot;', '\"'));\n    let html = '<ul class=\"list-inline\">';\n    $.each(form_errors, function (index, value){\n      $.each(value, function (index, _value){\n        html += _value.message;\n      });\n    });\n    html += '</ul>'\n    // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/\n    Swal.fire({\n      html: html,\n      icon: \"error\",\n      buttonsStyling: false,\n      confirmButtonText: \"{% translate 'Ok' %}!\",\n      customClass: {\n        confirmButton: \"btn btn-danger\"\n      }\n    });\n  </script>\n{% endif %}\n<script>\nfunction submitChangeLanguageForm(language) {\n     $('#change_language_select_id').val(language).change();\n     $('#change_language_form_id').submit()\n  }\n</script>\n{% block inline_javascript %}\n  <!--begin::Page Custom Javascript(used by this page)-->\n  <script src=\"{% static 'js/custom/widgets.js' %}\"></script>\n  <script src=\"{% static 'js/custom/apps/chat/chat.js' %}\"></script>\n  <script src=\"{% static 'js/custom/intro.js' %}\"></script>\n  <script src=\"{% static 'js/custom/modals/upgrade-plan.js' %}\"></script>\n  <script src=\"{% static 'js/custom/modals/create-app.js' %}\"></script>\n  <script src=\"{% static 'js/custom/modals/users-search.js' %}\"></script>\n  <!--end::Page Custom Javascript-->\n{% endblock inline_javascript %}\n<!--end::Javascript-->\n</body>\n<!--end::Body-->\n</html>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/one/templates/metronic/base.html b/one/templates/metronic/base.html
+--- a/one/templates/metronic/base.html	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/one/templates/metronic/base.html	(date 1641718660010)
+@@ -41,7 +41,7 @@
+ <!--end::Head-->
+ <!--begin::Body-->
+ <body id="kt_body"
+-      class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed"
++      class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-enabled aside-fixed"
+       style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+
+ <!--begin::Main-->
+@@ -58,23 +58,24 @@
+
+       <!--layout-partial:layout/header/_base.html-->
+       {% include 'layout/header/_base.html' %}
+-      {% block content %}
++
+       <!--begin::Content-->
+       <div class="content d-flex flex-column flex-column-fluid"
+            id="kt_content">
+
+         <!--layout-partial:layout/toolbars/_toolbar-1.html-->
++        {% include 'layout/toolbars/_toolbar-1.html' %}
+
+         <!--begin::Post-->
+         <div class="post d-flex flex-column-fluid" id="kt_post">
+-
++          {% block content %}
+           <!--layout-partial:layout/_content.html-->
+-
++          {% endblock content %}
+         </div>
+         <!--end::Post-->
+       </div>
+       <!--end::Content-->
+-      {% endblock content %}
++
+       <!--layout-partial:layout/_footer.html-->
+
+     </div>
+@@ -90,471 +91,9 @@
+ <!--layout-partial:layout/topbar/partials/_activity-drawer.html-->
+ {% include 'layout/topbar/partials/_activity-drawer.html' %}
+
+-{% if ENABLE_LIVE_CHAT_APPLICATION %}
+-<!--begin::Chat drawer-->
+-<div id="kt_drawer_chat" class="bg-body" data-kt-drawer="true"
+-     data-kt-drawer-name="chat" data-kt-drawer-activate="true"
+-     data-kt-drawer-overlay="true"
+-     data-kt-drawer-width="{default:'300px', 'md': '500px'}"
+-     data-kt-drawer-direction="end"
+-     data-kt-drawer-toggle="#kt_drawer_chat_toggle"
+-     data-kt-drawer-close="#kt_drawer_chat_close">
+-  <!--begin::Messenger-->
+-  <div class="card w-100 rounded-0 border-0" id="kt_drawer_chat_messenger">
+-    <!--begin::Card header-->
+-    <div class="card-header pe-5" id="kt_drawer_chat_messenger_header">
+-      <!--begin::Title-->
+-      <div class="card-title">
+-        <!--begin::User-->
+-        <div class="d-flex justify-content-center flex-column me-3">
+-          <a href="#"
+-             class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">Brian
+-            Cox</a>
+-          <!--begin::Info-->
+-          <div class="mb-0 lh-1">
+-            <span
+-              class="badge badge-success badge-circle w-10px h-10px me-1"></span>
+-            <span class="fs-7 fw-bold text-muted">Active</span>
+-          </div>
+-          <!--end::Info-->
+-        </div>
+-        <!--end::User-->
+-      </div>
+-      <!--end::Title-->
+-      <!--begin::Card toolbar-->
+-      <div class="card-toolbar">
+-        <!--begin::Menu-->
+-        <div class="me-2">
+-          <button class="btn btn-sm btn-icon btn-active-light-primary"
+-                  data-kt-menu-trigger="click"
+-                  data-kt-menu-placement="bottom-end">
+-            <i class="bi bi-three-dots fs-3"></i>
+-          </button>
+-
+-          <!--begin::Menu 3-->
+-          <div
+-            class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3"
+-            data-kt-menu="true">
+-            <!--begin::Heading-->
+-            <div class="menu-item px-3">
+-              <div
+-                class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">
+-                Contacts
+-              </div>
+-            </div>
+-            <!--end::Heading-->
+-            <!--begin::Menu item-->
+-            <div class="menu-item px-3">
+-              <a href="#" class="menu-link px-3" data-bs-toggle="modal"
+-                 data-bs-target="#kt_modal_users_search">Add Contact</a>
+-            </div>
+-            <!--end::Menu item-->
+-            <!--begin::Menu item-->
+-            <div class="menu-item px-3">
+-              <a href="#" class="menu-link flex-stack px-3"
+-                 data-bs-toggle="modal"
+-                 data-bs-target="#kt_modal_invite_friends">Invite Contacts
+-                <i class="fas fa-exclamation-circle ms-2 fs-7"
+-                   data-bs-toggle="tooltip"
+-                   title="Specify a contact email to send an invitation"></i></a>
+-            </div>
+-            <!--end::Menu item-->
+-            <!--begin::Menu item-->
+-            <div class="menu-item px-3" data-kt-menu-trigger="hover"
+-                 data-kt-menu-placement="right-start">
+-              <a href="#" class="menu-link px-3">
+-                <span class="menu-title">Groups</span>
+-                <span class="menu-arrow"></span>
+-              </a>
+-              <!--begin::Menu sub-->
+-              <div class="menu-sub menu-sub-dropdown w-175px py-4">
+-                <!--begin::Menu item-->
+-                <div class="menu-item px-3">
+-                  <a href="#" class="menu-link px-3" data-bs-toggle="tooltip"
+-                     title="Coming soon">Create Group</a>
+-                </div>
+-                <!--end::Menu item-->
+-                <!--begin::Menu item-->
+-                <div class="menu-item px-3">
+-                  <a href="#" class="menu-link px-3" data-bs-toggle="tooltip"
+-                     title="Coming soon">Invite Members</a>
+-                </div>
+-                <!--end::Menu item-->
+-                <!--begin::Menu item-->
+-                <div class="menu-item px-3">
+-                  <a href="#" class="menu-link px-3" data-bs-toggle="tooltip"
+-                     title="Coming soon">Settings</a>
+-                </div>
+-                <!--end::Menu item-->
+-              </div>
+-              <!--end::Menu sub-->
+-            </div>
+-            <!--end::Menu item-->
+-            <!--begin::Menu item-->
+-            <div class="menu-item px-3 my-1">
+-              <a href="#" class="menu-link px-3" data-bs-toggle="tooltip"
+-                 title="Coming soon">Settings</a>
+-            </div>
+-            <!--end::Menu item-->
+-          </div>
+-          <!--end::Menu 3-->
++<!--layout-partial:layout/drawers/_chat-drawer.html-->
++{% include 'layout/drawers/_chat-drawer.html' %}
+
+-        </div>
+-        <!--end::Menu-->
+-        <!--begin::Close-->
+-        <div class="btn btn-sm btn-icon btn-active-light-primary"
+-             id="kt_drawer_chat_close">
+-          <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+-          <span class="svg-icon svg-icon-2">
+-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+-                     viewBox="0 0 24 24" fill="none">
+-									<rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
+-                        rx="1" transform="rotate(-45 6 17.3137)" fill="black"/>
+-									<rect x="7.41422" y="6" width="16" height="2" rx="1"
+-                        transform="rotate(45 7.41422 6)" fill="black"/>
+-								</svg>
+-							</span>
+-          <!--end::Svg Icon-->
+-        </div>
+-        <!--end::Close-->
+-      </div>
+-      <!--end::Card toolbar-->
+-    </div>
+-    <!--end::Card header-->
+-    <!--begin::Card body-->
+-    <div class="card-body" id="kt_drawer_chat_messenger_body">
+-      <!--begin::Messages-->
+-      <div class="scroll-y me-n5 pe-5" data-kt-element="messages"
+-           data-kt-scroll="true" data-kt-scroll-activate="true"
+-           data-kt-scroll-height="auto"
+-           data-kt-scroll-dependencies="#kt_drawer_chat_messenger_header, #kt_drawer_chat_messenger_footer"
+-           data-kt-scroll-wrappers="#kt_drawer_chat_messenger_body"
+-           data-kt-scroll-offset="0px">
+-
+-        <!--begin::Message(in)-->
+-        <div class="d-flex justify-content-start mb-10">
+-          <!--begin::Wrapper-->
+-          <div class="d-flex flex-column align-items-start">
+-            <!--begin::User-->
+-            <div class="d-flex align-items-center mb-2">
+-              <!--begin::Avatar-->
+-              <div class="symbol symbol-35px symbol-circle">
+-                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+-              </div>
+-              <!--end::Avatar-->
+-              <!--begin::Details-->
+-              <div class="ms-3">
+-                <a href="#"
+-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+-                  Cox</a>
+-                <span class="text-muted fs-7 mb-1">2 mins</span>
+-              </div>
+-              <!--end::Details-->
+-            </div>
+-            <!--end::User-->
+-            <!--begin::Text-->
+-            <div
+-              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+-              data-kt-element="message-text">How likely are you to recommend
+-              our company to your friends and family ?
+-            </div>
+-            <!--end::Text-->
+-          </div>
+-          <!--end::Wrapper-->
+-        </div>
+-        <!--end::Message(in)-->
+-        <!--begin::Message(out)-->
+-        <div class="d-flex justify-content-end mb-10">
+-          <!--begin::Wrapper-->
+-          <div class="d-flex flex-column align-items-end">
+-            <!--begin::User-->
+-            <div class="d-flex align-items-center mb-2">
+-              <!--begin::Details-->
+-              <div class="me-3">
+-                <span class="text-muted fs-7 mb-1">5 mins</span>
+-                <a href="#"
+-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+-              </div>
+-              <!--end::Details-->
+-              <!--begin::Avatar-->
+-              <div class="symbol symbol-35px symbol-circle">
+-                <img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}"/>
+-              </div>
+-              <!--end::Avatar-->
+-            </div>
+-            <!--end::User-->
+-            <!--begin::Text-->
+-            <div
+-              class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end"
+-              data-kt-element="message-text">Hey there, we’re just writing to
+-              let you know that you’ve been subscribed to a repository on
+-              GitHub.
+-            </div>
+-            <!--end::Text-->
+-          </div>
+-          <!--end::Wrapper-->
+-        </div>
+-        <!--end::Message(out)-->
+-        <!--begin::Message(in)-->
+-        <div class="d-flex justify-content-start mb-10">
+-          <!--begin::Wrapper-->
+-          <div class="d-flex flex-column align-items-start">
+-            <!--begin::User-->
+-            <div class="d-flex align-items-center mb-2">
+-              <!--begin::Avatar-->
+-              <div class="symbol symbol-35px symbol-circle">
+-                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+-              </div>
+-              <!--end::Avatar-->
+-              <!--begin::Details-->
+-              <div class="ms-3">
+-                <a href="#"
+-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+-                  Cox</a>
+-                <span class="text-muted fs-7 mb-1">1 Hour</span>
+-              </div>
+-              <!--end::Details-->
+-            </div>
+-            <!--end::User-->
+-            <!--begin::Text-->
+-            <div
+-              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+-              data-kt-element="message-text">Ok, Understood!
+-            </div>
+-            <!--end::Text-->
+-          </div>
+-          <!--end::Wrapper-->
+-        </div>
+-        <!--end::Message(in)-->
+-        <!--begin::Message(out)-->
+-        <div class="d-flex justify-content-end mb-10">
+-          <!--begin::Wrapper-->
+-          <div class="d-flex flex-column align-items-end">
+-            <!--begin::User-->
+-            <div class="d-flex align-items-center mb-2">
+-              <!--begin::Details-->
+-              <div class="me-3">
+-                <span class="text-muted fs-7 mb-1">2 Hours</span>
+-                <a href="#"
+-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+-              </div>
+-              <!--end::Details-->
+-              <!--begin::Avatar-->
+-              <div class="symbol symbol-35px symbol-circle">
+-                <img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}"/>
+-              </div>
+-              <!--end::Avatar-->
+-            </div>
+-            <!--end::User-->
+-            <!--begin::Text-->
+-            <div
+-              class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end"
+-              data-kt-element="message-text">You’ll receive notifications for
+-              all issues, pull requests!
+-            </div>
+-            <!--end::Text-->
+-          </div>
+-          <!--end::Wrapper-->
+-        </div>
+-        <!--end::Message(out)-->
+-        <!--begin::Message(in)-->
+-        <div class="d-flex justify-content-start mb-10">
+-          <!--begin::Wrapper-->
+-          <div class="d-flex flex-column align-items-start">
+-            <!--begin::User-->
+-            <div class="d-flex align-items-center mb-2">
+-              <!--begin::Avatar-->
+-              <div class="symbol symbol-35px symbol-circle">
+-                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+-              </div>
+-              <!--end::Avatar-->
+-              <!--begin::Details-->
+-              <div class="ms-3">
+-                <a href="#"
+-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+-                  Cox</a>
+-                <span class="text-muted fs-7 mb-1">3 Hours</span>
+-              </div>
+-              <!--end::Details-->
+-            </div>
+-            <!--end::User-->
+-            <!--begin::Text-->
+-            <div
+-              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+-              data-kt-element="message-text">You can unwatch this repository
+-              immediately by clicking here:
+-              <a href="https://keenthemes.com">Keenthemes.com</a></div>
+-            <!--end::Text-->
+-          </div>
+-          <!--end::Wrapper-->
+-        </div>
+-        <!--end::Message(in)-->
+-        <!--begin::Message(out)-->
+-        <div class="d-flex justify-content-end mb-10">
+-          <!--begin::Wrapper-->
+-          <div class="d-flex flex-column align-items-end">
+-            <!--begin::User-->
+-            <div class="d-flex align-items-center mb-2">
+-              <!--begin::Details-->
+-              <div class="me-3">
+-                <span class="text-muted fs-7 mb-1">4 Hours</span>
+-                <a href="#"
+-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+-              </div>
+-              <!--end::Details-->
+-              <!--begin::Avatar-->
+-              <div class="symbol symbol-35px symbol-circle">
+-                <img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}"/>
+-              </div>
+-              <!--end::Avatar-->
+-            </div>
+-            <!--end::User-->
+-            <!--begin::Text-->
+-            <div
+-              class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end"
+-              data-kt-element="message-text">Most purchased Business courses
+-              during this sale!
+-            </div>
+-            <!--end::Text-->
+-          </div>
+-          <!--end::Wrapper-->
+-        </div>
+-        <!--end::Message(out)-->
+-        <!--begin::Message(in)-->
+-        <div class="d-flex justify-content-start mb-10">
+-          <!--begin::Wrapper-->
+-          <div class="d-flex flex-column align-items-start">
+-            <!--begin::User-->
+-            <div class="d-flex align-items-center mb-2">
+-              <!--begin::Avatar-->
+-              <div class="symbol symbol-35px symbol-circle">
+-                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+-              </div>
+-              <!--end::Avatar-->
+-              <!--begin::Details-->
+-              <div class="ms-3">
+-                <a href="#"
+-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+-                  Cox</a>
+-                <span class="text-muted fs-7 mb-1">5 Hours</span>
+-              </div>
+-              <!--end::Details-->
+-            </div>
+-            <!--end::User-->
+-            <!--begin::Text-->
+-            <div
+-              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+-              data-kt-element="message-text">Company BBQ to celebrate the last
+-              quater achievements and goals. Food and drinks provided
+-            </div>
+-            <!--end::Text-->
+-          </div>
+-          <!--end::Wrapper-->
+-        </div>
+-        <!--end::Message(in)-->
+-        <!--begin::Message(template for out)-->
+-        <div class="d-flex justify-content-end mb-10 d-none"
+-             data-kt-element="template-out">
+-          <!--begin::Wrapper-->
+-          <div class="d-flex flex-column align-items-end">
+-            <!--begin::User-->
+-            <div class="d-flex align-items-center mb-2">
+-              <!--begin::Details-->
+-              <div class="me-3">
+-                <span class="text-muted fs-7 mb-1">Just now</span>
+-                <a href="#"
+-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+-              </div>
+-              <!--end::Details-->
+-              <!--begin::Avatar-->
+-              <div class="symbol symbol-35px symbol-circle">
+-                <img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}"/>
+-              </div>
+-              <!--end::Avatar-->
+-            </div>
+-            <!--end::User-->
+-            <!--begin::Text-->
+-            <div
+-              class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end"
+-              data-kt-element="message-text"></div>
+-            <!--end::Text-->
+-          </div>
+-          <!--end::Wrapper-->
+-        </div>
+-        <!--end::Message(template for out)-->
+-        <!--begin::Message(template for in)-->
+-        <div class="d-flex justify-content-start mb-10 d-none"
+-             data-kt-element="template-in">
+-          <!--begin::Wrapper-->
+-          <div class="d-flex flex-column align-items-start">
+-            <!--begin::User-->
+-            <div class="d-flex align-items-center mb-2">
+-              <!--begin::Avatar-->
+-              <div class="symbol symbol-35px symbol-circle">
+-                <img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}"/>
+-              </div>
+-              <!--end::Avatar-->
+-              <!--begin::Details-->
+-              <div class="ms-3">
+-                <a href="#"
+-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+-                  Cox</a>
+-                <span class="text-muted fs-7 mb-1">Just now</span>
+-              </div>
+-              <!--end::Details-->
+-            </div>
+-            <!--end::User-->
+-            <!--begin::Text-->
+-            <div
+-              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+-              data-kt-element="message-text">Right before vacation season we
+-              have the next Big Deal for you.
+-            </div>
+-            <!--end::Text-->
+-          </div>
+-          <!--end::Wrapper-->
+-        </div>
+-        <!--end::Message(template for in)-->
+-
+-      </div>
+-      <!--end::Messages-->
+-    </div>
+-    <!--end::Card body-->
+-    <!--begin::Card footer-->
+-    <div class="card-footer pt-4" id="kt_drawer_chat_messenger_footer">
+-      <!--begin::Input-->
+-      <textarea class="form-control form-control-flush mb-3" rows="1"
+-                data-kt-element="input"
+-                placeholder="Type a message"></textarea>
+-      <!--end::Input-->
+-      <!--begin:Toolbar-->
+-      <div class="d-flex flex-stack">
+-        <!--begin::Actions-->
+-        <div class="d-flex align-items-center me-2">
+-          <button class="btn btn-sm btn-icon btn-active-light-primary me-1"
+-                  type="button" data-bs-toggle="tooltip" title="Coming soon">
+-            <i class="bi bi-paperclip fs-3"></i>
+-          </button>
+-          <button class="btn btn-sm btn-icon btn-active-light-primary me-1"
+-                  type="button" data-bs-toggle="tooltip" title="Coming soon">
+-            <i class="bi bi-upload fs-3"></i>
+-          </button>
+-        </div>
+-        <!--end::Actions-->
+-        <!--begin::Send-->
+-        <button class="btn btn-primary" type="button" data-kt-element="send">
+-          Send
+-        </button>
+-        <!--end::Send-->
+-      </div>
+-      <!--end::Toolbar-->
+-    </div>
+-    <!--end::Card footer-->
+-  </div>
+-  <!--end::Messenger-->
+-</div>
+-<!--end::Chat drawer-->
+-{% endif %}
+ <!--end::Drawers-->
+ <!--end::Main-->
+
+@@ -577,7 +116,7 @@
+ {% endblock modal %}
+ <!--end::Modals-->
+ <!--begin::hidden form-->
+-<div style="display: none">
++<div style="display: none;">
+ <form action="{% url 'set_language' %}"
+       method="post" id="change_language_form_id">
+   {% csrf_token %}
+@@ -594,7 +133,6 @@
+     </select>
+     <input type="submit" value="Go">
+   </form>
+-
+ </div>
+ <!--end::hidden form-->
+ <!--begin::Javascript-->
+Index: one/templates/metronic/layout/master.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n\t\t<!--begin::Main-->\n\t\t<!--begin::Root-->\n\t\t<div class=\"d-flex flex-column flex-root\">\n\t\t\t<!--begin::Page-->\n\t\t\t<div class=\"page d-flex flex-row flex-column-fluid\">\n\n<!--layout-partial:layout/aside/_base.html-->\n\n\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t<div class=\"wrapper d-flex flex-column flex-row-fluid\" id=\"kt_wrapper\">\n\n<!--layout-partial:layout/header/_base.html-->\n\n\t\t\t\t\t<!--begin::Content-->\n\t\t\t\t\t<div class=\"content d-flex flex-column flex-column-fluid\" id=\"kt_content\">\n\n<!--layout-partial:layout/toolbars/_toolbar-1.html-->\n\n\t\t\t\t\t\t<!--begin::Post-->\n\t\t\t\t\t\t<div class=\"post d-flex flex-column-fluid\" id=\"kt_post\">\n\n<!--layout-partial:layout/_content.html-->\n\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Post-->\n\t\t\t\t\t</div>\n\t\t\t\t\t<!--end::Content-->\n\n<!--layout-partial:layout/_footer.html-->\n\n\t\t\t\t</div>\n\t\t\t\t<!--end::Wrapper-->\n\t\t\t</div>\n\t\t\t<!--end::Page-->\n\t\t</div>\n\t\t<!--end::Root-->\n\t\t<!--begin::Drawers-->\n\n<!--layout-partial:layout/topbar/partials/_activity-drawer.html-->\n\n\n\t\t<!--begin::Chat drawer-->\n\t\t<div id=\"kt_drawer_chat\" class=\"bg-body\" data-kt-drawer=\"true\" data-kt-drawer-name=\"chat\" data-kt-drawer-activate=\"true\" data-kt-drawer-overlay=\"true\" data-kt-drawer-width=\"{default:'300px', 'md': '500px'}\" data-kt-drawer-direction=\"end\" data-kt-drawer-toggle=\"#kt_drawer_chat_toggle\" data-kt-drawer-close=\"#kt_drawer_chat_close\">\n\t\t\t<!--begin::Messenger-->\n\t\t\t<div class=\"card w-100 rounded-0 border-0\" id=\"kt_drawer_chat_messenger\">\n\t\t\t\t<!--begin::Card header-->\n\t\t\t\t<div class=\"card-header pe-5\" id=\"kt_drawer_chat_messenger_header\">\n\t\t\t\t\t<!--begin::Title-->\n\t\t\t\t\t<div class=\"card-title\">\n\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-center flex-column me-3\">\n\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1\">Brian Cox</a>\n\t\t\t\t\t\t\t<!--begin::Info-->\n\t\t\t\t\t\t\t<div class=\"mb-0 lh-1\">\n\t\t\t\t\t\t\t\t<span class=\"badge badge-success badge-circle w-10px h-10px me-1\"></span>\n\t\t\t\t\t\t\t\t<span class=\"fs-7 fw-bold text-muted\">Active</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Info-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t</div>\n\t\t\t\t\t<!--end::Title-->\n\t\t\t\t\t<!--begin::Card toolbar-->\n\t\t\t\t\t<div class=\"card-toolbar\">\n\t\t\t\t\t\t<!--begin::Menu-->\n\t\t\t\t\t\t<div class=\"me-2\">\n\t\t\t\t\t\t\t<button class=\"btn btn-sm btn-icon btn-active-light-primary\" data-kt-menu-trigger=\"click\" data-kt-menu-placement=\"bottom-end\">\n\t\t\t\t\t\t\t\t<i class=\"bi bi-three-dots fs-3\"></i>\n\t\t\t\t\t\t\t</button>\n\n\t\t\t\t\t\t\t<!--begin::Menu 3-->\n\t\t\t\t\t\t\t<div class=\"menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3\" data-kt-menu=\"true\">\n\t\t\t\t\t\t\t\t<!--begin::Heading-->\n\t\t\t\t\t\t\t\t<div class=\"menu-item px-3\">\n\t\t\t\t\t\t\t\t\t<div class=\"menu-content text-muted pb-2 px-3 fs-7 text-uppercase\">Contacts</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Heading-->\n\t\t\t\t\t\t\t\t<!--begin::Menu item-->\n\t\t\t\t\t\t\t\t<div class=\"menu-item px-3\">\n\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"modal\" data-bs-target=\"#kt_modal_users_search\">Add Contact</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Menu item-->\n\t\t\t\t\t\t\t\t<!--begin::Menu item-->\n\t\t\t\t\t\t\t\t<div class=\"menu-item px-3\">\n\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"menu-link flex-stack px-3\" data-bs-toggle=\"modal\" data-bs-target=\"#kt_modal_invite_friends\">Invite Contacts\n\t\t\t\t\t\t\t\t\t<i class=\"fas fa-exclamation-circle ms-2 fs-7\" data-bs-toggle=\"tooltip\" title=\"Specify a contact email to send an invitation\"></i></a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Menu item-->\n\t\t\t\t\t\t\t\t<!--begin::Menu item-->\n\t\t\t\t\t\t\t\t<div class=\"menu-item px-3\" data-kt-menu-trigger=\"hover\" data-kt-menu-placement=\"right-start\">\n\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"menu-link px-3\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"menu-title\">Groups</span>\n\t\t\t\t\t\t\t\t\t\t<span class=\"menu-arrow\"></span>\n\t\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t\t<!--begin::Menu sub-->\n\t\t\t\t\t\t\t\t\t<div class=\"menu-sub menu-sub-dropdown w-175px py-4\">\n\t\t\t\t\t\t\t\t\t\t<!--begin::Menu item-->\n\t\t\t\t\t\t\t\t\t\t<div class=\"menu-item px-3\">\n\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"tooltip\" title=\"Coming soon\">Create Group</a>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<!--end::Menu item-->\n\t\t\t\t\t\t\t\t\t\t<!--begin::Menu item-->\n\t\t\t\t\t\t\t\t\t\t<div class=\"menu-item px-3\">\n\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"tooltip\" title=\"Coming soon\">Invite Members</a>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<!--end::Menu item-->\n\t\t\t\t\t\t\t\t\t\t<!--begin::Menu item-->\n\t\t\t\t\t\t\t\t\t\t<div class=\"menu-item px-3\">\n\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"tooltip\" title=\"Coming soon\">Settings</a>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<!--end::Menu item-->\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Menu sub-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Menu item-->\n\t\t\t\t\t\t\t\t<!--begin::Menu item-->\n\t\t\t\t\t\t\t\t<div class=\"menu-item px-3 my-1\">\n\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"menu-link px-3\" data-bs-toggle=\"tooltip\" title=\"Coming soon\">Settings</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Menu item-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Menu 3-->\n\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Menu-->\n\t\t\t\t\t\t<!--begin::Close-->\n\t\t\t\t\t\t<div class=\"btn btn-sm btn-icon btn-active-light-primary\" id=\"kt_drawer_chat_close\">\n\t\t\t\t\t\t\t<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->\n\t\t\t\t\t\t\t<span class=\"svg-icon svg-icon-2\">\n\t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n\t\t\t\t\t\t\t\t\t<rect opacity=\"0.5\" x=\"6\" y=\"17.3137\" width=\"16\" height=\"2\" rx=\"1\" transform=\"rotate(-45 6 17.3137)\" fill=\"black\" />\n\t\t\t\t\t\t\t\t\t<rect x=\"7.41422\" y=\"6\" width=\"16\" height=\"2\" rx=\"1\" transform=\"rotate(45 7.41422 6)\" fill=\"black\" />\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t<!--end::Svg Icon-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Close-->\n\t\t\t\t\t</div>\n\t\t\t\t\t<!--end::Card toolbar-->\n\t\t\t\t</div>\n\t\t\t\t<!--end::Card header-->\n\t\t\t\t<!--begin::Card body-->\n\t\t\t\t<div class=\"card-body\" id=\"kt_drawer_chat_messenger_body\">\n\t\t\t\t\t<!--begin::Messages-->\n\t\t\t\t\t<div class=\"scroll-y me-n5 pe-5\" data-kt-element=\"messages\" data-kt-scroll=\"true\" data-kt-scroll-activate=\"true\" data-kt-scroll-height=\"auto\" data-kt-scroll-dependencies=\"#kt_drawer_chat_messenger_header, #kt_drawer_chat_messenger_footer\" data-kt-scroll-wrappers=\"#kt_drawer_chat_messenger_body\" data-kt-scroll-offset=\"0px\">\n\n\t\t\t\t\t\t<!--begin::Message(in)-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-start mb-10\">\n\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-start\">\n\t\t\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center mb-2\">\n\t\t\t\t\t\t\t\t\t<!--begin::Avatar-->\n\t\t\t\t\t\t\t\t\t<div class=\"symbol symbol-35px symbol-circle\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\" />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Avatar-->\n\t\t\t\t\t\t\t\t\t<!--begin::Details-->\n\t\t\t\t\t\t\t\t\t<div class=\"ms-3\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian Cox</a>\n\t\t\t\t\t\t\t\t\t\t<span class=\"text-muted fs-7 mb-1\">2 mins</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Details-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t\t\t\t<!--begin::Text-->\n\t\t\t\t\t\t\t\t<div class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\" data-kt-element=\"message-text\">How likely are you to recommend our company to your friends and family ?</div>\n\t\t\t\t\t\t\t\t<!--end::Text-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Message(in)-->\n\t\t\t\t\t\t<!--begin::Message(out)-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-end mb-10\">\n\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-end\">\n\t\t\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center mb-2\">\n\t\t\t\t\t\t\t\t\t<!--begin::Details-->\n\t\t\t\t\t\t\t\t\t<div class=\"me-3\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"text-muted fs-7 mb-1\">5 mins</span>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-5 fw-bolder text-gray-900 text-hover-primary ms-1\">You</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Details-->\n\t\t\t\t\t\t\t\t\t<!--begin::Avatar-->\n\t\t\t\t\t\t\t\t\t<div class=\"symbol symbol-35px symbol-circle\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Pic\" src=\"{% static 'media/avatars/150-26.jpg' %}\" />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Avatar-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t\t\t\t<!--begin::Text-->\n\t\t\t\t\t\t\t\t<div class=\"p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end\" data-kt-element=\"message-text\">Hey there, we’re just writing to let you know that you’ve been subscribed to a repository on GitHub.</div>\n\t\t\t\t\t\t\t\t<!--end::Text-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Message(out)-->\n\t\t\t\t\t\t<!--begin::Message(in)-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-start mb-10\">\n\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-start\">\n\t\t\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center mb-2\">\n\t\t\t\t\t\t\t\t\t<!--begin::Avatar-->\n\t\t\t\t\t\t\t\t\t<div class=\"symbol symbol-35px symbol-circle\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\" />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Avatar-->\n\t\t\t\t\t\t\t\t\t<!--begin::Details-->\n\t\t\t\t\t\t\t\t\t<div class=\"ms-3\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian Cox</a>\n\t\t\t\t\t\t\t\t\t\t<span class=\"text-muted fs-7 mb-1\">1 Hour</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Details-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t\t\t\t<!--begin::Text-->\n\t\t\t\t\t\t\t\t<div class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\" data-kt-element=\"message-text\">Ok, Understood!</div>\n\t\t\t\t\t\t\t\t<!--end::Text-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Message(in)-->\n\t\t\t\t\t\t<!--begin::Message(out)-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-end mb-10\">\n\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-end\">\n\t\t\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center mb-2\">\n\t\t\t\t\t\t\t\t\t<!--begin::Details-->\n\t\t\t\t\t\t\t\t\t<div class=\"me-3\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"text-muted fs-7 mb-1\">2 Hours</span>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-5 fw-bolder text-gray-900 text-hover-primary ms-1\">You</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Details-->\n\t\t\t\t\t\t\t\t\t<!--begin::Avatar-->\n\t\t\t\t\t\t\t\t\t<div class=\"symbol symbol-35px symbol-circle\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Pic\" src=\"{% static 'media/avatars/150-26.jpg' %}\" />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Avatar-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t\t\t\t<!--begin::Text-->\n\t\t\t\t\t\t\t\t<div class=\"p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end\" data-kt-element=\"message-text\">You’ll receive notifications for all issues, pull requests!</div>\n\t\t\t\t\t\t\t\t<!--end::Text-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Message(out)-->\n\t\t\t\t\t\t<!--begin::Message(in)-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-start mb-10\">\n\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-start\">\n\t\t\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center mb-2\">\n\t\t\t\t\t\t\t\t\t<!--begin::Avatar-->\n\t\t\t\t\t\t\t\t\t<div class=\"symbol symbol-35px symbol-circle\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\" />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Avatar-->\n\t\t\t\t\t\t\t\t\t<!--begin::Details-->\n\t\t\t\t\t\t\t\t\t<div class=\"ms-3\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian Cox</a>\n\t\t\t\t\t\t\t\t\t\t<span class=\"text-muted fs-7 mb-1\">3 Hours</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Details-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t\t\t\t<!--begin::Text-->\n\t\t\t\t\t\t\t\t<div class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\" data-kt-element=\"message-text\">You can unwatch this repository immediately by clicking here:\n\t\t\t\t\t\t\t\t<a href=\"https://keenthemes.com\">Keenthemes.com</a></div>\n\t\t\t\t\t\t\t\t<!--end::Text-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Message(in)-->\n\t\t\t\t\t\t<!--begin::Message(out)-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-end mb-10\">\n\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-end\">\n\t\t\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center mb-2\">\n\t\t\t\t\t\t\t\t\t<!--begin::Details-->\n\t\t\t\t\t\t\t\t\t<div class=\"me-3\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"text-muted fs-7 mb-1\">4 Hours</span>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-5 fw-bolder text-gray-900 text-hover-primary ms-1\">You</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Details-->\n\t\t\t\t\t\t\t\t\t<!--begin::Avatar-->\n\t\t\t\t\t\t\t\t\t<div class=\"symbol symbol-35px symbol-circle\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Pic\" src=\"{% static 'media/avatars/150-26.jpg' %}\" />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Avatar-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t\t\t\t<!--begin::Text-->\n\t\t\t\t\t\t\t\t<div class=\"p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end\" data-kt-element=\"message-text\">Most purchased Business courses during this sale!</div>\n\t\t\t\t\t\t\t\t<!--end::Text-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Message(out)-->\n\t\t\t\t\t\t<!--begin::Message(in)-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-start mb-10\">\n\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-start\">\n\t\t\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center mb-2\">\n\t\t\t\t\t\t\t\t\t<!--begin::Avatar-->\n\t\t\t\t\t\t\t\t\t<div class=\"symbol symbol-35px symbol-circle\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\" />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Avatar-->\n\t\t\t\t\t\t\t\t\t<!--begin::Details-->\n\t\t\t\t\t\t\t\t\t<div class=\"ms-3\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian Cox</a>\n\t\t\t\t\t\t\t\t\t\t<span class=\"text-muted fs-7 mb-1\">5 Hours</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Details-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t\t\t\t<!--begin::Text-->\n\t\t\t\t\t\t\t\t<div class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\" data-kt-element=\"message-text\">Company BBQ to celebrate the last quater achievements and goals. Food and drinks provided</div>\n\t\t\t\t\t\t\t\t<!--end::Text-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Message(in)-->\n\t\t\t\t\t\t<!--begin::Message(template for out)-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-end mb-10 d-none\" data-kt-element=\"template-out\">\n\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-end\">\n\t\t\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center mb-2\">\n\t\t\t\t\t\t\t\t\t<!--begin::Details-->\n\t\t\t\t\t\t\t\t\t<div class=\"me-3\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"text-muted fs-7 mb-1\">Just now</span>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-5 fw-bolder text-gray-900 text-hover-primary ms-1\">You</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Details-->\n\t\t\t\t\t\t\t\t\t<!--begin::Avatar-->\n\t\t\t\t\t\t\t\t\t<div class=\"symbol symbol-35px symbol-circle\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Pic\" src=\"{% static 'media/avatars/150-26.jpg' %}\" />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Avatar-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t\t\t\t<!--begin::Text-->\n\t\t\t\t\t\t\t\t<div class=\"p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end\" data-kt-element=\"message-text\"></div>\n\t\t\t\t\t\t\t\t<!--end::Text-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Message(template for out)-->\n\t\t\t\t\t\t<!--begin::Message(template for in)-->\n\t\t\t\t\t\t<div class=\"d-flex justify-content-start mb-10 d-none\" data-kt-element=\"template-in\">\n\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-start\">\n\t\t\t\t\t\t\t\t<!--begin::User-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center mb-2\">\n\t\t\t\t\t\t\t\t\t<!--begin::Avatar-->\n\t\t\t\t\t\t\t\t\t<div class=\"symbol symbol-35px symbol-circle\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Pic\" src=\"{% static 'media/avatars/150-15.jpg' %}\" />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Avatar-->\n\t\t\t\t\t\t\t\t\t<!--begin::Details-->\n\t\t\t\t\t\t\t\t\t<div class=\"ms-3\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"fs-5 fw-bolder text-gray-900 text-hover-primary me-1\">Brian Cox</a>\n\t\t\t\t\t\t\t\t\t\t<span class=\"text-muted fs-7 mb-1\">Just now</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Details-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::User-->\n\t\t\t\t\t\t\t\t<!--begin::Text-->\n\t\t\t\t\t\t\t\t<div class=\"p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start\" data-kt-element=\"message-text\">Right before vacation season we have the next Big Deal for you.</div>\n\t\t\t\t\t\t\t\t<!--end::Text-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Message(template for in)-->\n\n\t\t\t\t\t</div>\n\t\t\t\t\t<!--end::Messages-->\n\t\t\t\t</div>\n\t\t\t\t<!--end::Card body-->\n\t\t\t\t<!--begin::Card footer-->\n\t\t\t\t<div class=\"card-footer pt-4\" id=\"kt_drawer_chat_messenger_footer\">\n\t\t\t\t\t<!--begin::Input-->\n\t\t\t\t\t<textarea class=\"form-control form-control-flush mb-3\" rows=\"1\" data-kt-element=\"input\" placeholder=\"Type a message\"></textarea>\n\t\t\t\t\t<!--end::Input-->\n\t\t\t\t\t<!--begin:Toolbar-->\n\t\t\t\t\t<div class=\"d-flex flex-stack\">\n\t\t\t\t\t\t<!--begin::Actions-->\n\t\t\t\t\t\t<div class=\"d-flex align-items-center me-2\">\n\t\t\t\t\t\t\t<button class=\"btn btn-sm btn-icon btn-active-light-primary me-1\" type=\"button\" data-bs-toggle=\"tooltip\" title=\"Coming soon\">\n\t\t\t\t\t\t\t\t<i class=\"bi bi-paperclip fs-3\"></i>\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t<button class=\"btn btn-sm btn-icon btn-active-light-primary me-1\" type=\"button\" data-bs-toggle=\"tooltip\" title=\"Coming soon\">\n\t\t\t\t\t\t\t\t<i class=\"bi bi-upload fs-3\"></i>\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Actions-->\n\t\t\t\t\t\t<!--begin::Send-->\n\t\t\t\t\t\t<button class=\"btn btn-primary\" type=\"button\" data-kt-element=\"send\">Send</button>\n\t\t\t\t\t\t<!--end::Send-->\n\t\t\t\t\t</div>\n\t\t\t\t\t<!--end::Toolbar-->\n\t\t\t\t</div>\n\t\t\t\t<!--end::Card footer-->\n\t\t\t</div>\n\t\t\t<!--end::Messenger-->\n\t\t</div>\n\t\t<!--end::Chat drawer-->\n\n\t\t<!--end::Drawers-->\n\t\t<!--end::Main-->\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/one/templates/metronic/layout/master.html b/one/templates/metronic/layout/master.html
+--- a/one/templates/metronic/layout/master.html	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/one/templates/metronic/layout/master.html	(date 1641702786571)
+@@ -1,418 +1,49 @@
+
+-		<!--begin::Main-->
+-		<!--begin::Root-->
+-		<div class="d-flex flex-column flex-root">
+-			<!--begin::Page-->
+-			<div class="page d-flex flex-row flex-column-fluid">
+-
+-<!--layout-partial:layout/aside/_base.html-->
+-
+-				<!--begin::Wrapper-->
+-				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+-
+-<!--layout-partial:layout/header/_base.html-->
++<div class="container">
+
+-					<!--begin::Content-->
+-					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
++    <div class="row">
++      <div class="col-sm-12">
+
+-<!--layout-partial:layout/toolbars/_toolbar-1.html-->
+-
+-						<!--begin::Post-->
+-						<div class="post d-flex flex-column-fluid" id="kt_post">
+-
+-<!--layout-partial:layout/_content.html-->
+-
+-						</div>
+-						<!--end::Post-->
+-					</div>
+-					<!--end::Content-->
+-
+-<!--layout-partial:layout/_footer.html-->
+-
+-				</div>
+-				<!--end::Wrapper-->
+-			</div>
+-			<!--end::Page-->
+-		</div>
+-		<!--end::Root-->
+-		<!--begin::Drawers-->
+-
+-<!--layout-partial:layout/topbar/partials/_activity-drawer.html-->
+-
+-
+-		<!--begin::Chat drawer-->
+-		<div id="kt_drawer_chat" class="bg-body" data-kt-drawer="true" data-kt-drawer-name="chat" data-kt-drawer-activate="true" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'300px', 'md': '500px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_drawer_chat_toggle" data-kt-drawer-close="#kt_drawer_chat_close">
+-			<!--begin::Messenger-->
+-			<div class="card w-100 rounded-0 border-0" id="kt_drawer_chat_messenger">
+-				<!--begin::Card header-->
+-				<div class="card-header pe-5" id="kt_drawer_chat_messenger_header">
+-					<!--begin::Title-->
+-					<div class="card-title">
+-						<!--begin::User-->
+-						<div class="d-flex justify-content-center flex-column me-3">
+-							<a href="#" class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">Brian Cox</a>
+-							<!--begin::Info-->
+-							<div class="mb-0 lh-1">
+-								<span class="badge badge-success badge-circle w-10px h-10px me-1"></span>
+-								<span class="fs-7 fw-bold text-muted">Active</span>
+-							</div>
+-							<!--end::Info-->
+-						</div>
+-						<!--end::User-->
+-					</div>
+-					<!--end::Title-->
+-					<!--begin::Card toolbar-->
+-					<div class="card-toolbar">
+-						<!--begin::Menu-->
+-						<div class="me-2">
+-							<button class="btn btn-sm btn-icon btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+-								<i class="bi bi-three-dots fs-3"></i>
+-							</button>
+-
+-							<!--begin::Menu 3-->
+-							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
+-								<!--begin::Heading-->
+-								<div class="menu-item px-3">
+-									<div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Contacts</div>
+-								</div>
+-								<!--end::Heading-->
+-								<!--begin::Menu item-->
+-								<div class="menu-item px-3">
+-									<a href="#" class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_users_search">Add Contact</a>
+-								</div>
+-								<!--end::Menu item-->
+-								<!--begin::Menu item-->
+-								<div class="menu-item px-3">
+-									<a href="#" class="menu-link flex-stack px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">Invite Contacts
+-									<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a contact email to send an invitation"></i></a>
+-								</div>
+-								<!--end::Menu item-->
+-								<!--begin::Menu item-->
+-								<div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+-									<a href="#" class="menu-link px-3">
+-										<span class="menu-title">Groups</span>
+-										<span class="menu-arrow"></span>
+-									</a>
+-									<!--begin::Menu sub-->
+-									<div class="menu-sub menu-sub-dropdown w-175px py-4">
+-										<!--begin::Menu item-->
+-										<div class="menu-item px-3">
+-											<a href="#" class="menu-link px-3" data-bs-toggle="tooltip" title="Coming soon">Create Group</a>
+-										</div>
+-										<!--end::Menu item-->
+-										<!--begin::Menu item-->
+-										<div class="menu-item px-3">
+-											<a href="#" class="menu-link px-3" data-bs-toggle="tooltip" title="Coming soon">Invite Members</a>
+-										</div>
+-										<!--end::Menu item-->
+-										<!--begin::Menu item-->
+-										<div class="menu-item px-3">
+-											<a href="#" class="menu-link px-3" data-bs-toggle="tooltip" title="Coming soon">Settings</a>
+-										</div>
+-										<!--end::Menu item-->
+-									</div>
+-									<!--end::Menu sub-->
+-								</div>
+-								<!--end::Menu item-->
+-								<!--begin::Menu item-->
+-								<div class="menu-item px-3 my-1">
+-									<a href="#" class="menu-link px-3" data-bs-toggle="tooltip" title="Coming soon">Settings</a>
+-								</div>
+-								<!--end::Menu item-->
+-							</div>
+-							<!--end::Menu 3-->
+-
+-						</div>
+-						<!--end::Menu-->
+-						<!--begin::Close-->
+-						<div class="btn btn-sm btn-icon btn-active-light-primary" id="kt_drawer_chat_close">
+-							<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+-							<span class="svg-icon svg-icon-2">
+-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+-									<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+-									<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+-								</svg>
+-							</span>
+-							<!--end::Svg Icon-->
+-						</div>
+-						<!--end::Close-->
+-					</div>
+-					<!--end::Card toolbar-->
+-				</div>
+-				<!--end::Card header-->
+-				<!--begin::Card body-->
+-				<div class="card-body" id="kt_drawer_chat_messenger_body">
+-					<!--begin::Messages-->
+-					<div class="scroll-y me-n5 pe-5" data-kt-element="messages" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_drawer_chat_messenger_header, #kt_drawer_chat_messenger_footer" data-kt-scroll-wrappers="#kt_drawer_chat_messenger_body" data-kt-scroll-offset="0px">
++        <h2>{{ object.username }}</h2>
++        {% if object.name %}
++          <p>{{ object.name }}</p>
++        {% endif %}
++      </div>
++    </div>
++
++    {% if object == request.user %}
++      <!-- Action buttons -->
++      <div class="row">
++
++        <div class="col-sm-12">
++          <a class="btn btn-primary" href="{% url 'users:update' %}"
++             role="button">My Info</a>
++          <a class="btn btn-primary" href="{% url 'account_email' %}"
++             role="button">E-Mail</a>
++          <!-- Your Stuff: Custom user template urls -->
++        </div>
++
++      </div>
++      <!-- End Action buttons -->
++    {% endif %}
+
+-						<!--begin::Message(in)-->
+-						<div class="d-flex justify-content-start mb-10">
+-							<!--begin::Wrapper-->
+-							<div class="d-flex flex-column align-items-start">
+-								<!--begin::User-->
+-								<div class="d-flex align-items-center mb-2">
+-									<!--begin::Avatar-->
+-									<div class="symbol symbol-35px symbol-circle">
+-										<img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}" />
+-									</div>
+-									<!--end::Avatar-->
+-									<!--begin::Details-->
+-									<div class="ms-3">
+-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+-										<span class="text-muted fs-7 mb-1">2 mins</span>
+-									</div>
+-									<!--end::Details-->
+-								</div>
+-								<!--end::User-->
+-								<!--begin::Text-->
+-								<div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">How likely are you to recommend our company to your friends and family ?</div>
+-								<!--end::Text-->
+-							</div>
+-							<!--end::Wrapper-->
+-						</div>
+-						<!--end::Message(in)-->
+-						<!--begin::Message(out)-->
+-						<div class="d-flex justify-content-end mb-10">
+-							<!--begin::Wrapper-->
+-							<div class="d-flex flex-column align-items-end">
+-								<!--begin::User-->
+-								<div class="d-flex align-items-center mb-2">
+-									<!--begin::Details-->
+-									<div class="me-3">
+-										<span class="text-muted fs-7 mb-1">5 mins</span>
+-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+-									</div>
+-									<!--end::Details-->
+-									<!--begin::Avatar-->
+-									<div class="symbol symbol-35px symbol-circle">
+-										<img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}" />
+-									</div>
+-									<!--end::Avatar-->
+-								</div>
+-								<!--end::User-->
+-								<!--begin::Text-->
+-								<div class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end" data-kt-element="message-text">Hey there, we’re just writing to let you know that you’ve been subscribed to a repository on GitHub.</div>
+-								<!--end::Text-->
+-							</div>
+-							<!--end::Wrapper-->
+-						</div>
+-						<!--end::Message(out)-->
+-						<!--begin::Message(in)-->
+-						<div class="d-flex justify-content-start mb-10">
+-							<!--begin::Wrapper-->
+-							<div class="d-flex flex-column align-items-start">
+-								<!--begin::User-->
+-								<div class="d-flex align-items-center mb-2">
+-									<!--begin::Avatar-->
+-									<div class="symbol symbol-35px symbol-circle">
+-										<img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}" />
+-									</div>
+-									<!--end::Avatar-->
+-									<!--begin::Details-->
+-									<div class="ms-3">
+-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+-										<span class="text-muted fs-7 mb-1">1 Hour</span>
+-									</div>
+-									<!--end::Details-->
+-								</div>
+-								<!--end::User-->
+-								<!--begin::Text-->
+-								<div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">Ok, Understood!</div>
+-								<!--end::Text-->
+-							</div>
+-							<!--end::Wrapper-->
+-						</div>
+-						<!--end::Message(in)-->
+-						<!--begin::Message(out)-->
+-						<div class="d-flex justify-content-end mb-10">
+-							<!--begin::Wrapper-->
+-							<div class="d-flex flex-column align-items-end">
+-								<!--begin::User-->
+-								<div class="d-flex align-items-center mb-2">
+-									<!--begin::Details-->
+-									<div class="me-3">
+-										<span class="text-muted fs-7 mb-1">2 Hours</span>
+-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+-									</div>
+-									<!--end::Details-->
+-									<!--begin::Avatar-->
+-									<div class="symbol symbol-35px symbol-circle">
+-										<img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}" />
+-									</div>
+-									<!--end::Avatar-->
+-								</div>
+-								<!--end::User-->
+-								<!--begin::Text-->
+-								<div class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end" data-kt-element="message-text">You’ll receive notifications for all issues, pull requests!</div>
+-								<!--end::Text-->
+-							</div>
+-							<!--end::Wrapper-->
+-						</div>
+-						<!--end::Message(out)-->
+-						<!--begin::Message(in)-->
+-						<div class="d-flex justify-content-start mb-10">
+-							<!--begin::Wrapper-->
+-							<div class="d-flex flex-column align-items-start">
+-								<!--begin::User-->
+-								<div class="d-flex align-items-center mb-2">
+-									<!--begin::Avatar-->
+-									<div class="symbol symbol-35px symbol-circle">
+-										<img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}" />
+-									</div>
+-									<!--end::Avatar-->
+-									<!--begin::Details-->
+-									<div class="ms-3">
+-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+-										<span class="text-muted fs-7 mb-1">3 Hours</span>
+-									</div>
+-									<!--end::Details-->
+-								</div>
+-								<!--end::User-->
+-								<!--begin::Text-->
+-								<div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">You can unwatch this repository immediately by clicking here:
+-								<a href="https://keenthemes.com">Keenthemes.com</a></div>
+-								<!--end::Text-->
+-							</div>
+-							<!--end::Wrapper-->
+-						</div>
+-						<!--end::Message(in)-->
+-						<!--begin::Message(out)-->
+-						<div class="d-flex justify-content-end mb-10">
+-							<!--begin::Wrapper-->
+-							<div class="d-flex flex-column align-items-end">
+-								<!--begin::User-->
+-								<div class="d-flex align-items-center mb-2">
+-									<!--begin::Details-->
+-									<div class="me-3">
+-										<span class="text-muted fs-7 mb-1">4 Hours</span>
+-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+-									</div>
+-									<!--end::Details-->
+-									<!--begin::Avatar-->
+-									<div class="symbol symbol-35px symbol-circle">
+-										<img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}" />
+-									</div>
+-									<!--end::Avatar-->
+-								</div>
+-								<!--end::User-->
+-								<!--begin::Text-->
+-								<div class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end" data-kt-element="message-text">Most purchased Business courses during this sale!</div>
+-								<!--end::Text-->
+-							</div>
+-							<!--end::Wrapper-->
+-						</div>
+-						<!--end::Message(out)-->
+-						<!--begin::Message(in)-->
+-						<div class="d-flex justify-content-start mb-10">
+-							<!--begin::Wrapper-->
+-							<div class="d-flex flex-column align-items-start">
+-								<!--begin::User-->
+-								<div class="d-flex align-items-center mb-2">
+-									<!--begin::Avatar-->
+-									<div class="symbol symbol-35px symbol-circle">
+-										<img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}" />
+-									</div>
+-									<!--end::Avatar-->
+-									<!--begin::Details-->
+-									<div class="ms-3">
+-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+-										<span class="text-muted fs-7 mb-1">5 Hours</span>
+-									</div>
+-									<!--end::Details-->
+-								</div>
+-								<!--end::User-->
+-								<!--begin::Text-->
+-								<div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">Company BBQ to celebrate the last quater achievements and goals. Food and drinks provided</div>
+-								<!--end::Text-->
+-							</div>
+-							<!--end::Wrapper-->
+-						</div>
+-						<!--end::Message(in)-->
+-						<!--begin::Message(template for out)-->
+-						<div class="d-flex justify-content-end mb-10 d-none" data-kt-element="template-out">
+-							<!--begin::Wrapper-->
+-							<div class="d-flex flex-column align-items-end">
+-								<!--begin::User-->
+-								<div class="d-flex align-items-center mb-2">
+-									<!--begin::Details-->
+-									<div class="me-3">
+-										<span class="text-muted fs-7 mb-1">Just now</span>
+-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+-									</div>
+-									<!--end::Details-->
+-									<!--begin::Avatar-->
+-									<div class="symbol symbol-35px symbol-circle">
+-										<img alt="Pic" src="{% static 'media/avatars/150-26.jpg' %}" />
+-									</div>
+-									<!--end::Avatar-->
+-								</div>
+-								<!--end::User-->
+-								<!--begin::Text-->
+-								<div class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end" data-kt-element="message-text"></div>
+-								<!--end::Text-->
+-							</div>
+-							<!--end::Wrapper-->
+-						</div>
+-						<!--end::Message(template for out)-->
+-						<!--begin::Message(template for in)-->
+-						<div class="d-flex justify-content-start mb-10 d-none" data-kt-element="template-in">
+-							<!--begin::Wrapper-->
+-							<div class="d-flex flex-column align-items-start">
+-								<!--begin::User-->
+-								<div class="d-flex align-items-center mb-2">
+-									<!--begin::Avatar-->
+-									<div class="symbol symbol-35px symbol-circle">
+-										<img alt="Pic" src="{% static 'media/avatars/150-15.jpg' %}" />
+-									</div>
+-									<!--end::Avatar-->
+-									<!--begin::Details-->
+-									<div class="ms-3">
+-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+-										<span class="text-muted fs-7 mb-1">Just now</span>
+-									</div>
+-									<!--end::Details-->
+-								</div>
+-								<!--end::User-->
+-								<!--begin::Text-->
+-								<div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">Right before vacation season we have the next Big Deal for you.</div>
+-								<!--end::Text-->
+-							</div>
+-							<!--end::Wrapper-->
+-						</div>
+-						<!--end::Message(template for in)-->
+-
+-					</div>
+-					<!--end::Messages-->
+-				</div>
+-				<!--end::Card body-->
+-				<!--begin::Card footer-->
+-				<div class="card-footer pt-4" id="kt_drawer_chat_messenger_footer">
+-					<!--begin::Input-->
+-					<textarea class="form-control form-control-flush mb-3" rows="1" data-kt-element="input" placeholder="Type a message"></textarea>
+-					<!--end::Input-->
+-					<!--begin:Toolbar-->
+-					<div class="d-flex flex-stack">
+-						<!--begin::Actions-->
+-						<div class="d-flex align-items-center me-2">
+-							<button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="Coming soon">
+-								<i class="bi bi-paperclip fs-3"></i>
+-							</button>
+-							<button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="Coming soon">
+-								<i class="bi bi-upload fs-3"></i>
+-							</button>
+-						</div>
+-						<!--end::Actions-->
+-						<!--begin::Send-->
+-						<button class="btn btn-primary" type="button" data-kt-element="send">Send</button>
+-						<!--end::Send-->
+-					</div>
+-					<!--end::Toolbar-->
+-				</div>
+-				<!--end::Card footer-->
+-			</div>
+-			<!--end::Messenger-->
+-		</div>
+-		<!--end::Chat drawer-->
+-
+-		<!--end::Drawers-->
+-		<!--end::Main-->
++  </div>
++
++
++{% extends "base.html" %}
++{% load crispy_forms_tags %}
++
++{% block title %}{{ user.username }}{% endblock %}
++
++{% block content %}
++  <h1>{{ user.username }}</h1>
++  <form class="form-horizontal" method="post" action="{% url 'users:update' %}">
++    {% csrf_token %}
++    {{ form|crispy }}
++    <div class="control-group">
++      <div class="controls">
++        <button type="submit" class="btn btn-primary">Update</button>
++      </div>
++    </div>
++  </form>
++{% endblock %}
+Index: one/templates/metronic/layout/_content.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n\t\t\t\t\t\t\t<!--begin::Container-->\n\t\t\t\t\t\t\t<div id=\"kt_content_container\" class=\"container-xxl\">\n\n\t\t\t\t\t\t\t\t<!--begin::Row-->\n\t\t\t\t\t\t\t\t<div class=\"row gy-5 g-xl-8\">\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-4\">\n\n<!--layout-partial:partials/widgets/mixed/_widget-2.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-4\">\n\n<!--layout-partial:partials/widgets/lists/_widget-5.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-4\">\n\n<!--layout-partial:partials/widgets/mixed/_widget-7.html-->\n\n\n<!--layout-partial:partials/widgets/mixed/_widget-10.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Row-->\n\t\t\t\t\t\t\t\t<!--begin::Row-->\n\t\t\t\t\t\t\t\t<div class=\"row gy-5 g-xl-8\">\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-4\">\n\n<!--layout-partial:partials/widgets/lists/_widget-3.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-8\">\n\n<!--layout-partial:partials/widgets/tables/_widget-9.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Row-->\n\t\t\t\t\t\t\t\t<!--begin::Row-->\n\t\t\t\t\t\t\t\t<div class=\"row gy-5 g-xl-8\">\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-4\">\n\n<!--layout-partial:partials/widgets/lists/_widget-2.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-4\">\n\n<!--layout-partial:partials/widgets/lists/_widget-6.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-4\">\n\n<!--layout-partial:partials/widgets/lists/_widget-4.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Row-->\n\t\t\t\t\t\t\t\t<!--begin::Row-->\n\t\t\t\t\t\t\t\t<div class=\"row g-5 g-xl-8\">\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-4\">\n\n<!--layout-partial:partials/widgets/mixed/_widget-5.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t\t<!--begin::Col-->\n\t\t\t\t\t\t\t\t\t<div class=\"col-xl-8\">\n\n<!--layout-partial:partials/widgets/tables/_widget-5.html-->\n\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Col-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Row-->\n\n<!--layout-partial:partials/widgets/calendar/_widget-1.html-->\n\n\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Container-->\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/one/templates/metronic/layout/_content.html b/one/templates/metronic/layout/_content.html
+--- a/one/templates/metronic/layout/_content.html	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/one/templates/metronic/layout/_content.html	(date 1641702285774)
+@@ -1,99 +1,98 @@
+-
+-							<!--begin::Container-->
+-							<div id="kt_content_container" class="container-xxl">
++<!--begin::Container-->
++<div id="kt_content_container" class="container-xxl">
+
+-								<!--begin::Row-->
+-								<div class="row gy-5 g-xl-8">
+-									<!--begin::Col-->
+-									<div class="col-xl-4">
++  <!--begin::Row-->
++  <div class="row gy-5 g-xl-8">
++    <!--begin::Col-->
++    <div class="col-xl-4">
+
+-<!--layout-partial:partials/widgets/mixed/_widget-2.html-->
++      <!--layout-partial:partials/widgets/mixed/_widget-2.html-->
+
+-									</div>
+-									<!--end::Col-->
+-									<!--begin::Col-->
+-									<div class="col-xl-4">
++    </div>
++    <!--end::Col-->
++    <!--begin::Col-->
++    <div class="col-xl-4">
+
+-<!--layout-partial:partials/widgets/lists/_widget-5.html-->
++      <!--layout-partial:partials/widgets/lists/_widget-5.html-->
+
+-									</div>
+-									<!--end::Col-->
+-									<!--begin::Col-->
+-									<div class="col-xl-4">
++    </div>
++    <!--end::Col-->
++    <!--begin::Col-->
++    <div class="col-xl-4">
+
+-<!--layout-partial:partials/widgets/mixed/_widget-7.html-->
++      <!--layout-partial:partials/widgets/mixed/_widget-7.html-->
+
+
+-<!--layout-partial:partials/widgets/mixed/_widget-10.html-->
++      <!--layout-partial:partials/widgets/mixed/_widget-10.html-->
+
+-									</div>
+-									<!--end::Col-->
+-								</div>
+-								<!--end::Row-->
+-								<!--begin::Row-->
+-								<div class="row gy-5 g-xl-8">
+-									<!--begin::Col-->
+-									<div class="col-xl-4">
++    </div>
++    <!--end::Col-->
++  </div>
++  <!--end::Row-->
++  <!--begin::Row-->
++  <div class="row gy-5 g-xl-8">
++    <!--begin::Col-->
++    <div class="col-xl-4">
+
+-<!--layout-partial:partials/widgets/lists/_widget-3.html-->
++      <!--layout-partial:partials/widgets/lists/_widget-3.html-->
+
+-									</div>
+-									<!--end::Col-->
+-									<!--begin::Col-->
+-									<div class="col-xl-8">
++    </div>
++    <!--end::Col-->
++    <!--begin::Col-->
++    <div class="col-xl-8">
+
+-<!--layout-partial:partials/widgets/tables/_widget-9.html-->
++      <!--layout-partial:partials/widgets/tables/_widget-9.html-->
+
+-									</div>
+-									<!--end::Col-->
+-								</div>
+-								<!--end::Row-->
+-								<!--begin::Row-->
+-								<div class="row gy-5 g-xl-8">
+-									<!--begin::Col-->
+-									<div class="col-xl-4">
++    </div>
++    <!--end::Col-->
++  </div>
++  <!--end::Row-->
++  <!--begin::Row-->
++  <div class="row gy-5 g-xl-8">
++    <!--begin::Col-->
++    <div class="col-xl-4">
+
+-<!--layout-partial:partials/widgets/lists/_widget-2.html-->
++      <!--layout-partial:partials/widgets/lists/_widget-2.html-->
+
+-									</div>
+-									<!--end::Col-->
+-									<!--begin::Col-->
+-									<div class="col-xl-4">
++    </div>
++    <!--end::Col-->
++    <!--begin::Col-->
++    <div class="col-xl-4">
+
+-<!--layout-partial:partials/widgets/lists/_widget-6.html-->
++      <!--layout-partial:partials/widgets/lists/_widget-6.html-->
+
+-									</div>
+-									<!--end::Col-->
+-									<!--begin::Col-->
+-									<div class="col-xl-4">
++    </div>
++    <!--end::Col-->
++    <!--begin::Col-->
++    <div class="col-xl-4">
+
+-<!--layout-partial:partials/widgets/lists/_widget-4.html-->
++      <!--layout-partial:partials/widgets/lists/_widget-4.html-->
+
+-									</div>
+-									<!--end::Col-->
+-								</div>
+-								<!--end::Row-->
+-								<!--begin::Row-->
+-								<div class="row g-5 g-xl-8">
+-									<!--begin::Col-->
+-									<div class="col-xl-4">
++    </div>
++    <!--end::Col-->
++  </div>
++  <!--end::Row-->
++  <!--begin::Row-->
++  <div class="row g-5 g-xl-8">
++    <!--begin::Col-->
++    <div class="col-xl-4">
+
+-<!--layout-partial:partials/widgets/mixed/_widget-5.html-->
++      <!--layout-partial:partials/widgets/mixed/_widget-5.html-->
+
+-									</div>
+-									<!--end::Col-->
+-									<!--begin::Col-->
+-									<div class="col-xl-8">
++    </div>
++    <!--end::Col-->
++    <!--begin::Col-->
++    <div class="col-xl-8">
+
+-<!--layout-partial:partials/widgets/tables/_widget-5.html-->
++      <!--layout-partial:partials/widgets/tables/_widget-5.html-->
+
+-									</div>
+-									<!--end::Col-->
+-								</div>
+-								<!--end::Row-->
++    </div>
++    <!--end::Col-->
++  </div>
++  <!--end::Row-->
+
+-<!--layout-partial:partials/widgets/calendar/_widget-1.html-->
++  <!--layout-partial:partials/widgets/calendar/_widget-1.html-->
+
+
+-							</div>
+-							<!--end::Container-->
++</div>
++<!--end::Container-->
+Index: one/templates/metronic/layout/header/_base.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% load static i18n %}\n<!--begin::Header-->\n<div id=\"kt_header\" style=\"\" class=\"header align-items-stretch\">\n  <!--begin::Container-->\n  <div\n    class=\"container-fluid d-flex align-items-stretch justify-content-between\">\n    <!--begin::Aside mobile toggle-->\n    <div class=\"d-flex align-items-center d-lg-none ms-n2 me-2\"\n         title=\"Show aside menu\">\n      <div\n        class=\"btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px\"\n        id=\"kt_aside_mobile_toggle\">\n        <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->\n        <span class=\"svg-icon svg-icon-1\">\n\t\t\t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"\n                         height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n\t\t\t\t\t\t\t\t\t\t\t<path\n                        d=\"M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z\"\n                        fill=\"black\"/>\n\t\t\t\t\t\t\t\t\t\t\t<path opacity=\"0.3\"\n                            d=\"M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z\"\n                            fill=\"black\"/>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t\t</span>\n        <!--end::Svg Icon-->\n      </div>\n    </div>\n    <!--end::Aside mobile toggle-->\n    <!--begin::Mobile logo-->\n    <div class=\"d-flex align-items-center flex-grow-1 flex-lg-grow-0\">\n      <a href=\"?page=index\" class=\"d-lg-none\">\n        <img alt=\"Logo\" src=\"{% static 'media/logos/logo-2.svg' %}\"\n             class=\"h-30px\"/>\n      </a>\n    </div>\n    <!--end::Mobile logo-->\n    <!--begin::Wrapper-->\n    <div\n      class=\"d-flex align-items-stretch justify-content-between flex-lg-grow-1\">\n      <!--begin::Navbar-->\n      <div class=\"d-flex align-items-stretch\" id=\"kt_header_nav\">\n\n        <!--layout-partial:layout/header/_menu.html-->\n\n      </div>\n      <!--end::Navbar-->\n      <!--begin::Topbar-->\n      <div class=\"d-flex align-items-stretch flex-shrink-0\">\n\n        <!--layout-partial:layout/topbar/_base.html-->\n        {% include 'layout/topbar/_base.html' %}\n\n      </div>\n      <!--end::Topbar-->\n    </div>\n    <!--end::Wrapper-->\n  </div>\n  <!--end::Container-->\n</div>\n<!--end::Header-->\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/one/templates/metronic/layout/header/_base.html b/one/templates/metronic/layout/header/_base.html
+--- a/one/templates/metronic/layout/header/_base.html	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/one/templates/metronic/layout/header/_base.html	(date 1641717643063)
+@@ -39,17 +39,16 @@
+       class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+       <!--begin::Navbar-->
+       <div class="d-flex align-items-stretch" id="kt_header_nav">
+-
+         <!--layout-partial:layout/header/_menu.html-->
+
++        <!--layout-partial:layout/page-title/_default.html-->
++        {% include 'layout/page-title/_default.html' %}
+       </div>
+       <!--end::Navbar-->
+       <!--begin::Topbar-->
+       <div class="d-flex align-items-stretch flex-shrink-0">
+-
+         <!--layout-partial:layout/topbar/_base.html-->
+         {% include 'layout/topbar/_base.html' %}
+-
+       </div>
+       <!--end::Topbar-->
+     </div>
+Index: one/templates/metronic/layout/toolbars/_toolbar-1.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n\t\t\t\t\t\t<!--begin::Toolbar-->\n\t\t\t\t\t\t<div class=\"toolbar\" id=\"kt_toolbar\">\n\t\t\t\t\t\t\t<!--begin::Container-->\n\t\t\t\t\t\t\t<div id=\"kt_toolbar_container\" class=\"container-fluid d-flex flex-stack\">\n\n<!--layout-partial:layout/page-title/_default.html-->\n\n\t\t\t\t\t\t\t\t<!--begin::Actions-->\n\t\t\t\t\t\t\t\t<div class=\"d-flex align-items-center py-1\">\n\t\t\t\t\t\t\t\t\t<!--begin::Wrapper-->\n\t\t\t\t\t\t\t\t\t<div class=\"me-3\">\n\t\t\t\t\t\t\t\t\t\t<!--begin::Menu-->\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-sm btn-flex btn-light btn-active-primary fw-bolder\" data-kt-menu-trigger=\"click\" data-kt-menu-placement=\"bottom-end\">\n\t\t\t\t\t\t\t\t\t\t<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->\n\t\t\t\t\t\t\t\t\t\t<span class=\"svg-icon svg-icon-5 svg-icon-gray-500 me-1\">\n\t\t\t\t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n\t\t\t\t\t\t\t\t\t\t\t\t<path d=\"M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z\" fill=\"black\" />\n\t\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t<!--end::Svg Icon-->Filter</a>\n\n\t\t\t\t\t\t\t\t\t\t<!--begin::Menu 1-->\n\t\t\t\t\t\t\t\t\t\t<div class=\"menu menu-sub menu-sub-dropdown w-250px w-md-300px\" data-kt-menu=\"true\" id=\"kt_menu_61c5a5dcba479\">\n\t\t\t\t\t\t\t\t\t\t\t<!--begin::Header-->\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"px-7 py-5\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fs-5 text-dark fw-bolder\">Filter Options</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<!--end::Header-->\n\t\t\t\t\t\t\t\t\t\t\t<!--begin::Menu separator-->\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"separator border-gray-200\"></div>\n\t\t\t\t\t\t\t\t\t\t\t<!--end::Menu separator-->\n\t\t\t\t\t\t\t\t\t\t\t<!--begin::Form-->\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"px-7 py-5\">\n\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Input group-->\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-10\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Label-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"form-label fw-bold\">Status:</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Label-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Input-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<select class=\"form-select form-select-solid\" data-kt-select2=\"true\" data-placeholder=\"Select option\" data-dropdown-parent=\"#kt_menu_61c5a5dcba479\" data-allow-clear=\"true\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option></option>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">Approved</option>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">Pending</option>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">In Process</option>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">Rejected</option>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Input-->\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Input group-->\n\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Input group-->\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-10\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Label-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"form-label fw-bold\">Member Type:</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Label-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Options-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"d-flex\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Options-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"form-check form-check-sm form-check-custom form-check-solid me-5\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class=\"form-check-input\" type=\"checkbox\" value=\"1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"form-check-label\">Author</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Options-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Options-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"form-check form-check-sm form-check-custom form-check-solid\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class=\"form-check-input\" type=\"checkbox\" value=\"2\" checked=\"checked\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"form-check-label\">Customer</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Options-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Options-->\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Input group-->\n\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Input group-->\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-10\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Label-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"form-label fw-bold\">Notifications:</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Label-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Switch-->\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-check form-switch form-switch-sm form-check-custom form-check-solid\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"notifications\" checked=\"checked\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"form-check-label\">Enabled</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Switch-->\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Input group-->\n\t\t\t\t\t\t\t\t\t\t\t\t<!--begin::Actions-->\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"d-flex justify-content-end\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"reset\" class=\"btn btn-sm btn-light btn-active-light-primary me-2\" data-kt-menu-dismiss=\"true\">Reset</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-sm btn-primary\" data-kt-menu-dismiss=\"true\">Apply</button>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t<!--end::Actions-->\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<!--end::Form-->\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<!--end::Menu 1-->\n\n\t\t\t\t\t\t\t\t\t\t<!--end::Menu-->\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!--end::Wrapper-->\n\t\t\t\t\t\t\t\t\t<!--begin::Button-->\n\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-sm btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#kt_modal_create_app\" id=\"kt_toolbar_primary_button\">Create</a>\n\t\t\t\t\t\t\t\t\t<!--end::Button-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Actions-->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<!--end::Container-->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--end::Toolbar-->\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/one/templates/metronic/layout/toolbars/_toolbar-1.html b/one/templates/metronic/layout/toolbars/_toolbar-1.html
+--- a/one/templates/metronic/layout/toolbars/_toolbar-1.html	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/one/templates/metronic/layout/toolbars/_toolbar-1.html	(date 1641719571109)
+@@ -1,111 +1,136 @@
+-
+-						<!--begin::Toolbar-->
+-						<div class="toolbar" id="kt_toolbar">
+-							<!--begin::Container-->
+-							<div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+-
+-<!--layout-partial:layout/page-title/_default.html-->
+-
+-								<!--begin::Actions-->
+-								<div class="d-flex align-items-center py-1">
+-									<!--begin::Wrapper-->
+-									<div class="me-3">
+-										<!--begin::Menu-->
+-										<a href="#" class="btn btn-sm btn-flex btn-light btn-active-primary fw-bolder" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+-										<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
+-										<span class="svg-icon svg-icon-5 svg-icon-gray-500 me-1">
+-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+-												<path d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z" fill="black" />
++{% load static i18n %}
++{% if ENABLE_TOOLBAR_ACTIONS %}
++  <!--begin::Toolbar-->
++  <div class="toolbar" id="kt_toolbar">
++
++    <!--begin::Container-->
++    <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
++      <!--layout-partial:layout/page-title/_default.html-->
++      <!--begin::Actions-->
++      <div class="d-flex align-items-center py-1">
++        <!--begin::Wrapper-->
++        <div class="me-3">
++          <!--begin::Menu-->
++          <a href="#"
++             class="btn btn-sm btn-flex btn-light btn-active-primary fw-bolder"
++             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
++            <!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
++            <span class="svg-icon svg-icon-5 svg-icon-gray-500 me-1">
++											<svg xmlns="http://www.w3.org/2000/svg" width="24"
++                           height="24" viewBox="0 0 24 24" fill="none">
++												<path
++                          d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z"
++                          fill="black"/>
+ 											</svg>
+ 										</span>
+-										<!--end::Svg Icon-->Filter</a>
++            <!--end::Svg Icon-->Filter</a>
+
+-										<!--begin::Menu 1-->
+-										<div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true" id="kt_menu_61c5a5dcba479">
+-											<!--begin::Header-->
+-											<div class="px-7 py-5">
+-												<div class="fs-5 text-dark fw-bolder">Filter Options</div>
+-											</div>
+-											<!--end::Header-->
+-											<!--begin::Menu separator-->
+-											<div class="separator border-gray-200"></div>
+-											<!--end::Menu separator-->
+-											<!--begin::Form-->
+-											<div class="px-7 py-5">
+-												<!--begin::Input group-->
+-												<div class="mb-10">
+-													<!--begin::Label-->
+-													<label class="form-label fw-bold">Status:</label>
+-													<!--end::Label-->
+-													<!--begin::Input-->
+-													<div>
+-														<select class="form-select form-select-solid" data-kt-select2="true" data-placeholder="Select option" data-dropdown-parent="#kt_menu_61c5a5dcba479" data-allow-clear="true">
+-															<option></option>
+-															<option value="1">Approved</option>
+-															<option value="2">Pending</option>
+-															<option value="2">In Process</option>
+-															<option value="2">Rejected</option>
+-														</select>
+-													</div>
+-													<!--end::Input-->
+-												</div>
+-												<!--end::Input group-->
+-												<!--begin::Input group-->
+-												<div class="mb-10">
+-													<!--begin::Label-->
+-													<label class="form-label fw-bold">Member Type:</label>
+-													<!--end::Label-->
+-													<!--begin::Options-->
+-													<div class="d-flex">
+-														<!--begin::Options-->
+-														<label class="form-check form-check-sm form-check-custom form-check-solid me-5">
+-															<input class="form-check-input" type="checkbox" value="1" />
+-															<span class="form-check-label">Author</span>
+-														</label>
+-														<!--end::Options-->
+-														<!--begin::Options-->
+-														<label class="form-check form-check-sm form-check-custom form-check-solid">
+-															<input class="form-check-input" type="checkbox" value="2" checked="checked" />
+-															<span class="form-check-label">Customer</span>
+-														</label>
+-														<!--end::Options-->
+-													</div>
+-													<!--end::Options-->
+-												</div>
+-												<!--end::Input group-->
+-												<!--begin::Input group-->
+-												<div class="mb-10">
+-													<!--begin::Label-->
+-													<label class="form-label fw-bold">Notifications:</label>
+-													<!--end::Label-->
+-													<!--begin::Switch-->
+-													<div class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
+-														<input class="form-check-input" type="checkbox" value="" name="notifications" checked="checked" />
+-														<label class="form-check-label">Enabled</label>
+-													</div>
+-													<!--end::Switch-->
+-												</div>
+-												<!--end::Input group-->
+-												<!--begin::Actions-->
+-												<div class="d-flex justify-content-end">
+-													<button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
+-													<button type="submit" class="btn btn-sm btn-primary" data-kt-menu-dismiss="true">Apply</button>
+-												</div>
+-												<!--end::Actions-->
+-											</div>
+-											<!--end::Form-->
+-										</div>
+-										<!--end::Menu 1-->
++          <!--begin::Menu 1-->
++          <div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px"
++               data-kt-menu="true" id="kt_menu_61c5a5dcba479">
++            <!--begin::Header-->
++            <div class="px-7 py-5">
++              <div class="fs-5 text-dark fw-bolder">Filter Options</div>
++            </div>
++            <!--end::Header-->
++            <!--begin::Menu separator-->
++            <div class="separator border-gray-200"></div>
++            <!--end::Menu separator-->
++            <!--begin::Form-->
++            <div class="px-7 py-5">
++              <!--begin::Input group-->
++              <div class="mb-10">
++                <!--begin::Label-->
++                <label class="form-label fw-bold">Status:</label>
++                <!--end::Label-->
++                <!--begin::Input-->
++                <div>
++                  <select class="form-select form-select-solid"
++                          data-kt-select2="true"
++                          data-placeholder="Select option"
++                          data-dropdown-parent="#kt_menu_61c5a5dcba479"
++                          data-allow-clear="true">
++                    <option></option>
++                    <option value="1">Approved</option>
++                    <option value="2">Pending</option>
++                    <option value="2">In Process</option>
++                    <option value="2">Rejected</option>
++                  </select>
++                </div>
++                <!--end::Input-->
++              </div>
++              <!--end::Input group-->
++              <!--begin::Input group-->
++              <div class="mb-10">
++                <!--begin::Label-->
++                <label class="form-label fw-bold">Member Type:</label>
++                <!--end::Label-->
++                <!--begin::Options-->
++                <div class="d-flex">
++                  <!--begin::Options-->
++                  <label
++                    class="form-check form-check-sm form-check-custom form-check-solid me-5">
++                    <input class="form-check-input" type="checkbox" value="1"/>
++                    <span class="form-check-label">Author</span>
++                  </label>
++                  <!--end::Options-->
++                  <!--begin::Options-->
++                  <label
++                    class="form-check form-check-sm form-check-custom form-check-solid">
++                    <input class="form-check-input" type="checkbox" value="2"
++                           checked="checked"/>
++                    <span class="form-check-label">Customer</span>
++                  </label>
++                  <!--end::Options-->
++                </div>
++                <!--end::Options-->
++              </div>
++              <!--end::Input group-->
++              <!--begin::Input group-->
++              <div class="mb-10">
++                <!--begin::Label-->
++                <label class="form-label fw-bold">Notifications:</label>
++                <!--end::Label-->
++                <!--begin::Switch-->
++                <div
++                  class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
++                  <input class="form-check-input" type="checkbox" value=""
++                         name="notifications" checked="checked"/>
++                  <label class="form-check-label">Enabled</label>
++                </div>
++                <!--end::Switch-->
++              </div>
++              <!--end::Input group-->
++              <!--begin::Actions-->
++              <div class="d-flex justify-content-end">
++                <button type="reset"
++                        class="btn btn-sm btn-light btn-active-light-primary me-2"
++                        data-kt-menu-dismiss="true">Reset
++                </button>
++                <button type="submit" class="btn btn-sm btn-primary"
++                        data-kt-menu-dismiss="true">Apply
++                </button>
++              </div>
++              <!--end::Actions-->
++            </div>
++            <!--end::Form-->
++          </div>
++          <!--end::Menu 1-->
+
+-										<!--end::Menu-->
+-									</div>
+-									<!--end::Wrapper-->
+-									<!--begin::Button-->
+-									<a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" id="kt_toolbar_primary_button">Create</a>
+-									<!--end::Button-->
+-								</div>
+-								<!--end::Actions-->
+-							</div>
+-							<!--end::Container-->
+-						</div>
+-						<!--end::Toolbar-->
++          <!--end::Menu-->
++        </div>
++        <!--end::Wrapper-->
++        <!--begin::Button-->
++        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
++           data-bs-target="#kt_modal_create_app"
++           id="kt_toolbar_primary_button">Create</a>
++        <!--end::Button-->
++      </div>
++      <!--end::Actions-->
++    </div>
++    <!--end::Container-->
++  </div>
++  <!--end::Toolbar-->
++{% else %}
++  <div class="toolbar" id="kt_toolbar" style="padding: 0 !important;"></div>
++{% endif %}
+Index: one/templates/metronic/layout/page-title/_default.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n\t\t\t\t\t\t\t\t<!--begin::Page title-->\n\t\t\t\t\t\t\t\t<div data-kt-swapper=\"true\" data-kt-swapper-mode=\"prepend\" data-kt-swapper-parent=\"{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}\" class=\"page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0\">\n\t\t\t\t\t\t\t\t\t<!--begin::Title-->\n\t\t\t\t\t\t\t\t\t<h1 class=\"d-flex align-items-center text-dark fw-bolder fs-3 my-1\">Dashboard\n\t\t\t\t\t\t\t\t\t<!--begin::Separator-->\n\t\t\t\t\t\t\t\t\t<span class=\"h-20px border-gray-200 border-start ms-3 mx-2\"></span>\n\t\t\t\t\t\t\t\t\t<!--end::Separator-->\n\t\t\t\t\t\t\t\t\t<!--begin::Description-->\n\t\t\t\t\t\t\t\t\t<small class=\"text-muted fs-7 fw-bold my-1 ms-1\">#XRS-45670</small>\n\t\t\t\t\t\t\t\t\t<!--end::Description--></h1>\n\t\t\t\t\t\t\t\t\t<!--end::Title-->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<!--end::Page title-->\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/one/templates/metronic/layout/page-title/_default.html b/one/templates/metronic/layout/page-title/_default.html
+--- a/one/templates/metronic/layout/page-title/_default.html	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/one/templates/metronic/layout/page-title/_default.html	(date 1641717922596)
+@@ -1,14 +1,38 @@
+-
+-								<!--begin::Page title-->
+-								<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+-									<!--begin::Title-->
+-									<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Dashboard
+-									<!--begin::Separator-->
+-									<span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
+-									<!--end::Separator-->
+-									<!--begin::Description-->
+-									<small class="text-muted fs-7 fw-bold my-1 ms-1">#XRS-45670</small>
+-									<!--end::Description--></h1>
+-									<!--end::Title-->
+-								</div>
+-								<!--end::Page title-->
++{% load static i18n %}
++<div data-kt-swapper="true" data-kt-swapper-mode="prepend"
++     data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_header_nav'}"
++     class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
++  <!--begin::Title-->
++  <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">No
++    Toolbar</h1>
++  <!--end::Title-->
++  <!--begin::Separator-->
++  <span class="h-20px border-gray-300 border-start mx-4"></span>
++  <!--end::Separator-->
++  <!--begin::Breadcrumb-->
++  <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
++    <!--begin::Item-->
++    <li class="breadcrumb-item text-muted">
++      <a href="/metronic8/demo1/../demo1/index.html"
++         class="text-muted text-hover-primary">Home</a>
++    </li>
++    <!--end::Item-->
++    <!--begin::Item-->
++    <li class="breadcrumb-item">
++      <span class="bullet bg-gray-300 w-5px h-2px"></span>
++    </li>
++    <!--end::Item-->
++    <!--begin::Item-->
++    <li class="breadcrumb-item text-muted">Toolbars</li>
++    <!--end::Item-->
++    <!--begin::Item-->
++    <li class="breadcrumb-item">
++      <span class="bullet bg-gray-300 w-5px h-2px"></span>
++    </li>
++    <!--end::Item-->
++    <!--begin::Item-->
++    <li class="breadcrumb-item text-dark">No Toolbar</li>
++    <!--end::Item-->
++  </ul>
++  <!--end::Breadcrumb-->
++</div>
+Index: .idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"InspectionProjectProfileManager\">\n  <settings>\n    <option name=\"USE_PROJECT_PROFILE\" value=\"false\" />\n    <version value=\"1.0\" />\n  </settings>\n</component>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+--- a/.idea/inspectionProfiles/profiles_settings.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/.idea/inspectionProfiles/profiles_settings.xml	(date 1641818102885)
+@@ -3,4 +3,4 @@
+     <option name="USE_PROJECT_PROFILE" value="false" />
+     <version value="1.0" />
+   </settings>
+-</component>
++</component>
+\ No newline at end of file
+Index: .idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"InspectionProjectProfileManager\">\n  <profile version=\"1.0\">\n    <option name=\"myName\" value=\"Project Default\" />\n    <inspection_tool class=\"Eslint\" enabled=\"true\" level=\"WARNING\" enabled_by_default=\"true\" />\n    <inspection_tool class=\"PyPackageRequirementsInspection\" enabled=\"true\" level=\"WARNING\" enabled_by_default=\"true\">\n      <option name=\"ignoredPackages\">\n        <value>\n          <list size=\"2\">\n            <item index=\"0\" class=\"java.lang.String\" itemvalue=\"psycopg2\" />\n            <item index=\"1\" class=\"java.lang.String\" itemvalue=\"docx\" />\n          </list>\n        </value>\n      </option>\n    </inspection_tool>\n    <inspection_tool class=\"PyPep8NamingInspection\" enabled=\"true\" level=\"WEAK WARNING\" enabled_by_default=\"true\">\n      <option name=\"ignoredErrors\">\n        <list>\n          <option value=\"N806\" />\n          <option value=\"N811\" />\n        </list>\n      </option>\n    </inspection_tool>\n  </profile>\n</component>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+--- a/.idea/inspectionProfiles/Project_Default.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/.idea/inspectionProfiles/Project_Default.xml	(date 1641818102842)
+@@ -2,23 +2,5 @@
+   <profile version="1.0">
+     <option name="myName" value="Project Default" />
+     <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+-    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+-      <option name="ignoredPackages">
+-        <value>
+-          <list size="2">
+-            <item index="0" class="java.lang.String" itemvalue="psycopg2" />
+-            <item index="1" class="java.lang.String" itemvalue="docx" />
+-          </list>
+-        </value>
+-      </option>
+-    </inspection_tool>
+-    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+-      <option name="ignoredErrors">
+-        <list>
+-          <option value="N806" />
+-          <option value="N811" />
+-        </list>
+-      </option>
+-    </inspection_tool>
+   </profile>
+-</component>
++</component>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.9 (cookie-venv)\" project-jdk-type=\"Python SDK\" />\n</project>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/.idea/misc.xml	(date 1641818102881)
+@@ -1,4 +1,4 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (cookie-venv)" project-jdk-type="Python SDK" />
+-</project>
++</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectModuleManager\">\n    <modules>\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/one-platform.iml\" filepath=\"$PROJECT_DIR$/.idea/one-platform.iml\" />\n    </modules>\n  </component>\n</project>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/.idea/modules.xml	(date 1641818102873)
+@@ -5,4 +5,4 @@
+       <module fileurl="file://$PROJECT_DIR$/.idea/one-platform.iml" filepath="$PROJECT_DIR$/.idea/one-platform.iml" />
+     </modules>
+   </component>
+-</project>
++</project>
+\ No newline at end of file
+Index: .idea/one-platform.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"PYTHON_MODULE\" version=\"4\">\n  <component name=\"FacetManager\">\n    <facet type=\"django\" name=\"Django\">\n      <configuration>\n        <option name=\"rootFolder\" value=\"$MODULE_DIR$\" />\n        <option name=\"settingsModule\" value=\"config/settings/local.py\" />\n        <option name=\"manageScript\" value=\"$MODULE_DIR$/manage.py\" />\n        <option name=\"environment\" value=\"&lt;map/&gt;\" />\n        <option name=\"doNotUseTestRunner\" value=\"false\" />\n        <option name=\"trackFilePattern\" value=\"migrations\" />\n      </configuration>\n    </facet>\n  </component>\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\" />\n    <orderEntry type=\"jdk\" jdkName=\"Python 3.9 (cookie-venv)\" jdkType=\"Python SDK\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n  <component name=\"PyDocumentationSettings\">\n    <option name=\"format\" value=\"PLAIN\" />\n    <option name=\"myDocStringFormat\" value=\"Plain\" />\n  </component>\n  <component name=\"TemplatesService\">\n    <option name=\"TEMPLATE_CONFIGURATION\" value=\"Django\" />\n    <option name=\"TEMPLATE_FOLDERS\">\n      <list>\n        <option value=\"$MODULE_DIR$/one/templates\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"TestRunnerService\">\n    <option name=\"PROJECT_TEST_RUNNER\" value=\"py.test\" />\n  </component>\n</module>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/one-platform.iml b/.idea/one-platform.iml
+--- a/.idea/one-platform.iml	(revision 48cbbe441f6a3e7f92fe5f3ac4d6c2adfbb53731)
++++ b/.idea/one-platform.iml	(date 1641818102869)
+@@ -32,4 +32,4 @@
+   <component name="TestRunnerService">
+     <option name="PROJECT_TEST_RUNNER" value="py.test" />
+   </component>
+-</module>
++</module>
+\ No newline at end of file
