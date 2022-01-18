@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/one-platform.iml" filepath="$PROJECT_DIR$/.idea/one-platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Metronic/html/theme/demo1/dist/.idea/dist.iml" filepath="$PROJECT_DIR$/../Metronic/html/theme/demo1/dist/.idea/dist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Metronic/html/theme/demo1/src/js/.idea/js.iml" filepath="$PROJECT_DIR$/../Metronic/html/theme/demo1/src/js/.idea/js.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../metronic_html/.idea/metronic_html.iml" filepath="$PROJECT_DIR$/../metronic_html/.idea/metronic_html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/one.iml" filepath="$PROJECT_DIR$/.idea/one.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../wab-rest/wab/.idea/wab.iml" filepath="$PROJECT_DIR$/../wab-rest/wab/.idea/wab.iml" />
     </modules>
   </component>
 </project>
