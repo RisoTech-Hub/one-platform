@@ -8,7 +8,7 @@ from django.http import HttpRequest, HttpResponseRedirect
 from django.test import RequestFactory
 from django.urls import reverse
 
-from one.users.forms import UserChangeForm
+from one.users.forms import UserAdminChangeForm
 from one.users.models import User
 from one.users.tests.factories import UserFactory
 from one.users.views import UserRedirectView, UserUpdateView, user_detail_view
@@ -58,7 +58,7 @@ class TestUserUpdateView:
         view.request = request
 
         # Initialize the form
-        form = UserChangeForm()
+        form = UserAdminChangeForm()
         form.cleaned_data = []
         view.form_valid(form)
 
