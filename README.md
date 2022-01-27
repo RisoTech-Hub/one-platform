@@ -7,7 +7,7 @@ Starter kit for Django + Metronic lover!
 
 License: MIT
 
-## Metronic(Required)
+## Metronic (Required)
 
 - Please purchase [Metronic](https://1.envato.market/NKe19P) to get template statics to use this platform.
 - Follow this [guide](https://preview.keenthemes.com/metronic8/demo1/documentation/getting-started/build/gulp.html) to create static asset
