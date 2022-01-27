@@ -1,11 +1,18 @@
 # Riso Tech one platform
 
-Behold My Awesome Project!
+Starter kit for Django + Metronic lover!
 
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 License: MIT
+
+## Metronic(Required)
+
+- Please purchase [Metronic](https://1.envato.market/NKe19P) to get template statics to use this platform.
+- Follow this [guide](https://preview.keenthemes.com/metronic8/demo1/documentation/getting-started/build/gulp.html) to create static asset
+- Then copy static into "one/static/metronic"
+
 
 ## Settings
 
