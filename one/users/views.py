@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import RedirectView
+from django.views.generic import ListView, RedirectView
 
 from one.components.constants import FORM_LAYOUT_2_COL
 from one.components.views import ExposeDetailView, WidgetUpdateView
@@ -11,17 +11,24 @@ from one.components.views import ExposeDetailView, WidgetUpdateView
 User = get_user_model()
 
 
-class UserDetailView(LoginRequiredMixin, ExposeDetailView):
+class UserListView(LoginRequiredMixin, ListView):
+    model = User
+
+
+user_list_view = UserListView.as_view()
+
+
+class ProfileDetailView(LoginRequiredMixin, ExposeDetailView):
 
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
 
 
-user_detail_view = UserDetailView.as_view()
+profile_detail_view = ProfileDetailView.as_view()
 
 
-class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, WidgetUpdateView):
+class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, WidgetUpdateView):
 
     model = User
     fields = ["name", "dob", "username", "avatar"]
@@ -39,7 +46,7 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, WidgetUpdateView):
         return self.request.user
 
 
-user_update_view = UserUpdateView.as_view()
+profile_update_view = ProfileUpdateView.as_view()
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):

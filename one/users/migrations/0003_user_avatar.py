@@ -7,13 +7,18 @@ import one.users.utils
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0002_user_dob'),
+        ("users", "0002_user_dob"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='avatar',
-            field=models.ImageField(blank=True, null=True, upload_to=one.users.utils.user_avatar_directory_path, verbose_name='Avatar of User'),
+            model_name="user",
+            name="avatar",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to=one.users.utils.user_avatar_directory_path,
+                verbose_name="Avatar of User",
+            ),
         ),
     ]
