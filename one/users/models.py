@@ -1,7 +1,9 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField
+from django.db.models import CharField, DateField, ImageField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
+from one.users.utils import user_avatar_directory_path
 
 
 class User(AbstractUser):
@@ -13,6 +15,10 @@ class User(AbstractUser):
 
     #: First and last name do not cover name patterns around the globe
     name = CharField(_("Name of User"), blank=True, max_length=255)
+    dob = DateField(_("Day of birth"), blank=True, null=True)
+    avatar = ImageField(
+        _("Avatar of User"), blank=True, null=True, upload_to=user_avatar_directory_path
+    )
     first_name = None  # type: ignore
     last_name = None  # type: ignore
 
@@ -27,10 +33,12 @@ class User(AbstractUser):
 
     @property
     def display_name_html(self):
+        """Get name or username"""
         return self.name if self.name else self.username
 
     @property
     def display_level_html(self):
+        """Get level html"""
         if self.is_superuser:
             return """
                 <span class='badge badge-light-danger fw-bolder fs-8 px-2 py-1

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-08 16:35+0000\n"
+"POT-Creation-Date: 2022-01-22 22:11+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -604,7 +604,7 @@ msgstr "Đăng nhập"
 
 #: one/templates/metronic/account/root.html:49
 #: one/templates/metronic/account/root.html:75
-#: one/templates/metronic/base.html:621 one/templates/metronic/base.html:647
+#: one/templates/metronic/base.html:159 one/templates/metronic/base.html:185
 msgid "Ok"
 msgstr "OK"
 
@@ -637,6 +637,14 @@ msgstr "Bạn đã đăng nhập tài khoản %(user_display)s."
 msgid "Language"
 msgstr "Ngôn ngữ"
 
+#: one/templates/metronic/users/_user_card.html:126
+msgid "Overview"
+msgstr ""
+
+#: one/templates/metronic/users/_user_card.html:132
+msgid "Settings"
+msgstr ""
+
 #: one/users/admin.py:18
 msgid "Personal info"
 msgstr "Thông tin cá nhân"
@@ -647,20 +655,20 @@ msgstr "Quyền"
 
 #: one/users/admin.py:31
 msgid "Important dates"
-msgstr ""
+msgstr "Những ngày quan trọng"
 
 #: one/users/apps.py:7
 msgid "Users"
-msgstr ""
+msgstr "Người dùng"
 
-#: one/users/forms.py:18 one/users/tests/test_forms.py:39
+#: one/users/forms.py:25 one/users/tests/test_forms.py:39
 msgid "This username has already been taken."
-msgstr ""
+msgstr "Tài khoản này đã được sử dụng"
 
-#: one/users/models.py:11
+#: one/users/models.py:15
 msgid "Name of User"
-msgstr ""
+msgstr "Họ và Tên"
 
-#: one/users/views.py:25
+#: one/users/views.py:27
 msgid "Information successfully updated"
-msgstr ""
+msgstr "Thông tin đã được cập nhật"

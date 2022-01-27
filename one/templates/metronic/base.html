@@ -36,7 +36,12 @@
         rel="stylesheet" type="text/css"/>
   <link href="{% static 'css/style.bundle.css' %}" rel="stylesheet"
         type="text/css"/>
+
   <!--end::Global Stylesheets Bundle-->
+  <!--begin::Global Javascript Bundle(used by all pages)-->
+  <script src="{% static 'plugins/global/plugins.bundle.js' %}"></script>
+  <script src="{% static 'js/scripts.bundle.js' %}"></script>
+  <!--end::Global Javascript Bundle-->
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -67,10 +72,43 @@
         {% include 'layout/toolbars/_toolbar-1.html' %}
 
         <!--begin::Post-->
-        <div class="post d-flex flex-column-fluid" id="kt_post">
+        <div class="post d-flex flex-column-fluid" id="">
+          <div id="kt_content_container" class="container-xxl">
+          {% if warning %}
+            <!--begin::Notice-->
+            <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6">
+              <!--begin::Icon-->
+              <!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
+              <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"></rect>
+                              <rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black"></rect>
+                              <rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"></rect>
+                            </svg>
+                          </span>
+              <!--end::Svg Icon-->
+              <!--end::Icon-->
+              <!--begin::Wrapper-->
+              <div class="d-flex flex-stack flex-grow-1">
+                <!--begin::Content-->
+                <div class="fw-bold">
+                  <h4 class="text-gray-900 fw-bolder">
+                    {% translate "We need your attention!" %}
+                  </h4>
+                  <div class="fs-6 text-gray-700">
+                    {{ warning|safe }}
+                  </div>
+                </div>
+                <!--end::Content-->
+              </div>
+              <!--end::Wrapper-->
+            </div>
+            <!--end::Notice-->
+          {% endif %}
           {% block content %}
           <!--layout-partial:layout/_content.html-->
           {% endblock content %}
+          </div>
         </div>
         <!--end::Post-->
       </div>
@@ -136,10 +174,7 @@
 </div>
 <!--end::hidden form-->
 <!--begin::Javascript-->
-<!--begin::Global Javascript Bundle(used by all pages)-->
-<script src="{% static 'plugins/global/plugins.bundle.js' %}"></script>
-<script src="{% static 'js/scripts.bundle.js' %}"></script>
-<!--end::Global Javascript Bundle-->
+
 {% block javascript %}
   <!--begin::Page Vendors Javascript(used by this page)-->
   <script

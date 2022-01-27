@@ -140,7 +140,7 @@
     <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
          data-kt-menu-trigger="click" data-kt-menu-attach="parent"
          data-kt-menu-placement="bottom-end">
-      <img src="{% static 'media/avatars/150-26.jpg' %}" alt="user"/>
+      <img src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'media/svg/avatars/blank.svg' %}{% endif %}" alt="user"/>
     </div>
 
     <!--layout-partial:layout/topbar/partials/_user-menu.html-->
