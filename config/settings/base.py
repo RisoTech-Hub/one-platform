@@ -83,6 +83,7 @@ THIRD_PARTY_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "drf_spectacular",
+    "webpush",
 ]
 
 LOCAL_APPS = [
@@ -330,6 +331,13 @@ SPECTACULAR_SETTINGS = {
         {"url": "https://127.0.0.1:8000", "description": "Local Development server"},
         {"url": "https://example.com", "description": "Production server"},
     ],
+}
+# Web push notification
+# ------------------------------------------------------------------------------
+WEBPUSH_SETTINGS = {
+    "VAPID_PUBLIC_KEY": env("VAPID_PUBLIC_KEY", default=""),
+    "VAPID_PRIVATE_KEY": env("VAPID_PRIVATE_KEY", default=""),
+    "VAPID_ADMIN_EMAIL": env("VAPID_ADMIN_EMAIL", default=""),
 }
 # Your stuff...
 # ------------------------------------------------------------------------------

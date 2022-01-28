@@ -1,7 +1,8 @@
-{% load static i18n %}<!DOCTYPE html>
+{% load static i18n webpush_notifications %}<!DOCTYPE html>
 <html lang="en">
 <!--begin::Head-->
 <head>
+  {% webpush_header %}
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>{% block title %}{% endblock title %}</title>
@@ -108,6 +109,7 @@
           {% block content %}
           <!--layout-partial:layout/_content.html-->
           {% endblock content %}
+
           </div>
         </div>
         <!--end::Post-->
@@ -155,7 +157,8 @@
 <!--end::Modals-->
 <!--begin::hidden form-->
 <div style="display: none;">
-<form action="{% url 'set_language' %}"
+  {% webpush_button %}
+  <form action="{% url 'set_language' %}"
       method="post" id="change_language_form_id">
   {% csrf_token %}
     <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -225,10 +228,13 @@
   </script>
 {% endif %}
 <script>
-function submitChangeLanguageForm(language) {
+  function submitChangeLanguageForm(language) {
      $('#change_language_select_id').val(language).change();
      $('#change_language_form_id').submit()
   }
+</script>
+<script defer>
+  $("#webpush-subscribe-button").click();
 </script>
 {% block inline_javascript %}
   <!--begin::Page Custom Javascript(used by this page)-->

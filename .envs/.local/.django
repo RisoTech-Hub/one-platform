@@ -16,3 +16,9 @@ CELERY_FLOWER_PASSWORD=HIovg2BEdLBcUx25cwey7VTF8WhAwHYyeyO7Km2Z1e1G6UEMpJVC2sMUR
 # django-allauth
 # ------------------------------------------------------------------------------
 DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+
+# django-webpush
+# ------------------------------------------------------------------------------
+VAPID_PUBLIC_KEY=BEoGD6DG964hJEgzD4swEbhlkAG5qXE34sJ1oUd6yYCzlk06AXOwG6_2C_dy_wzyemi3UwAw74K6IMwCdXJIo50
+VAPID_PRIVATE_KEY=usGrKM89fvTCjC0dYlb5Ra7BMmvVWxeVW9jYVWfDQJo
+VAPID_ADMIN_EMAIL=bin.ngoctu@gmail.com

@@ -4,5 +4,6 @@ def applications_settings(request):
         "ENABLE_LIVE_CHAT_APPLICATION": False,
         "ENABLE_ACTIVITIES": False,
         "ENABLE_NOTIFICATION": False,
+        "ENABLE_QUICK_LINKS": False,
     }
     return applications

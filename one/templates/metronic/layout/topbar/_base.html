@@ -9,14 +9,14 @@
   </div>
   <!--end::Search-->
   {% if ENABLE_ACTIVITIES %}
-  <!--begin::Activities-->
-  <div class="d-flex align-items-center ms-1 ms-lg-3">
-    <!--begin::Drawer toggle-->
-    <div
-      class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
-      id="kt_activities_toggle">
-      <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
-      <span class="svg-icon svg-icon-1">
+    <!--begin::Activities-->
+    <div class="d-flex align-items-center ms-1 ms-lg-3">
+      <!--begin::Drawer toggle-->
+      <div
+        class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
+        id="kt_activities_toggle">
+        <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
+        <span class="svg-icon svg-icon-1">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24"
                                height="24" viewBox="0 0 24 24" fill="none">
 														<rect x="8" y="9" width="3" height="10" rx="1.5"
@@ -29,23 +29,23 @@
                                   fill="black"/>
 													</svg>
 												</span>
-      <!--end::Svg Icon-->
+        <!--end::Svg Icon-->
+      </div>
+      <!--end::Drawer toggle-->
     </div>
-    <!--end::Drawer toggle-->
-  </div>
-  <!--end::Activities-->
+    <!--end::Activities-->
   {% endif %}
 
   {% if ENABLE_NOTIFICATION %}
-  <!--begin::Notifications-->
-  <div class="d-flex align-items-center ms-1 ms-lg-3">
-    <!--begin::Menu- wrapper-->
-    <div
-      class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px"
-      data-kt-menu-trigger="click" data-kt-menu-attach="parent"
-      data-kt-menu-placement="bottom-end">
-      <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
-      <span class="svg-icon svg-icon-1">
+    <!--begin::Notifications-->
+    <div class="d-flex align-items-center ms-1 ms-lg-3">
+      <!--begin::Menu- wrapper-->
+      <div
+        class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px"
+        data-kt-menu-trigger="click" data-kt-menu-attach="parent"
+        data-kt-menu-placement="bottom-end">
+        <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
+        <span class="svg-icon svg-icon-1">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24"
                                height="24" viewBox="0 0 24 24" fill="none">
 														<path
@@ -62,26 +62,26 @@
                                   fill="black"/>
 													</svg>
 												</span>
-      <!--end::Svg Icon-->
+        <!--end::Svg Icon-->
+      </div>
+
+      <!--layout-partial:layout/topbar/partials/_notifications-menu.html-->
+      {% include 'layout/topbar/partials/_notifications-menu.html' %}
+
+      <!--end::Menu wrapper-->
     </div>
-
-    <!--layout-partial:layout/topbar/partials/_notifications-menu.html-->
-    {% include 'layout/topbar/partials/_notifications-menu.html' %}
-
-    <!--end::Menu wrapper-->
-  </div>
-  <!--end::Notifications-->
+    <!--end::Notifications-->
   {% endif %}
 
   {% if ENABLE_LIVE_CHAT_APPLICATION %}
-  <!--begin::Chat-->
-  <div class="d-flex align-items-center ms-1 ms-lg-3">
-    <!--begin::Menu wrapper-->
-    <div
-      class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px"
-      id="kt_drawer_chat_toggle">
-      <!--begin::Svg Icon | path: icons/duotune/communication/com012.svg-->
-      <span class="svg-icon svg-icon-1">
+    <!--begin::Chat-->
+    <div class="d-flex align-items-center ms-1 ms-lg-3">
+      <!--begin::Menu wrapper-->
+      <div
+        class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px"
+        id="kt_drawer_chat_toggle">
+        <!--begin::Svg Icon | path: icons/duotune/communication/com012.svg-->
+        <span class="svg-icon svg-icon-1">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24"
                                height="24" viewBox="0 0 24 24" fill="none">
 														<path opacity="0.3"
@@ -93,15 +93,16 @@
                                   fill="black"/>
 													</svg>
 												</span>
-      <!--end::Svg Icon-->
-      <span
-        class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
+        <!--end::Svg Icon-->
+        <span
+          class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
+      </div>
+      <!--end::Menu wrapper-->
     </div>
-    <!--end::Menu wrapper-->
-  </div>
-  <!--end::Chat-->
+    <!--end::Chat-->
   {% endif %}
 
+  {% if ENABLE_QUICK_LINKS %}
   <!--begin::Quick links-->
   <div class="d-flex align-items-center ms-1 ms-lg-3">
     <!--begin::Menu wrapper-->
@@ -132,6 +133,7 @@
     <!--end::Menu wrapper-->
   </div>
   <!--end::Quick links-->
+  {% endif %}
 
   <!--begin::User-->
   <div class="d-flex align-items-center ms-1 ms-lg-3"
@@ -140,7 +142,9 @@
     <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
          data-kt-menu-trigger="click" data-kt-menu-attach="parent"
          data-kt-menu-placement="bottom-end">
-      <img src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'media/svg/avatars/blank.svg' %}{% endif %}" alt="user"/>
+      <img src="
+        {% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'media/svg/avatars/blank.svg' %}{% endif %}"
+           alt="user"/>
     </div>
 
     <!--layout-partial:layout/topbar/partials/_user-menu.html-->
