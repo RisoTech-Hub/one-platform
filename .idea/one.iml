@@ -17,9 +17,6 @@
     <orderEntry type="jdk" jdkName="Python 3.9 (cookie-venv)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="dist" />
-    <orderEntry type="module" module-name="js" />
-    <orderEntry type="module" module-name="wab" />
-    <orderEntry type="module" module-name="metronic_html" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="requirementsPath" value="$MODULE_DIR$/requirements/local.txt" />
