@@ -235,7 +235,9 @@
 </script>
 <script>
   $(document).ready(function() {
-    $("#webpush-subscribe-button").click();
+    setTimeout(function (){
+      $("#webpush-subscribe-button").trigger('click');
+    }, 2000)
   });
 </script>
 {% block inline_javascript %}

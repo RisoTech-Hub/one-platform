@@ -184,6 +184,9 @@ typings/
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
+.idea/misc.xml
+.idea/one.iml
+.idea/shelf
 
 # Gradle:
 .idea/**/gradle.xml
