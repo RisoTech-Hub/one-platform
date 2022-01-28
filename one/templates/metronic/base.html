@@ -233,8 +233,10 @@
      $('#change_language_form_id').submit()
   }
 </script>
-<script defer>
-  $("#webpush-subscribe-button").click();
+<script>
+  $(document).ready(function() {
+    $("#webpush-subscribe-button").click();
+  });
 </script>
 {% block inline_javascript %}
   <!--begin::Page Custom Javascript(used by this page)-->

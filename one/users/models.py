@@ -55,3 +55,8 @@ class User(AbstractUser):
                 <span class='badge badge-light-info fw-bolder fs-8 px-2 py-1
                 '>Member</span>
             """
+
+    @property
+    def is_notification_subcribe(self):
+        """Webpush subscribe"""
+        return self.webpush_info.all().count() > 0
