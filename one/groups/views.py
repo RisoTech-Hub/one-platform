@@ -1,13 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import ListView
 
 from one.components.constants import FORM_LAYOUT_1_COL
-from one.components.views import ExposeDetailView, WidgetUpdateView
+from one.components.views import ExposeDetailView, ExposeListView, WidgetUpdateView
 
 
-class GroupListView(LoginRequiredMixin, ListView):
+class GroupListView(LoginRequiredMixin, ExposeListView):
     model = Group
 
 

@@ -19,9 +19,9 @@ class GroupProfile(Model):
     )
 
     @property
-    def display_as_html(self):
-        """Get level html"""
+    def get_color_html(self):
+        """Get color as html"""
         return f"""
                 <span class='badge badge-{self.color} fw-bolder fs-8 px-2 py-1
-                '>{self.group.name}</span>
+                '>{self.get_color_display()}</span>
             """
