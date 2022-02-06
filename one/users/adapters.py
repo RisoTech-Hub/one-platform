@@ -12,7 +12,12 @@ from one.utils.requests import RequestProcess
 
 
 class AccountAdapter(DefaultAccountAdapter):
+    """
+    AllAuth Override Normal Adapter
+    """
+
     def is_open_for_signup(self, request: HttpRequest):
+        """Allow new user registration new account"""
         return getattr(settings, "ACCOUNT_ALLOW_REGISTRATION", True)
 
     def render_mail(self, template_prefix, email, context, headers=None):
@@ -47,5 +52,10 @@ class AccountAdapter(DefaultAccountAdapter):
 
 
 class SocialAccountAdapter(DefaultSocialAccountAdapter):
+    """
+    AllAuth Override Socila Adapter
+    """
+
     def is_open_for_signup(self, request: HttpRequest, sociallogin: Any):
+        """Allow new user registration new account using social account"""
         return getattr(settings, "ACCOUNT_ALLOW_REGISTRATION", True)
