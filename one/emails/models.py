@@ -8,10 +8,10 @@ class EmailTemplate(LingualModel):
     """
     Email template for reuse
 
-    :var code: CharField, Specific code for core app
-    :var subject: CharField, Email title
-    :var is_protected: BooleanField, can delete or not
-    :var content: TextField, html content
+    code: CharField, Specific code for core app
+    subject: CharField, Email title
+    is_protected: BooleanField, can delete or not
+    content: TextField, html content
     """
 
     code = CharField(

@@ -15,6 +15,10 @@ class User(AbstractUser):
     Default custom user model for Riso Tech one platform.
     If adding fields that need to be filled at user signup,
     check forms.SignupForm and forms.SocialSignupForms accordingly.
+
+    name: CharField, Name of user
+    dob: DateField, Date of birth
+    avatar: ImageField, path of avatar
     """
 
     #: First and last name do not cover name patterns around the globe
@@ -44,39 +48,28 @@ class User(AbstractUser):
     def display_level_html(self):
         """Get level html"""
         if self.is_superuser:
-            return """
+            name = _("Super User")
+            return f"""
                 <span class='badge badge-light-danger fw-bolder fs-8 px-2 py-1
-                '>Administrator</span>
+                '>{name}</span>
             """
         elif self.is_staff:
-            return """
+            name = _("Staff")
+            return f"""
                 <span class='badge badge-light-warning fw-bolder fs-8 px-2 py-1
-                '>Staff
-                </span>
+                '>{name}</span>
             """
         else:
-            return """
+            name = _("Member")
+            return f"""
                 <span class='badge badge-light-info fw-bolder fs-8 px-2 py-1
-                '>Member</span>
+                '>{name}</span>
             """
 
     @property
     def is_notification_subcribe(self):
         """Webpush subscribe"""
         return self.webpush_info.all().count() > 0
-
-    def group_verbose(self):
-        GROUP = {
-            "Administrator": "danger",
-            "Manager": "warning",
-            "Leader": "success",
-            "Sale": "info",
-        }
-        try:
-            group = self.groups.first().name
-            return GROUP[group]
-        except KeyError:
-            return "Non Group"
 
     def active_verbose(self):
         if self.is_active:

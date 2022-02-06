@@ -41,7 +41,6 @@
   <!--end::Global Stylesheets Bundle-->
   <!--begin::Global Javascript Bundle(used by all pages)-->
   <script src="{% static 'plugins/global/plugins.bundle.js' %}"></script>
-  <script src="{% static 'js/scripts.bundle.js' %}"></script>
   <!--end::Global Javascript Bundle-->
 </head>
 <!--end::Head-->
@@ -177,7 +176,9 @@
 </div>
 <!--end::hidden form-->
 <!--begin::Javascript-->
-
+  <!--begin::Global Javascript Bundle(used by all pages)-->
+  <script src="{% static 'js/scripts.bundle.js' %}"></script>
+  <!--end::Global Javascript Bundle-->
 {% block javascript %}
   <!--begin::Page Vendors Javascript(used by this page)-->
   <script

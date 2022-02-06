@@ -15,7 +15,7 @@
           class="menu-section text-muted text-uppercase fs-8 ls-1">Apps</span>
       </div>
     </div>
-    <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
+    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
       <span class="menu-link">
         <span class="menu-icon">
           <!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
@@ -32,75 +32,24 @@
           </span>
           <!--end::Svg Icon-->
         </span>
-        <span class="menu-title">User Management</span>
+        <span class="menu-title">{% translate 'User Management' %}</span>
         <span class="menu-arrow"></span>
       </span>
       <div class="menu-sub menu-sub-accordion">
-        <div data-kt-menu-trigger="click"
-             class="menu-item menu-accordion mb-1">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Users</span>
-												<span class="menu-arrow"></span>
-											</span>
-          <div class="menu-sub menu-sub-accordion">
-            <div class="menu-item">
-              <a class="menu-link"
-                 href="{% url 'users:list' %}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-                <span class="menu-title">Users List</span>
-              </a>
-            </div>
-            <div class="menu-item">
-              <a class="menu-link"
-                 href="?page=apps/user-management/users/view">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-                <span class="menu-title">View User</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Roles</span>
-												<span class="menu-arrow"></span>
-											</span>
-          <div class="menu-sub menu-sub-accordion">
-            <div class="menu-item">
-              <a class="menu-link"
-                 href="?page=apps/user-management/roles/list">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-                <span class="menu-title">Roles List</span>
-              </a>
-            </div>
-            <div class="menu-item">
-              <a class="menu-link"
-                 href="?page=apps/user-management/roles/view">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-                <span class="menu-title">View Role</span>
-              </a>
-            </div>
-          </div>
+        <div class="menu-item">
+          <a class="menu-link" href="{% url 'users:list' %}">
+            <span class="menu-bullet">
+              <span class="bullet bullet-dot"></span>
+            </span>
+            <span class="menu-title">{% translate 'User' %}</span>
+          </a>
         </div>
         <div class="menu-item">
-          <a class="menu-link" href="?page=apps/user-management/permissions">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-            <span class="menu-title">Permissions</span>
+          <a class="menu-link" href="{% url 'groups:list' %}">
+            <span class="menu-bullet">
+              <span class="bullet bullet-dot"></span>
+            </span>
+            <span class="menu-title">{% translate 'Group' %}</span>
           </a>
         </div>
       </div>
