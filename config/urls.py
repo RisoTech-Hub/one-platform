@@ -19,6 +19,7 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("one.users.urls", namespace="users")),
+    path("groups/", include("one.groups.urls", namespace="groups")),
     path("accounts/", include("allauth.urls")),
     # NOTIFICATION
     path("webpush/", include("webpush.urls")),
