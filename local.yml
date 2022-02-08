@@ -11,6 +11,7 @@ services:
       dockerfile: ./compose/local/django/Dockerfile
     image: one_local_django
     container_name: one_local_django
+    platform: linux/x86_64
     depends_on:
       - postgres
       - redis
@@ -39,6 +40,7 @@ services:
   docs:
     image: one_local_docs
     container_name: one_local_docs
+    platform: linux/x86_64
     build:
       context: .
       dockerfile: ./compose/local/docs/Dockerfile
