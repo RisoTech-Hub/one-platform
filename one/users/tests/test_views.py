@@ -11,12 +11,12 @@ from django.urls import reverse
 from one.users.forms import UserAdminChangeForm
 from one.users.models import User
 from one.users.tests.factories import UserFactory
-from one.users.views import UserRedirectView, UserUpdateView, user_detail_view
+from one.users.views import ProfileUpdateView, UserRedirectView, profile_detail_view
 
 pytestmark = pytest.mark.django_db
 
 
-class TestUserUpdateView:
+class TestProfileUpdateView:
     """
     TODO:
         extracting view initialization code as class-scoped fixture
@@ -29,7 +29,7 @@ class TestUserUpdateView:
         return None
 
     def test_get_success_url(self, user: User, rf: RequestFactory):
-        view = UserUpdateView()
+        view = ProfileUpdateView()
         request = rf.get("/fake-url/")
         request.user = user
 
@@ -38,7 +38,7 @@ class TestUserUpdateView:
         assert view.get_success_url() == f"/users/{user.username}/"
 
     def test_get_object(self, user: User, rf: RequestFactory):
-        view = UserUpdateView()
+        view = ProfileUpdateView()
         request = rf.get("/fake-url/")
         request.user = user
 
@@ -47,7 +47,7 @@ class TestUserUpdateView:
         assert view.get_object() == user
 
     def test_form_valid(self, user: User, rf: RequestFactory):
-        view = UserUpdateView()
+        view = ProfileUpdateView()
         request = rf.get("/fake-url/")
 
         # Add the session/message middleware to the request
@@ -82,7 +82,7 @@ class TestUserDetailView:
         request = rf.get("/fake-url/")
         request.user = UserFactory()
 
-        response = user_detail_view(request, username=user.username)
+        response = profile_detail_view(request, username=user.username)
 
         assert response.status_code == 200
 
@@ -90,7 +90,7 @@ class TestUserDetailView:
         request = rf.get("/fake-url/")
         request.user = AnonymousUser()
 
-        response = user_detail_view(request, username=user.username)
+        response = profile_detail_view(request, username=user.username)
         login_url = reverse(settings.LOGIN_URL)
 
         assert isinstance(response, HttpResponseRedirect)
