@@ -3,15 +3,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import ListView, RedirectView
+from django.views.generic import RedirectView
 
 from one.components.constants import FORM_LAYOUT_2_COL
-from one.components.views import ExposeDetailView, WidgetUpdateView
+from one.components.views import ExposeDetailView, ExposeListView, WidgetUpdateView
 
 User = get_user_model()
 
 
-class UserListView(LoginRequiredMixin, ListView):
+class UserListView(LoginRequiredMixin, ExposeListView):
     model = User
 
 
