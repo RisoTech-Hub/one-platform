@@ -1,7 +1,7 @@
 import pytest
 from django.test import RequestFactory
 
-from one.users.api.views import UserViewSet
+from one.users.api.views import ProfileViewSet
 from one.users.models import User
 
 pytestmark = pytest.mark.django_db
@@ -9,7 +9,7 @@ pytestmark = pytest.mark.django_db
 
 class TestUserViewSet:
     def test_get_queryset(self, user: User, rf: RequestFactory):
-        view = UserViewSet()
+        view = ProfileViewSet()
         request = rf.get("/fake-url/")
         request.user = user
 
@@ -18,7 +18,7 @@ class TestUserViewSet:
         assert user in view.get_queryset()
 
     def test_me(self, user: User, rf: RequestFactory):
-        view = UserViewSet()
+        view = ProfileViewSet()
         request = rf.get("/fake-url/")
         request.user = user
 
