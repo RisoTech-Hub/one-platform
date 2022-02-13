@@ -12,18 +12,16 @@ from django.db.models import (
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-# from one.components.managers import LingualManager
-
 
 class BaseModel(Model):
     """
     Abstract Base model
 
-    :var id: UUIDField, random UUID
-    :var time_created: DateTimeField, Created time of object
-    :var time_modified: DateTimeField, Last modified time of object
-    :var creator: User, created by
-    :var last_modified_by: User, Last modified by
+    id: UUIDField, random UUID
+    time_created: DateTimeField, Created time of object
+    time_modified: DateTimeField, Last modified time of object
+    creator: User, created by
+    last_modified_by: User, Last modified by
     """
 
     id = UUIDField(primary_key=True, default=uuid4, editable=False)
@@ -71,7 +69,7 @@ class NameModel(BaseModel):
     """
     Abstract Base model
 
-    :var name: CharField, name of object
+    name: CharField, name of object
     """
 
     name = CharField(
@@ -89,7 +87,7 @@ class LingualModel(BaseModel):
     """
     Abstract Multi language Model
 
-    :var language: CharField, language of object
+    language: CharField, language of object
     """
 
     language = CharField(
@@ -98,7 +96,6 @@ class LingualModel(BaseModel):
         choices=settings.LANGUAGES,
         default=settings.VIETNAMESE,
     )
-    # objects = LingualManager()
 
     class Meta:
         abstract = True
