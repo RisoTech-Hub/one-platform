@@ -1,5 +1,6 @@
 from rest_framework.filters import SearchFilter
 
+from one.components.constants import EXCLUDE_FIELDS
 from one.components.utils import _get_name_fields
 
 
@@ -15,6 +16,6 @@ class AllSearchFilter(SearchFilter):
         fields = getattr(view, "search_fields", None)
         if not fields:
             fields = _get_name_fields(
-                view.model._meta.get_fields(include_parents=False), ["id"]
+                view.model._meta.get_fields(include_parents=False), EXCLUDE_FIELDS
             )
         return fields if fields else None
