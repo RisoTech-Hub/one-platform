@@ -1,6 +1,21 @@
 from one.components.constants import EXCLUDE_FIELDS
 
 
+def _get_name_fields(fields, exclude=[]):
+    """Get list name of normal field"""
+    return [
+        field.name
+        for field in fields
+        if field.concrete
+        and not (
+            field.is_relation
+            or field.one_to_one
+            or (field.many_to_one and field.related_model)
+        )
+        and field.name not in EXCLUDE_FIELDS + exclude
+    ]
+
+
 def _get_fields(fields, exclude=[]):
     """Get list of normal field"""
     return [
