@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-{% load static i18n object_tags %}
+{% load static object_tags %}
 
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
-{{ model }}
+{{ view|obj_meta }}
+    {{ object }}
 {% endblock content %}

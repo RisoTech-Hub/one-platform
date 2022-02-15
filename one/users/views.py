@@ -18,6 +18,17 @@ class UserListView(LoginRequiredMixin, ExposeListView):
 user_list_view = UserListView.as_view()
 
 
+class UserDetailView(LoginRequiredMixin, ExposeDetailView):
+
+    model = User
+    slug_field = "username"
+    slug_url_kwarg = "username"
+    template_name = "users/user_view.html"
+
+
+user_detail_view = UserDetailView.as_view()
+
+
 class ProfileDetailView(LoginRequiredMixin, ExposeDetailView):
 
     model = User

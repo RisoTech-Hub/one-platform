@@ -50,6 +50,9 @@ class BaseModel(Model):
 
     class Meta:
         abstract = True
+        permissions = [
+            ("list_%(class)s", "Can get list of %(class)s"),
+        ]
 
     def save(self, *args, **kwargs):
         """

@@ -1,12 +1,67 @@
 from django.http import Http404
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 
-from one.components.constants import FORM_LAYOUT_1_COL, FORM_LAYOUT_2_COL
+from one.components.constants import ACTION_DICT, FORM_LAYOUT_1_COL, FORM_LAYOUT_2_COL
 from one.components.utils import _get_fields, _get_o2o_fields
 
 
-class ExposeListView(ListView):
+class ExtendView:
+    """Add custom function for View"""
+
+    def breadcrumb(self):
+        """
+        List of breadcrumb object
+        :return:
+        """
+        model_meta = self.model._meta
+        title = _(model_meta.verbose_name_plural.title())
+        type_view = ListView
+        object_name = ""
+        parent = None
+
+        try:
+            assert self.object
+            title = _(model_meta.verbose_name.title())
+            type_view = DetailView
+            object_name = self.object
+
+            user = self.request.user
+            if any(
+                [
+                    user.is_superuser,
+                    user.has_perm(
+                        f"{model_meta.app_label}.view_{model_meta.verbose_name}"
+                    ),
+                ]
+            ):
+                from django.urls import NoReverseMatch
+
+                try:
+                    parent = reverse(f"{model_meta.app_label}:list")
+                except NoReverseMatch:
+                    parent = reverse(f"{model_meta.verbose_name_plural}:list")
+
+        except AttributeError:
+            pass
+
+        try:
+            assert self.get_form()
+            type_view = UpdateView
+        except AttributeError:
+            pass
+
+        action = dict(ACTION_DICT)[type_view]
+
+        return {
+            "title": title,
+            "parent": parent,
+            "current": f"{_(action)} {object_name}",
+        }
+
+
+class ExposeListView(ExtendView, ListView):
     """Auto add model fields to context of ListView"""
 
     def get(self, request, *args, **kwargs):
@@ -38,10 +93,11 @@ class ExposeListView(ListView):
         context["nested_fields"] = _get_o2o_fields(
             self.model._meta.get_fields(include_parents=False)
         )
+        context["breadcrumb"] = self.breadcrumb()
         return self.render_to_response(context)
 
 
-class ExposeDetailView(DetailView):
+class ExposeDetailView(ExtendView, DetailView):
     """Auto add model fields to context of DetailView"""
 
     def get(self, request, *args, **kwargs):
@@ -51,10 +107,11 @@ class ExposeDetailView(DetailView):
         context["fields"] = _get_fields(
             self.model._meta.get_fields(include_parents=False)
         )
+        context["breadcrumb"] = self.breadcrumb()
         return self.render_to_response(context)
 
 
-class WidgetUpdateView(UpdateView):
+class WidgetUpdateView(ExtendView, UpdateView):
     """Override context data"""
 
     layout = FORM_LAYOUT_1_COL
@@ -62,6 +119,7 @@ class WidgetUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         """Auto add class to form field, and read only field"""
         kwargs = super(WidgetUpdateView, self).get_context_data(**kwargs)
+        kwargs["breadcrumb"] = self.breadcrumb()
         kwargs.update({"layout": self.layout})
         form = kwargs["form"]
         for field in form.fields:

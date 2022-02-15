@@ -6,6 +6,15 @@ def add_email_template_forward(apps, schema_editor):
     """Auto create Email template"""
     EmailTemplate = apps.get_model("emails", "EmailTemplate")
 
+    Permission = apps.get_model("auth", "Permission")
+    ContentType = apps.get_model("contenttypes", "ContentType")
+    group_ctt = ContentType.objects.get_for_model(EmailTemplate)
+    Permission.objects.create(
+        name="can get list of email template",
+        content_type=group_ctt,
+        codename="list_emailtemplate",
+    )
+
     subjects = {
         "allauth_signup": "account/email/email_confirmation_signup",
         "allauth_reset": "account/email/password_reset_key",
