@@ -4,5 +4,15 @@
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
-{{ model }}
+  {{ fields|json_script:'table_config' }}
+  <br>
+  {{ nested_fields }}
+  <br>
 {% endblock content %}
+{% block inline_javascript %}
+  <script>
+    $.get("{% url 'api:users-list' %}", function (data) {
+      console.log(data);
+    });
+  </script>
+{% endblock inline_javascript %}

@@ -5,7 +5,9 @@ from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateMode
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from .serializers import ProfileSerializer
+from one.components.viewsets import FilterModelViewSet
+
+from .serializers import ProfileSerializer, UserSerializer
 
 User = get_user_model()
 
@@ -25,3 +27,13 @@ class ProfileViewSet(
     def me(self, request):
         serializer = ProfileSerializer(request.user, context={"request": request})
         return Response(status=status.HTTP_200_OK, data=serializer.data)
+
+
+class UserViewSet(FilterModelViewSet):
+    """
+    API for user module
+    """
+
+    model = User
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
