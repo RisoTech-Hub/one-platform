@@ -78,12 +78,17 @@
           },
           "data": function (D) {
             console.log('d-------------', D)
-            let ordering = ''
+            let ordering = '';
+            let page = D['start']/D['length']+1
             if (Array.isArray(D['order']) && D['order'].length > 0) {
               ordering = (D['order'][0]['dir'] === 'desc' ? '-' : '') + arr_fields[D['order'][0]['column']]['col']
             }
-            return $.extend(D, {
-              ordering
+            return $.extend({}, {
+              ordering,
+              {#page,#}
+              limit: 10,
+              offset: D['start'],
+              start: D['start'],
             });
           }
         },
