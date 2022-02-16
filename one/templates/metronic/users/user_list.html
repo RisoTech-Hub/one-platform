@@ -86,10 +86,10 @@
             if (Array.isArray(D['order']) && D['order'].length > 0) {
               ordering = (D['order'][0]['dir'] === 'desc' ? '-' : '') + arr_fields[D['order'][0]['column']]['col']
             }
-            return $.extend({}, {
+            return $.extend(D, {
               ordering,
               {#page,#}
-              limit: 10,
+              limit: D['length'],
               offset: D['start'],
               start: D['start'],
             });
