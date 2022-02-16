@@ -80,6 +80,9 @@
             console.log('d-------------', D)
             let ordering = '';
             let page = D['start']/D['length']+1
+
+
+            // TODO: viet cach duyet D['order'] neu sort multi
             if (Array.isArray(D['order']) && D['order'].length > 0) {
               ordering = (D['order'][0]['dir'] === 'desc' ? '-' : '') + arr_fields[D['order'][0]['column']]['col']
             }
