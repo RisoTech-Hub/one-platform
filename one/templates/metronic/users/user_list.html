@@ -4,7 +4,6 @@
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
-  <div>test user table</div>
   fields: {{ fields|json_script:'table_config' }}
   <br>
   nested_fields: {{ nested_fields }}
@@ -46,15 +45,15 @@
       console.log(data);
     });
 
-    var fields =  {{ fields|safe }};
+    var arr_fields =  {{ fields|safe }};
     var columns = []
 
-    Object.keys(fields).map(key => {
+    Object.keys(arr_fields).map(key => {
       columns.push({
-        data: fields[key]['col']
+        data: arr_fields[key]['col']
       })
     })
-    console.log('fields: ', fields)
+    console.log('fields: ', arr_fields)
     console.log('columns: ', columns)
     var table;
 
@@ -68,12 +67,23 @@
         'serverMethod': 'get',
         'ajax': {
           'url': '{% url 'api:users-list' %}',
-          "data": function (d) {
-            return $.extend(d, {
-              "department": $("#DEPARTMENT_FILTER").val(),
-              "search": {
-                value: $("#input_search_table").val()
-              }
+          'dataSrc': 'results',
+          'dataFilter': function (data) {
+            let json = JSON.parse(data);
+            json.recordsTotal = json['count'];
+            json.recordsFiltered = json['count'];
+
+
+            return JSON.stringify(json); // return JSON string
+          },
+          "data": function (D) {
+            console.log('d-------------', D)
+            let ordering = ''
+            if (Array.isArray(D['order']) && D['order'].length > 0) {
+              ordering = (D['order'][0]['dir'] === 'desc' ? '-' : '') + arr_fields[D['order'][0]['column']]['col']
+            }
+            return $.extend(D, {
+              ordering
             });
           }
         },
