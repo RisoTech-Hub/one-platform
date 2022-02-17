@@ -4,7 +4,7 @@
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
-  fields: {{ fields|json_script:'table_config' }}
+  fields: {{ fields }}
   <br>
   nested_fields: {{ nested_fields }}
   <br>

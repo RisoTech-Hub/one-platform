@@ -31,6 +31,11 @@ def _get_fields(fields, exclude=[]):
     ]
 
 
+def _get_lookups(field):
+    """List of lookups for field"""
+    return [item for item in field.get_lookups()]
+
+
 def _get_o2o_fields(fields):
     """Get list of nested field in o2o fields"""
     o2o_fields = [

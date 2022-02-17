@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 
 from one.components.constants import ACTION_DICT, FORM_LAYOUT_1_COL, FORM_LAYOUT_2_COL
-from one.components.utils import _get_fields
+from one.components.utils import _get_fields, _get_lookups
 
 
 class ExtendView:
@@ -90,7 +90,13 @@ class ExposeListView(ExtendView, ListView):
         fields = _get_fields(self.model._meta.get_fields(include_parents=False), ["id"])
 
         context["fields"] = [
-            {"col": item.name, "verbose": item.verbose_name} for item in fields
+            {
+                "col": item.name,
+                "verbose": item.verbose_name,
+                "type": item.get_internal_type(),
+                "lookups": _get_lookups(item),
+            }
+            for item in fields
         ]
 
         context["breadcrumb"] = self.breadcrumb()
