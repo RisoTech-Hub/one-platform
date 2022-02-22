@@ -19,9 +19,9 @@ class ActiveUserMiddleware(MiddlewareMixin):
             if current_user.is_authenticated:
                 now = datetime.datetime.now()
                 cache.set(
-                    "seen_%s" % (current_user.username),
+                    f"seen_{current_user.username}",
                     now,
                     settings.USER_LASTSEEN_TIMEOUT,
                 )
-        except Exception:
+        except AttributeError:
             pass

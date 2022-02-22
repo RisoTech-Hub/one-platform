@@ -41,7 +41,10 @@ class ExtendView:
                 try:
                     parent = reverse(f"{model_meta.app_label}:list")
                 except NoReverseMatch:
-                    parent = reverse(f"{model_meta.verbose_name_plural}:list")
+                    try:
+                        parent = reverse(f"{model_meta.verbose_name_plural}:list")
+                    except NoReverseMatch:
+                        parent = None
 
         except AttributeError:
             pass

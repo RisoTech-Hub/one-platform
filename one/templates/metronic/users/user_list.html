@@ -4,25 +4,10 @@
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
-  fields: {{ fields }}
-  <br>
-  nested_fields: {{ nested_fields }}
-  <br>
-
   <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" id="table_fields">
     <!--begin::Table head-->
     <thead>
     <tr class="fw-bolder text-muted">
-      {#      <th class="w-25px">#}
-      {#        <div class="form-check form-check-sm form-check-custom form-check-solid">#}
-      {#          <input class="form-check-input" type="checkbox" value="1" data-kt-check="true"#}
-      {#                 data-kt-check-target=".widget-9-check"/>#}
-      {#        </div>#}
-      {#      </th>#}
-      {#      <th class="min-w-150px">Authors</th>#}
-      {#      <th class="min-w-140px">Company</th>#}
-      {#      <th class="min-w-120px">Progress</th>#}
-      {#      <th class="min-w-100px text-end">Actions</th>#}
       {% for item in fields %}
         <th>{{ item.verbose }}</th>
       {% endfor %}
@@ -31,75 +16,12 @@
     <!--end::Table head-->
     <!--begin::Table body-->
     <tbody>
-
     </tbody>
     <!--end::Table body-->
-  </table>
-
-
   </table>
 {% endblock content %}
 {% block inline_javascript %}
   <script>
-    $.get("{% url 'api:users-list' %}", function (data) {
-      console.log(data);
-    });
 
-    var arr_fields =  {{ fields|safe }};
-    var columns = []
-
-    Object.keys(arr_fields).map(key => {
-      columns.push({
-        data: arr_fields[key]['col']
-      })
-    })
-    console.log('fields: ', arr_fields)
-    console.log('columns: ', columns)
-    var table;
-
-    $(document).ready(function () {
-      table = $('#table_fields').DataTable({
-        'processing': true,
-        'serverSide': true,
-        'searching': true,
-        'searchDelay': 350,
-        "autoWidth": false,
-        'serverMethod': 'get',
-        'ajax': {
-          'url': '{% url 'api:users-list' %}',
-          'dataSrc': 'results',
-          'dataFilter': function (data) {
-            let json = JSON.parse(data);
-            json.recordsTotal = json['count'];
-            json.recordsFiltered = json['count'];
-
-
-            return JSON.stringify(json); // return JSON string
-          },
-          "data": function (D) {
-            console.log('d-------------', D)
-            let ordering = '';
-            let page = D['start']/D['length']+1
-
-
-            // TODO: viet cach duyet D['order'] neu sort multi
-            if (Array.isArray(D['order']) && D['order'].length > 0) {
-              ordering = (D['order'][0]['dir'] === 'desc' ? '-' : '') + arr_fields[D['order'][0]['column']]['col']
-            }
-            return $.extend(D, {
-              ordering,
-              {#page,#}
-              limit: D['length'],
-              offset: D['start'],
-              start: D['start'],
-            });
-          }
-        },
-
-        columnDefs: [],
-        order: [],
-        columns
-      });
-    })
   </script>
 {% endblock inline_javascript %}

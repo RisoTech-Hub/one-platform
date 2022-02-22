@@ -6,27 +6,9 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import RedirectView
 
 from one.components.constants import FORM_LAYOUT_2_COL
-from one.components.views import ExposeDetailView, ExposeListView, WidgetUpdateView
+from one.components.views import ExposeDetailView, WidgetUpdateView
 
 User = get_user_model()
-
-
-class UserListView(LoginRequiredMixin, ExposeListView):
-    model = User
-
-
-user_list_view = UserListView.as_view()
-
-
-class UserDetailView(LoginRequiredMixin, ExposeDetailView):
-
-    model = User
-    slug_field = "username"
-    slug_url_kwarg = "username"
-    template_name = "users/user_view.html"
-
-
-user_detail_view = UserDetailView.as_view()
 
 
 class ProfileDetailView(LoginRequiredMixin, ExposeDetailView):
