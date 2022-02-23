@@ -3,7 +3,12 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 
-from one.components.constants import ACTION_DICT, FORM_LAYOUT_1_COL, FORM_LAYOUT_2_COL
+from one.components.constants import (
+    ACTION_DICT,
+    FIELD_TYPE_DICT,
+    FORM_LAYOUT_1_COL,
+    FORM_LAYOUT_2_COL,
+)
 from one.components.utils import _get_fields, _get_lookups
 
 
@@ -135,6 +140,9 @@ class WidgetUpdateView(ExtendView, UpdateView):
             _field = form.fields[field]
             widget = _field.widget
             attrs = widget.attrs
+
+            attrs.update({"input_type": dict(FIELD_TYPE_DICT)[type(_field)]})
+
             if widget.input_type == "text":
                 _class = "form-control form-control-lg form-control-solid "
                 if self.layout == FORM_LAYOUT_2_COL:
