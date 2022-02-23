@@ -97,6 +97,6 @@ class User(AbstractUser):
             return False
 
     def online_verbose(self):
-        if self.online:
+        if self.online():
             return "Online"
         return "Offline"
