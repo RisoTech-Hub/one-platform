@@ -1,37 +1,19 @@
 {% load i18n static %}
-{{ widget.is_initial }}
-<!--begin::Dropzone-->
-<div class="dropzone" id="{% for name, value in widget.attrs.items %}{% if name == 'id' %}{{ value|stringformat:'s' }}{% endif %}{% endfor %}_dropzone">
-  <!--begin::Message-->
-  <div class="dz-message needsclick">
-    <!--begin::Icon-->
-    <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
-    <!--end::Icon-->
-
-    <!--begin::Info-->
-    <div class="ms-4">
-      <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to
-        upload.</h3>
-      <span class="fs-7 fw-bold text-gray-400">Upload up to 10 files</span>
-    </div>
-    <!--end::Info-->
-  </div>
-</div>
-<!--end::Dropzone-->
+<link rel="stylesheet" href="{% static 'js/plugins/dropify/dist/css/dropify.min.css' %}">
+<script src="{% static 'js/plugins/dropify/dist/js/dropify.min.js' %}"></script>
+{% if widget.is_initial %}
+<input
+  type="{{ widget.type }}"
+  name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}
+  {% include "django/forms/widgets/attrs.html" %} data-default-file="{{ widget.value.url }}">
+{% else %}
+<input
+  type="{{ widget.type }}"
+  name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}
+  {% include "django/forms/widgets/attrs.html" %}>
+{% endif %}
 <script defer>
-  let id = "#{% for name, value in widget.attrs.items %}{% if name == 'id' %}{{ value|stringformat:'s' }}{% endif %}{% endfor %}_dropzone";
-  const dropzone = document.querySelector(id);
-  var myDropzone = new Dropzone(id, {
-    url: '/',
-    maxFiles: 1,
-    autoProcessQueue: false,
-    addRemoveLinks: true
-  });
-  myDropzone.on("addedfile", function (file) {
-    // Hookup the start button
-    const dropzoneItems = dropzone.querySelectorAll('.dropzone-item');
-    dropzoneItems.forEach(dropzoneItem => {
-        dropzoneItem.style.display = '';
-    });
-});
+  $("#{% for name, value in widget.attrs.items %}{% if name == 'id' %}{{ value|stringformat:'s' }}{% endif %}{% endfor %}").dropify(
+
+  );
 </script>
