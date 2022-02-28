@@ -1,4 +1,13 @@
-from django.forms.fields import CharField, DateField, FileField, ImageField
+from django.forms.fields import (
+    BooleanField,
+    CharField,
+    DateField,
+    DateTimeField,
+    FileField,
+    ImageField,
+    NullBooleanField,
+    TimeField,
+)
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 
@@ -41,6 +50,10 @@ ACTION_DICT = (
 FIELD_TYPE_DICT = (
     (CharField, "TEXT"),
     (DateField, "DATE"),
+    (DateTimeField, "DATETIME"),
+    (TimeField, "TIME"),
     (ImageField, "IMAGE"),
     (FileField, "FILE"),
+    (BooleanField, "SWITCH"),
+    (NullBooleanField, "SWITCH"),
 )
