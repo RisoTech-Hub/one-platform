@@ -8,6 +8,7 @@ from django.forms.fields import (
     NullBooleanField,
     TimeField,
 )
+from django.forms.models import ModelChoiceField, ModelMultipleChoiceField
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 
@@ -55,5 +56,7 @@ FIELD_TYPE_DICT = (
     (ImageField, "IMAGE"),
     (FileField, "FILE"),
     (BooleanField, "SWITCH"),
-    (NullBooleanField, "SWITCH"),
+    (NullBooleanField, "NULLSWITCH"),
+    (ModelMultipleChoiceField, "ModelMultipleChoice"),
+    (ModelChoiceField, "ModelChoice"),
 )

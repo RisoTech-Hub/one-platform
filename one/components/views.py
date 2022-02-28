@@ -1,3 +1,4 @@
+from django.forms.models import ModelChoiceField, ModelMultipleChoiceField
 from django.http import Http404
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -10,6 +11,7 @@ from one.components.constants import (
     FORM_LAYOUT_2_COL,
 )
 from one.components.utils import _get_fields, _get_lookups
+from one.components.widgets import LabelModelChoiceField, LabelModelMultipleChoiceField
 
 
 class ExtendView:
@@ -152,8 +154,11 @@ class WidgetUpdateView(ExtendView, UpdateView):
                 else:
                     attrs.update({"class": _class})
 
-            if widget.input_type == "textarea":
-                attrs.update({"custom": "ble"})
+            if widget.input_type == "select":
+                if type(_field) == ModelChoiceField:
+                    form.fields[field] = LabelModelChoiceField(_field.queryset)
+                elif type(_field) == ModelMultipleChoiceField:
+                    form.fields[field] = LabelModelMultipleChoiceField(_field.queryset)
 
         for field in self.read_only_fields:
             _field = form.fields[field]
