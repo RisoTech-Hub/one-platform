@@ -39,8 +39,9 @@
   <script defer>
     $('#{% for name, value in widget.attrs.items %}{% if name == 'id' %}{{ value|stringformat:'s' }}{% endif %}{% endfor %}').select2({
       templateResult: function (item) {
-        if(item.text.includes('<span>')){
-          return $(item.text)
+        let new_label = $(item.element).attr('inner');
+        if (new_label !== undefined && new_label.includes('<span>')){
+          return $(new_label)
         }
         return item.text
       }
