@@ -145,20 +145,28 @@ class WidgetUpdateView(ExtendView, UpdateView):
 
             attrs.update({"input_type": dict(FIELD_TYPE_DICT)[type(_field)]})
 
-            if widget.input_type == "text":
-                _class = "form-control form-control-lg form-control-solid "
-                if self.layout == FORM_LAYOUT_2_COL:
-                    _class = "form-control form-control-solid active "
-                if "class" in attrs:
-                    attrs["class"] = _class + attrs["class"]
-                else:
-                    attrs.update({"class": _class})
+            if hasattr(widget, "input_type"):
+                if widget.input_type in [
+                    "text",
+                    "number",
+                    "email",
+                    "url",
+                ]:
+                    _class = "form-control form-control-lg form-control-solid "
+                    if self.layout == FORM_LAYOUT_2_COL:
+                        _class = "form-control form-control-solid active "
+                    if "class" in attrs:
+                        attrs["class"] = _class + attrs["class"]
+                    else:
+                        attrs.update({"class": _class})
 
-            if widget.input_type == "select":
-                if type(_field) == ModelChoiceField:
-                    form.fields[field] = LabelModelChoiceField(_field.queryset)
-                elif type(_field) == ModelMultipleChoiceField:
-                    form.fields[field] = LabelModelMultipleChoiceField(_field.queryset)
+                if widget.input_type == "select":
+                    if type(_field) == ModelChoiceField:
+                        form.fields[field] = LabelModelChoiceField(_field.queryset)
+                    elif type(_field) == ModelMultipleChoiceField:
+                        form.fields[field] = LabelModelMultipleChoiceField(
+                            _field.queryset
+                        )
 
         for field in self.read_only_fields:
             _field = form.fields[field]
