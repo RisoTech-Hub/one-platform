@@ -90,7 +90,10 @@ def test_user_online(user: User):
 
 
 def test_user_online_verbose(user: User):
-    assert user.online_verbose() == "Offline"
+    offline = """<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-danger rounded-circle
+                  border border-4 border-white h-20px w-20px"></div>"""
+
+    assert user.online_dot_verbose() == offline
 
     now = datetime.datetime.now()
     cache.set(
@@ -98,4 +101,7 @@ def test_user_online_verbose(user: User):
         now,
         settings.USER_LASTSEEN_TIMEOUT,
     )
-    assert user.online_verbose() == "Online"
+    online = """<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle
+                      border border-4 border-white h-20px w-20px"></div>"""
+
+    assert user.online_dot_verbose() == online

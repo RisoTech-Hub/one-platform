@@ -44,6 +44,45 @@ class User(AbstractUser):
         """
         return reverse("users:detail", kwargs={"username": self.username})
 
+    # User Active status
+    def active_verbose(self):
+        if self.is_active:
+            return "Active"
+        return "Not Active"
+
+    def last_seen(self):
+        return cache.get("seen_%s" % self.username)
+
+    def online(self):
+        if self.last_seen():
+            now = datetime.datetime.now()
+            if now > self.last_seen() + datetime.timedelta(
+                seconds=settings.USER_ONLINE_TIMEOUT
+            ):
+                return False
+            else:
+                return True
+        else:
+            return False
+
+    def online_dot_verbose(self):
+        if self.online():
+            return """<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle
+                      border border-4 border-white h-20px w-20px"></div>"""
+        return """<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-danger rounded-circle
+                  border border-4 border-white h-20px w-20px"></div>"""
+
+    # End User Active status
+
+    # Browser Notification
+    @property
+    def is_notification_subcribe(self):
+        """Webpush subscribe"""
+        return self.webpush_info.all().count() > 0
+
+    # Browser Notification
+
+    # Display as HTML
     @property
     def display_name_html(self):
         """Get name or username"""
@@ -70,33 +109,3 @@ class User(AbstractUser):
                 <span class='badge badge-light-info fw-bolder fs-8 px-2 py-1
                 '>{name}</span>
             """
-
-    @property
-    def is_notification_subcribe(self):
-        """Webpush subscribe"""
-        return self.webpush_info.all().count() > 0
-
-    def active_verbose(self):
-        if self.is_active:
-            return "Active"
-        return "Not Active"
-
-    def last_seen(self):
-        return cache.get("seen_%s" % self.username)
-
-    def online(self):
-        if self.last_seen():
-            now = datetime.datetime.now()
-            if now > self.last_seen() + datetime.timedelta(
-                seconds=settings.USER_ONLINE_TIMEOUT
-            ):
-                return False
-            else:
-                return True
-        else:
-            return False
-
-    def online_verbose(self):
-        if self.online():
-            return "Online"
-        return "Offline"
