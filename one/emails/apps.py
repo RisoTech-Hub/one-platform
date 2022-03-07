@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
 
 class EmailsConfig(AppConfig):
@@ -7,7 +8,7 @@ class EmailsConfig(AppConfig):
     """
 
     name = "one.emails"
-    verbose_name = "Emails"
+    verbose_name = _("Emails")
 
     def ready(self):
         pass
