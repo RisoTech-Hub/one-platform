@@ -30,3 +30,5 @@ drf-spectacular==0.21.2
 django-filter==21.1 # https://github.com/carltongibson/django-filter
 django-url-filter==0.3.15 # https://github.com/miki725/django-url-filter
 django-webpush==0.3.4
+# DRF table
+djangorestframework-datatables==0.7.0
