@@ -24,7 +24,7 @@ profile_detail_view = ProfileDetailView.as_view()
 class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, WidgetUpdateView):
 
     model = User
-    fields = ["name", "dob", "username", "avatar"]
+    fields = ["name", "dob", "username", "avatar", "status"]
     success_message = _("Information successfully updated")
     layout = FORM_LAYOUT_2_COL
     read_only_fields = ["username"]

@@ -60,6 +60,7 @@ ACTION_DICT = (
 
 FIELD_TYPE_DICT = (
     (CharField, "TEXT"),
+    (CharField, "TEXT"),
     (DateField, "DATE"),
     (DateTimeField, "DATETIME"),
     (TimeField, "TIME"),
