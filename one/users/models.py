@@ -21,11 +21,6 @@ class User(AbstractUser):
     avatar: ImageField, path of avatar
     """
 
-    BLE = (
-        ("a", "a"),
-        ("b", "b"),
-        ("c", "c"),
-    )
     #: First and last name do not cover name patterns around the globe
     name = CharField(_("Name of User"), blank=True, max_length=255)
     dob = DateField(_("Day of birth"), blank=True, null=True)
@@ -40,7 +35,7 @@ class User(AbstractUser):
 
     class Meta:
         permissions = [
-            ("list_user", "Can get list of user"),
+            ("list_user", "Can list user"),
         ]
 
     def get_absolute_url(self):
