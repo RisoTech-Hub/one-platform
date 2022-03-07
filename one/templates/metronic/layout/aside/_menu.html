@@ -19,7 +19,7 @@
 
       {% if ENABLE_MENU_SETTINGS %}
       <div class="menu-item">
-        <a class="menu-link" href="#"
+        <a class="menu-link" href="{% url 'settings:list' %}"
            title="{% translate 'Settings' %}"
            data-bs-toggle="tooltip" data-bs-trigger="hover"
            data-bs-dismiss="click" data-bs-placement="right">

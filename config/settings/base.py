@@ -91,6 +91,7 @@ LOCAL_APPS = [
     "one.components",
     "one.emails",
     "one.users",
+    "one.settings",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -200,6 +201,8 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "one.users.context_processors.allauth_settings",
                 "one.utils.context_processors.applications_settings",
+                "one.utils.context_processors.menu_settings",
+                "one.settings.context_processors.setting_settings",
             ],
         },
     }
