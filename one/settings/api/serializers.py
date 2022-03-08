@@ -1,9 +1,10 @@
-from rest_framework.serializers import ModelSerializer, SerializerMethodField, UUIDField
+from rest_framework.serializers import SerializerMethodField, UUIDField
 
+from one.components.serializers import BaseSerializer
 from one.settings.models import Setting
 
 
-class SettingSerializer(ModelSerializer):
+class SettingSerializer(BaseSerializer):
     id = UUIDField(read_only=True)
     main_logo = SerializerMethodField()
 

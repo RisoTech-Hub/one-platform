@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
 User = get_user_model()
 
@@ -43,3 +43,13 @@ class BaseSerializer(FilterFieldSerializer):
 
     creator = UserNestedViewSerializer(read_only=True)
     last_modified_by = UserNestedViewSerializer(read_only=True)
+    time_created = SerializerMethodField()
+    time_modified = SerializerMethodField()
+
+    def get_time_created(self, obj):
+        """time_created in verbose"""
+        return obj.time_created.strftime("%Y-%m-%d %H:%M")
+
+    def get_time_modified(self, obj):
+        """time_modified in verbose"""
+        return obj.time_modified.strftime("%Y-%m-%d %H:%M")
