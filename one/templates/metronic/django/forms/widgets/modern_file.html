@@ -15,7 +15,10 @@
   {% endif %}
 </div>
 <script defer>
-  $("#{% for name, value in widget.attrs.items %}{% if name == 'id' %}{{ value|stringformat:'s' }}{% endif %}{% endfor %}").dropify(
-
+  $("#{% for name, value in widget.attrs.items %}{% if name == 'id' %}{{ value|stringformat:'s' }}{% endif %}{% endfor %}").dropify({
+tpl: {
+        clearButton:     '<button type="button" class="dropify-clear"><i class="bi bi-x fs-2"></i></button>',
+    }
+  }
   );
 </script>

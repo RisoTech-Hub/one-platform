@@ -2,17 +2,27 @@ $blue: #3699FF;
 .dropify-mordern-file {
   .dropify-wrapper {
     border: 2px dashed $blue;
+    overflow: visible;
 
     &:hover {
       .dropify-clear {
         color: $blue;
-        border-color: $blue;
+        background: #fff;
+        border-color: transparent;
+        border-radius: 50%;
+        line-height: 1;
+        padding: 0;
 
+        top: -16px;
+        right: -16px;
+
+        box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);
       }
     }
 
     .dropify-preview {
       .dropify-render {
+
         color: $blue;
 
         i {
