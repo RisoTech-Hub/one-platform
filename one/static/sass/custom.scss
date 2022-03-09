@@ -1,7 +1,11 @@
-.dropify-wrapper {
-  .dropify-message {
-    p {
-      font-size: 20px;
+.dropify-mordern-file{
+  .dropify-wrapper {
+    border: 2px dashed #3699FF;
+    .dropify-message {
+      p {
+        color: #3F4254;
+        font-size: 20px;
+      }
     }
   }
 }
