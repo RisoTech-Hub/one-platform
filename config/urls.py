@@ -22,6 +22,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     # Configurations
     path("settings/", include("one.settings.urls", namespace="settings")),
+    path("pages/", include("one.pages.urls", namespace="pages")),
     # NOTIFICATION
     path("webpush/", include("webpush.urls")),
     # Your stuff: custom urls includes go here

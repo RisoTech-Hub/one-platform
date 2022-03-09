@@ -92,6 +92,7 @@ LOCAL_APPS = [
     "one.emails",
     "one.users",
     "one.settings",
+    "one.pages",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
