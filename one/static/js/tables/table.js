@@ -29,7 +29,7 @@ var KTUsersList = function () {
                 }, // Disable ordering on column 0 (checkbox)
                 {
                     orderable: false,
-                    targets: 6,
+                    targets: -1,
                     render: function (data, type, full, meta) {
                         let _html = `<div class="form-check form-check-sm form-check-custom form-check-solid">
                                      <input class="form-check-input widget-9-check" type="checkbox" value="${data}">
