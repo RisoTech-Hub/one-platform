@@ -72,9 +72,7 @@ class NameModel(BaseModel):
     name: CharField, name of object
     """
 
-    name = CharField(
-        max_length=500, verbose_name=_("Name of %(class)s"), null=True, blank=True
-    )
+    name = CharField(max_length=500, verbose_name=_("Name"), null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -92,7 +90,7 @@ class LingualModel(BaseModel):
 
     language = CharField(
         max_length=2,
-        verbose_name=_("Language of %(class)s"),
+        verbose_name=_("Language"),
         choices=settings.LANGUAGES,
         default=settings.VIETNAMESE,
     )
