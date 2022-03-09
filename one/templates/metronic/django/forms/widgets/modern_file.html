@@ -1,6 +1,7 @@
 {% load i18n static %}
 <link rel="stylesheet" href="{% static 'js/plugins/dropify/dist/css/dropify.min.css' %}">
 <script src="{% static 'js/plugins/dropify/dist/js/dropify.min.js' %}"></script>
+<div class="">
 {% if widget.is_initial %}
 <input
   type="{{ widget.type }}"
@@ -12,6 +13,7 @@
   name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}
   {% include "django/forms/widgets/attrs.html" %}>
 {% endif %}
+</div>
 <script defer>
   $("#{% for name, value in widget.attrs.items %}{% if name == 'id' %}{{ value|stringformat:'s' }}{% endif %}{% endfor %}").dropify(
 
