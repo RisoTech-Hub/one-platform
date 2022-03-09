@@ -3,7 +3,7 @@ import datetime
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.core.cache import cache
-from django.db.models import CharField, DateField, ImageField
+from django.db.models import CharField, DateField, ImageField, TextField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
@@ -27,12 +27,15 @@ class User(AbstractUser):
     avatar = ImageField(
         _("Avatar of User"), blank=True, null=True, upload_to=user_avatar_directory_path
     )
+
+    status = TextField(_("Status of User"), blank=True, null=True)
+
     first_name = None  # type: ignore
     last_name = None  # type: ignore
 
     class Meta:
         permissions = [
-            ("list_user", "Can get list of user"),
+            ("list_user", "Can list user"),
         ]
 
     def get_absolute_url(self):
@@ -87,6 +90,19 @@ class User(AbstractUser):
     def display_name_html(self):
         """Get name or username"""
         return self.name if self.name else self.username
+
+    @property
+    def avatar_url(self):
+        return (
+            "/static/media/svg/avatars/blank.svg"
+            if not self.avatar
+            else self.avatar.url
+        )
+
+    @property
+    def display_choice_html(self):
+        image = f"<img class='rounded-circle me-2' src='{self.avatar_url}' style='width: 26px;'>"
+        return f"<span>{image} {self.display_name_html}</span>"
 
     @property
     def display_level_html(self):
