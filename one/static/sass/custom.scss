@@ -1,6 +1,36 @@
-.dropify-mordern-file{
+$blue: #3699FF;
+.dropify-mordern-file {
   .dropify-wrapper {
-    border: 2px dashed #3699FF;
+    border: 2px dashed $blue;
+
+    &:hover {
+      .dropify-clear {
+        color: $blue;
+        border-color: $blue;
+
+      }
+    }
+
+    .dropify-preview {
+      .dropify-render {
+        color: $blue;
+
+        i {
+          color: $blue;
+        }
+      }
+
+      .dropify-infos {
+        background: #f1faff;
+
+        .dropify-infos-inner {
+          p {
+            color: $blue;
+          }
+        }
+      }
+    }
+
     .dropify-message {
       p {
         color: #3F4254;

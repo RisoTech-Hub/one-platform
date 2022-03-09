@@ -6,5 +6,5 @@
   {% include "django/forms/widgets/attrs.html" %}>
 
 <script defer>
- $("#{% for name, value in widget.attrs.items %}{% if name == 'id' %}{{ value|stringformat:'s' }}{% endif %}{% endfor %}").mask('000.000.000.000.000,00', {reverse: true});
+  $("#{% for name, value in widget.attrs.items %}{% if name == 'id' %}{{ value|stringformat:'s' }}{% endif %}{% endfor %}").mask('000.000.000.000.000,00', {reverse: true});
 </script>
