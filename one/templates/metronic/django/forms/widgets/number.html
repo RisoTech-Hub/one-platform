@@ -1,7 +1,7 @@
-
+{% load i18n static %}
 <script src="{% static 'js/plugins/maskjs/dist/jquery.mask.min.js' %}"></script>
 <input
-  type="{{ widget.type }}"
+  type="text"
   name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}
   {% include "django/forms/widgets/attrs.html" %}>
 
