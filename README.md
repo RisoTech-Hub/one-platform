@@ -5,7 +5,7 @@ Starter kit for Django + Metronic lover!
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Template Metronic](https://img.shields.io/badge/Template-Metronic-brightgreen?logo=html5)](https://1.envato.market/NKe19P)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![Pytest coverage](https://img.shields.io/badge/Coverage-73%25-orange)]()
+[![Pytest coverage](https://img.shields.io/badge/Coverage-80%25-orange)]()
 
 License: MIT
 
