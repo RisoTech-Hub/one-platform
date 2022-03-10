@@ -149,7 +149,7 @@ class WidgetUpdateView(ExtendView, UpdateView):
 
     def get_context_data(self, **kwargs):
         """Auto add class to form field, and read only field"""
-        kwargs = super(WidgetUpdateView, self).get_context_data(**kwargs)
+        kwargs = super().get_context_data(**kwargs)
         kwargs["breadcrumb"] = self.breadcrumb()
         kwargs.update({"layout": self.layout})
         form = kwargs["form"]
@@ -176,9 +176,9 @@ class WidgetUpdateView(ExtendView, UpdateView):
                         attrs.update({"class": _class})
 
                 if widget.input_type == "select":
-                    if type(_field) == ModelChoiceField:
+                    if isinstance(_field, ModelChoiceField):
                         form.fields[field] = LabelModelChoiceField(_field.queryset)
-                    elif type(_field) == ModelMultipleChoiceField:
+                    elif isinstance(_field, ModelMultipleChoiceField):
                         form.fields[field] = LabelModelMultipleChoiceField(
                             _field.queryset
                         )
