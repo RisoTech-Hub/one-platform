@@ -186,7 +186,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         # https://docs.djangoproject.com/en/dev/ref/settings/#dirs
         # TODO: update template folder name
-        "DIRS": [str(APPS_DIR / "templates" / "metronic"), str(APPS_DIR / "templates")],
+        "DIRS": [str(APPS_DIR / "templates")],
         # https://docs.djangoproject.com/en/dev/ref/settings/#app-dirs
         "APP_DIRS": True,
         "OPTIONS": {

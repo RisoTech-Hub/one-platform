@@ -1,17 +1,24 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% load static i18n object_tags %}
 
-{% block title %}{{ user.username }}{% endblock %}
+{% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
-  <h1>{{ user.username }}</h1>
-  <form class="form-horizontal" method="post" action="{% url 'users:update' %}">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <div class="control-group">
-      <div class="controls">
-        <button type="submit" class="btn btn-primary">Update</button>
-      </div>
+  <!--begin::Container-->
+  {% include 'users/_user_card.html' with user=request.user %}
+  <!--begin::Basic info-->
+  <div class="card mb-5 mb-xl-10">
+    <!--begin::Content-->
+    <div id="kt_account_settings_profile_details"
+         class="collapse show">
+      {% if layout == '1COL' %}
+        {% include 'partials/widgets/forms/one-col-form.html' with form=form action_url='.' %}
+      {% else %}
+        {% include 'partials/widgets/forms/two-col-form.html' with form=form action_url='.' %}
+      {% endif %}
     </div>
-  </form>
-{% endblock %}
+    <!--end::Content-->
+  </div>
+  <!--end::Basic info-->
+  <!--end::Container-->
+{% endblock content %}
