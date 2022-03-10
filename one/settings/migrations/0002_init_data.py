@@ -5,7 +5,7 @@ def setting_forward(apps, schema_editor):
     """Auto create Default setting"""
     Setting = apps.get_model("settings", "Setting")
     Setting.objects.create(
-        name="Default", is_active=True, main_logo="/static/media/logos/logo-1-dark.svg"
+        name="Default", is_active=True, main_logo="/logos/logo-1-dark.svg"
     )
 
 
