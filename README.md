@@ -43,10 +43,12 @@ projects quickly.
 - Webpush
   notification [document](https://github.com/safwanrahman/django-webpush)
 - Multi Language
+- Custom django field widgets with metronic
+
 
 ## Incoming Features
 
-- Custom django field widgets with metronic
+- Flatpage management
 
 ## Screenshots
 
@@ -54,16 +56,18 @@ projects quickly.
   <tr>
     <td><img src="./one/static/images/readme/01.png" alt="1" width = 380px height = 500px ></td>
     <td><img src="./one/static/images/readme/02.png" alt="2" width = 380px height = 500px></td>
-    <td><img src="./one/static/images/readme/03.png" alt="3" width = 380px height = 500px></td>
+    
   </tr>
   <tr>
+    <td><img src="./one/static/images/readme/03.png" alt="3" width = 380px height = 500px></td>
     <td><img src="./one/static/images/readme/04.png" alt="4" width = "380px" height = "500px" ></td>
+  </tr>
+  <tr>
     <td><img src="./one/static/images/readme/05.png" alt="5" width = 380px height = 500px></td>
     <td><img src="./one/static/images/readme/06.png" alt="6" width = 380px height = 500px></td>
   </tr>
   <tr>
       <td><img src="./one/static/images/readme/07.png" alt="4" width = 380px height = 500px ></td>
-      <td></td>
       <td></td>
     </tr>
 </table>
