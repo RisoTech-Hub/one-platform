@@ -25,3 +25,8 @@ class EmailTemplate(LingualModel):
     subject = CharField(_("Subject of email"), max_length=1000, blank=True, null=True)
     is_protected = BooleanField(_("Is protected"), default=False)
     content = TextField(_("Html content"))
+
+    class Meta:
+        permissions = [
+            ("list_emailtemplate", "Can list email template"),
+        ]

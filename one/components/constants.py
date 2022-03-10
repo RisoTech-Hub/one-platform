@@ -1,3 +1,24 @@
+from django.forms.fields import (
+    BooleanField,
+    CharField,
+    DateField,
+    DateTimeField,
+    DecimalField,
+    DurationField,
+    EmailField,
+    FileField,
+    FloatField,
+    GenericIPAddressField,
+    ImageField,
+    IntegerField,
+    JSONField,
+    NullBooleanField,
+    SlugField,
+    TimeField,
+    URLField,
+    UUIDField,
+)
+from django.forms.models import ModelChoiceField, ModelMultipleChoiceField
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 
@@ -35,4 +56,28 @@ ACTION_DICT = (
     (ACTION_LIST, _("(Action) List")),
     (ACTION_VIEW, _("(Action) View")),
     (ACTION_UPDATE, _("(Action) Update")),
+)
+
+FIELD_TYPE_DICT = (
+    (CharField, "TEXT"),
+    (CharField, "TEXT"),
+    (DateField, "DATE"),
+    (DateTimeField, "DATETIME"),
+    (TimeField, "TIME"),
+    (ImageField, "IMAGE"),
+    (FileField, "FILE"),
+    (BooleanField, "SWITCH"),
+    (NullBooleanField, "NULLSWITCH"),
+    (ModelMultipleChoiceField, "ModelMultipleChoice"),
+    (ModelChoiceField, "ModelChoice"),
+    (DecimalField, "NUMBER"),
+    (FloatField, "NUMBER"),
+    (IntegerField, "NUMBER"),
+    (DurationField, "RANGE"),
+    (EmailField, "EMAIL"),
+    (GenericIPAddressField, "IP"),
+    (JSONField, "JSON"),
+    (SlugField, "SLUG"),
+    (UUIDField, "SLUG"),
+    (URLField, "URL"),
 )
