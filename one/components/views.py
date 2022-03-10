@@ -1,6 +1,6 @@
 from django.forms.models import ModelChoiceField, ModelMultipleChoiceField
 from django.http import Http404
-from django.urls import reverse
+from django.urls import NoReverseMatch, reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 
@@ -45,8 +45,6 @@ class ExtendView:
                     ),
                 ]
             ):
-                from django.urls import NoReverseMatch
-
                 try:
                     parent = reverse(f"{model_meta.app_label}:list")
                 except NoReverseMatch:
