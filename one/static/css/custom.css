@@ -1,0 +1,33 @@
+.dropify-mordern-file .dropify-wrapper {
+  border: 2px dashed #3699FF;
+  overflow: visible;
+}
+.dropify-mordern-file .dropify-wrapper:hover .dropify-clear {
+  color: #3699FF;
+  background: #fff;
+  border-color: transparent;
+  border-radius: 50%;
+  line-height: 1;
+  padding: 0;
+  top: -16px;
+  right: -16px;
+  box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);
+}
+.dropify-mordern-file .dropify-wrapper .dropify-preview .dropify-render {
+  color: #3699FF;
+}
+.dropify-mordern-file .dropify-wrapper .dropify-preview .dropify-render i {
+  color: #3699FF;
+}
+.dropify-mordern-file .dropify-wrapper .dropify-preview .dropify-infos {
+  background: #f1faff;
+}
+.dropify-mordern-file .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p {
+  color: #3699FF;
+}
+.dropify-mordern-file .dropify-wrapper .dropify-message p {
+  color: #3F4254;
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=custom.css.map */
