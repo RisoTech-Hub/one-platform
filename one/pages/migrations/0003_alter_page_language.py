@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pages', '0002_init_data'),
+        ("pages", "0002_init_data"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='page',
-            name='language',
-            field=models.CharField(choices=[('vi', 'Vietnamese'), ('en', 'English')], default='vi', max_length=2, verbose_name='Language'),
+            model_name="page",
+            name="language",
+            field=models.CharField(
+                choices=[("vi", "Vietnamese"), ("en", "English")],
+                default="vi",
+                max_length=2,
+                verbose_name="Language",
+            ),
         ),
     ]

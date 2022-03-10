@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0003_user_status'),
+        ("users", "0003_user_status"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='user',
-            options={'permissions': [('list_user', 'Can list user')]},
+            name="user",
+            options={"permissions": [("list_user", "Can list user")]},
         ),
     ]

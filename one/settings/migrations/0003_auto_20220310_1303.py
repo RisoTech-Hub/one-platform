@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('settings', '0002_init_data'),
+        ("settings", "0002_init_data"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='setting',
+            name="setting",
             options={},
         ),
         migrations.AlterField(
-            model_name='setting',
-            name='is_active',
-            field=models.BooleanField(default=False, verbose_name='Is active'),
+            model_name="setting",
+            name="is_active",
+            field=models.BooleanField(default=False, verbose_name="Is active"),
         ),
     ]

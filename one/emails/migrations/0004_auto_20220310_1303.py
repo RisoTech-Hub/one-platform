@@ -6,17 +6,24 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('emails', '0003_init_data'),
+        ("emails", "0003_init_data"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='emailtemplate',
-            options={'permissions': [('list_emailtemplate', 'Can list email template')]},
+            name="emailtemplate",
+            options={
+                "permissions": [("list_emailtemplate", "Can list email template")]
+            },
         ),
         migrations.AlterField(
-            model_name='emailtemplate',
-            name='language',
-            field=models.CharField(choices=[('vi', 'Vietnamese'), ('en', 'English')], default='vi', max_length=2, verbose_name='Language'),
+            model_name="emailtemplate",
+            name="language",
+            field=models.CharField(
+                choices=[("vi", "Vietnamese"), ("en", "English")],
+                default="vi",
+                max_length=2,
+                verbose_name="Language",
+            ),
         ),
     ]
