@@ -5,8 +5,12 @@ Starter kit for Django + Metronic lover!
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Template Metronic](https://img.shields.io/badge/Template-Metronic-brightgreen?logo=html5)](https://1.envato.market/NKe19P)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![Pytest coverage](https://img.shields.io/badge/Coverage-80%25-orange)]()
 [![License](https://img.shields.io/github/license/riso-tech/one-platform)]()
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/riso-tech/one-platform/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/riso-tech/one-platform/?branch=main)
+[![Code Coverage](https://scrutinizer-ci.com/g/riso-tech/one-platform/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/riso-tech/one-platform/?branch=main)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/riso-tech/one-platform/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+[![Build Status](https://scrutinizer-ci.com/g/riso-tech/one-platform/badges/build.png?b=main)](https://scrutinizer-ci.com/g/riso-tech/one-platform/build-status/main)
 
 **One Platform** is a framework for jumpstarting production-ready Django
 projects quickly.
@@ -55,7 +59,7 @@ projects quickly.
   <tr>
     <td><img src="./one/static/images/readme/01.png" alt="1" width = 380px height = 500px ></td>
     <td><img src="./one/static/images/readme/02.png" alt="2" width = 380px height = 500px></td>
-    
+
   </tr>
   <tr>
     <td><img src="./one/static/images/readme/03.png" alt="3" width = 380px height = 500px></td>
