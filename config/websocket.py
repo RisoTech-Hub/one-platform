@@ -1,4 +1,9 @@
+"""Application Socket"""
+
+
 async def websocket_application(scope, receive, send):
+    """Default application socket"""
+
     while True:
         event = await receive()
 

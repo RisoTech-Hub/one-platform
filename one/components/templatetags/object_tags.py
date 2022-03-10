@@ -8,10 +8,10 @@ register = template.Library()
 def object_value(value, arg):
     """return value of object in arg"""
     # In case get value from dict
-    if type(arg) == dict and value in arg:
+    if isinstance(arg, dict) and value in arg:
         return arg[value]
     # In case value is tuple for nested object
-    if type(value) == tuple:
+    if isinstance(value, tuple):
         try:
             data = eval(f"arg.{value[1]}.get_{value[0]}_html")
         except AttributeError:
