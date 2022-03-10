@@ -17,6 +17,8 @@ from one.components.widgets import LabelModelChoiceField, LabelModelMultipleChoi
 class ExtendView:
     """Add custom function for View"""
 
+    model = None
+
     def breadcrumb(self):
         """
         List of breadcrumb object
@@ -81,6 +83,8 @@ class ExtendView:
 class ExposeListView(ExtendView, ListView):
     """Auto add model fields to context of ListView"""
 
+    object_list = None
+
     def get(self, request, *args, **kwargs):
         """add model fields to context"""
         self.object_list = self.get_queryset()
@@ -124,6 +128,8 @@ class ExposeListView(ExtendView, ListView):
 class ExposeDetailView(ExtendView, DetailView):
     """Auto add model fields to context of DetailView"""
 
+    object = None
+
     def get(self, request, *args, **kwargs):
         """add model fields to context"""
         self.object = self.get_object()
@@ -138,6 +144,7 @@ class ExposeDetailView(ExtendView, DetailView):
 class WidgetUpdateView(ExtendView, UpdateView):
     """Override context data"""
 
+    read_only_fields = []
     layout = FORM_LAYOUT_1_COL
 
     def get_context_data(self, **kwargs):

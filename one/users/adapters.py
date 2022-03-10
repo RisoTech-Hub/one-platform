@@ -37,7 +37,7 @@ class AccountAdapter(DefaultAccountAdapter):
             "account/email/email_confirmation": "allauth_confirm",
             "account/email/unknown_account": "allauth_unknown",
         }
-        # TODO: Add context for subject
+
         subject_context = {}
 
         mail_type = subjects[template_prefix]

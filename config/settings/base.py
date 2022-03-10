@@ -329,15 +329,19 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": (
         "rest_framework_datatables.filters.DatatablesFilterBackend",
     ),
-    "DEFAULT_PAGINATION_CLASS": "rest_framework_datatables.pagination.DatatablesPageNumberPagination",
+    "DEFAULT_PAGINATION_CLASS": (
+        "rest_framework_datatables.pagination.DatatablesPageNumberPagination"
+    ),
     "PAGE_SIZE": 50,
 }
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_URLS_REGEX = r"^/api/.*$"
 
-# By Default swagger ui is available only to admin user(s). You can change permission classes to change that
-# See more configuration options at https://drf-spectacular.readthedocs.io/en/latest/settings.html#settings
+# By Default swagger ui is available only to admin user(s).
+# You can change permission classes to change that
+# See more configuration options at
+# https://drf-spectacular.readthedocs.io/en/latest/settings.html#settings
 SPECTACULAR_SETTINGS = {
     "TITLE": "Riso Tech one platform API",
     "DESCRIPTION": "Documentation of API endpoints of Riso Tech one platform",
