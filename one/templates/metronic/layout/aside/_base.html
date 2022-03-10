@@ -10,8 +10,8 @@
   <!--begin::Brand-->
   <div class="aside-logo flex-column-auto" id="kt_aside_logo">
     <!--begin::Logo-->
-    <a href="?page=index">
-      <img alt="Logo" src="{% static 'media/logos/logo-1-dark.svg' %}"
+    <a href="{% url 'users:detail' request.user.username %}">
+      <img alt="Logo" src="{{ MAIN_LOGO }}"
            class="h-25px logo"/>
     </a>
     <!--end::Logo-->

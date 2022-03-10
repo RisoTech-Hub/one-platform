@@ -91,6 +91,8 @@ LOCAL_APPS = [
     "one.components",
     "one.emails",
     "one.users",
+    "one.settings",
+    "one.pages",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -200,6 +202,8 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "one.users.context_processors.allauth_settings",
                 "one.utils.context_processors.applications_settings",
+                "one.utils.context_processors.menu_settings",
+                "one.settings.context_processors.setting_settings",
             ],
         },
     }
@@ -319,6 +323,16 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_RENDERER_CLASSES": (
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+        "rest_framework_datatables.renderers.DatatablesRenderer",
+    ),
+    "DEFAULT_FILTER_BACKENDS": (
+        "rest_framework_datatables.filters.DatatablesFilterBackend",
+    ),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework_datatables.pagination.DatatablesPageNumberPagination",
+    "PAGE_SIZE": 50,
 }
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup

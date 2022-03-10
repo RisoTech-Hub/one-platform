@@ -10,8 +10,7 @@
           class="symbol symbol-100px symbol-lg-55px symbol-fixed position-relative">
           <img src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'media/svg/avatars/blank.svg' %}{% endif %}"
                alt="image"/>
-          <div
-            class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
+          {{ user.online_dot_verbose|safe }}
         </div>
       </div>
       <!--end::Pic-->

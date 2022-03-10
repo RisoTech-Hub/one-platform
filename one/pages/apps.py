@@ -2,13 +2,13 @@ from django.apps import AppConfig
 from django.utils.translation import gettext_lazy as _
 
 
-class EmailsConfig(AppConfig):
+class PagesConfig(AppConfig):
     """
-    AppConfig of emails module
+    AppConfig of pages module
     """
 
-    name = "one.emails"
-    verbose_name = _("Emails")
+    name = "one.pages"
+    verbose_name = _("Page")
 
     def ready(self):
         pass

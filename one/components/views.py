@@ -70,6 +70,13 @@ class ExtendView:
             "current": f"{_(action)} {object_name}",
         }
 
+    def get_endpoint(self):
+        """Dictionary of default endpoint"""
+        model_meta = self.model._meta
+        title = model_meta.verbose_name_plural
+
+        return {"LIST": reverse(f"api:{title}-list")}
+
 
 class ExposeListView(ExtendView, ListView):
     """Auto add model fields to context of ListView"""
@@ -110,6 +117,7 @@ class ExposeListView(ExtendView, ListView):
         ]
 
         context["breadcrumb"] = self.breadcrumb()
+        context["ENDPOINT"] = self.get_endpoint()
         return self.render_to_response(context)
 
 
