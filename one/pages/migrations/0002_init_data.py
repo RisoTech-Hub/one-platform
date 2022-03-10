@@ -6,7 +6,7 @@ def add_page_forward(apps, schema_editor):
     """Auto create Page"""
     Page = apps.get_model("pages", "Page")
 
-    template = str(settings.APPS_DIR / "templates" / "metronic")
+    template = str(settings.APPS_DIR / "templates")
 
     Page.objects.create(
         name="Homepage",
