@@ -57,6 +57,6 @@ def _get_o2o_fields(fields):
     return _fields
 
 
-def eval_expression(input_string):
+def eval_expression(arg, input_string):
     """call eval only in code"""
     return eval(input_string)

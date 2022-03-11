@@ -15,14 +15,14 @@ def object_value(value, arg):
     # In case value is tuple for nested object
     if isinstance(value, tuple):
         try:
-            data = eval_expression(f"arg.{value[1]}.get_{value[0]}_html")
+            data = eval_expression(arg, f"arg.{value[1]}.get_{value[0]}_html")
         except AttributeError:
-            data = eval_expression(f"arg.{value[1]}.get_{value[0]}_display()")
+            data = eval_expression(arg, f"arg.{value[1]}.get_{value[0]}_display()")
         return data
     # In case get value in object
     if value not in ["", None] and hasattr(arg, value):
         try:
-            data = eval_expression(f"arg.get_{value}_html")
+            data = eval_expression(arg, f"arg.get_{value}_html")
         except AttributeError:
             _value = getattr(arg, value)
             data = _(_value) if isinstance(_value, str) else _value
