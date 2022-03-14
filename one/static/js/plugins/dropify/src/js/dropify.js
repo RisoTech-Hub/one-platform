@@ -166,7 +166,9 @@ Dropify.prototype.createElements = function()
 Dropify.prototype.readFile = function(input)
 {
     if (input.files && input.files[0]) {
+        /** global: FileReader */
         var reader         = new FileReader();
+        /** global: Image */
         var image          = new Image();
         var file           = input.files[0];
         var srcBase64      = null;
