@@ -71,12 +71,16 @@ var KTUsersList = function () {
             toggleToolbars();
         });
 
-        $('[data-kt-check="true"]').on('change', function () {
+        $('input[data-kt-check="true"]').on('change', function () {
             if (this.checked) {
                 $('tbody td [type="checkbox"]').prop('checked', true)
             } else {
                 $('tbody td [type="checkbox"]').prop('checked', false)
             }
+            toggleToolbars();
+        })
+
+        $('#kt_table_settings tbody td input[type="checkbox"]').on('change', function () {
             toggleToolbars();
         })
     }
@@ -310,6 +314,8 @@ var KTUsersList = function () {
             toolbarBase.classList.remove('d-none');
             toolbarSelected.classList.add('d-none');
         }
+
+        $('input[data-kt-check="true"]').prop('checked', totalCount === count)
     }
 
     return {
