@@ -7,31 +7,22 @@ var KTUsersList = function () {
     var toolbarBase;
     var toolbarSelected;
     var selectedCount;
-
+    var totalCount = 0;
     // Private functions
     var initUserTable = function () {
         // Init datatable --- more info on datatables: https://datatables.net/manual/
         datatable = $(table).DataTable({
-            "info": false,
-            'order': [],
-            "pageLength": 10,
-            "lengthChange": false,
-            'columnDefs': [
-                {
-                    orderable: false,
-                    targets: 0,
-                    render: function (data, type, full, meta) {
-                        let _html = `<div class="form-check form-check-sm form-check-custom form-check-solid">
+            "info": false, 'order': [], "pageLength": 10, "lengthChange": false, 'columnDefs': [{
+                orderable: false,// Disable ordering on column 0 (checkbox)
+                targets: 0, render: function (data, type, full, meta) {
+                    return `<div class="form-check form-check-sm form-check-custom form-check-solid">
                                      <input class="form-check-input widget-9-check" type="checkbox" value="${data}">
                                      </div>`
-                        return _html
-                    }
-                }, // Disable ordering on column 0 (checkbox)
-                {
-                    orderable: false,
-                    targets: -1,
-                    render: function (data, type, full, meta) {
-                        let _html = `<div class="d-flex justify-content-end flex-shrink-0">
+                }
+            }, {
+                orderable: false,// Disable ordering on column (actions)
+                targets: -1, render: function (data, type, full, meta) {
+                    return `<div class="d-flex justify-content-end flex-shrink-0">
 																		<a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
 																			<span class="svg-icon svg-icon-3">
@@ -52,7 +43,8 @@ var KTUsersList = function () {
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
-																		<a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                                        <!-- TODO: get url delete here	-->
+																		<a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-url="url_delete_here" data-kt-users-table-filter="delete_row">
 																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
 																			<span class="svg-icon svg-icon-3">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -63,11 +55,13 @@ var KTUsersList = function () {
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
-																	</div>`
-                        return _html
-                    }
-                }, // Disable ordering on column 6 (actions)
-            ]
+																	</div>`;
+                }
+            },], drawCallback: function (settings) {
+                if (settings && settings['json']) {
+                    totalCount = parseInt(settings['json']['recordsFiltered'])
+                }
+            }
         });
 
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
@@ -76,6 +70,15 @@ var KTUsersList = function () {
             handleDeleteRows();
             toggleToolbars();
         });
+
+        $('[data-kt-check="true"]').on('change', function () {
+            if (this.checked) {
+                $('tbody td [type="checkbox"]').prop('checked', true)
+            } else {
+                $('tbody td [type="checkbox"]').prop('checked', false)
+            }
+            toggleToolbars();
+        })
     }
 
     // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
@@ -145,29 +148,31 @@ var KTUsersList = function () {
             // Delete button on click
             d.addEventListener('click', function (e) {
                 e.preventDefault();
-
+                let url_delete = $(this).attr('data-url')
                 // Select parent row
-                const parent = e.target.closest('tr');
+                // const parent = e.target.closest('tr');
 
                 // Get user name
-                const userName = parent.querySelectorAll('td')[1].querySelectorAll('a')[1].innerText;
+                // const userName = parent.querySelectorAll('td')[1].querySelectorAll('a')[1].innerText;
 
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
-                    text: "Are you sure you want to delete " + userName + "?",
+                    text: "Are you sure you want to delete this(these) record?",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: false,
                     confirmButtonText: "Yes, delete!",
                     cancelButtonText: "No, cancel",
                     customClass: {
-                        confirmButton: "btn fw-bold btn-danger",
-                        cancelButton: "btn fw-bold btn-active-light-primary"
+                        confirmButton: "btn fw-bold btn-danger", cancelButton: "btn fw-bold btn-active-light-primary"
                     }
                 }).then(function (result) {
                     if (result.value) {
+                        // TODO: call ajax delete by get url from data-url DOM
+                        console.log('url_delete', url_delete)
+
                         Swal.fire({
-                            text: "You have deleted " + userName + "!.",
+                            text: "You have deleted !",
                             icon: "success",
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
@@ -176,14 +181,16 @@ var KTUsersList = function () {
                             }
                         }).then(function () {
                             // Remove current row
-                            datatable.row($(parent)).remove().draw();
+                            // datatable.row($(parent)).remove().draw();
+
+
                         }).then(function () {
                             // Detect checked checkboxes
                             toggleToolbars();
                         });
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire({
-                            text: customerName + " was not deleted.",
+                            text: "This record was not deleted.",
                             icon: "error",
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
@@ -221,22 +228,23 @@ var KTUsersList = function () {
 
         // Deleted selected rows
         deleteSelected.addEventListener('click', function () {
+            // TODO: get data-url here
+            const url_delete = $(this).attr('data-url')
             // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
             Swal.fire({
-                text: "Are you sure you want to delete selected customers?",
+                text: "Are you sure you want to delete selected records?",
                 icon: "warning",
                 showCancelButton: true,
                 buttonsStyling: false,
                 confirmButtonText: "Yes, delete!",
                 cancelButtonText: "No, cancel",
                 customClass: {
-                    confirmButton: "btn fw-bold btn-danger",
-                    cancelButton: "btn fw-bold btn-active-light-primary"
+                    confirmButton: "btn fw-bold btn-danger", cancelButton: "btn fw-bold btn-active-light-primary"
                 }
             }).then(function (result) {
                 if (result.value) {
                     Swal.fire({
-                        text: "You have deleted all selected customers!.",
+                        text: "You have deleted all selected records!.",
                         icon: "success",
                         buttonsStyling: false,
                         confirmButtonText: "Ok, got it!",
@@ -244,6 +252,9 @@ var KTUsersList = function () {
                             confirmButton: "btn fw-bold btn-primary",
                         }
                     }).then(function () {
+                        // TODO: call ajax delete
+                        console.log('url_delete', url_delete)
+
                         // Remove all selected customers
                         checkboxes.forEach(c => {
                             if (c.checked) {
@@ -259,15 +270,15 @@ var KTUsersList = function () {
                         initToggleToolbar(); // Re-init toolbar to recalculate checkboxes
                     });
                 } else if (result.dismiss === 'cancel') {
-                    Swal.fire({
-                        text: "Selected customers was not deleted.",
-                        icon: "error",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn fw-bold btn-primary",
-                        }
-                    });
+                    // Swal.fire({
+                    //     text: "Selected customers was not deleted.",
+                    //     icon: "error",
+                    //     buttonsStyling: false,
+                    //     confirmButtonText: "Ok, got it!",
+                    //     customClass: {
+                    //         confirmButton: "btn fw-bold btn-primary",
+                    //     }
+                    // });
                 }
             });
         });
@@ -276,8 +287,8 @@ var KTUsersList = function () {
     // Toggle toolbars
     const toggleToolbars = () => {
         // Select refreshed checkbox DOM elements
-        const allCheckboxes = table.querySelectorAll('tbody [type="checkbox"]');
-
+        const allCheckboxes = table.querySelectorAll('tbody td [type="checkbox"]');
+        // console.log('allcheckbox', allCheckboxes)
         // Detect checkboxes state & count
         let checkedState = false;
         let count = 0;
