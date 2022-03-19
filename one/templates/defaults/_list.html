@@ -82,9 +82,16 @@
   <!--begin::Page Vendors Javascript(used by this page)-->
   <script
     src="{% static 'plugins/custom/datatables/datatables.bundle.js' %}"></script>
+  <script
+    src="{% static 'js/tables/table.js' %}"></script>
   <!--end::Page Vendors Javascript-->
 {% endblock javascript %}
 {% block inline_javascript %}
-  <script
-    src="{% static 'js/tables/table.js' %}"></script>
+{#  <script>#}
+{#    {{ ENDPOINT.CHOICE 'name' }} => list ['a', 'b'] => options => "name_id"#}
+{#    {{ ENDPOINT.DELETE }} method DELETE ["id", "id"]#}
+{#  $('#kt_table_settings').KTUser(){#}
+{#  delete_message = {% translate 'are you sure to delete?' %}#}
+{#  }#}
+{#  </script>#}
 {% endblock inline_javascript %}
