@@ -10,7 +10,7 @@ from one.components.constants import (
     FORM_LAYOUT_1_COL,
     FORM_LAYOUT_2_COL,
 )
-from one.components.utils import _get_choices, _get_fields, _get_lookups
+from one.components.utils import _get_fields, _get_lookups
 from one.components.widgets import LabelModelChoiceField, LabelModelMultipleChoiceField
 
 
@@ -78,6 +78,7 @@ class ExtendView:
         return {
             "LIST": reverse(f"api:{title}-list"),
             "DELETE": reverse(f"api:{title}-delete"),
+            "CHOICES": reverse(f"api:{title}-get-choices"),
         }
 
 
@@ -118,7 +119,7 @@ class ExposeListView(ExtendView, ListView):
                 "verbose": item.verbose_name,
                 "type": item.get_internal_type(),
                 "lookups": _get_lookups(item),
-                "choices": _get_choices(self.model, item.name),
+                "choices": [],
             }
             for item in fields
         ]

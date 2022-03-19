@@ -14,15 +14,40 @@ class BaseModelViewSet(ModelViewSet):
         """return model of class"""
         return self.serializer_class.Meta.model
 
-    def is_protected(self):
-        """Check if model have is_protect field"""
+    def field_exist(self, field):
+        """
+        Check if field exist in model
+        :param field:
+        :return:
+        """
         try:
-            field = self.get_model()._meta.get_field("is_protected")
+            field = self.get_model()._meta.get_field(field)
         except FieldDoesNotExist:
             return False
         if field.is_relation:
             return False
         return True
+
+    def is_protected(self):
+        """Check if model have is_protect field"""
+        return self.field_exist("is_protected")
+
+    @action(detail=False, methods=["get"], url_path="get-choices")
+    def get_choices(self, request, *args, **kwargs):
+        """
+        Return choice for field
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        field = request.GET.get("field")
+        if not field or not self.field_exist(field):
+            return Response(data=[])
+
+        return Response(
+            data=self.get_model().objects.all().values_list(field, flat=True).distinct()
+        )
 
     @action(detail=False, methods=["delete"])
     def delete(self, request, *args, **kwargs):

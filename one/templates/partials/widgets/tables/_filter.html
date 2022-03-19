@@ -23,6 +23,7 @@
   <!--begin::Content-->
   <div class="row px-7 py-5" data-kt-user-table-filter="form">
     {% for field in fields %}
+      {% if field.col != 'content' %}
       <!--begin::Input group-->
       <div class="col-md-4 form-floating">
           <select class="form-select" id="{{ field.col }}_id" aria-label="{{ field.verbose }}">
@@ -34,6 +35,7 @@
           <label for="{{ field.col }}_id">{{ field.verbose }}</label>
       </div>
       <!--end::Input group-->
+      {% endif %}
    {% endfor %}
     <!--begin::Actions-->
     <div class="d-flex justify-content-end">
