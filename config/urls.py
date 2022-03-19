@@ -23,6 +23,7 @@ urlpatterns = [
     # Configurations
     path("settings/", include("one.settings.urls", namespace="settings")),
     path("pages/", include("one.pages.urls", namespace="pages")),
+    path("emails/", include("one.emails.urls", namespace="emails")),
     # NOTIFICATION
     path("webpush/", include("webpush.urls")),
     # Your stuff: custom urls includes go here

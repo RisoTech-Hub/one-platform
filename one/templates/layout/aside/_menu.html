@@ -45,7 +45,7 @@
 
       {% if ENABLE_MENU_EMAIL_TEMPLATE %}
       <div class="menu-item">
-        <a class="menu-link" href="#"
+        <a class="menu-link" href="{% url 'emails:list' %}"
            title="{% translate 'Email Templates' %}"
            data-bs-toggle="tooltip" data-bs-trigger="hover"
            data-bs-dismiss="click" data-bs-placement="right">

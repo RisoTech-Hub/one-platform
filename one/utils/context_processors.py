@@ -13,7 +13,7 @@ def menu_settings(request):
     """Base Menu config"""
     menus = {
         "ENABLE_MENU_SETTINGS": True,
-        "ENABLE_MENU_EMAIL_TEMPLATE": False,
+        "ENABLE_MENU_EMAIL_TEMPLATE": True,
         "ENABLE_MENU_USER_MANAGEMENT": False,
         "ENABLE_MENU_PAGES": True,
     }
