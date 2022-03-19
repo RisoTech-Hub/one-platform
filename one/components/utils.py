@@ -36,6 +36,11 @@ def _get_lookups(field):
     return [item for item in field.get_lookups()]
 
 
+def _get_choices(model, field):
+    """Choice option of field"""
+    return model.objects.all().values_list(field, flat=True).distinct()
+
+
 def _get_o2o_fields(fields):
     """Get list of nested field in o2o fields"""
     o2o_fields = [
