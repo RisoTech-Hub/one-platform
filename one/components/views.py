@@ -77,6 +77,7 @@ class ExtendView:
 
         return {
             "LIST": reverse(f"api:{title}-list"),
+            "DELETE": reverse(f"api:{title}-delete"),
         }
 
 

@@ -27,6 +27,7 @@ def add_email_template_forward(apps, schema_editor):
         EmailTemplate.objects.create(
             code=subject,
             language="en",
+            is_protected=True,
             subject=open(
                 "{0}/{1}_subject.txt".format(path, subjects[subject]),
                 "r",
