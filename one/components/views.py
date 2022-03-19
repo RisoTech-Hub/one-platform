@@ -139,7 +139,7 @@ class ExposeDetailView(ExtendView, DetailView):
         return self.render_to_response(context)
 
 
-class WidgetUpdateView(ExtendView, UpdateView):
+class ExposeUpdateView(ExtendView, UpdateView):
     """Override context data"""
 
     read_only_fields = []
