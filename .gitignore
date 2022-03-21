@@ -334,5 +334,6 @@ one/media/
 /one/templates/metronic/_base-full.html
 
 /one/static/sass/*.css.map
+/one/static/css/*.css.map
 /package-lock.json
 /package.json
