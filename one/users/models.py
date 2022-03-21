@@ -47,6 +47,25 @@ class User(AbstractUser):
         """
         return reverse("users:detail", kwargs={"username": self.username})
 
+    # Properties
+    @property
+    def avatar_url(self):
+        return (
+            "/static/media/svg/avatars/blank.svg"
+            if not self.avatar
+            else self.avatar.url
+        )
+
+    # End Properties
+
+    # Choice display
+    @property
+    def display_choice_html(self):
+        image = f"<img class='rounded-circle me-2' src='{self.avatar_url}' style='width: 26px;'>"
+        return f"<span>{image} {self.display_name_html}</span>"
+
+    # End Choice display
+
     # User Active status
     def active_verbose(self):
         if self.is_active:
@@ -83,7 +102,7 @@ class User(AbstractUser):
         """Webpush subscribe"""
         return self.webpush_info.all().count() > 0
 
-    # Browser Notification
+    # End Browser Notification
 
     # Display as HTML
     @property
@@ -92,36 +111,22 @@ class User(AbstractUser):
         return self.name if self.name else self.username
 
     @property
-    def avatar_url(self):
-        return (
-            "/static/media/svg/avatars/blank.svg"
-            if not self.avatar
-            else self.avatar.url
-        )
-
-    @property
-    def display_choice_html(self):
-        image = f"<img class='rounded-circle me-2' src='{self.avatar_url}' style='width: 26px;'>"
-        return f"<span>{image} {self.display_name_html}</span>"
-
-    @property
     def display_level_html(self):
         """Get level html"""
         if self.is_superuser:
             name = _("Super User")
             return f"""
                 <span class='badge badge-light-danger fw-bolder fs-8 px-2 py-1
-                '>{name}</span>
-            """
+                '>{name}</span>"""
         elif self.is_staff:
             name = _("Staff")
             return f"""
                 <span class='badge badge-light-warning fw-bolder fs-8 px-2 py-1
-                '>{name}</span>
-            """
+                '>{name}</span>"""
         else:
             name = _("Member")
             return f"""
                 <span class='badge badge-light-info fw-bolder fs-8 px-2 py-1
-                '>{name}</span>
-            """
+                '>{name}</span>"""
+
+    # End Display as HTML

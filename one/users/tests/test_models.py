@@ -28,8 +28,7 @@ def test_user_display_level_html(user: User):
         user.display_level_html
         == f"""
                 <span class='badge badge-light-danger fw-bolder fs-8 px-2 py-1
-                '>{_("Super User")}</span>
-            """
+                '>{_("Super User")}</span>"""
     )
 
     user.is_superuser = False
@@ -38,8 +37,7 @@ def test_user_display_level_html(user: User):
         user.display_level_html
         == f"""
                 <span class='badge badge-light-warning fw-bolder fs-8 px-2 py-1
-                '>{_("Staff")}</span>
-            """
+                '>{_("Staff")}</span>"""
     )
 
     user.is_superuser = False
@@ -48,8 +46,7 @@ def test_user_display_level_html(user: User):
         user.display_level_html
         == f"""
                 <span class='badge badge-light-info fw-bolder fs-8 px-2 py-1
-                '>{_("Member")}</span>
-            """
+                '>{_("Member")}</span>"""
     )
 
 
@@ -105,3 +102,9 @@ def test_user_online_verbose(user: User):
                       border border-4 border-white h-20px w-20px"></div>"""
 
     assert user.online_dot_verbose() == online
+
+
+def test_display_choice_html(user: User):
+    image = f"<img class='rounded-circle me-2' src='{user.avatar_url}' style='width: 26px;'>"
+    choice_html = f"<span>{image} {user.display_name_html}</span>"
+    assert user.display_choice_html == choice_html
