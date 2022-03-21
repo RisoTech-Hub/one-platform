@@ -332,7 +332,7 @@ one/media/
 .pytest_cache/
 .ipython/
 /one/templates/metronic/_base-full.html
-/one/static/sass/custom.css.map
-/one/static/sass/project.css.map
+
+/one/static/sass/*.css.map
 /package-lock.json
 /package.json
