@@ -15,54 +15,38 @@
   <!--end::Svg Icon-->{% translate 'Filter' %}
 </button>
 <!--begin::Menu 1-->
-<div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px"
+<div class="menu menu-sub menu-sub-dropdown w-600px w-md-650px"
      data-kt-menu="true">
   <!--begin::Separator-->
   <div class="separator border-gray-200"></div>
   <!--end::Separator-->
   <!--begin::Content-->
-  <div class="px-7 py-5" data-kt-user-table-filter="form">
-    <!--begin::Input group-->
-    <div class="mb-10">
-      <label class="form-label fs-6 fw-bold">Role:</label>
-      <select class="form-select form-select-solid fw-bolder"
-              data-kt-select2="true" data-placeholder="Select option"
-              data-allow-clear="true"
-              data-kt-user-table-filter="role"
-              data-hide-search="true">
-        <option></option>
-        <option value="True">True</option>
-        <option value="Analyst">Analyst</option>
-        <option value="Developer">Developer</option>
-        <option value="Support">Support</option>
-        <option value="Trial">Trial</option>
-      </select>
-    </div>
-    <!--end::Input group-->
-    <!--begin::Input group-->
-    <div class="mb-10">
-      <label class="form-label fs-6 fw-bold">Two Step
-        Verification:</label>
-      <select class="form-select form-select-solid fw-bolder"
-              data-kt-select2="true" data-placeholder="Select option"
-              data-allow-clear="true"
-              data-kt-user-table-filter="two-step"
-              data-hide-search="true">
-        <option></option>
-        <option value="Enabled">Enabled</option>
-      </select>
-    </div>
-    <!--end::Input group-->
+  <div class="row px-7 py-5" data-kt-user-table-filter="form">
+    {% for field in fields %}
+      {% if field.col != 'content' %}
+      <!--begin::Input group-->
+      <div class="col-md-4 form-floating">
+          <select class="form-select" id="{{ field.col }}_id" aria-label="{{ field.verbose }}">
+              <option></option>
+              {% for choice in field.choices %}
+                <option value="{{ choice }}">{{ choice }}</option>
+              {% endfor %}
+          </select>
+          <label for="{{ field.col }}_id">{{ field.verbose }}</label>
+      </div>
+      <!--end::Input group-->
+      {% endif %}
+   {% endfor %}
     <!--begin::Actions-->
     <div class="d-flex justify-content-end">
       <button type="reset"
               class="btn btn-light btn-active-light-primary fw-bold me-2 px-6"
               data-kt-menu-dismiss="true"
-              data-kt-user-table-filter="reset">Reset
+              data-kt-user-table-filter="reset">{% translate 'Reset' %}
       </button>
       <button type="submit" class="btn btn-primary fw-bold px-6"
               data-kt-menu-dismiss="true"
-              data-kt-user-table-filter="filter">Apply
+              data-kt-user-table-filter="filter">{% translate 'Apply' %}
       </button>
     </div>
     <!--end::Actions-->

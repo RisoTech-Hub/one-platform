@@ -17,7 +17,7 @@
         <div class="d-flex justify-content-end"
              data-kt-user-table-toolbar="base">
           {% include 'partials/widgets/tables/_filter.html' %}
-          {% include 'partials/widgets/tables/_export.html' %}
+{#          {% include 'partials/widgets/tables/_export.html' %}#}
           {% include 'partials/widgets/tables/_new_object.html' %}
 
         </div>
@@ -60,7 +60,9 @@
             </div>
           </th>
           {% for field in fields %}
+            {% if field.col != 'content' %}
             <th class="min-w-125px" data-data="{{ field.col }}">{{ field.verbose }}</th>
+            {% endif %}
           {% endfor %}
           <th class="text-end min-w-100px" data-data="id">Actions</th>
         </tr>
@@ -80,9 +82,16 @@
   <!--begin::Page Vendors Javascript(used by this page)-->
   <script
     src="{% static 'plugins/custom/datatables/datatables.bundle.js' %}"></script>
+  <script
+    src="{% static 'js/tables/table.js' %}"></script>
   <!--end::Page Vendors Javascript-->
 {% endblock javascript %}
 {% block inline_javascript %}
-  <script
-    src="{% static 'js/tables/table.js' %}"></script>
+{#  <script>#}
+{#    {{ ENDPOINT.CHOICE 'name' }} => list ['a', 'b'] => options => "name_id"#}
+{#    {{ ENDPOINT.DELETE }} method DELETE ["id", "id"]#}
+{#  $('#kt_table_settings').KTUser(){#}
+{#  delete_message = {% translate 'are you sure to delete?' %}#}
+{#  }#}
+{#  </script>#}
 {% endblock inline_javascript %}

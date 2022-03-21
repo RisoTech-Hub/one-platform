@@ -1,3 +1,4 @@
+from django.core.cache import cache
 from django.db.models import BooleanField, CharField, ImageField
 from django.utils.translation import gettext_lazy as _
 
@@ -28,3 +29,4 @@ class Setting(BaseModel):
         Setting.objects.all().update(is_active=False)
         self.is_active = True
         self.save()
+        cache.set("ACTIVE_SETTING", self, None)

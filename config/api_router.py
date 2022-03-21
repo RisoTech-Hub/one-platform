@@ -1,6 +1,7 @@
 from django.conf import settings
 from rest_framework.routers import DefaultRouter, SimpleRouter
 
+from one.emails.api.views import EmailTemplateViewSet
 from one.pages.api.views import PageViewSet
 from one.settings.api.views import SettingViewSet
 from one.users.api.views import ProfileViewSet
@@ -13,6 +14,7 @@ else:
 router.register("profile", ProfileViewSet, basename="profile")
 router.register("settings", SettingViewSet, basename="settings")
 router.register("pages", PageViewSet, basename="pages")
+router.register("email-templates", EmailTemplateViewSet, basename="email templates")
 
 app_name = "api"
 urlpatterns = router.urls

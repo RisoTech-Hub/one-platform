@@ -46,11 +46,13 @@ class BaseSerializer(FilterFieldSerializer):
     time_created = SerializerMethodField()
     time_modified = SerializerMethodField()
 
-    def get_time_created(self, obj):
+    @staticmethod
+    def get_time_created(obj):
         """time_created in verbose"""
         return obj.time_created.strftime("%Y-%m-%d %H:%M")
 
-    def get_time_modified(self, obj):
+    @staticmethod
+    def get_time_modified(obj):
         """time_modified in verbose"""
         return obj.time_modified.strftime("%Y-%m-%d %H:%M")
 
@@ -62,6 +64,7 @@ class LingualSerializer(BaseSerializer):
 
     language = SerializerMethodField()
 
-    def get_language(self, obj):
+    @staticmethod
+    def get_language(obj):
         """language in verbose"""
         return obj.language_verbose

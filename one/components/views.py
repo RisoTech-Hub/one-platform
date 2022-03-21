@@ -75,12 +75,17 @@ class ExtendView:
         model_meta = self.model._meta
         title = model_meta.verbose_name_plural
 
-        return {"LIST": reverse(f"api:{title}-list")}
+        return {
+            "LIST": reverse(f"api:{title}-list"),
+            "DELETE": reverse(f"api:{title}-delete"),
+            "CHOICES": reverse(f"api:{title}-get-choices"),
+        }
 
 
 class ExposeListView(ExtendView, ListView):
     """Auto add model fields to context of ListView"""
 
+    template_name = "defaults/_list.html"
     object_list = None
 
     def get(self, request, *args, **kwargs):
@@ -114,6 +119,7 @@ class ExposeListView(ExtendView, ListView):
                 "verbose": item.verbose_name,
                 "type": item.get_internal_type(),
                 "lookups": _get_lookups(item),
+                "choices": [],
             }
             for item in fields
         ]
@@ -139,7 +145,7 @@ class ExposeDetailView(ExtendView, DetailView):
         return self.render_to_response(context)
 
 
-class WidgetUpdateView(ExtendView, UpdateView):
+class ExposeUpdateView(ExtendView, UpdateView):
     """Override context data"""
 
     read_only_fields = []

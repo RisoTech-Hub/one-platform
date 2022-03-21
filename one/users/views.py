@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import RedirectView
 
 from one.components.constants import FORM_LAYOUT_2_COL
-from one.components.views import ExposeDetailView, WidgetUpdateView
+from one.components.views import ExposeDetailView, ExposeUpdateView
 
 User = get_user_model()
 
@@ -21,7 +21,7 @@ class ProfileDetailView(LoginRequiredMixin, ExposeDetailView):
 profile_detail_view = ProfileDetailView.as_view()
 
 
-class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, WidgetUpdateView):
+class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, ExposeUpdateView):
 
     model = User
     fields = ["name", "dob", "username", "avatar", "status"]

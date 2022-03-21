@@ -1,9 +1,8 @@
-from rest_framework.viewsets import ModelViewSet
-
+from one.components.viewsets import BaseModelViewSet
 from one.settings.api.serializers import SettingSerializer
 from one.settings.models import Setting
 
 
-class SettingViewSet(ModelViewSet):
+class SettingViewSet(BaseModelViewSet):
     queryset = Setting.objects.all()
     serializer_class = SettingSerializer
