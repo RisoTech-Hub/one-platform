@@ -151,12 +151,8 @@ class ExposeUpdateView(ExtendView, UpdateView):
     read_only_fields = []
     layout = FORM_LAYOUT_1_COL
 
-    def get_context_data(self, **kwargs):
-        """Auto add class to form field, and read only field"""
-        kwargs = super().get_context_data(**kwargs)
-        kwargs["breadcrumb"] = self.breadcrumb()
-        kwargs.update({"layout": self.layout})
-        form = kwargs["form"]
+    def field_processing(self, form):
+        """Update field in context"""
         for field in form.fields:
             _field = form.fields[field]
             widget = _field.widget
@@ -173,7 +169,7 @@ class ExposeUpdateView(ExtendView, UpdateView):
                 ]:
                     _class = "form-control form-control-lg form-control-solid "
                     if self.layout == FORM_LAYOUT_2_COL:
-                        _class = "form-control form-control-solid active "
+                        _class = "form-control form-control-solid "
                     if "class" in attrs:
                         attrs["class"] = _class + attrs["class"]
                     else:
@@ -187,8 +183,20 @@ class ExposeUpdateView(ExtendView, UpdateView):
                             _field.queryset
                         )
 
+    def readonly_field_processing(self, form):
+        """Update readonly field in context"""
         for field in self.read_only_fields:
             _field = form.fields[field]
             attrs = _field.widget.attrs
             attrs.update({"readonly": "readonly"})
+
+    def get_context_data(self, **kwargs):
+        """Auto add class to form field, and read only field"""
+        kwargs = super().get_context_data(**kwargs)
+        kwargs["breadcrumb"] = self.breadcrumb()
+        kwargs.update({"layout": self.layout})
+        form = kwargs["form"]
+
+        self.field_processing(form)
+        self.readonly_field_processing(form)
         return kwargs
