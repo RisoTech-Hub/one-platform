@@ -1,28 +1,36 @@
 "use strict";
 
-var KTUsersList = function () {
+var DT = function (tableId = '', options = {},
+                            languageAlert = {
+
+                            }) {
     // Define shared variables
-    var table = document.getElementById('kt_table_settings');
+    var table = document.getElementById(tableId);
     var datatable;
     var toolbarBase;
     var toolbarSelected;
     var selectedCount;
     var totalCount = 0;
     // Private functions
-    var initUserTable = function () {
-        // Init datatable --- more info on datatables: https://datatables.net/manual/
-        datatable = $(table).DataTable({
-            "info": false, 'order': [], "pageLength": 10, "lengthChange": false, 'columnDefs': [{
-                orderable: false,// Disable ordering on column 0 (checkbox)
-                targets: 0, render: function (data, type, full, meta) {
-                    return `<div class="form-check form-check-sm form-check-custom form-check-solid">
+    var initTable = function () {
+        const defaultOptions = {
+            "info": false,
+            'order': [],
+            "pageLength": 10,
+            "lengthChange": false,
+            'columnDefs': [
+                {
+                    orderable: false,// Disable ordering on column 0 (checkbox)
+                    targets: 0, render: function (data, type, full, meta) {
+                        return `<div class="form-check form-check-sm form-check-custom form-check-solid">
                                      <input class="form-check-input widget-9-check" type="checkbox" value="${data}">
                                      </div>`
-                }
-            }, {
-                orderable: false,// Disable ordering on column (actions)
-                targets: -1, render: function (data, type, full, meta) {
-                    return `<div class="d-flex justify-content-end flex-shrink-0">
+                    }
+                },
+                {
+                    orderable: false,// Disable ordering on column (actions)
+                    targets: -1, render: function (data, type, full, meta) {
+                        return `<div class="d-flex justify-content-end flex-shrink-0">
                         <a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                             <span class="svg-icon svg-icon-3">
@@ -56,13 +64,18 @@ var KTUsersList = function () {
                             <!--end::Svg Icon-->
                         </a>
                     </div>`;
-                }
-            },], drawCallback: function (settings) {
+                    }
+                },
+            ],
+            drawCallback: function (settings) {
                 if (settings && settings['json']) {
                     totalCount = parseInt(settings['json']['recordsFiltered'])
                 }
-            }
-        });
+            },
+            ...options
+        }
+        // Init datatable --- more info on datatables: https://datatables.net/manual/
+        datatable = $(table).DataTable(defaultOptions);
 
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
         datatable.on('draw', function () {
@@ -322,21 +335,22 @@ var KTUsersList = function () {
         // Public functions
         init: function () {
             if (!table) {
-                return;
+                return false;
             }
 
-            initUserTable();
+            initTable();
             initToggleToolbar();
             handleSearchDatatable();
             handleResetForm();
             handleDeleteRows();
             handleFilterDatatable();
 
-        }
+            return table;
+        },
     }
 }();
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
-    KTUsersList.init();
+    // DT.init('kt_table_settings');
 });
