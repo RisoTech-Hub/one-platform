@@ -1,18 +1,20 @@
 "use strict";
 
-var DT = function (tableId = '', options = {},
-                            languageAlert = {
-
-                            }) {
+var DT = function () {
     // Define shared variables
-    var table = document.getElementById(tableId);
+
+    var table;
     var datatable;
     var toolbarBase;
     var toolbarSelected;
     var selectedCount;
     var totalCount = 0;
     // Private functions
-    var initTable = function () {
+    var initTable = function (tableId = '',
+                              options = {},
+                              endpoint = {}) {
+
+        table = document.getElementById(tableId);
         const defaultOptions = {
             "info": false,
             'order': [],
@@ -29,7 +31,7 @@ var DT = function (tableId = '', options = {},
                 },
                 {
                     orderable: false,// Disable ordering on column (actions)
-                    targets: -1, render: function (data, type, full, meta) {
+                    targets: -1, render: function (data, type, row, meta) {
                         return `<div class="d-flex justify-content-end flex-shrink-0">
                         <a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
@@ -52,7 +54,7 @@ var DT = function (tableId = '', options = {},
                             <!--end::Svg Icon-->
                         </a>
                         <!-- TODO: get url delete here	-->
-                        <a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-url="url_delete_here" data-kt-users-table-filter="delete_row">
+                        <a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-id="${row['id']}" data-kt-users-table-filter="delete_row">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                             <span class="svg-icon svg-icon-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -80,7 +82,7 @@ var DT = function (tableId = '', options = {},
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
         datatable.on('draw', function () {
             initToggleToolbar();
-            handleDeleteRows();
+            handleDeleteRows(endpoint.delete);
             toggleToolbars();
         });
 
@@ -96,6 +98,8 @@ var DT = function (tableId = '', options = {},
         $('#kt_table_settings tbody td input[type="checkbox"]').on('change', function () {
             toggleToolbars();
         })
+
+        return datatable;
     }
 
     // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
@@ -157,21 +161,23 @@ var DT = function (tableId = '', options = {},
 
 
     // Delete subscirption
-    var handleDeleteRows = () => {
+    var handleDeleteRows = (_url_delete = '') => {
         // Select all delete buttons
         const deleteButtons = table.querySelectorAll('[data-kt-users-table-filter="delete_row"]');
+        const url_delete = _url_delete;
 
         deleteButtons.forEach(d => {
             // Delete button on click
+            console.log('url-delete', url_delete)
+            $(d).attr('data-url', url_delete)
             d.addEventListener('click', function (e) {
                 e.preventDefault();
-                let url_delete = $(this).attr('data-url')
                 // Select parent row
                 // const parent = e.target.closest('tr');
 
-                // Get user name
-                // const userName = parent.querySelectorAll('td')[1].querySelectorAll('a')[1].innerText;
-
+                let id = $(this).attr('data-id')
+                let url_delete = $(this).attr('data-url')
+                console.log('id-----', id)
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
                     text: "Are you sure you want to delete this(these) record?",
@@ -187,24 +193,43 @@ var DT = function (tableId = '', options = {},
                     if (result.value) {
                         // TODO: call ajax delete by get url from data-url DOM
                         console.log('url_delete', url_delete)
+                        $.ajax({
+                            url: url_delete + id,
+                            method: "delete",
+                            dataType: "json",
+                            contentType: false,
+                            processData: false,
+                            data: [id],
+                            success: function (response) {
+                                Swal.fire({
+                                    text: "You have deleted!",
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn fw-bold btn-primary",
+                                    }
+                                }).then(function () {
+                                    // Remove current row
+                                    // datatable.row($(parent)).remove().draw();
 
-                        Swal.fire({
-                            text: "You have deleted !",
-                            icon: "success",
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn fw-bold btn-primary",
+
+                                }).then(function () {
+                                    // Detect checked checkboxes
+                                    toggleToolbars();
+                                });
+                            },
+                            error: function (request, status, error) {
+                                Swal.fire({
+                                    title: 'Thông tin',
+                                    text: 'Có lõi xảy ra.',
+                                    icon: "error",
+                                    type: "error"
+                                }).then(function () {
+                                });
                             }
-                        }).then(function () {
-                            // Remove current row
-                            // datatable.row($(parent)).remove().draw();
-
-
-                        }).then(function () {
-                            // Detect checked checkboxes
-                            toggleToolbars();
                         });
+
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire({
                             text: "This record was not deleted.",
@@ -333,19 +358,24 @@ var DT = function (tableId = '', options = {},
 
     return {
         // Public functions
-        init: function () {
-            if (!table) {
-                return false;
-            }
+        init: function (_tableId = '', _options = {},
+                        _endpoint = {
+                            delete: ''
+                        },
+                        _language = {}) {
 
-            initTable();
+            // if (!table) {
+            //     return false;
+            // }
+
+            initTable(_tableId, _options, _endpoint, _language);
             initToggleToolbar();
             handleSearchDatatable();
             handleResetForm();
-            handleDeleteRows();
+            handleDeleteRows(_endpoint.delete);
             handleFilterDatatable();
 
-            return table;
+            return datatable;
         },
     }
 }();
