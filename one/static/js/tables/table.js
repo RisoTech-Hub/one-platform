@@ -12,7 +12,8 @@ var DT = function () {
     // Private functions
     var initTable = function (tableId = '',
                               options = {},
-                              endpoint = {}) {
+                              endpoint = {},
+                              language = {}) {
 
         table = document.getElementById(tableId);
         const defaultOptions = {
@@ -53,7 +54,7 @@ var DT = function () {
                             </span>
                             <!--end::Svg Icon-->
                         </a>
-                        <!-- TODO: get url delete here	-->
+
                         <a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-id="${row['id']}" data-kt-users-table-filter="delete_row">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                             <span class="svg-icon svg-icon-3">
@@ -74,15 +75,15 @@ var DT = function () {
                     totalCount = parseInt(settings['json']['recordsFiltered'])
                 }
             },
-            ...options
+
         }
         // Init datatable --- more info on datatables: https://datatables.net/manual/
-        datatable = $(table).DataTable(defaultOptions);
+        datatable = $(table).DataTable({...defaultOptions, ...options});
 
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
         datatable.on('draw', function () {
             initToggleToolbar();
-            handleDeleteRows(endpoint.delete);
+            handleDeleteRows(endpoint.delete, language);
             toggleToolbars();
         });
 
@@ -161,7 +162,7 @@ var DT = function () {
 
 
     // Delete subscirption
-    var handleDeleteRows = (_url_delete = '') => {
+    var handleDeleteRows = (_url_delete = '', _language) => {
         // Select all delete buttons
         const deleteButtons = table.querySelectorAll('[data-kt-users-table-filter="delete_row"]');
         const url_delete = _url_delete;
@@ -176,11 +177,11 @@ var DT = function () {
                 // const parent = e.target.closest('tr');
 
                 let id = $(this).attr('data-id')
-                let url_delete = $(this).attr('data-url')
-                console.log('id-----', id)
+                // let url_delete = $(this).attr('data-url')
+
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
-                    text: "Are you sure you want to delete this(these) record?",
+                    text: _language.confirmDelete || "Are you sure you want to delete this(these) record?",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: false,
@@ -191,10 +192,9 @@ var DT = function () {
                     }
                 }).then(function (result) {
                     if (result.value) {
-                        // TODO: call ajax delete by get url from data-url DOM
-                        console.log('url_delete', url_delete)
+
                         $.ajax({
-                            url: url_delete + id,
+                            url: _url_delete + id,
                             method: "delete",
                             dataType: "json",
                             contentType: false,
@@ -221,8 +221,8 @@ var DT = function () {
                             },
                             error: function (request, status, error) {
                                 Swal.fire({
-                                    title: 'Thông tin',
-                                    text: 'Có lõi xảy ra.',
+                                    title: 'Notice',
+                                    text: 'Something is error',
                                     icon: "error",
                                     type: "error"
                                 }).then(function () {
@@ -369,10 +369,10 @@ var DT = function () {
             // }
 
             initTable(_tableId, _options, _endpoint, _language);
-            initToggleToolbar();
+            // initToggleToolbar(); // it called in event draw, comment it
             handleSearchDatatable();
             handleResetForm();
-            handleDeleteRows(_endpoint.delete);
+            // handleDeleteRows(_endpoint.delete); // it called in event draw, comment it
             handleFilterDatatable();
 
             return datatable;
