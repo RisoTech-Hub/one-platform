@@ -203,7 +203,7 @@ var DT = function () {
                             dataType: "text",
                             contentType: false,
                             processData: false,
-                            data: JSON.stringify([id]),
+                            data: [id],
                             success: function (response) {
                                 Swal.fire({
                                     text: "You have deleted!",
