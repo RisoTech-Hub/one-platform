@@ -169,7 +169,7 @@ var DT = function () {
 
         deleteButtons.forEach(d => {
             // Delete button on click
-            console.log('url-delete', url_delete)
+            // console.log('url-delete', url_delete)
             $(d).attr('data-url', url_delete)
             d.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -194,12 +194,16 @@ var DT = function () {
                     if (result.value) {
 
                         $.ajax({
-                            url: _url_delete + id,
+                            url: _url_delete,
+                            headers: {
+                                "Authorization": "Basic cm9vdDox",
+                                "Content-Type": 'application/json'
+                            },
                             method: "delete",
-                            dataType: "json",
+                            dataType: "text",
                             contentType: false,
                             processData: false,
-                            data: [id],
+                            data: JSON.stringify([id]),
                             success: function (response) {
                                 Swal.fire({
                                     text: "You have deleted!",
