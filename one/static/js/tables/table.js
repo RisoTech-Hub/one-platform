@@ -222,7 +222,7 @@ var DT = function () {
                             error: function (request, status, error) {
                                 Swal.fire({
                                     title: 'Notice',
-                                    text: 'Something is error',
+                                    text: 'Something is error: ' + error,
                                     icon: "error",
                                     type: "error"
                                 }).then(function () {
