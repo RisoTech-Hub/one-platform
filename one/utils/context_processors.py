@@ -5,6 +5,7 @@ def applications_settings(request):
         "ENABLE_ACTIVITIES": False,
         "ENABLE_NOTIFICATION": False,
         "ENABLE_QUICK_LINKS": False,
+        "ENABLE_DEBUG_MODE": True,
     }
     return applications
 
