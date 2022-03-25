@@ -70,6 +70,11 @@ var DT = function () {
                     }
                 },
             ],
+            "processing": true,
+             "dom": 'r', // DataTable element position
+            "language": {
+               "processing": '<div class="spinner spinner-primary"></div>',
+            },
             drawCallback: function (settings) {
                 if (settings && settings['json']) {
                     totalCount = parseInt(settings['json']['recordsFiltered'])
@@ -196,6 +201,7 @@ var DT = function () {
                         $.ajax({
                             url: _url_delete,
                             headers: {
+                                'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
                                 "Authorization": "Basic cm9vdDox",
                                 "Content-Type": 'application/json'
                             },
@@ -203,7 +209,7 @@ var DT = function () {
                             dataType: "text",
                             contentType: false,
                             processData: false,
-                            data: [id],
+                            data: JSON.stringify([id]),
                             success: function (response) {
                                 Swal.fire({
                                     text: "You have deleted!",
@@ -216,11 +222,11 @@ var DT = function () {
                                 }).then(function () {
                                     // Remove current row
                                     // datatable.row($(parent)).remove().draw();
-
-
+                                    datatable.draw();
                                 }).then(function () {
                                     // Detect checked checkboxes
                                     toggleToolbars();
+
                                 });
                             },
                             error: function (request, status, error) {
