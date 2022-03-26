@@ -72,7 +72,7 @@ var DT = function () {
                 },
             ],
             "processing": true,
-            "dom": 'lfrtip', // DataTable element position
+            "dom": 'lrtip', // DataTable element position
             "language": {
                 "processing": '<div data-kt-indicator="on"><span class="indicator-progress">\n' +
                     '        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>\n' +
