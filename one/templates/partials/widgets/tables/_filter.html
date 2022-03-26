@@ -21,7 +21,7 @@
   <div class="separator border-gray-200"></div>
   <!--end::Separator-->
   <!--begin::Content-->
-  <div class="row px-7 py-5" data-kt-user-table-filter="form">
+  <div class="row px-7 py-5" data-kt-table-filter="form">
     {% for field in fields %}
       {% if field.col != 'content' %}
       <!--begin::Input group-->
@@ -42,11 +42,11 @@
       <button type="reset"
               class="btn btn-light btn-active-light-primary fw-bold me-2 px-6"
               data-kt-menu-dismiss="true"
-              data-kt-user-table-filter="reset">{% translate 'Reset' %}
+              data-kt-table-filter="reset">{% translate 'Reset' %}
       </button>
       <button type="submit" class="btn btn-primary fw-bold px-6"
               data-kt-menu-dismiss="true"
-              data-kt-user-table-filter="filter">{% translate 'Apply' %}
+              data-kt-table-filter="filter">{% translate 'Apply' %}
       </button>
     </div>
     <!--end::Actions-->

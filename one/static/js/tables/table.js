@@ -5,6 +5,7 @@ var DT = function () {
 
     var table;
     var datatable;
+    var arr_selected = [];
     var toolbarBase;
     var toolbarSelected;
     var selectedCount;
@@ -71,16 +72,29 @@ var DT = function () {
                 },
             ],
             "processing": true,
-             "dom": 'r', // DataTable element position
+            "dom": 'r', // DataTable element position
             "language": {
-               "processing": '<div data-kt-indicator="on"><span class="indicator-progress">\n' +
-                   '        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>\n' +
-                   '    </span></div>',
+                "processing": '<div data-kt-indicator="on"><span class="indicator-progress">\n' +
+                    '        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>\n' +
+                    '    </span></div>',
+            },
+            rowCallback: function (row, data) {
+                $(row).find('input.asset-checkbox-select').prop('checked', arr_selected.findIndex(item => item === data['ID']) > -1);
             },
             drawCallback: function (settings) {
                 if (settings && settings['json']) {
                     totalCount = parseInt(settings['json']['recordsFiltered'])
                 }
+
+                $(document).on('change', 'input[type="checkbox"]', function () {
+                    if ($(this).is(':checked')) {
+                        arr_selected.push($(this).val());
+                    } else {
+                        arr_selected.splice(arr_selected.indexOf($(this).val()), 1);
+                    }
+                    // console.log('arr_selected: ', arr_selected);
+
+                });
             },
 
         }
@@ -112,7 +126,7 @@ var DT = function () {
 
     // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
     var handleSearchDatatable = () => {
-        const filterSearch = document.querySelector('[data-kt-user-table-filter="search"]');
+        const filterSearch = document.querySelector('[data-kt-table-filter="search"]');
         filterSearch.addEventListener('keyup', function (e) {
             datatable.search(e.target.value).draw();
         });
@@ -121,8 +135,8 @@ var DT = function () {
     // Filter Datatable
     var handleFilterDatatable = () => {
         // Select filter options
-        const filterForm = document.querySelector('[data-kt-user-table-filter="form"]');
-        const filterButton = filterForm.querySelector('[data-kt-user-table-filter="filter"]');
+        const filterForm = document.querySelector('[data-kt-table-filter="form"]');
+        const filterButton = filterForm.querySelector('[data-kt-table-filter="filter"]');
         const selectOptions = filterForm.querySelectorAll('select');
 
         // Filter datatable on submit
@@ -141,6 +155,7 @@ var DT = function () {
                 }
             });
 
+            con
             // Filter datatable --- official docs reference: https://datatables.net/reference/api/search()
             datatable.search(filterString).draw();
         });
@@ -149,12 +164,12 @@ var DT = function () {
     // Reset Filter
     var handleResetForm = () => {
         // Select reset button
-        const resetButton = document.querySelector('[data-kt-user-table-filter="reset"]');
+        const resetButton = document.querySelector('[data-kt-table-filter="reset"]');
 
         // Reset datatable
         resetButton.addEventListener('click', function () {
             // Select filter options
-            const filterForm = document.querySelector('[data-kt-user-table-filter="form"]');
+            const filterForm = document.querySelector('[data-kt-table-filter="form"]');
             const selectOptions = filterForm.querySelectorAll('select');
 
             // Reset select2 values -- more info: https://select2.org/programmatic-control/add-select-clear-items
@@ -168,7 +183,7 @@ var DT = function () {
     }
 
 
-    // Delete subscirption
+    // Delete subscription
     var handleDeleteRows = (_url_delete = '', _language) => {
         // Select all delete buttons
         const deleteButtons = table.querySelectorAll('[data-kt-users-table-filter="delete_row"]');
@@ -225,6 +240,7 @@ var DT = function () {
                                     // Remove current row
                                     // datatable.row($(parent)).remove().draw();
                                     datatable.draw();
+
                                 }).then(function () {
                                     // Detect checked checkboxes
                                     toggleToolbars();
@@ -265,10 +281,10 @@ var DT = function () {
         const checkboxes = table.querySelectorAll('[type="checkbox"]');
 
         // Select elements
-        toolbarBase = document.querySelector('[data-kt-user-table-toolbar="base"]');
-        toolbarSelected = document.querySelector('[data-kt-user-table-toolbar="selected"]');
-        selectedCount = document.querySelector('[data-kt-user-table-select="selected_count"]');
-        const deleteSelected = document.querySelector('[data-kt-user-table-select="delete_selected"]');
+        toolbarBase = document.querySelector('[data-kt-table-toolbar="base"]');
+        toolbarSelected = document.querySelector('[data-kt-table-toolbar="selected"]');
+        selectedCount = document.querySelector('[data-kt-table-select="selected_count"]');
+        const deleteSelected = document.querySelector('[data-kt-table-select="delete_selected"]');
 
         // Toggle delete selected toolbar
         checkboxes.forEach(c => {
@@ -297,32 +313,58 @@ var DT = function () {
                 }
             }).then(function (result) {
                 if (result.value) {
-                    Swal.fire({
-                        text: "You have deleted all selected records!.",
-                        icon: "success",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn fw-bold btn-primary",
+                    // TODO: call ajax delete
+                    console.log('url_delete', url_delete)
+                    $.ajax({
+                        url: url_delete,
+                        headers: {
+                            'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+                            "Authorization": "Basic cm9vdDox",
+                            "Content-Type": 'application/json'
+                        },
+                        method: "delete",
+                        dataType: "text",
+                        contentType: false,
+                        processData: false,
+                        data: JSON.stringify(arr_selected),
+                        success: function (response) {
+                            Swal.fire({
+                                text: "You have deleted all selected records!.",
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary",
+                                }
+                            }).then(function () {
+
+                                // Remove all selected customers
+                                checkboxes.forEach(c => {
+                                    if (c.checked) {
+                                        datatable.row($(c.closest('tbody tr'))).remove().draw();
+                                    }
+                                });
+
+                                // Remove header checked box
+                                const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
+                                headerCheckbox.checked = false;
+                            }).then(function () {
+                                arr_selected = []
+                                toggleToolbars(); // Detect checked checkboxes
+                                initToggleToolbar(); // Re-init toolbar to recalculate checkboxes
+                            });
+                        },
+                        error: function (request, status, error) {
+                            Swal.fire({
+                                title: 'Notice',
+                                text: 'Something is error: ' + error,
+                                icon: "error",
+                                type: "error"
+                            }).then(function () {
+                            });
                         }
-                    }).then(function () {
-                        // TODO: call ajax delete
-                        console.log('url_delete', url_delete)
-
-                        // Remove all selected customers
-                        checkboxes.forEach(c => {
-                            if (c.checked) {
-                                datatable.row($(c.closest('tbody tr'))).remove().draw();
-                            }
-                        });
-
-                        // Remove header checked box
-                        const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
-                        headerCheckbox.checked = false;
-                    }).then(function () {
-                        toggleToolbars(); // Detect checked checkboxes
-                        initToggleToolbar(); // Re-init toolbar to recalculate checkboxes
                     });
+
                 } else if (result.dismiss === 'cancel') {
                     // Swal.fire({
                     //     text: "Selected customers was not deleted.",
