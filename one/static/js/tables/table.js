@@ -103,7 +103,7 @@ var DT = function () {
 
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
         datatable.on('draw', function () {
-            initToggleToolbar();
+            initToggleToolbar(endpoint.delete);
             handleDeleteRows(endpoint.delete, language);
             toggleToolbars();
         });
@@ -155,7 +155,7 @@ var DT = function () {
                 }
             });
 
-            con
+            console.log('filterString: ',filterString)
             // Filter datatable --- official docs reference: https://datatables.net/reference/api/search()
             datatable.search(filterString).draw();
         });
@@ -275,7 +275,7 @@ var DT = function () {
     }
 
     // Init toggle toolbar
-    var initToggleToolbar = () => {
+    var initToggleToolbar = (_url_delete='') => {
         // Toggle selected action toolbar
         // Select all checkboxes
         const checkboxes = table.querySelectorAll('[type="checkbox"]');
@@ -298,8 +298,6 @@ var DT = function () {
 
         // Deleted selected rows
         deleteSelected.addEventListener('click', function () {
-            // TODO: get data-url here
-            const url_delete = $(this).attr('data-url')
             // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
             Swal.fire({
                 text: "Are you sure you want to delete selected records?",
@@ -313,10 +311,8 @@ var DT = function () {
                 }
             }).then(function (result) {
                 if (result.value) {
-                    // TODO: call ajax delete
-                    console.log('url_delete', url_delete)
                     $.ajax({
-                        url: url_delete,
+                        url: _url_delete,
                         headers: {
                             'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
                             "Authorization": "Basic cm9vdDox",
