@@ -26,7 +26,9 @@
       {% if field.col != 'content' %}
       <!--begin::Input group-->
       <div class="col-md-4 form-floating">
-          <select class="form-select" id="{{ field.col }}_id" aria-label="{{ field.verbose }}">
+          <select class="form-select" id="{{ field.col }}_id" aria-label="{{ field.verbose }}"
+                  data-ajax--url="{{ field.choice_url }}" data-ajax--cache="true"
+          >
               <option></option>
               {% for choice in field.choices %}
                 <option value="{{ choice }}">{{ choice }}</option>

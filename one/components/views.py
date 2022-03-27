@@ -110,7 +110,10 @@ class ExposeListView(ExtendView, ListView):
                         "class_name": self.__class__.__name__,
                     }
                 )
+
+        endpoints = self.get_endpoint()
         context = self.get_context_data()
+        context["ENDPOINT"] = endpoints
         fields = _get_fields(self.model._meta.get_fields(include_parents=False), ["id"])
 
         context["fields"] = [
@@ -120,12 +123,13 @@ class ExposeListView(ExtendView, ListView):
                 "type": item.get_internal_type(),
                 "lookups": _get_lookups(item),
                 "choices": [],
+                "choice_url": f"{endpoints['CHOICES']}?field={item.name}",
             }
             for item in fields
         ]
 
         context["breadcrumb"] = self.breadcrumb()
-        context["ENDPOINT"] = self.get_endpoint()
+
         return self.render_to_response(context)
 
 

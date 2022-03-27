@@ -1,4 +1,6 @@
 {% load static i18n %}
+<script src="{% static 'js/plugins/json-viewer/jquery.json-viewer.js' %} "></script>
+<link href="{% static 'js/plugins/json-viewer/jquery.json-viewer.css' %}" type="text/css" rel="stylesheet">
 {% if ENABLE_DEBUG_MODE %}
 <!--begin::Chat drawer-->
 <div id="kt_drawer_debug" class="bg-body" data-kt-drawer="true"
@@ -54,35 +56,39 @@
            data-kt-scroll-wrappers="#kt_drawer_debug_messenger_body"
            data-kt-scroll-offset="0px">
 
-        <!--begin::Message(out)-->
-        <div class="d-flex justify-content-end mb-10">
+        <!--begin::Message(in)-->
+        <div class="d-flex justify-content-start mb-10">
           <!--begin::Wrapper-->
-          <div class="d-flex flex-column align-items-end">
+          <div class="d-flex flex-column align-items-start">
             <!--begin::User-->
             <div class="d-flex align-items-center mb-2">
-              <!--begin::Details-->
-              <div class="me-3">
-                <a href="#"
-                   class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">{% translate 'DELETE' %}</a>
-              </div>
-              <!--end::Details-->
               <!--begin::Avatar-->
               <div class="symbol symbol-35px symbol-circle">
               </div>
               <!--end::Avatar-->
+              <!--begin::Details-->
+              <div class="ms-3">
+                <a href="#"
+                   class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Fields:</a>
+              </div>
+              <!--end::Details-->
             </div>
             <!--end::User-->
             <!--begin::Text-->
             <div
-              class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end"
-              data-kt-element="message-text">
-              {{ ENDPOINT.DELETE }}
+              class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
+              id="debug_fields_div">
             </div>
+            {{ fields | json_script:"debug_fields_data" }}
+            <script defer>
+                const obj = JSON.parse(document.getElementById('debug_fields_data').textContent);
+                $('#debug_fields_div').jsonViewer(obj);
+            </script>
             <!--end::Text-->
           </div>
           <!--end::Wrapper-->
         </div>
-        <!--end::Message(out)-->
+        <!--end::Message(in)-->
 
       </div>
       <!--end::Messages-->
