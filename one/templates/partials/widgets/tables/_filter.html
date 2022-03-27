@@ -26,17 +26,17 @@
       {% if field.col != 'content' %}
       <!--begin::Input group-->
       <div class="col-md-4 form-floating">
-          <select class="form-select" id="{{ field.col }}_id" aria-label="{{ field.verbose }}"
+          <select class="form-select" id="filter_{{ field.col }}_id" aria-label="{{ field.verbose }}"
                   data-ajax--url="{{ field.choice_url }}" data-ajax--cache="true"
+                  data-placeholder=""
           >
-              <option></option>
-              {% for choice in field.choices %}
-                <option value="{{ choice }}">{{ choice }}</option>
-              {% endfor %}
           </select>
           <label for="{{ field.col }}_id">{{ field.verbose }}</label>
       </div>
       <!--end::Input group-->
+        <script defer>
+          $("#filter_{{ field.col }}_id").select2();
+        </script>
       {% endif %}
    {% endfor %}
     <!--begin::Actions-->
