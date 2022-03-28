@@ -331,9 +331,7 @@ one/media/
 
 .pytest_cache/
 .ipython/
-/one/templates/metronic/_base-full.html
+/one/static/metronic/
 
 /one/static/sass/*.css.map
 /one/static/css/*.css.map
-/package-lock.json
-/package.json
