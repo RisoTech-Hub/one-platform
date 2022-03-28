@@ -79,11 +79,11 @@
               class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start"
               id="debug_fields_div">
             </div>
-            {{ fields | json_script:"debug_fields_data" }}
-            <script defer>
-                const obj = JSON.parse(document.getElementById('debug_fields_data').textContent);
-                $('#debug_fields_div').jsonViewer(obj);
-            </script>
+{#            {{ fields | json_script:"debug_fields_data" }}#}
+{#            <script defer>#}
+{#                const obj = JSON.parse(document.getElementById('debug_fields_data').textContent);#}
+{#                $('#debug_fields_div').jsonViewer(obj);#}
+{#            </script>#}
             <!--end::Text-->
           </div>
           <!--end::Wrapper-->
