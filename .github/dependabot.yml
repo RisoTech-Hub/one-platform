@@ -77,3 +77,11 @@ updates:
     # Check for updates to GitHub Actions every weekday
     schedule:
       interval: "daily"
+
+  # Enable version updates for javascript/npm
+  - package-ecosystem: "npm"
+    # Look for a `packages.json' in the `root` directory
+    directory: "/"
+    # Check for updates to GitHub Actions every weekday
+    schedule:
+      interval: "daily"
