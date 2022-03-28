@@ -30,7 +30,7 @@ function pathsConfig(appName) {
     bootstrapSass: `${vendorsRoot}/bootstrap/scss`,
     vendorsJs: [
       `${vendorsRoot}/@popperjs/core/dist/umd/popper.js`,
-      `${vendorsRoot}/bootstrap/dist/js/bootstrap.js`,
+      // `${vendorsRoot}/bootstrap/dist/js/bootstrap.js`,
     ],
     app: this.app,
     templates: `${this.app}/templates`,
