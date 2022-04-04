@@ -34,12 +34,10 @@ class BaseModelViewSet(ModelViewSet):
         return self.field_exist("is_protected")
 
     @action(detail=False, methods=["get"], url_path="get-choices")
-    def get_choices(self, request, *args, **kwargs):
+    def get_choices(self, request):
         """
         Return choice for field
         :param request:
-        :param args:
-        :param kwargs:
         :return:
         """
         field = request.GET.get("field")
