@@ -81,6 +81,16 @@ class ExtendView:
             "CHOICES": reverse(f"api:{title}-get-choices"),
         }
 
+    @staticmethod
+    def get_field_value(object, field):
+        """
+        Get Value of field from object
+        :param object:
+        :param field:
+        :return:
+        """
+        return getattr(object, field)
+
 
 class ExposeListView(ExtendView, ListView):
     """Auto add model fields to context of ListView"""
@@ -110,7 +120,10 @@ class ExposeListView(ExtendView, ListView):
                         "class_name": self.__class__.__name__,
                     }
                 )
+
+        endpoints = self.get_endpoint()
         context = self.get_context_data()
+        context["ENDPOINT"] = endpoints
         fields = _get_fields(self.model._meta.get_fields(include_parents=False), ["id"])
 
         context["fields"] = [
@@ -120,12 +133,13 @@ class ExposeListView(ExtendView, ListView):
                 "type": item.get_internal_type(),
                 "lookups": _get_lookups(item),
                 "choices": [],
+                "choice_url": f"{endpoints['CHOICES']}?field={item.name}",
             }
             for item in fields
         ]
 
         context["breadcrumb"] = self.breadcrumb()
-        context["ENDPOINT"] = self.get_endpoint()
+
         return self.render_to_response(context)
 
 
@@ -138,9 +152,15 @@ class ExposeDetailView(ExtendView, DetailView):
         """add model fields to context"""
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
-        context["fields"] = _get_fields(
-            self.model._meta.get_fields(include_parents=False)
-        )
+        fields = _get_fields(self.model._meta.get_fields(include_parents=False))
+        context["fields"] = [
+            {
+                "col": item.name,
+                "verbose": item.verbose_name,
+                "value": str(self.get_field_value(self.object, item.name)),
+            }
+            for item in fields
+        ]
         context["breadcrumb"] = self.breadcrumb()
         return self.render_to_response(context)
 

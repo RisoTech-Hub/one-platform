@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static object_tags %}
+{% load static %}
 
 {% block title %}User: {{ object.username }}{% endblock %}
 
@@ -16,12 +16,12 @@
       <div class="row mb-7">
         <!--begin::Label-->
         <label class="col-lg-4 fw-bold text-muted">
-          {{ field.verbose_name|title }}</label>
+          {{ field.verbose|title }}</label>
         <!--end::Label-->
         <!--begin::Col-->
         <div class="col-lg-8">
           <span class="fw-bolder fs-6 text-gray-800">
-            {{ field.name|obj_val:object }}</span>
+            {{ field.value }}</span>
         </div>
         <!--end::Col-->
       </div>

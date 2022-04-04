@@ -1,4 +1,5 @@
 from django.core.exceptions import FieldDoesNotExist
+from django.db.models import F
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -46,7 +47,13 @@ class BaseModelViewSet(ModelViewSet):
             return Response(data=[])
 
         return Response(
-            data=self.get_model().objects.all().values_list(field, flat=True).distinct()
+            data={
+                "results": self.get_model()
+                .objects.all()
+                .annotate(name=F(f"{field}"))
+                .values(field, "name")
+                .distinct()
+            }
         )
 
     @action(detail=False, methods=["delete"])

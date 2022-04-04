@@ -21,20 +21,22 @@
   <div class="separator border-gray-200"></div>
   <!--end::Separator-->
   <!--begin::Content-->
-  <div class="row px-7 py-5" data-kt-user-table-filter="form">
+  <div class="row px-7 py-5" data-kt-table-filter="form">
     {% for field in fields %}
       {% if field.col != 'content' %}
       <!--begin::Input group-->
       <div class="col-md-4 form-floating">
-          <select class="form-select" id="{{ field.col }}_id" aria-label="{{ field.verbose }}">
-              <option></option>
-              {% for choice in field.choices %}
-                <option value="{{ choice }}">{{ choice }}</option>
-              {% endfor %}
+          <select class="form-select" id="filter_{{ field.col }}_id" aria-label="{{ field.verbose }}"
+                  data-ajax--url="{{ field.choice_url }}" data-ajax--cache="true"
+                  data-placeholder=""
+          >
           </select>
           <label for="{{ field.col }}_id">{{ field.verbose }}</label>
       </div>
       <!--end::Input group-->
+        <script defer>
+          $("#filter_{{ field.col }}_id").select2();
+        </script>
       {% endif %}
    {% endfor %}
     <!--begin::Actions-->
@@ -42,11 +44,11 @@
       <button type="reset"
               class="btn btn-light btn-active-light-primary fw-bold me-2 px-6"
               data-kt-menu-dismiss="true"
-              data-kt-user-table-filter="reset">{% translate 'Reset' %}
+              data-kt-table-filter="reset">{% translate 'Reset' %}
       </button>
       <button type="submit" class="btn btn-primary fw-bold px-6"
               data-kt-menu-dismiss="true"
-              data-kt-user-table-filter="filter">{% translate 'Apply' %}
+              data-kt-table-filter="filter">{% translate 'Apply' %}
       </button>
     </div>
     <!--end::Actions-->

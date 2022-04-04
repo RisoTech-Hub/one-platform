@@ -1,28 +1,40 @@
 "use strict";
 
-var KTUsersList = function () {
+var DT = function () {
     // Define shared variables
-    var table = document.getElementById('kt_table_settings');
+
+    var table;
     var datatable;
+    var arr_selected = [];
     var toolbarBase;
     var toolbarSelected;
     var selectedCount;
     var totalCount = 0;
     // Private functions
-    var initUserTable = function () {
-        // Init datatable --- more info on datatables: https://datatables.net/manual/
-        datatable = $(table).DataTable({
-            "info": false, 'order': [], "pageLength": 10, "lengthChange": false, 'columnDefs': [{
-                orderable: false,// Disable ordering on column 0 (checkbox)
-                targets: 0, render: function (data, type, full, meta) {
-                    return `<div class="form-check form-check-sm form-check-custom form-check-solid">
+    var initTable = function (tableId = '',
+                              options = {},
+                              endpoint = {},
+                              language = {}) {
+
+        table = document.getElementById(tableId);
+        const defaultOptions = {
+            "info": false,
+            'order': [],
+            "pageLength": 10,
+            "lengthChange": false,
+            'columnDefs': [
+                {
+                    orderable: false,// Disable ordering on column 0 (checkbox)
+                    targets: 0, render: function (data, type, full, meta) {
+                        return `<div class="form-check form-check-sm form-check-custom form-check-solid">
                                      <input class="form-check-input widget-9-check" type="checkbox" value="${data}">
                                      </div>`
-                }
-            }, {
-                orderable: false,// Disable ordering on column (actions)
-                targets: -1, render: function (data, type, full, meta) {
-                    return `<div class="d-flex justify-content-end flex-shrink-0">
+                    }
+                },
+                {
+                    orderable: false,// Disable ordering on column (actions)
+                    targets: -1, render: function (data, type, row, meta) {
+                        return `<div class="d-flex justify-content-end flex-shrink-0">
                         <a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                             <span class="svg-icon svg-icon-3">
@@ -43,8 +55,8 @@ var KTUsersList = function () {
                             </span>
                             <!--end::Svg Icon-->
                         </a>
-                        <!-- TODO: get url delete here	-->
-                        <a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-url="url_delete_here" data-kt-users-table-filter="delete_row">
+
+                        <a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-id="${row['id']}" data-kt-users-table-filter="delete_row">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                             <span class="svg-icon svg-icon-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -56,18 +68,43 @@ var KTUsersList = function () {
                             <!--end::Svg Icon-->
                         </a>
                     </div>`;
-                }
-            },], drawCallback: function (settings) {
+                    }
+                },
+            ],
+            "processing": true,
+            "dom": 'lrtip', // DataTable element position
+            "language": {
+                "processing": '<div data-kt-indicator="on"><span class="indicator-progress">\n' +
+                    '        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>\n' +
+                    '    </span></div>',
+            },
+            rowCallback: function (row, data) {
+                $(row).find('input.asset-checkbox-select').prop('checked', arr_selected.findIndex(item => item === data['ID']) > -1);
+            },
+            drawCallback: function (settings) {
                 if (settings && settings['json']) {
                     totalCount = parseInt(settings['json']['recordsFiltered'])
                 }
-            }
-        });
+
+                $(document).on('change', 'input[type="checkbox"]', function () {
+                    if ($(this).is(':checked')) {
+                        arr_selected.push($(this).val());
+                    } else {
+                        arr_selected.splice(arr_selected.indexOf($(this).val()), 1);
+                    }
+                    // console.log('arr_selected: ', arr_selected);
+
+                });
+            },
+
+        }
+        // Init datatable --- more info on datatables: https://datatables.net/manual/
+        datatable = $(table).DataTable({...defaultOptions, ...options});
 
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
         datatable.on('draw', function () {
-            initToggleToolbar();
-            handleDeleteRows();
+            initToggleToolbar(endpoint.delete);
+            handleDeleteRows(endpoint.delete, language);
             toggleToolbars();
         });
 
@@ -83,11 +120,13 @@ var KTUsersList = function () {
         $('#kt_table_settings tbody td input[type="checkbox"]').on('change', function () {
             toggleToolbars();
         })
+
+        return datatable;
     }
 
     // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
     var handleSearchDatatable = () => {
-        const filterSearch = document.querySelector('[data-kt-user-table-filter="search"]');
+        const filterSearch = document.querySelector('[data-kt-table-filter="search"]');
         filterSearch.addEventListener('keyup', function (e) {
             datatable.search(e.target.value).draw();
         });
@@ -96,8 +135,8 @@ var KTUsersList = function () {
     // Filter Datatable
     var handleFilterDatatable = () => {
         // Select filter options
-        const filterForm = document.querySelector('[data-kt-user-table-filter="form"]');
-        const filterButton = filterForm.querySelector('[data-kt-user-table-filter="filter"]');
+        const filterForm = document.querySelector('[data-kt-table-filter="form"]');
+        const filterButton = filterForm.querySelector('[data-kt-table-filter="filter"]');
         const selectOptions = filterForm.querySelectorAll('select');
 
         // Filter datatable on submit
@@ -116,6 +155,7 @@ var KTUsersList = function () {
                 }
             });
 
+            console.log('filterString: ',filterString)
             // Filter datatable --- official docs reference: https://datatables.net/reference/api/search()
             datatable.search(filterString).draw();
         });
@@ -124,12 +164,12 @@ var KTUsersList = function () {
     // Reset Filter
     var handleResetForm = () => {
         // Select reset button
-        const resetButton = document.querySelector('[data-kt-user-table-filter="reset"]');
+        const resetButton = document.querySelector('[data-kt-table-filter="reset"]');
 
         // Reset datatable
         resetButton.addEventListener('click', function () {
             // Select filter options
-            const filterForm = document.querySelector('[data-kt-user-table-filter="form"]');
+            const filterForm = document.querySelector('[data-kt-table-filter="form"]');
             const selectOptions = filterForm.querySelectorAll('select');
 
             // Reset select2 values -- more info: https://select2.org/programmatic-control/add-select-clear-items
@@ -143,25 +183,27 @@ var KTUsersList = function () {
     }
 
 
-    // Delete subscirption
-    var handleDeleteRows = () => {
+    // Delete subscription
+    var handleDeleteRows = (_url_delete = '', _language) => {
         // Select all delete buttons
         const deleteButtons = table.querySelectorAll('[data-kt-users-table-filter="delete_row"]');
+        const url_delete = _url_delete;
 
         deleteButtons.forEach(d => {
             // Delete button on click
+            // console.log('url-delete', url_delete)
+            $(d).attr('data-url', url_delete)
             d.addEventListener('click', function (e) {
                 e.preventDefault();
-                let url_delete = $(this).attr('data-url')
                 // Select parent row
                 // const parent = e.target.closest('tr');
 
-                // Get user name
-                // const userName = parent.querySelectorAll('td')[1].querySelectorAll('a')[1].innerText;
+                let id = $(this).attr('data-id')
+                // let url_delete = $(this).attr('data-url')
 
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
-                    text: "Are you sure you want to delete this(these) record?",
+                    text: _language.confirmDelete || "Are you sure you want to delete this(these) record?",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: false,
@@ -172,26 +214,50 @@ var KTUsersList = function () {
                     }
                 }).then(function (result) {
                     if (result.value) {
-                        // TODO: call ajax delete by get url from data-url DOM
-                        console.log('url_delete', url_delete)
 
-                        Swal.fire({
-                            text: "You have deleted !",
-                            icon: "success",
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn fw-bold btn-primary",
+                        $.ajax({
+                            url: _url_delete,
+                            headers: {
+                                'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+                                "Authorization": "Basic cm9vdDox",
+                                "Content-Type": 'application/json'
+                            },
+                            method: "delete",
+                            dataType: "text",
+                            contentType: false,
+                            processData: false,
+                            data: JSON.stringify([id]),
+                            success: function (response) {
+                                Swal.fire({
+                                    text: "You have deleted!",
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn fw-bold btn-primary",
+                                    }
+                                }).then(function () {
+                                    // Remove current row
+                                    // datatable.row($(parent)).remove().draw();
+                                    datatable.draw();
+
+                                }).then(function () {
+                                    // Detect checked checkboxes
+                                    toggleToolbars();
+
+                                });
+                            },
+                            error: function (request, status, error) {
+                                Swal.fire({
+                                    title: 'Notice',
+                                    text: 'Something is error: ' + error,
+                                    icon: "error",
+                                    type: "error"
+                                }).then(function () {
+                                });
                             }
-                        }).then(function () {
-                            // Remove current row
-                            // datatable.row($(parent)).remove().draw();
-
-
-                        }).then(function () {
-                            // Detect checked checkboxes
-                            toggleToolbars();
                         });
+
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire({
                             text: "This record was not deleted.",
@@ -209,16 +275,16 @@ var KTUsersList = function () {
     }
 
     // Init toggle toolbar
-    var initToggleToolbar = () => {
+    var initToggleToolbar = (_url_delete='') => {
         // Toggle selected action toolbar
         // Select all checkboxes
         const checkboxes = table.querySelectorAll('[type="checkbox"]');
 
         // Select elements
-        toolbarBase = document.querySelector('[data-kt-user-table-toolbar="base"]');
-        toolbarSelected = document.querySelector('[data-kt-user-table-toolbar="selected"]');
-        selectedCount = document.querySelector('[data-kt-user-table-select="selected_count"]');
-        const deleteSelected = document.querySelector('[data-kt-user-table-select="delete_selected"]');
+        toolbarBase = document.querySelector('[data-kt-table-toolbar="base"]');
+        toolbarSelected = document.querySelector('[data-kt-table-toolbar="selected"]');
+        selectedCount = document.querySelector('[data-kt-table-select="selected_count"]');
+        const deleteSelected = document.querySelector('[data-kt-table-select="delete_selected"]');
 
         // Toggle delete selected toolbar
         checkboxes.forEach(c => {
@@ -232,8 +298,6 @@ var KTUsersList = function () {
 
         // Deleted selected rows
         deleteSelected.addEventListener('click', function () {
-            // TODO: get data-url here
-            const url_delete = $(this).attr('data-url')
             // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
             Swal.fire({
                 text: "Are you sure you want to delete selected records?",
@@ -247,32 +311,56 @@ var KTUsersList = function () {
                 }
             }).then(function (result) {
                 if (result.value) {
-                    Swal.fire({
-                        text: "You have deleted all selected records!.",
-                        icon: "success",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn fw-bold btn-primary",
+                    $.ajax({
+                        url: _url_delete,
+                        headers: {
+                            'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val(),
+                            "Authorization": "Basic cm9vdDox",
+                            "Content-Type": 'application/json'
+                        },
+                        method: "delete",
+                        dataType: "text",
+                        contentType: false,
+                        processData: false,
+                        data: JSON.stringify(arr_selected),
+                        success: function (response) {
+                            Swal.fire({
+                                text: "You have deleted all selected records!.",
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary",
+                                }
+                            }).then(function () {
+
+                                // Remove all selected customers
+                                checkboxes.forEach(c => {
+                                    if (c.checked) {
+                                        datatable.row($(c.closest('tbody tr'))).remove().draw();
+                                    }
+                                });
+
+                                // Remove header checked box
+                                const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
+                                headerCheckbox.checked = false;
+                            }).then(function () {
+                                arr_selected = []
+                                toggleToolbars(); // Detect checked checkboxes
+                                initToggleToolbar(_url_delete); // Re-init toolbar to recalculate checkboxes
+                            });
+                        },
+                        error: function (request, status, error) {
+                            Swal.fire({
+                                title: 'Notice',
+                                text: 'Something is error: ' + error,
+                                icon: "error",
+                                type: "error"
+                            }).then(function () {
+                            });
                         }
-                    }).then(function () {
-                        // TODO: call ajax delete
-                        console.log('url_delete', url_delete)
-
-                        // Remove all selected customers
-                        checkboxes.forEach(c => {
-                            if (c.checked) {
-                                datatable.row($(c.closest('tbody tr'))).remove().draw();
-                            }
-                        });
-
-                        // Remove header checked box
-                        const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
-                        headerCheckbox.checked = false;
-                    }).then(function () {
-                        toggleToolbars(); // Detect checked checkboxes
-                        initToggleToolbar(); // Re-init toolbar to recalculate checkboxes
                     });
+
                 } else if (result.dismiss === 'cancel') {
                     // Swal.fire({
                     //     text: "Selected customers was not deleted.",
@@ -320,23 +408,29 @@ var KTUsersList = function () {
 
     return {
         // Public functions
-        init: function () {
-            if (!table) {
-                return;
-            }
+        init: function (_tableId = '', _options = {},
+                        _endpoint = {
+                            delete: ''
+                        },
+                        _language = {}) {
 
-            initUserTable();
-            initToggleToolbar();
+            // if (!table) {
+            //     return false;
+            // }
+
+            initTable(_tableId, _options, _endpoint, _language);
+            // initToggleToolbar(); // it called in event draw, comment it
             handleSearchDatatable();
             handleResetForm();
-            handleDeleteRows();
+            // handleDeleteRows(_endpoint.delete); // it called in event draw, comment it
             handleFilterDatatable();
 
-        }
+            return datatable;
+        },
     }
 }();
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
-    KTUsersList.init();
+    // DT.init('kt_table_settings');
 });
