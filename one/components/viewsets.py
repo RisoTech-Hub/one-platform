@@ -1,3 +1,6 @@
+"""
+Base Viewset with reusable functions
+"""
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models import F
 from rest_framework import status
@@ -22,6 +25,7 @@ class BaseModelViewSet(ModelViewSet):
         :return:
         """
         try:
+            # noinspection PyProtectedMember
             field = self.get_model()._meta.get_field(field)
         except FieldDoesNotExist:
             return False
@@ -55,12 +59,10 @@ class BaseModelViewSet(ModelViewSet):
         )
 
     @action(detail=False, methods=["delete"])
-    def delete(self, request, *args, **kwargs):
+    def delete(self, request):
         """
         Delete list
         :param request:
-        :param args:
-        :param kwargs:
         :return:
         """
         instances = self.queryset.filter(pk__in=request.data)

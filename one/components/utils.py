@@ -1,7 +1,10 @@
+"""
+Reusable function for components
+"""
 from one.components.constants import EXCLUDE_FIELDS
 
 
-def _get_name_fields(fields, exclude=[]):
+def _get_name_fields(fields, exclude=list()):
     """Get list name of normal field"""
     return [
         field.name
@@ -16,7 +19,7 @@ def _get_name_fields(fields, exclude=[]):
     ]
 
 
-def _get_fields(fields, exclude=[]):
+def _get_fields(fields, exclude=list()):
     """Get list of normal field"""
     return [
         field
@@ -33,7 +36,7 @@ def _get_fields(fields, exclude=[]):
 
 def _get_lookups(field):
     """List of lookups for field"""
-    return [item for item in field.get_lookups()]
+    return list(field.get_lookups())
 
 
 def _get_o2o_fields(fields):
@@ -46,18 +49,12 @@ def _get_o2o_fields(fields):
     _fields = []
     for o2o in o2o_fields:
         related_model = o2o.related_model
+        # noinspection PyProtectedMember
+        meta = related_model._meta
         _fields.append(
             {
-                "name": related_model._meta.model_name,
-                "fields": _get_fields(
-                    related_model._meta.get_fields(include_parents=False), ["id"]
-                ),
+                "name": meta.model_name,
+                "fields": _get_fields(meta.get_fields(include_parents=False), ["id"]),
             }
         )
     return _fields
-
-
-def eval_expression(arg, input_string):
-    """call eval only in code"""
-    # return eval(input_string)
-    return ""
