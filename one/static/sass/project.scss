@@ -1,37 +1,51 @@
+$blue: #3699FF;
+.dropify-mordern-file {
+  .dropify-wrapper {
+    border: 2px dashed $blue;
+    overflow: visible;
 
+    &:hover {
+      .dropify-clear {
+        color: $blue;
+        background: #fff;
+        border-color: transparent;
+        border-radius: 50%;
+        line-height: 1;
+        padding: 0;
 
+        top: -16px;
+        right: -16px;
 
+        box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);
+      }
+    }
 
-// project specific CSS goes here
+    .dropify-preview {
+      .dropify-render {
 
-////////////////////////////////
-		//Variables//
-////////////////////////////////
+        color: $blue;
 
-// Alert colors
+        i {
+          color: $blue;
+        }
+      }
 
-$white: #fff;
-$mint-green: #d6e9c6;
-$black: #000;
-$pink: #f2dede;
-$dark-pink: #eed3d7;
-$red: #b94a48;
+      .dropify-infos {
+        background: #f1faff;
 
-////////////////////////////////
-		//Alerts//
-////////////////////////////////
+        .dropify-infos-inner {
+          p {
+            color: $blue;
+          }
+        }
+      }
+    }
 
-// bootstrap alert CSS, translated to the django-standard levels of
-// debug, info, success, warning, error
-
-.alert-debug {
-  background-color: $white;
-  border-color: $mint-green;
-  color: $black;
-}
-
-.alert-error {
-  background-color: $pink;
-  border-color: $dark-pink;
-  color: $red;
+    .dropify-message {
+      p {
+        color: #3F4254;
+        font-size: 20px;
+      }
+    }
+  }
 }

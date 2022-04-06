@@ -29,8 +29,7 @@ function pathsConfig(appName) {
   return {
     bootstrapSass: `${vendorsRoot}/bootstrap/scss`,
     vendorsJs: [
-      `${vendorsRoot}/@popperjs/core/dist/umd/popper.js`,
-      // `${vendorsRoot}/bootstrap/dist/js/bootstrap.js`,
+      `${vendorsRoot}/dropify/dist/js/dropify.js`,
     ],
     app: this.app,
     templates: `${this.app}/templates`,
@@ -85,7 +84,7 @@ function scripts() {
 
 // Vendor Javascript minification
 function vendorScripts() {
-  return src(paths.vendorsJs)
+  return src(paths.vendorsJs, { allowEmpty: true })
     .pipe(concat('vendors.js'))
     .pipe(dest(paths.js))
     .pipe(plumber()) // Checks for errors
@@ -100,6 +99,7 @@ function imgCompression() {
     .pipe(imagemin()) // Compresses PNG, JPEG, GIF and SVG images
     .pipe(dest(paths.images))
 }// Run django server
+
 function asyncRunServer() {
   var cmd = spawn('gunicorn', [
       'config.asgi', '-k', 'uvicorn.workers.UvicornWorker', '--reload'

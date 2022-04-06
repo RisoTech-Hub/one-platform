@@ -36,7 +36,7 @@
   <link href="{% static 'plugins/global/plugins.bundle.css' %}"
         rel="stylesheet" type="text/css"/>
   <link href="{% static 'css/style.bundle.css' %}" rel="stylesheet" type="text/css"/>
-<link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'css/project.min.css' %}" rel="stylesheet" type="text/css" />
   <!--end::Global Stylesheets Bundle-->
   <!--begin::Global Javascript Bundle(used by all pages)-->
   <script src="{% static 'plugins/global/plugins.bundle.js' %}"></script>
@@ -180,6 +180,12 @@
 <!--begin::Javascript-->
   <!--begin::Global Javascript Bundle(used by all pages)-->
   <script src="{% static 'js/scripts.bundle.js' %}"></script>
+
+  <!-- Vendor dependencies bundled as one file-->
+  <script defer src="{% static 'js/vendors.min.js' %}"></script>
+
+  <!-- place project specific Javascript in this file -->
+  <script defer src="{% static 'js/project.min.js' %}"></script>
   <!--end::Global Javascript Bundle-->
 {% block javascript %}
   <!--begin::Page Vendors Javascript(used by this page)-->
