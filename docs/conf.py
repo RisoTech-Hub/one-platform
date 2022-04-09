@@ -12,6 +12,7 @@
 
 import os
 import sys
+
 import django
 
 if os.getenv("READTHEDOCS", default=False) == "True":
@@ -28,7 +29,7 @@ django.setup()
 # -- Project information -----------------------------------------------------
 
 project = "Riso Tech one platform"
-copyright = """2021, Bin Nguyen"""
+copyright = """2022, Bin Nguyen"""
 author = "Bin Nguyen"
 
 
