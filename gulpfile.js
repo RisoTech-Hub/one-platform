@@ -29,8 +29,19 @@ function pathsConfig(appName) {
   return {
     bootstrapSass: `${vendorsRoot}/bootstrap/scss`,
     vendorsJs: [
-      `${vendorsRoot}/@popperjs/core/dist/umd/popper.js`,
-      `${vendorsRoot}/bootstrap/dist/js/bootstrap.js`,
+      `${vendorsRoot}/dropify/dist/js/dropify.js`,
+      `${vendorsRoot}/jquery-mask-plugin/dist/jquery.mask.js`,
+      `${vendorsRoot}/jquery.json-viewer/json-viewer/jquery.json-viewer.js`,
+    ],
+    vendorsStyles: [
+      `${vendorsRoot}/dropify/dist/css/dropify.css`,
+      `${vendorsRoot}/jquery.json-viewer/json-viewer/jquery.json-viewer.css`,
+    ],
+    vendorsFonts: [
+      `${vendorsRoot}/dropify/dist/fonts/*.*`,
+    ],
+    vendorsImages: [
+      `${vendorsRoot}/dropify/src/images/*`,
     ],
     app: this.app,
     templates: `${this.app}/templates`,
@@ -62,10 +73,32 @@ function styles() {
   return src(`${paths.sass}/project.scss`)
     .pipe(sass({
       includePaths: [
-        paths.bootstrapSass,
+        // paths.bootstrapSass,
         paths.sass
       ]
     }).on('error', sass.logError))
+    .pipe(plumber()) // Checks for errors
+    .pipe(postcss(processCss))
+    .pipe(dest(paths.css))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(postcss(minifyCss)) // Minifies the result
+    .pipe(dest(paths.css))
+}
+
+// Vendor Styles minification
+function vendorStyles() {
+  var processCss = [
+      autoprefixer(), // adds vendor prefixes
+      pixrem(),       // add fallbacks for rem units
+  ]
+
+  var minifyCss = [
+      cssnano({ preset: 'default' })   // minify result
+  ]
+
+  return src(paths.vendorsStyles)
+    .pipe(concat('vendors.css'))
+    .pipe(dest(paths.css))
     .pipe(plumber()) // Checks for errors
     .pipe(postcss(processCss))
     .pipe(dest(paths.css))
@@ -94,12 +127,26 @@ function vendorScripts() {
     .pipe(dest(paths.js))
 }
 
+// Vendor Assets Collector
+// Fonts
+function vendorFonts() {
+  return src(paths.vendorsFonts)
+    .pipe(dest(paths.fonts))
+}
+// Images
+function vendorImages() {
+  return src(paths.vendorsImages, {"allowEmpty": true})
+    .pipe(dest(paths.images))
+}
+
+
 // Image compression
 function imgCompression() {
   return src(`${paths.images}/*`)
     .pipe(imagemin()) // Compresses PNG, JPEG, GIF and SVG images
     .pipe(dest(paths.images))
 }// Run django server
+
 function asyncRunServer() {
   var cmd = spawn('gunicorn', [
       'config.asgi', '-k', 'uvicorn.workers.UvicornWorker', '--reload'
@@ -123,7 +170,8 @@ function initBrowserSync() {
       open: false,
       // https://www.browsersync.io/docs/options/#option-proxy
       proxy:  {
-        target: 'django:8000',
+        // target: 'django:8000', // Using Docker
+        target: 'localhost:8000', // Using Django
         proxyReq: [
           function(proxyReq, req) {
             // Assign proxy "host" header same as current request at Browsersync server
@@ -145,8 +193,11 @@ function watchPaths() {
 // Generate all assets
 const generateAssets = parallel(
   styles,
+  vendorStyles,
   scripts,
   vendorScripts,
+  vendorFonts,
+  vendorImages,
   imgCompression
 )
 
