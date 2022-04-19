@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY ./package.json /app
 
-RUN npm install && npm cache clean --force
+RUN npm install yarn
+
+RUN yarn install && yarn cache clean --force
 
 ENV PATH ./node_modules/.bin/:$PATH
