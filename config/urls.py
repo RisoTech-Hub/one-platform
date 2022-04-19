@@ -9,12 +9,17 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
+    # Notifications
+    path("webpush/", include("webpush.urls")),
+    # Pages
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
+    # Django Language
+    path("i18n/", include("django.conf.urls.i18n")),
     # User management
     path("users/", include("one.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
