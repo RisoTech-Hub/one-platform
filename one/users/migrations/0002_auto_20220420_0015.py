@@ -8,32 +8,50 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0001_initial'),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='user',
+            name="user",
             options={},
         ),
         migrations.AddField(
-            model_name='user',
-            name='creator',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='users_user_creator', to=settings.AUTH_USER_MODEL, verbose_name='Created by'),
+            model_name="user",
+            name="creator",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="users_user_creator",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Created by",
+            ),
         ),
         migrations.AddField(
-            model_name='user',
-            name='last_modified_by',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='users_user_last_modified_by', to=settings.AUTH_USER_MODEL, verbose_name='Last modified by'),
+            model_name="user",
+            name="last_modified_by",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="users_user_last_modified_by",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Last modified by",
+            ),
         ),
         migrations.AddField(
-            model_name='user',
-            name='time_created',
-            field=models.DateTimeField(auto_now_add=True, null=True, verbose_name='Created on'),
+            model_name="user",
+            name="time_created",
+            field=models.DateTimeField(
+                auto_now_add=True, null=True, verbose_name="Created on"
+            ),
         ),
         migrations.AddField(
-            model_name='user',
-            name='time_modified',
-            field=models.DateTimeField(auto_now=True, null=True, verbose_name='Last modified on'),
+            model_name="user",
+            name="time_modified",
+            field=models.DateTimeField(
+                auto_now=True, null=True, verbose_name="Last modified on"
+            ),
         ),
     ]
