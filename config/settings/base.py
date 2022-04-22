@@ -85,6 +85,7 @@ THIRD_PARTY_APPS = [
     "drf_spectacular",
     "webpush",
     "django_filters",
+    "django_login_history",
 ]
 
 LOCAL_APPS = [
@@ -351,6 +352,9 @@ WEBPUSH_SETTINGS = {
     "VAPID_PRIVATE_KEY": env("VAPID_PRIVATE_KEY", default=""),
     "VAPID_ADMIN_EMAIL": env("VAPID_ADMIN_EMAIL", default=""),
 }
+
+# https://github.com/Dolidodzik/django-login-history
+IP_PLACEHOLDER = "27.64.141.170"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
