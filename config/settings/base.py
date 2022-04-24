@@ -68,7 +68,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
+    "django.contrib.humanize",  # Handy template tags
     "django.contrib.admin",
     "django.forms",
 ]
@@ -83,6 +83,9 @@ THIRD_PARTY_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "drf_spectacular",
+    "webpush",
+    "django_filters",
+    "django_login_history",
 ]
 
 LOCAL_APPS = [
@@ -341,6 +344,17 @@ USER_ONLINE_TIMEOUT = 300
 # Number of seconds that we will keep track of inactive users for before
 # their last seen is removed from the cache
 USER_LASTSEEN_TIMEOUT = 60 * 60 * 24 * 7
+
+# Web push notification
+# ------------------------------------------------------------------------------
+WEBPUSH_SETTINGS = {
+    "VAPID_PUBLIC_KEY": env("VAPID_PUBLIC_KEY", default=""),
+    "VAPID_PRIVATE_KEY": env("VAPID_PRIVATE_KEY", default=""),
+    "VAPID_ADMIN_EMAIL": env("VAPID_ADMIN_EMAIL", default=""),
+}
+
+# https://github.com/Dolidodzik/django-login-history
+IP_PLACEHOLDER = "27.64.141.170"
 
 # Your stuff...
 # ------------------------------------------------------------------------------

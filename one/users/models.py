@@ -24,6 +24,11 @@ class User(BaseModel, AbstractUser):
     first_name = None  # type: ignore
     last_name = None  # type: ignore
 
+    class Metadata:
+        avatar_field = None
+        name_field = "name"
+        title_field = None
+
     def get_absolute_url(self):
         """Get url for user's detail view.
 

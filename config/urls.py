@@ -1,22 +1,45 @@
+from allauth.account import views as allauth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import include, path
+from django.urls import include, path, reverse_lazy
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
+    # Notifications
+    path("webpush/", include("webpush.urls")),
+    # Pages
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
+    # Django Language
+    path("i18n/", include("django.conf.urls.i18n")),
     # User management
     path("users/", include("one.users.urls", namespace="users")),
+    path(
+        "accounts/password/change/",
+        login_required(
+            allauth_views.PasswordChangeView.as_view(
+                success_url=reverse_lazy("users:redirect")
+            )
+        ),
+        name="account_change_password",
+    ),
+    path(
+        "accounts/email/",
+        login_required(
+            allauth_views.EmailView.as_view(success_url=reverse_lazy("users:redirect"))
+        ),
+        name="account_email",
+    ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
