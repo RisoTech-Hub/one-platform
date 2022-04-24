@@ -1,11 +1,12 @@
 {% extends "users/base.html" %}
-{% load static i18n %}
+{% load static i18n humanize %}
 
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block inner_content %}
   <!--begin::Accordion-->
   <div class="accordion" id="kt_accordion_1">
+
     <div class="accordion-item">
       <h2 class="accordion-header" id="kt_accordion_1_header_1">
         <button class="accordion-button fs-4 fw-bold" type="button" data-bs-toggle="collapse"
@@ -275,8 +276,7 @@
                           class="btn btn-lg btn-primary">
                     <span class="indicator-label">{% translate "Submit" %}</span>
                     <span class="indicator-progress">{% translate "Please wait" %}...
-        <span
-          class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                   </button>
                 </div>
                 <!--end::Actions-->
@@ -290,6 +290,65 @@
         </div>
       </div>
     </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="kt_accordion_1_header_3">
+        <button class="accordion-button fs-4 fw-bold collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#kt_accordion_1_body_3" aria-expanded="false" aria-controls="kt_accordion_1_body_3">
+          {% translate 'Login Logs' %}
+        </button>
+      </h2>
+      <div id="kt_accordion_1_body_3" class="accordion-collapse collapse" aria-labelledby="kt_accordion_1_header_3"
+           data-bs-parent="#kt_accordion_1">
+        <div class="accordion-body">
+          <!--begin::Card body-->
+          <div class="card mb-5 mb-xl-10">
+            <!--begin::Table wrapper-->
+            <div class="table-responsive">
+              <!--begin::Table-->
+              <table class="table align-middle table-row-dashed gy-5" id="kt_table_users_login_session">
+                <!--begin::Table head-->
+                <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
+                <!--begin::Table row-->
+                <tr class="text-start text-muted text-uppercase gs-0">
+                  <th class="min-w-100px">{% translate 'Country' %}</th>
+                  <th>{% translate 'City' %}</th>
+                  <th>{% translate 'IP Address' %}</th>
+                  <th>{% translate 'Time' %}</th>
+                </tr>
+                <!--end::Table row-->
+                </thead>
+                <!--end::Table head-->
+                <!--begin::Table body-->
+                <tbody class="fs-6 fw-bold text-gray-600">
+                {% for log in user.login_set.all %}
+                  <tr>
+                    <!--begin::Invoice=-->
+                    <td>{{ log.country }}</td>
+                    <!--end::Invoice=-->
+                    <!--begin::Status=-->
+                    <td>{{ log.city }}</td>
+                    <!--end::Status=-->
+                    <!--begin::Amount=-->
+                    <td>{{ log.ip }}</td>
+                    <!--end::Amount=-->
+                    <!--begin::Amount=-->
+                    <td>{{ log.date|naturalday }}</td>
+                    <!--end::Amount=-->
+                  </tr>
+                {% endfor %}
+                </tbody>
+                <!--end::Table body-->
+              </table>
+              <!--end::Table-->
+            </div>
+            <!--end::Table wrapper-->
+          </div>
+          <!--end::Card body-->
+        </div>
+      </div>
+    </div>
+
   </div>
   <!--end::Accordion-->
 {% endblock inner_content %}
