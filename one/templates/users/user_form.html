@@ -1,0 +1,29 @@
+{% extends "users/base.html" %}
+{% load static i18n humanize %}
+
+{% block title %}User: {{ object.username }}{% endblock %}
+
+{% block inner_content %}
+  <!--begin::Accordion-->
+  <div class="accordion" id="user_form_accordion">
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="user_form_accordion_header_1">
+        <button class="accordion-button fs-4 fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#user_form_accordion_body_1" aria-expanded="true"
+                aria-controls="user_form_accordion_body_1">
+          {% translate 'User informations' %}
+        </button>
+      </h2>
+      <div id="user_form_accordion_body_1" class="accordion-collapse collapse show"
+           aria-labelledby="user_form_accordion_header_1"
+           data-bs-parent="#user_form_accordion">
+        <div class="accordion-body">
+          {% include 'forms/one-col-form.html' with form=form action_url='.' %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!--end::Accordion-->
+{% endblock inner_content %}
