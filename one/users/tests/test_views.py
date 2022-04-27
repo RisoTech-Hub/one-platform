@@ -37,6 +37,16 @@ class TestUserUpdateView:
 
         assert view.get_success_url() == f"/users/{user.username}/"
 
+    def test_get_context_data(self, user: User, rf: RequestFactory):
+        view = UserUpdateView()
+        request = rf.get("/fake-url/")
+        request.user = user
+
+        view.request = request
+        view.object = user
+
+        assert "breadcrumb" in view.get_context_data()
+
     def test_get_object(self, user: User, rf: RequestFactory):
         view = UserUpdateView()
         request = rf.get("/fake-url/")
