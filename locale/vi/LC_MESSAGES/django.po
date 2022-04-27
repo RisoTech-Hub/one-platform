@@ -1,0 +1,592 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-26 11:49+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: config/settings/base.py:32 one/templates/topbar/partials/user-menu.html:122
+#: one/templates/topbar/partials/user-menu.html:149
+msgid "Vietnamese"
+msgstr ""
+
+#: config/settings/base.py:33 one/templates/topbar/partials/user-menu.html:116
+#: one/templates/topbar/partials/user-menu.html:138
+msgid "English"
+msgstr ""
+
+#: one/templates/403.html:6 one/templates/403.html:17
+msgid "Forbidden (403)"
+msgstr ""
+
+#: one/templates/403.html:22
+msgid "You're not allowed to access this page."
+msgstr ""
+
+#: one/templates/403.html:28 one/templates/404.html:25
+#: one/templates/500.html:28 one/templates/account/account_inactive.html:19
+msgid "Go to homepage"
+msgstr ""
+
+#: one/templates/404.html:6 one/templates/404.html:17
+msgid "Page not found"
+msgstr ""
+
+#: one/templates/404.html:20
+msgid "Seems there is nothing here"
+msgstr ""
+
+#: one/templates/500.html:6 one/templates/500.html:17
+msgid "System Error"
+msgstr ""
+
+#: one/templates/500.html:20
+msgid ""
+"\n"
+"          <div class=\"fw-bold fs-3 text-muted mb-15\">Something went "
+"wrong!\n"
+"            <br/>Please try again later.\n"
+"          </div>\n"
+"        "
+msgstr ""
+
+#: one/templates/account/account_inactive.html:5
+#: one/templates/account/email_confirm.html:6
+msgid "Account Inactive"
+msgstr ""
+
+#: one/templates/account/account_inactive.html:11
+msgid "Your account is deactivated"
+msgstr ""
+
+#: one/templates/account/account_inactive.html:14
+msgid ""
+"Plan your blog post by choosing a topic creating\n"
+"    <br />an outline and checking facts"
+msgstr ""
+
+#: one/templates/account/email_confirm.html:12
+msgid "Verify Your Email"
+msgstr ""
+
+#: one/templates/account/email_confirm.html:17
+#, python-format
+msgid ""
+"We have sent an email to\n"
+"    <a href=\"mailto:%(email)s\" class=\"link-primary fw-bolder\">%(email)s</"
+"a>\n"
+"    <br />please follow a link to verify your email."
+msgstr ""
+
+#: one/templates/account/email_confirm.html:25
+msgid "Confirm"
+msgstr ""
+
+#: one/templates/account/email_confirm.html:33
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please\n"
+"      <a href=\"%(email_url)s\" class=\"link-primary fw-bolder\">issue a new "
+"e-mail confirmation request</a>."
+msgstr ""
+
+#: one/templates/account/login.html:6
+msgid "Sign In"
+msgstr ""
+
+#: one/templates/account/login.html:21
+msgid "Sign In to Metronic"
+msgstr ""
+
+#: one/templates/account/login.html:24
+msgid "New Here"
+msgstr ""
+
+#: one/templates/account/login.html:26 one/templates/account/signup.html:22
+msgid "Create an Account"
+msgstr ""
+
+#: one/templates/account/login.html:33 one/templates/account/signup.html:55
+#: one/templates/users/partials/user_left_aside.html:71
+msgid "Username"
+msgstr ""
+
+#: one/templates/account/login.html:47
+#: one/templates/account/password_reset_from_key.html:59
+#: one/templates/account/signup.html:66
+#: one/templates/users/user_detail.html:225
+msgid "Password"
+msgstr ""
+
+#: one/templates/account/login.html:52
+msgid "Forgot Password"
+msgstr ""
+
+#: one/templates/account/login.html:67
+msgid "Remember me"
+msgstr ""
+
+#: one/templates/account/login.html:131
+msgid "The username is required"
+msgstr ""
+
+#: one/templates/account/login.html:134
+#: one/templates/account/password_reset.html:73
+#: one/templates/account/signup.html:165
+msgid "The value is not a valid email address"
+msgstr ""
+
+#: one/templates/account/login.html:141
+#: one/templates/account/password_reset_from_key.html:140
+#: one/templates/account/signup.html:172
+#: one/templates/users/user_detail.html:472
+msgid "The password is required"
+msgstr ""
+
+#: one/templates/account/login.html:174
+#: one/templates/account/password_reset.html:105
+#: one/templates/account/password_reset_from_key.html:199
+#: one/templates/account/signup.html:238
+#: one/templates/users/user_detail.html:531
+msgid "Sorry, looks like there are some errors detected, please try again"
+msgstr ""
+
+#: one/templates/account/login.html:177
+#: one/templates/account/password_reset.html:108
+#: one/templates/account/password_reset_from_key.html:202
+#: one/templates/account/signup.html:241
+#: one/templates/users/user_detail.html:534
+msgid "Ok, got it"
+msgstr ""
+
+#: one/templates/account/logout.html:5 one/templates/account/logout.html:11
+#: one/templates/account/logout.html:23
+#: one/templates/topbar/partials/user-menu.html:194
+msgid "Sign Out"
+msgstr ""
+
+#: one/templates/account/logout.html:14
+msgid "Are you sure you want to sign out"
+msgstr ""
+
+#: one/templates/account/password_reset.html:6
+#: one/templates/account/password_reset_done.html:6
+#: one/templates/account/password_reset_done.html:17
+msgid "Password Reset"
+msgstr ""
+
+#: one/templates/account/password_reset.html:19
+msgid "Forgot Password ?"
+msgstr ""
+
+#: one/templates/account/password_reset.html:25
+msgid ""
+"Enter your email to reset your\n"
+"          password."
+msgstr ""
+
+#: one/templates/account/password_reset.html:42
+#: one/templates/account/password_reset_from_key.html:110
+#: one/templates/account/signup.html:126
+#: one/templates/users/user_detail.html:277
+msgid "Submit"
+msgstr ""
+
+#: one/templates/account/password_reset.html:43
+#: one/templates/account/password_reset_from_key.html:111
+#: one/templates/account/signup.html:127
+#: one/templates/users/user_detail.html:278
+msgid "Please wait"
+msgstr ""
+
+#: one/templates/account/password_reset.html:70
+#: one/templates/account/signup.html:162
+msgid "Email address is required"
+msgstr ""
+
+#: one/templates/account/password_reset_done.html:23
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:4
+#: one/templates/account/password_reset_from_key.html:38
+#: one/templates/account/password_reset_from_key_done.html:4
+#: one/templates/account/password_reset_from_key_done.html:10
+msgid "Change Password"
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:19
+msgid "Bad Token"
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:24
+#, python-format
+msgid ""
+"The\n"
+"            password reset link was invalid, possibly\n"
+"            because it has already been used.  Please request a\n"
+"            <a href=\"%(passwd_reset_url)s\">new password reset</a>\n"
+"            ."
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:46
+#: one/templates/account/password_reset_from_key_done.html:13
+msgid "Your password is now changed."
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:90
+msgid ""
+"Use 8 or more\n"
+"              characters with a mix of letters, numbers &amp;\n"
+"              symbols."
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:100
+#: one/templates/account/signup.html:105
+#: one/templates/users/user_detail.html:264
+msgid "Confirm Password"
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:143
+#: one/templates/account/signup.html:175
+#: one/templates/users/user_detail.html:475
+msgid "Please enter valid password"
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:155
+#: one/templates/account/signup.html:187
+#: one/templates/users/user_detail.html:487
+msgid "The password confirmation is required"
+msgstr ""
+
+#: one/templates/account/password_reset_from_key.html:161
+#: one/templates/account/signup.html:193
+#: one/templates/users/user_detail.html:493
+msgid "The password and its confirm are not the same"
+msgstr ""
+
+#: one/templates/account/password_reset_from_key_done.html:17
+msgid "Login"
+msgstr ""
+
+#: one/templates/account/password_set.html:6
+#: one/templates/account/password_set.html:9
+#: one/templates/account/password_set.html:14
+msgid "Set Password"
+msgstr ""
+
+#: one/templates/account/root.html:49 one/templates/account/root.html:75
+#: one/templates/base.html:198 one/templates/base.html:224
+msgid "Ok"
+msgstr ""
+
+#: one/templates/account/signup.html:6
+msgid "Signup"
+msgstr ""
+
+#: one/templates/account/signup.html:25
+msgid "Already have an account"
+msgstr ""
+
+#: one/templates/account/signup.html:27
+msgid "Sign in here"
+msgstr ""
+
+#: one/templates/account/signup.html:47
+#: one/templates/users/partials/user_left_aside.html:66
+#: one/templates/users/user_detail.html:119
+msgid "Email"
+msgstr ""
+
+#: one/templates/account/signup.html:97
+msgid ""
+"Use 8 or more characters with a mix of letters,\n"
+"          numbers &amp; symbols."
+msgstr ""
+
+#: one/templates/account/signup.html:155
+msgid "Username is required"
+msgstr ""
+
+#: one/templates/account/signup_closed.html:5
+#: one/templates/account/signup_closed.html:11
+msgid "Sign Up Closed"
+msgstr ""
+
+#: one/templates/account/signup_closed.html:14
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: one/templates/account/snippets/already_logged_in.html:6
+msgid "Note"
+msgstr ""
+
+#: one/templates/account/snippets/already_logged_in.html:6
+#, python-format
+msgid "You are already logged in as %(user_display)s."
+msgstr ""
+
+#: one/templates/account/verification_sent.html:5
+#: one/templates/account/verification_sent.html:11
+#: one/templates/account/verified_email_required.html:5
+#: one/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: one/templates/account/verification_sent.html:14
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: one/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: one/templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: one/templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: one/templates/aside/menu.html:16
+msgid "Configurations"
+msgstr ""
+
+#: one/templates/aside/menu.html:23 one/templates/aside/menu.html:41
+#: one/templates/defaults/_list.html:4
+msgid "Settings"
+msgstr ""
+
+#: one/templates/aside/menu.html:49 one/templates/aside/menu.html:67
+msgid "Email Templates"
+msgstr ""
+
+#: one/templates/aside/menu.html:90
+msgid "User Management"
+msgstr ""
+
+#: one/templates/aside/menu.html:99
+msgid "Users"
+msgstr ""
+
+#: one/templates/aside/menu.html:107
+msgid "Groups"
+msgstr ""
+
+#: one/templates/aside/menu.html:135
+msgid "Pages"
+msgstr ""
+
+#: one/templates/aside/menu.html:144
+msgid "FlatPage"
+msgstr ""
+
+#: one/templates/base.html:96
+msgid "We need your attention!"
+msgstr ""
+
+#: one/templates/defaults/_list.html:94
+msgid "are you sure to delete?"
+msgstr ""
+
+#: one/templates/django/forms/widgets/image.html:18
+#: one/templates/django/forms/widgets/image.html:70
+msgid "Change image"
+msgstr ""
+
+#: one/templates/django/forms/widgets/image.html:39
+#: one/templates/django/forms/widgets/image.html:92
+msgid "Cancel image"
+msgstr ""
+
+#: one/templates/django/forms/widgets/image.html:50
+#: one/templates/django/forms/widgets/image.html:103
+msgid "Remove image"
+msgstr ""
+
+#: one/templates/drawers/_debug-drawer.html:20
+msgid "Debug toolbars"
+msgstr ""
+
+#: one/templates/forms/one-col-form.html:31
+#: one/templates/forms/two-col-form.html:30
+msgid "Discard"
+msgstr ""
+
+#: one/templates/forms/one-col-form.html:36
+#: one/templates/forms/two-col-form.html:35
+msgid "Save Changes"
+msgstr ""
+
+#: one/templates/header/breadcrumb.html:17
+msgid "Danh sách"
+msgstr ""
+
+#: one/templates/topbar/partials/user-menu.html:35
+msgid "My Profile"
+msgstr ""
+
+#: one/templates/topbar/partials/user-menu.html:112
+msgid "Language"
+msgstr ""
+
+#: one/templates/users/partials/user_left_aside.html:50
+msgid "Edit profile details"
+msgstr ""
+
+#: one/templates/users/partials/user_left_aside.html:51
+msgid "Edit"
+msgstr ""
+
+#: one/templates/users/partials/user_left_aside.html:61
+msgid "Account Id"
+msgstr ""
+
+#: one/templates/users/partials/user_left_aside.html:76
+msgid "Last login"
+msgstr ""
+
+#: one/templates/users/partials/user_left_aside.html:81
+msgid "Is Superuser"
+msgstr ""
+
+#: one/templates/users/partials/user_left_aside.html:86
+msgid "Is Staff"
+msgstr ""
+
+#: one/templates/users/partials/user_left_aside.html:91
+msgid "Is Active"
+msgstr ""
+
+#: one/templates/users/partials/user_left_aside.html:96
+msgid "Date Joined"
+msgstr ""
+
+#: one/templates/users/user_detail.html:14
+msgid "Emails"
+msgstr ""
+
+#: one/templates/users/user_detail.html:52
+#: one/templates/users/user_detail.html:366
+msgid "Add new email"
+msgstr ""
+
+#: one/templates/users/user_detail.html:57
+msgid "Set email as primary"
+msgstr ""
+
+#: one/templates/users/user_detail.html:73
+msgid "Resend verify email"
+msgstr ""
+
+#: one/templates/users/user_detail.html:89
+msgid "Delete email"
+msgstr ""
+
+#: one/templates/users/user_detail.html:118
+msgid "Selected"
+msgstr ""
+
+#: one/templates/users/user_detail.html:120
+msgid "Status"
+msgstr ""
+
+#: one/templates/users/user_detail.html:158
+msgid "Verified"
+msgstr ""
+
+#: one/templates/users/user_detail.html:161
+msgid "Unverified"
+msgstr ""
+
+#: one/templates/users/user_detail.html:172
+msgid "Warning:"
+msgstr ""
+
+#: one/templates/users/user_detail.html:172
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: one/templates/users/user_detail.html:194
+msgid "Change password"
+msgstr ""
+
+#: one/templates/users/user_detail.html:214
+msgid "Current Password"
+msgstr ""
+
+#: one/templates/users/user_detail.html:256
+msgid ""
+"Use 8 or more characters with a mix of letters,\n"
+"                      numbers &amp; symbols."
+msgstr ""
+
+#: one/templates/users/user_detail.html:298
+msgid "Login Logs"
+msgstr ""
+
+#: one/templates/users/user_detail.html:314
+msgid "Country"
+msgstr ""
+
+#: one/templates/users/user_detail.html:315
+msgid "City"
+msgstr ""
+
+#: one/templates/users/user_detail.html:316
+msgid "IP Address"
+msgstr ""
+
+#: one/templates/users/user_detail.html:317
+msgid "Time"
+msgstr ""
+
+#: one/templates/users/user_detail.html:397
+msgid "Enter New Email Address"
+msgstr ""
+
+#: one/templates/users/user_detail.html:402
+msgid "Email Address"
+msgstr ""
+
+#: one/templates/users/user_detail.html:439
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: one/templates/users/user_detail.html:465
+msgid "Current password is required"
+msgstr ""
+
+#: one/templates/users/user_form.html:15
+msgid "User informations"
+msgstr ""
