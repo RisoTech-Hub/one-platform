@@ -9,17 +9,24 @@ User = get_user_model()
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
-
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
+
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        kwargs["breadcrumb"] = {
+            "title": _("Profile"),
+            "parent": None,
+            "current": f"{_('Detail of')} {self.object.as_name}",
+        }
+        return kwargs
 
 
 user_detail_view = UserDetailView.as_view()
 
 
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-
     model = User
     fields = ["name"]
     success_message = _("Information successfully updated")
@@ -33,12 +40,20 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self):
         return self.request.user
 
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        kwargs["breadcrumb"] = {
+            "title": _("Profile"),
+            "parent": None,
+            "current": f"{_('Update for')} {self.object.as_name}",
+        }
+        return kwargs
+
 
 user_update_view = UserUpdateView.as_view()
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
-
     permanent = False
 
     def get_redirect_url(self):
