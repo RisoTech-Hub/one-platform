@@ -15,3 +15,13 @@ def test_save_site(site: Site):
     """test_save_site"""
     create_site_setting(Site, site)
     assert site.setting.__str__() == site.name
+
+
+def test_logo_url(site: Site):
+    """test_logo_url"""
+    assert "/static/metronic/media/" in site.setting.logo_url
+
+
+def test_mobile_logo_url(site: Site):
+    """test_mobile_logo_url"""
+    assert "/static/metronic/media/" in site.setting.mobile_logo_url

@@ -40,3 +40,21 @@ class Setting(Model):
 
     class Meta:
         app_label = "sites"
+
+    @property
+    def logo_url(self):
+        """Return logo url"""
+        return (
+            "/static/metronic/media/logos/logo-1-dark.svg"
+            if not self.logo
+            else getattr(self.logo, "url")
+        )
+
+    @property
+    def mobile_logo_url(self):
+        """Return mobile_logo url"""
+        return (
+            "/static/metronic/media/logos/logo-2.svg"
+            if not self.mobile_logo
+            else getattr(self.mobile_logo, "url")
+        )
