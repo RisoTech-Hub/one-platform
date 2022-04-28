@@ -1,0 +1,17 @@
+import pytest
+from django.contrib.sites.models import Site
+
+from one.contrib.sites.settings.signals import create_site_setting
+
+pytestmark = pytest.mark.django_db
+
+
+def test_site_setting_string(site: Site):
+    """test_site_setting_string"""
+    assert site.setting.__str__() == site.name
+
+
+def test_save_site(site: Site):
+    """test_save_site"""
+    create_site_setting(Site, site)
+    assert site.setting.__str__() == site.name

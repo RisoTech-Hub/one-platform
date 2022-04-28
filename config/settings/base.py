@@ -90,6 +90,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "one.components",
+    "one.contrib.sites.settings",
     "one.users",
     # Your stuff: custom apps go here
 ]
@@ -196,6 +197,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
+                "one.contrib.sites.settings.context_processors.site_setting_processor",
                 "one.users.context_processors.allauth_settings",
             ],
         },
