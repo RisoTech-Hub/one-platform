@@ -41,14 +41,16 @@
   <!-- place project specific Javascript in this file -->
   <script src="{% static 'js/project.min.js' %}"></script>
   <!--end::Global Javascript Bundle-->
-
 </head>
 <!--end::Head-->
 <!--begin::Body-->
 <body id="kt_body"
       class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-enabled aside-fixed"
       style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
-
+<script>
+  KTApp.setThemeMode(KTCookie.get("themeColor"), function () {
+  });
+</script>
 <!--begin::Main-->
 <!--begin::Root-->
 <div class="d-flex flex-column flex-root">
@@ -234,6 +236,19 @@
   function submitChangeLanguageForm(language) {
     $('#change_language_select_id').val(language).change();
     $('#change_language_form_id').submit()
+  }
+
+  function changeThemeColor() {
+    var themeColor = $("#kt_body").hasClass("dark-mode");
+    if (themeColor === true) {
+      KTApp.setThemeMode("light", function () {
+        KTCookie.set("themeColor", "light")
+      }); // set light mode
+    } else {
+      KTApp.setThemeMode("dark", function () {
+        KTCookie.set("themeColor", "dark")
+      }); // set dark mode
+    }
   }
 </script>
 <!--end::Django language-->
