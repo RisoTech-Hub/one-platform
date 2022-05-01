@@ -243,21 +243,29 @@
   }
 </script>
 <!--end::Django language-->
-<!--begin::Metronic theme-->
+
+<!--begin::Theme mode-->
 <script>
-  function changeThemeColor() {
-    if (KTCookie.get("themeColor") === 'dark') {
-      KTApp.setThemeMode("light", function () {
-        KTCookie.set("themeColor", "light")
-      }); // set light mode
-    } else {
-      KTApp.setThemeMode("dark", function () {
-        KTCookie.set("themeColor", "dark")
-      }); // set dark mode
-    }
+  function submitSetThemeMode(theme) {
+    KTApp.setThemeMode(theme, function () {
+      $.get("{% url 'api:user-set-theme' %}?theme=" + theme, function (data) {
+        if (theme == 'dark'){
+          $("#theme_mode_light_id").addClass("d-none");
+          $("#theme_mode_dark_id").removeClass("d-none");
+          $("#theme_mode_light_a_id").removeClass("active");
+          $("#theme_mode_dark_a_id").addClass("active");
+        } else {
+          $("#theme_mode_light_id").removeClass("d-none");
+          $("#theme_mode_dark_id").addClass("d-none");
+          $("#theme_mode_light_a_id").addClass("active");
+          $("#theme_mode_dark_a_id").removeClass("active");
+        }
+      });
+    });
   }
 </script>
-<!--end::Metronic theme-->
+<!--end::Theme mode-->
+
 <!--begin::Webpush auto click-->
 <script>
   $(document).ready(function () {

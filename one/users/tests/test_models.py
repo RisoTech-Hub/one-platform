@@ -97,3 +97,9 @@ def test_user_is_online_dot(user: User):
     )
 
     assert user.is_online_dot == online
+
+
+def test_set_theme(user: User):
+    """test_set_theme"""
+    user.set_theme("dark")
+    assert user.theme == settings.DARK_THEME

@@ -84,3 +84,11 @@ class User(BaseModel, AbstractUser):
         return online if self.is_online else offline
 
     # End User Online Status
+
+    # Constructor Set
+    def set_theme(self, theme):
+        """Set theme"""
+        self.theme = theme
+        self.save()
+
+    # End Constructor Set
