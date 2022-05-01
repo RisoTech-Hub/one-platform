@@ -103,3 +103,9 @@ def test_set_theme(user: User):
     """test_set_theme"""
     user.set_theme("dark")
     assert user.theme == settings.DARK_THEME
+
+
+def test_set_language(user: User):
+    """test_set_language"""
+    user.set_language("en")
+    assert user.language == settings.ENGLISH

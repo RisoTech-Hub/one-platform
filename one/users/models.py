@@ -91,4 +91,9 @@ class User(BaseModel, AbstractUser):
         self.theme = theme
         self.save()
 
+    def set_language(self, language):
+        """Set theme"""
+        self.language = language
+        self.save()
+
     # End Constructor Set
