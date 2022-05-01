@@ -24,6 +24,19 @@ class User(BaseModel, AbstractUser):
     first_name = None  # type: ignore
     last_name = None  # type: ignore
 
+    language = CharField(
+        _("User default language"),
+        max_length=2,
+        choices=settings.LANGUAGES,
+        default=settings.ENGLISH,
+    )
+    theme = CharField(
+        _("User default theme"),
+        max_length=5,
+        choices=settings.THEMES,
+        default=settings.LIGHT_THEME,
+    )
+
     class Metadata:
         avatar_field = None
         name_field = "name"
