@@ -24,8 +24,13 @@
         href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
   <!--end::Fonts-->
   <!--begin::Global Stylesheets Bundle(used by all pages)-->
-  <link href="{% static 'metronic/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
-  <link href="{% static 'metronic/css/style.bundle.css' %}" rel="stylesheet" type="text/css"/>
+  {% if request.user.theme == "light" %}
+    <link href="{% static 'metronic/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'metronic/css/style.bundle.css' %}" rel="stylesheet" type="text/css"/>
+  {% else %}
+    <link href="{% static 'metronic/plugins/global/plugins.dark.bundle.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'metronic/css/style.dark.bundle.css' %}" rel="stylesheet" type="text/css"/>
+  {% endif %}
   <link href="{% static 'css/vendors.min.css' %}" rel="stylesheet" type="text/css"/>
   <!-- This file stores project-specific CSS -->
   <link href="{% static 'css/project.min.css' %}" rel="stylesheet">
@@ -33,14 +38,13 @@
 
   <!--begin::Global Javascript Bundle(used by all pages)-->
   <script src="{% static 'metronic/plugins/global/plugins.bundle.js' %}"></script>
-  <!--end::Global Javascript Bundle-->
-  <!--begin::Global Javascript Bundle(used by all pages)-->
   <script src="{% static 'metronic/js/scripts.bundle.js' %}"></script>
+  <!--end::Global Javascript Bundle-->
   <!-- Vendor dependencies bundled as one file-->
   <script src="{% static 'js/vendors.min.js' %}"></script>
   <!-- place project specific Javascript in this file -->
   <script src="{% static 'js/project.min.js' %}"></script>
-  <!--end::Global Javascript Bundle-->
+
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -48,7 +52,7 @@
       class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-enabled aside-fixed"
       style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
 <script>
-  KTApp.setThemeMode(KTCookie.get("themeColor"), function () {
+  KTApp.setThemeMode("{{ request.user.theme }}", function () {
   });
 </script>
 <!--begin::Main-->
@@ -237,10 +241,12 @@
     $('#change_language_select_id').val(language).change();
     $('#change_language_form_id').submit()
   }
-
+</script>
+<!--end::Django language-->
+<!--begin::Metronic theme-->
+<script>
   function changeThemeColor() {
-    var themeColor = $("#kt_body").hasClass("dark-mode");
-    if (themeColor === true) {
+    if (KTCookie.get("themeColor") === 'dark') {
       KTApp.setThemeMode("light", function () {
         KTCookie.set("themeColor", "light")
       }); // set light mode
@@ -251,7 +257,7 @@
     }
   }
 </script>
-<!--end::Django language-->
+<!--end::Metronic theme-->
 <!--begin::Webpush auto click-->
 <script>
   $(document).ready(function () {

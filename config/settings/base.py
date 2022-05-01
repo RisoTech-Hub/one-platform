@@ -358,5 +358,14 @@ WEBPUSH_SETTINGS = {
 # https://github.com/Dolidodzik/django-login-history
 IP_PLACEHOLDER = "27.64.141.170"
 
+# THEME COLOR
+# ------------------------------------------------------------------------------
+DARK_THEME = "dark"
+LIGHT_THEME = "light"
+THEMES = [
+    (DARK_THEME, _("Dark theme")),
+    (LIGHT_THEME, _("Light theme")),
+]
+
 # Your stuff...
 # ------------------------------------------------------------------------------
