@@ -78,7 +78,7 @@
             <!--begin::Content-->
             <div class="flex-row-fluid">
               <!--begin::Form-->
-              <form class="form w-lg-500px mx-auto" novalidate="novalidate" method="post"
+              <form class="form mx-auto" novalidate="novalidate" method="post"
                     action="{% url 'settings:site' %}" enctype="multipart/form-data">
                 <!--begin::Group-->
                 <div class="mb-5">
@@ -86,24 +86,7 @@
                   <div class="flex-column current" data-kt-stepper-element="content">
                     {% csrf_token %}
                     {% for field in form %}
-                      <!--begin::Input group-->
-                      <div class="fv-row mb-10">
-                        <!--begin::Label-->
-                        <label class="form-label {% if field.field.required %}required{% endif %}">
-                          {{ field.label|title }}
-                          {% if field.help_text %}
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                               title="{{ field.help_text }}"></i>
-                          {% endif %}
-                        </label>
-                        <!--end::Label-->
-
-                        <!--begin::Input-->
-                        {{ field }}
-                        <div class="fv-plugins-message-container invalid-feedback">{{ field.errors.as_text }}</div>
-                        <!--end::Input-->
-                      </div>
-                      <!--end::Input group-->
+                      {% include 'forms/one_row_field.html' %}
                     {% endfor %}
                   </div>
                   <!--begin::Step 1-->
@@ -111,24 +94,14 @@
                   <!--begin::Step 2-->
                   <div class="flex-column" data-kt-stepper-element="content">
                     {% for field in setting_form %}
-                      <!--begin::Input group-->
-                      <div class="fv-row mb-10 {% if field.label == 'Site' %}d-none{% endif %}">
-                        <!--begin::Label-->
-                        <label class="form-label {% if field.field.required %}required{% endif %}">
-                          {{ field.label|title }}
-                          {% if field.help_text %}
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                               title="{{ field.help_text }}"></i>
-                          {% endif %}
-                        </label>
-                        <!--end::Label-->
+                      {% if field.label != 'Site' %}
+                        {% include 'forms/one_row_field.html' %}
+                      {% else %}
+                        <div class="d-none">
+                          {% include 'forms/one_row_field.html' %}
+                        </div>
+                      {% endif %}
 
-                        <!--begin::Input-->
-                        {{ field }}
-                        <div class="fv-plugins-message-container invalid-feedback">{{ field.errors.as_text }}</div>
-                        <!--end::Input-->
-                      </div>
-                      <!--end::Input group-->
                     {% endfor %}
                   </div>
                   <!--begin::Step 2-->
