@@ -22,3 +22,4 @@ class SiteConfig(AppConfig):
 
     def ready(self):
         post_migrate.connect(create_default_site_setting, sender=self)
+        from .signals import create_or_update_site_setting  # noqa
