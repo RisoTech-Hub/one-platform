@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 11:49+0700\n"
+"POT-Creation-Date: 2022-05-02 21:52+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,10 +42,18 @@ msgstr ""
 msgid "Name of User"
 msgstr ""
 
-#: one/users/views.py:19 one/users/views.py:46
-msgid "Profile"
+#: one/users/models.py:28
+msgid "User default language"
 msgstr ""
 
-#: one/users/views.py:32
+#: one/users/models.py:34
+msgid "User default theme"
+msgstr ""
+
+#: one/users/views.py:14
 msgid "Information successfully updated"
+msgstr ""
+
+#: one/users/views.py:28 one/users/views.py:46
+msgid "Profile"
 msgstr ""

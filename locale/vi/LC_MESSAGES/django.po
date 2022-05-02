@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 11:49+0700\n"
+"POT-Creation-Date: 2022-05-02 21:52+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,14 @@ msgstr ""
 #: config/settings/base.py:33 one/templates/topbar/partials/user-menu.html:116
 #: one/templates/topbar/partials/user-menu.html:138
 msgid "English"
+msgstr ""
+
+#: config/settings/base.py:366
+msgid "Dark theme"
+msgstr ""
+
+#: config/settings/base.py:367
+msgid "Light theme"
 msgstr ""
 
 #: one/templates/403.html:6 one/templates/403.html:17
@@ -120,14 +128,15 @@ msgid "Create an Account"
 msgstr ""
 
 #: one/templates/account/login.html:33 one/templates/account/signup.html:55
-#: one/templates/users/partials/user_left_aside.html:71
+#: one/templates/users/partials/user_left_aside.html:67
 msgid "Username"
 msgstr ""
 
 #: one/templates/account/login.html:47
 #: one/templates/account/password_reset_from_key.html:59
 #: one/templates/account/signup.html:66
-#: one/templates/users/user_detail.html:225
+#: one/templates/users/user_detail.html:198
+#: one/templates/users/user_detail.html:415
 msgid "Password"
 msgstr ""
 
@@ -152,7 +161,7 @@ msgstr ""
 #: one/templates/account/login.html:141
 #: one/templates/account/password_reset_from_key.html:140
 #: one/templates/account/signup.html:172
-#: one/templates/users/user_detail.html:472
+#: one/templates/users/user_detail.html:621
 msgid "The password is required"
 msgstr ""
 
@@ -160,7 +169,7 @@ msgstr ""
 #: one/templates/account/password_reset.html:105
 #: one/templates/account/password_reset_from_key.html:199
 #: one/templates/account/signup.html:238
-#: one/templates/users/user_detail.html:531
+#: one/templates/users/user_detail.html:680
 msgid "Sorry, looks like there are some errors detected, please try again"
 msgstr ""
 
@@ -168,13 +177,13 @@ msgstr ""
 #: one/templates/account/password_reset.html:108
 #: one/templates/account/password_reset_from_key.html:202
 #: one/templates/account/signup.html:241
-#: one/templates/users/user_detail.html:534
+#: one/templates/users/user_detail.html:683
 msgid "Ok, got it"
 msgstr ""
 
 #: one/templates/account/logout.html:5 one/templates/account/logout.html:11
 #: one/templates/account/logout.html:23
-#: one/templates/topbar/partials/user-menu.html:194
+#: one/templates/topbar/partials/user-menu.html:164
 msgid "Sign Out"
 msgstr ""
 
@@ -201,14 +210,18 @@ msgstr ""
 #: one/templates/account/password_reset.html:42
 #: one/templates/account/password_reset_from_key.html:110
 #: one/templates/account/signup.html:126
-#: one/templates/users/user_detail.html:277
+#: one/templates/users/user_detail.html:351
+#: one/templates/users/user_detail.html:468
+#: one/templates/users/user_detail.html:569
 msgid "Submit"
 msgstr ""
 
 #: one/templates/account/password_reset.html:43
 #: one/templates/account/password_reset_from_key.html:111
-#: one/templates/account/signup.html:127
-#: one/templates/users/user_detail.html:278
+#: one/templates/account/signup.html:127 one/templates/sites/site_form.html:126
+#: one/templates/users/user_detail.html:352
+#: one/templates/users/user_detail.html:469
+#: one/templates/users/user_detail.html:570
 msgid "Please wait"
 msgstr ""
 
@@ -258,25 +271,25 @@ msgstr ""
 
 #: one/templates/account/password_reset_from_key.html:100
 #: one/templates/account/signup.html:105
-#: one/templates/users/user_detail.html:264
+#: one/templates/users/user_detail.html:454
 msgid "Confirm Password"
 msgstr ""
 
 #: one/templates/account/password_reset_from_key.html:143
 #: one/templates/account/signup.html:175
-#: one/templates/users/user_detail.html:475
+#: one/templates/users/user_detail.html:624
 msgid "Please enter valid password"
 msgstr ""
 
 #: one/templates/account/password_reset_from_key.html:155
 #: one/templates/account/signup.html:187
-#: one/templates/users/user_detail.html:487
+#: one/templates/users/user_detail.html:636
 msgid "The password confirmation is required"
 msgstr ""
 
 #: one/templates/account/password_reset_from_key.html:161
 #: one/templates/account/signup.html:193
-#: one/templates/users/user_detail.html:493
+#: one/templates/users/user_detail.html:642
 msgid "The password and its confirm are not the same"
 msgstr ""
 
@@ -291,7 +304,7 @@ msgid "Set Password"
 msgstr ""
 
 #: one/templates/account/root.html:49 one/templates/account/root.html:75
-#: one/templates/base.html:198 one/templates/base.html:224
+#: one/templates/base.html:201 one/templates/base.html:227
 msgid "Ok"
 msgstr ""
 
@@ -308,8 +321,9 @@ msgid "Sign in here"
 msgstr ""
 
 #: one/templates/account/signup.html:47
-#: one/templates/users/partials/user_left_aside.html:66
-#: one/templates/users/user_detail.html:119
+#: one/templates/users/partials/user_left_aside.html:62
+#: one/templates/users/user_detail.html:21
+#: one/templates/users/user_detail.html:110
 msgid "Email"
 msgstr ""
 
@@ -376,12 +390,20 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
+#: one/templates/aside/base.html:50
+msgid "All setting for this site"
+msgstr ""
+
+#: one/templates/aside/base.html:51
+msgid "Setting"
+msgstr ""
+
 #: one/templates/aside/menu.html:16
 msgid "Configurations"
 msgstr ""
 
 #: one/templates/aside/menu.html:23 one/templates/aside/menu.html:41
-#: one/templates/defaults/_list.html:4
+#: one/templates/defaults/_list.html:4 one/templates/layout/footer.html:16
 msgid "Settings"
 msgstr ""
 
@@ -409,7 +431,7 @@ msgstr ""
 msgid "FlatPage"
 msgstr ""
 
-#: one/templates/base.html:96
+#: one/templates/base.html:98
 msgid "We need your attention!"
 msgstr ""
 
@@ -443,11 +465,44 @@ msgstr ""
 
 #: one/templates/forms/one-col-form.html:36
 #: one/templates/forms/two-col-form.html:35
+#: one/templates/sites/site_form.html:123
 msgid "Save Changes"
 msgstr ""
 
 #: one/templates/header/breadcrumb.html:17
 msgid "Danh sách"
+msgstr ""
+
+#: one/templates/sites/site_form.html:35
+msgid "General"
+msgstr ""
+
+#: one/templates/sites/site_form.html:39
+msgid "Name and Domain"
+msgstr ""
+
+#: one/templates/sites/site_form.html:62
+msgid "Images"
+msgstr ""
+
+#: one/templates/sites/site_form.html:66
+msgid "Favicon, Logos"
+msgstr ""
+
+#: one/templates/sites/site_form.html:115
+msgid "Back"
+msgstr ""
+
+#: one/templates/sites/site_form.html:131
+msgid "Continue"
+msgstr ""
+
+#: one/templates/topbar/base.html:193
+msgid "Light"
+msgstr ""
+
+#: one/templates/topbar/base.html:205
+msgid "Dark"
 msgstr ""
 
 #: one/templates/topbar/partials/user-menu.html:35
@@ -458,132 +513,144 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: one/templates/users/partials/user_left_aside.html:50
+#: one/templates/users/partials/user_left_aside.html:34
+msgid "Details"
+msgstr ""
+
+#: one/templates/users/partials/user_left_aside.html:47
 msgid "Edit profile details"
 msgstr ""
 
-#: one/templates/users/partials/user_left_aside.html:51
+#: one/templates/users/partials/user_left_aside.html:48
 msgid "Edit"
 msgstr ""
 
-#: one/templates/users/partials/user_left_aside.html:61
+#: one/templates/users/partials/user_left_aside.html:57
 msgid "Account Id"
 msgstr ""
 
-#: one/templates/users/partials/user_left_aside.html:76
+#: one/templates/users/partials/user_left_aside.html:72
 msgid "Last login"
 msgstr ""
 
-#: one/templates/users/partials/user_left_aside.html:81
+#: one/templates/users/partials/user_left_aside.html:77
 msgid "Is Superuser"
 msgstr ""
 
-#: one/templates/users/partials/user_left_aside.html:86
+#: one/templates/users/partials/user_left_aside.html:82
 msgid "Is Staff"
 msgstr ""
 
-#: one/templates/users/partials/user_left_aside.html:91
+#: one/templates/users/partials/user_left_aside.html:87
 msgid "Is Active"
 msgstr ""
 
-#: one/templates/users/partials/user_left_aside.html:96
+#: one/templates/users/partials/user_left_aside.html:92
 msgid "Date Joined"
 msgstr ""
 
-#: one/templates/users/user_detail.html:14
-msgid "Emails"
-msgstr ""
-
-#: one/templates/users/user_detail.html:52
-#: one/templates/users/user_detail.html:366
+#: one/templates/users/user_detail.html:41
+#: one/templates/users/user_detail.html:310
 msgid "Add new email"
 msgstr ""
 
-#: one/templates/users/user_detail.html:57
+#: one/templates/users/user_detail.html:46
 msgid "Set email as primary"
 msgstr ""
 
-#: one/templates/users/user_detail.html:73
+#: one/templates/users/user_detail.html:62
 msgid "Resend verify email"
 msgstr ""
 
-#: one/templates/users/user_detail.html:89
+#: one/templates/users/user_detail.html:79
 msgid "Delete email"
 msgstr ""
 
-#: one/templates/users/user_detail.html:118
+#: one/templates/users/user_detail.html:109
 msgid "Selected"
 msgstr ""
 
-#: one/templates/users/user_detail.html:120
+#: one/templates/users/user_detail.html:111
 msgid "Status"
 msgstr ""
 
-#: one/templates/users/user_detail.html:158
+#: one/templates/users/user_detail.html:149
 msgid "Verified"
 msgstr ""
 
-#: one/templates/users/user_detail.html:161
+#: one/templates/users/user_detail.html:152
 msgid "Unverified"
 msgstr ""
 
-#: one/templates/users/user_detail.html:172
+#: one/templates/users/user_detail.html:163
 msgid "Warning:"
 msgstr ""
 
-#: one/templates/users/user_detail.html:172
+#: one/templates/users/user_detail.html:163
 msgid ""
 "You currently do not have any e-mail address set up. You should really add "
 "an e-mail address so you can receive notifications, reset your password, etc."
 msgstr ""
 
-#: one/templates/users/user_detail.html:194
-msgid "Change password"
+#: one/templates/users/user_detail.html:184
+msgid "Profile"
 msgstr ""
 
-#: one/templates/users/user_detail.html:214
-msgid "Current Password"
-msgstr ""
-
-#: one/templates/users/user_detail.html:256
-msgid ""
-"Use 8 or more characters with a mix of letters,\n"
-"                      numbers &amp; symbols."
-msgstr ""
-
-#: one/templates/users/user_detail.html:298
+#: one/templates/users/user_detail.html:240
 msgid "Login Logs"
 msgstr ""
 
-#: one/templates/users/user_detail.html:314
+#: one/templates/users/user_detail.html:257
 msgid "Country"
 msgstr ""
 
-#: one/templates/users/user_detail.html:315
+#: one/templates/users/user_detail.html:258
 msgid "City"
 msgstr ""
 
-#: one/templates/users/user_detail.html:316
+#: one/templates/users/user_detail.html:259
 msgid "IP Address"
 msgstr ""
 
-#: one/templates/users/user_detail.html:317
+#: one/templates/users/user_detail.html:260
 msgid "Time"
 msgstr ""
 
-#: one/templates/users/user_detail.html:397
+#: one/templates/users/user_detail.html:335
 msgid "Enter New Email Address"
 msgstr ""
 
-#: one/templates/users/user_detail.html:402
+#: one/templates/users/user_detail.html:340
 msgid "Email Address"
 msgstr ""
 
-#: one/templates/users/user_detail.html:439
+#: one/templates/users/user_detail.html:376
+msgid "Change password"
+msgstr ""
+
+#: one/templates/users/user_detail.html:404
+msgid "Current Password"
+msgstr ""
+
+#: one/templates/users/user_detail.html:446
+msgid ""
+"Use 8 or more characters with a mix of letters,\n"
+"                  numbers &amp; symbols."
+msgstr ""
+
+#: one/templates/users/user_detail.html:498
+msgid "Update User Details"
+msgstr ""
+
+#: one/templates/users/user_detail.html:527
+msgid "User Information"
+msgstr ""
+
+#: one/templates/users/user_detail.html:588
 msgid "Do you really want to remove the selected e-mail address?"
 msgstr ""
 
-#: one/templates/users/user_detail.html:465
+#: one/templates/users/user_detail.html:614
 msgid "Current password is required"
 msgstr ""
 
