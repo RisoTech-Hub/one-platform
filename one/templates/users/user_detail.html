@@ -329,30 +329,27 @@
           {% csrf_token %}
           <!--begin::Modal body-->
           <div class="modal-body py-10 px-lg-17">
-              <!--begin::Input group-->
-              <div class="mb-5 fv-row">
-                <!--begin::Label-->
-                <label class="required fs-5 fw-bold mb-2">{% translate 'Enter New Email Address' %}</label>
-                <!--end::Label-->
-                <!--begin::Input-->
-                <input type="email"
-                       class="form-control form-control-solid"
-                       placeholder="{% translate 'Email Address' %}"
-                       name="email" id="id_email"/>
-                <!--end::Input-->
-              </div>
-              <!--end::Input group-->
+            <!--begin::Input group-->
+            <div class="mb-5 fv-row">
+              <!--begin::Label-->
+              <label class="required fs-5 fw-bold mb-2">{% translate 'Enter New Email Address' %}</label>
+              <!--end::Label-->
+              <!--begin::Input-->
+              <input type="email"
+                     class="form-control form-control-solid"
+                     placeholder="{% translate 'Email Address' %}"
+                     name="email" id="id_email" required/>
+              <!--end::Input-->
+            </div>
+            <!--end::Input group-->
           </div>
           <!--end::Modal body-->
           <!--begin::Modal footer-->
           <div class="modal-footer flex-center">
             <!--begin::Button-->
-            <button type="reset" id="kt_modal_add_new_email_cancel" class="btn btn-light me-3">Discard</button>
-            <!--end::Button-->
-            <!--begin::Button-->
-            <button type="submit" name="action_add" id="action_add_submit" class="btn btn-primary">
-              <span class="indicator-label">Submit</span>
-              <span class="indicator-progress">Please wait...
+            <button type="submit" name="action_add" id="kt_modal_add_new_email_submit" class="btn btn-primary">
+              <span class="indicator-label">{% translate "Submit" %}</span>
+              <span class="indicator-progress">{% translate "Please wait" %}...
 								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
             </button>
             <!--end::Button-->
