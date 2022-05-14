@@ -16,7 +16,7 @@ projects quickly.
 - Based on Django Cookiecutter
 - Integrate with modern template Metronic
 - Built-in Functions help you start new project quickly
-- Documentation: https://github.com/riso-tech/one-platform/tree/master/docs
+- Documentation: https://github.com/riso-tech/one-platform/tree/master/docs/README.md
 - Features: https://github.com/riso-tech/one-platform/tree/master/docs/FEATURES.md
 
 ## Screenshots
