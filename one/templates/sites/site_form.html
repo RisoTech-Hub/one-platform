@@ -69,6 +69,36 @@
                 <!--end::Label-->
               </div>
               <!--end::Step 2-->
+
+
+              <!--begin::Step 3-->
+              <div class="stepper-item me-5" data-kt-stepper-element="nav" data-kt-stepper-action="step">
+                <!--begin::Line-->
+                <div class="stepper-line w-40px"></div>
+                <!--end::Line-->
+
+                <!--begin::Icon-->
+                <div class="stepper-icon w-40px h-40px">
+                  <i class="stepper-check fas fa-check"></i>
+                  <span class="stepper-number">3</span>
+                </div>
+                <!--begin::Icon-->
+
+                <!--begin::Label-->
+                <div class="stepper-label">
+                  <h3 class="stepper-title">
+                    {% translate 'Email Templates' %}
+                  </h3>
+
+                  <div class="stepper-desc">
+                    {% translate 'Base emails for authenticate' %}
+                  </div>
+                </div>
+                <!--end::Label-->
+              </div>
+              <!--end::Step 2-->
+
+
             </div>
             <!--end::Nav-->
           </div>
@@ -80,6 +110,7 @@
                   action="{% url 'settings:site' %}" enctype="multipart/form-data">
               <!--begin::Group-->
               <div class="mb-5">
+
                 <!--begin::Step 1-->
                 <div class="flex-column current" data-kt-stepper-element="content">
                   {% csrf_token %}
@@ -87,7 +118,7 @@
                     {% include 'forms/one_row_field.html' %}
                   {% endfor %}
                 </div>
-                <!--begin::Step 1-->
+                <!--end::Step 1-->
 
                 <!--begin::Step 2-->
                 <div class="flex-column" data-kt-stepper-element="content">
@@ -102,7 +133,133 @@
 
                   {% endfor %}
                 </div>
-                <!--begin::Step 2-->
+                <!--end::Step 2-->
+
+                <!--begin::Step 3-->
+                <div class="flex-column" data-kt-stepper-element="content">
+
+                  <!--begin::Unknown Account-->
+                  <div class="card ">
+                    <div class="card-header card-header-stretch">
+                      <h3 class="card-title">{% translate 'Unknown Account' %}</h3>
+                      <div class="card-toolbar">
+                        <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#allauth_unknown_en">{% translate 'English' %}</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#allauth_unknown_vi">{% translate 'Viet Nam' %}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="allauth_unknown_en" role="tabpanel">
+                          ....
+                        </div>
+
+                        <div class="tab-pane fade" id="allauth_unknown_vi" role="tabpanel">
+                          ...
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <!--end::Unknown Account-->
+
+                  <!--begin::allauth_reset-->
+                  <div class="card ">
+                    <div class="card-header card-header-stretch">
+                      <h3 class="card-title">{% translate 'Reset Email' %}</h3>
+                      <div class="card-toolbar">
+                        <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#allauth_reset_en">{% translate 'English' %}</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#allauth_reset_vi">{% translate 'Viet Nam' %}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="allauth_reset_en" role="tabpanel">
+                          ....
+                        </div>
+
+                        <div class="tab-pane fade" id="allauth_reset_vi" role="tabpanel">
+                          ...
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <!--end::allauth_reset-->
+
+                  <!--begin::allauth_signup-->
+                  <div class="card ">
+                    <div class="card-header card-header-stretch">
+                      <h3 class="card-title">{% translate 'Sign Up Email' %}</h3>
+                      <div class="card-toolbar">
+                        <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#allauth_signup_en">{% translate 'English' %}</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#allauth_signup_vi">{% translate 'Viet Nam' %}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="allauth_signup_en" role="tabpanel">
+                          ....
+                        </div>
+
+                        <div class="tab-pane fade" id="allauth_signup_vi" role="tabpanel">
+                          ...
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <!--end::allauth_signup-->
+
+                  <!--begin::allauth_confirm-->
+                  <div class="card ">
+                    <div class="card-header card-header-stretch">
+                      <h3 class="card-title">{% translate 'Confirmation Email' %}</h3>
+                      <div class="card-toolbar">
+                        <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#allauth_confirm_en">{% translate 'English' %}</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#allauth_confirm_vi">{% translate 'Viet Nam' %}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="allauth_confirm_en" role="tabpanel">
+                          ....
+                        </div>
+
+                        <div class="tab-pane fade" id="allauth_confirm_vi" role="tabpanel">
+                          ...
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <!--end::allauth_confirm-->
+                </div>
+                <!--begin::Step 3-->
+
               </div>
               <!--end::Group-->
 

@@ -90,6 +90,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "one.components",
+    "one.emails",
     "one.contrib.sites.settings",
     "one.users",
     # Your stuff: custom apps go here
