@@ -7,6 +7,12 @@ from django.conf import settings
 from django.core.mail import EmailMessage
 from django.http import HttpRequest
 
+from one.emails.constants import (
+    TEMPLATE_CONFIRM,
+    TEMPLATE_RESET,
+    TEMPLATE_SIGNUP,
+    TEMPLATE_UNKNOWN,
+)
 from one.emails.utils import context_render_from_template
 from one.utils.requests import RequestProcess
 
@@ -32,10 +38,10 @@ class AccountAdapter(DefaultAccountAdapter):
         context["user_display"] = user_display(context["user"])
 
         subjects = {
-            "account/email/email_confirmation_signup": "allauth_signup",
-            "account/email/password_reset_key": "allauth_reset",
-            "account/email/email_confirmation": "allauth_confirm",
-            "account/email/unknown_account": "allauth_unknown",
+            "account/email/email_confirmation_signup": TEMPLATE_SIGNUP,
+            "account/email/password_reset_key": TEMPLATE_RESET,
+            "account/email/email_confirmation": TEMPLATE_CONFIRM,
+            "account/email/unknown_account": TEMPLATE_UNKNOWN,
         }
 
         subject_context = {}

@@ -14,6 +14,8 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from rest_framework.serializers import ModelSerializer
 
+from .managers import LingualManager
+
 
 class MetaModel(Model):
     class Meta:
@@ -154,6 +156,7 @@ class LingualModel(BaseModel):
         choices=settings.LANGUAGES,
         default=settings.VIETNAMESE,
     )
+    lingual_objects = LingualManager()
 
     class Meta:
         abstract = True

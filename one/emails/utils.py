@@ -15,8 +15,6 @@ def context_render_from_template(code, context, subject_context, language):
         email_template = AllauthTemplate.objects.filter(
             code=code, language=language
         ).last()
-        print(language)
-        print(email_template)
         content_template = Template(email_template.content)
         subject_template = Template(email_template.subject)
         return (
