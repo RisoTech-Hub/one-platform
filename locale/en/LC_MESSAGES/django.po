@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-15 00:35+0700\n"
+"POT-Creation-Date: 2022-06-26 17:36+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -304,7 +304,7 @@ msgid "Set Password"
 msgstr ""
 
 #: one/templates/account/root.html:49 one/templates/account/root.html:75
-#: one/templates/base.html:201 one/templates/base.html:227
+#: one/templates/base.html:205 one/templates/base.html:231
 msgid "Ok"
 msgstr ""
 
@@ -429,6 +429,26 @@ msgstr ""
 msgid "Debug toolbars"
 msgstr ""
 
+#: one/templates/drawers/file-drawer.html:53
+msgid "Click to Upload"
+msgstr ""
+
+#: one/templates/drawers/file-drawer.html:72
+msgid "Copy to clipboard"
+msgstr ""
+
+#: one/templates/engage/_upload/main.html:11
+msgid "File Explore"
+msgstr ""
+
+#: one/templates/engage/_upload/toggle.html:5
+msgid "File managements"
+msgstr ""
+
+#: one/templates/engage/_upload/toggle.html:7
+msgid "FILE"
+msgstr ""
+
 #: one/templates/forms/one-col-form.html:31
 #: one/templates/forms/two-col-form.html:30
 msgid "Discard"
@@ -480,11 +500,11 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
-#: one/templates/topbar/base.html:193
+#: one/templates/topbar/base.html:214
 msgid "Light"
 msgstr ""
 
-#: one/templates/topbar/base.html:205
+#: one/templates/topbar/base.html:226
 msgid "Dark"
 msgstr ""
 
