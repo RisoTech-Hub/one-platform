@@ -1,3 +1,5 @@
+import os
+
 from .base import *  # noqa
 from .base import env
 
@@ -8,7 +10,7 @@ DEBUG = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
-    default="9PbUUbqLIHoSwuOklRcKWsvJI5jxccxRqJ0YnRI0PHNXsoG4UCcoc06LaLnw8kU1",
+    default="lO81mN6TNsjVmSYKxWZOcHTiM3tXF9nxlsz840KMuaOB5OxZq2vfsAsMJZFOHjER",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
@@ -54,12 +56,6 @@ if env("USE_DOCKER") == "yes":
 
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS += [".".join(ip.split(".")[:-1] + ["1"]) for ip in ips]
-    try:
-        _, _, ips = socket.gethostbyname_ex("node")
-        INTERNAL_IPS.extend(ips)
-    except socket.gaierror:
-        # The node container isn't started (yet?)
-        pass
 
 # django-extensions
 # ------------------------------------------------------------------------------
@@ -70,5 +66,13 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 
 # https://docs.celeryq.dev/en/stable/userguide/configuration.html#task-eager-propagates
 CELERY_TASK_EAGER_PROPAGATES = True
+# Pycharm resolve static
+# ------------------------------------------------------------------------------
+STATICFILES_DIRS += [  # noqa F405
+    os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "one", "static"
+    )
+]
+
 # Your stuff...
 # ------------------------------------------------------------------------------

@@ -1,9 +1,6 @@
-import pytest
 from django.urls import resolve, reverse
 
 from one.users.models import User
-
-pytestmark = pytest.mark.django_db
 
 
 def test_user_detail(user: User):

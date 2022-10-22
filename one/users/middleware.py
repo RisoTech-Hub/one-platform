@@ -20,7 +20,7 @@ class ActiveUserMiddleware(MiddlewareMixin):
                 cache.set(
                     f"seen_{current_user.username}",
                     now,
-                    settings.USER_LASTSEEN_TIMEOUT,
+                    settings.USER_LAST_SEEN_TIMEOUT,
                 )
         except AttributeError:
             pass

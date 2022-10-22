@@ -20,7 +20,7 @@ class RequestProcess:
 
     def host(self):
         """:return host = protocol + domain"""
-        return "{0}{1}".format(self.protocol(), self.current_site.domain)
+        return f"{self.protocol()}{self.current_site.domain}"
 
     def lazy_user(self):
         """:return lazy user"""

@@ -8,6 +8,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+
     initial = True
 
     dependencies = [
@@ -25,6 +26,7 @@ class Migration(migrations.Migration):
                         editable=False,
                         primary_key=True,
                         serialize=False,
+                        verbose_name="User ID",
                     ),
                 ),
                 ("password", models.CharField(max_length=128, verbose_name="password")),

@@ -8,9 +8,20 @@ from django.views.generic import DetailView, RedirectView, UpdateView
 User = get_user_model()
 
 
-class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class UserDetailView(LoginRequiredMixin, DetailView):
+
     model = User
-    fields = ["name"]
+    slug_field = "username"
+    slug_url_kwarg = "username"
+
+
+user_detail_view = UserDetailView.as_view()
+
+
+class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+
+    model = User
+    fields = ["name", "groups"]
     success_message = _("Information successfully updated")
 
     def get_success_url(self):
@@ -22,40 +33,12 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self):
         return self.request.user
 
-    def get_context_data(self, **kwargs):
-        kwargs = super().get_context_data(**kwargs)
-        kwargs["breadcrumb"] = {
-            "title": _("Profile"),
-            "parent": None,
-            "current": f"{_('Update for')} {self.object.as_name}",
-        }
-        return kwargs
-
 
 user_update_view = UserUpdateView.as_view()
 
 
-class UserDetailView(LoginRequiredMixin, DetailView):
-    model = User
-    slug_field = "username"
-    slug_url_kwarg = "username"
-
-    def get_context_data(self, **kwargs):
-        kwargs = super().get_context_data(**kwargs)
-        kwargs["breadcrumb"] = {
-            "title": _("Profile"),
-            "parent": None,
-            "current": f"{_('Detail of')} {self.object.as_name}",
-        }
-        update_view = UserUpdateView(request=self.request, object=self.object)
-        kwargs["user_update_form"] = update_view.get_context_data()["form"]
-        return kwargs
-
-
-user_detail_view = UserDetailView.as_view()
-
-
 class UserRedirectView(LoginRequiredMixin, RedirectView):
+
     permanent = False
 
     def get_redirect_url(self):

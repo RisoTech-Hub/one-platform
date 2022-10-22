@@ -33,16 +33,6 @@ class TestSiteDetailView:
 
         assert view.get_object() == Site.objects.first()
 
-    def test_get_context_data(self, user: User, site: Site, rf: RequestFactory):
-        view = SiteDetailView()
-        request = rf.get("/fake-url/")
-        request.user = user
-
-        view.request = request
-        view.object = site
-
-        assert "breadcrumb" in view.get_context_data()
-
     def test_form_valid(self, user: User, rf: RequestFactory):
         view = SiteDetailView()
         request = rf.post(

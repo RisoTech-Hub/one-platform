@@ -1,6 +1,0 @@
-[submodule "one/static/metronic"]
-	path = one/static/metronic
-	url = git@github.com:riso-tech/metronic-static.git
-[submodule "backups"]
-	path = backups
-	url = git@github.com:riso-tech/one-backup.git

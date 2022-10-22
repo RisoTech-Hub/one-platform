@@ -14,7 +14,8 @@ env = environ.Env()
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
-    env.read_env(str(ROOT_DIR / ".env"))
+    env.read_env(str(ROOT_DIR / ".envs/.local/.django"))
+    env.read_env(str(ROOT_DIR / ".envs/.local/.postgres"))
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -72,6 +73,11 @@ DJANGO_APPS = [
     "django.contrib.admin",
     "django.forms",
 ]
+EXTENDED_APPS = [
+    "one.allauth_extend",
+    "one.contrib.sites.settings",
+    "one.auth_extend.contexts",
+]
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
@@ -85,18 +91,16 @@ THIRD_PARTY_APPS = [
     "drf_spectacular",
     "webpush",
     "django_filters",
-    "django_login_history",
+    "filebrowser",
+    "tinymce",
 ]
-
 LOCAL_APPS = [
     "one.components",
-    "one.emails",
-    "one.contrib.sites.settings",
     "one.users",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + EXTENDED_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------
@@ -175,6 +179,9 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = str(APPS_DIR / "media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
+# https://django-filebrowser.readthedocs.io/en/latest/settings.html#settings
+FILEBROWSER_DIRECTORY = ""
+DIRECTORY = ""
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
@@ -198,8 +205,8 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
+                "one.allauth_extend.context_processors.allauth_settings",
                 "one.contrib.sites.settings.context_processors.site_setting_processor",
-                "one.users.context_processors.allauth_settings",
             ],
         },
     }
@@ -304,13 +311,13 @@ ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_ADAPTER = "one.users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = "one.allauth_extend.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-ACCOUNT_FORMS = {"signup": "one.users.forms.UserSignupForm"}
+ACCOUNT_FORMS = {"signup": "one.allauth_extend.forms.UserSignupForm"}
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-SOCIALACCOUNT_ADAPTER = "one.users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "one.allauth_extend.adapters.SocialAccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-SOCIALACCOUNT_FORMS = {"signup": "one.users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {"signup": "one.allauth_extend.forms.UserSocialSignupForm"}
 
 # django-rest-framework
 # -------------------------------------------------------------------------------
@@ -319,9 +326,22 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_RENDERER_CLASSES": (
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+        "rest_framework_datatables.renderers.DatatablesRenderer",
+    ),
+    "DEFAULT_FILTER_BACKENDS": (
+        "rest_framework_datatables.filters.DatatablesFilterBackend",
+    ),
+    "DEFAULT_PAGINATION_CLASS": (
+        "rest_framework_datatables.pagination.DatatablesPageNumberPagination"
+    ),
+    "PAGE_SIZE": 50,
 }
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
@@ -340,14 +360,6 @@ SPECTACULAR_SETTINGS = {
     ],
 }
 
-# USER ACTIVE
-# Number of seconds of inactivity before a user is marked offline
-USER_ONLINE_TIMEOUT = 300
-
-# Number of seconds that we will keep track of inactive users for before
-# their last seen is removed from the cache
-USER_LASTSEEN_TIMEOUT = 60 * 60 * 24 * 7
-
 # Web push notification
 # ------------------------------------------------------------------------------
 WEBPUSH_SETTINGS = {
@@ -356,17 +368,30 @@ WEBPUSH_SETTINGS = {
     "VAPID_ADMIN_EMAIL": env("VAPID_ADMIN_EMAIL", default=""),
 }
 
-# https://github.com/Dolidodzik/django-login-history
-IP_PLACEHOLDER = "27.64.141.170"
-
-# THEME COLOR
+# User active
 # ------------------------------------------------------------------------------
-DARK_THEME = "dark"
-LIGHT_THEME = "light"
-THEMES = [
-    (DARK_THEME, _("Dark theme")),
-    (LIGHT_THEME, _("Light theme")),
-]
+# Number of seconds of inactivity before a user is marked offline
+USER_ONLINE_TIMEOUT = 300
+
+# Number of seconds that we will keep track of inactive users for before
+# their last seen is removed from the cache
+USER_LAST_SEEN_TIMEOUT = 60 * 60 * 24 * 7
+
+# Django TinyMCE
+# ------------------------------------------------------------------------------
+TINYMCE_DEFAULT_CONFIG = {
+    "height": "320px",
+    "width": "960px",
+    "menubar": "file edit view insert format tools table help",
+    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
+    "fullscreen insertdatetime media table paste code help wordcount spellchecker",
+    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
+    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
+    "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
+    "a11ycheck ltr rtl | showcomments addcomment code",
+    "custom_undo_redo_levels": 10,
+}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
