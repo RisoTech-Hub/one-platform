@@ -1,0 +1,49 @@
+{% load i18n %}
+{% include "django/forms/widgets/input.html" %}
+<button class="btn btn-success" type="button"
+        onclick="checkAvailable('{{ widget.attrs.model }}', '{{ widget.name }}', '{{ widget.attrs.id }}')">
+  {% blocktrans %}Check Available{% endblocktrans %}</button>
+<script>
+    function checkAvailable(model, field, field_id ) {
+      let value = $("#"+field_id).val();
+      let current = $("#object_id").val();
+      if (value === "") {
+        new PNotify({
+          title: '{% blocktrans %}Warning{% endblocktrans %}',
+          text: '{% blocktrans %}Checking value cannot be blank{% endblocktrans %}',
+        });
+        return false;
+      }
+      $.ajax({
+        url: "{% url "check_exist_value_view" %}",
+        type: "GET",
+        data: {
+          'model': model,
+          'field': field,
+          'value': value,
+          'current': current
+        },
+        success: function (data, status, xhr) {// success callback function
+          if (data === "Not Exist")
+            new PNotify({
+              title: '{% blocktrans %}Notice{% endblocktrans %}',
+              text: '{% blocktrans %}Checking value can be used{% endblocktrans %}',
+              type: 'success'
+            });
+          else
+            new PNotify({
+              title: '{% blocktrans %}Warning{% endblocktrans %}',
+              text: '{% blocktrans %}Checking value has been used by other object{% endblocktrans %}',
+            });
+
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          new PNotify({
+            title: '{% blocktrans %}Notice{% endblocktrans %}',
+            text: '{% blocktrans %}Checking value can be used{% endblocktrans %}',
+            type: 'success'
+          });
+        }
+      });
+    }
+  </script>
