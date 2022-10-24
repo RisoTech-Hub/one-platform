@@ -19,6 +19,10 @@ Or change gulpfile.js to use your own domain.
 
     $ Line 24: target: 'django:8000', => target: 'your-domain:your-port',
 
+Clone submodule
+
+    $ git submodule init
+    $ git submodule update
 
 ## Settings
 
