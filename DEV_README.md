@@ -6,6 +6,19 @@ Set git to ignore idea files changes
 
     $ git update-index --assume-unchanged .idea/misc.xml .idea/one.iml .idea/modules.xml .idea/runConfigurations/* .idea/vcs.xml .idea/webResources.xml
 
+Set pre-commit hook
+
+    $ pre-commit install
+
+If you're not using docker and want to use hot-reload feature, you need to set hosts on your system.
+
+    $ /etc/hosts
+    $ 127.0.0.1      django
+
+Or change gulpfile.js to use your own domain.
+
+    $ Line 24: target: 'django:8000', => target: 'your-domain:your-port',
+
 
 ## Settings
 
