@@ -12,11 +12,12 @@
     {% endif %}
   {% endfor %}
 </select>
-{% if widget.attrs.update_url %}
+{% if widget.attrs.update_url and widget.attrs.default_value %}
 <div class="input-group-append">
   <a class="btn btn-warning"
      type="button"
-     data-action-url="{% url widget.attrs.update_url '__id__' %}"
+     data-action-url="{% url widget.attrs.update_url widget.attrs.default_value %}"
+     data-default-value="{{ widget.attrs.default_value }}"
      data-target-input="id_{{ widget.name }}"
   >{% trans 'Update' %}</a>
 </div>
