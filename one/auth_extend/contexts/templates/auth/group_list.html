@@ -4,12 +4,10 @@
 {% block title %}{% translate 'User managements' %}: {% translate 'Group list' %}{% endblock %}
 
 {% block content %}
-
   <table class="table align-middle table-row-dashed fs-6 gy-5"
          id="kt_table_settings"
          data-server-side="true"
          data-ajax="{% url 'api:group-list' %}?format=datatables"></table>
-
   <div>
     <h1>List</h1>
     {% for object in object_list %}
@@ -18,17 +16,4 @@
     {% endfor %}
   </div>
 
-  <div>
-    <h1>Form</h1>
-    <form enctype="multipart/form-data"
-              action="{% url 'auth:group-create' %}" method="post">
-      {% csrf_token %}
-      <input type="text"
-             class="form-control form-control-solid"
-             placeholder="{% translate 'Name' %}"
-             name="name" id="id_name" required/>
-      {{ context_form.as_p }}
-      <input type="submit" value="Submit"/>
-    </form>
-  </div>
 {% endblock content %}

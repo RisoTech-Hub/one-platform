@@ -27,6 +27,10 @@ class ModelSelectTwo(SelectTwo):
         self.attrs["class"] = "custom-select"
 
 
+class ModelSelectTwoMultiple(ModelSelectTwo, SelectMultiple):
+    pass
+
+
 class UniqueTextWidget(TextInput):
     template_name = "widgets/unique_text.html"
 
