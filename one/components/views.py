@@ -6,13 +6,28 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic import CreateView
 
+from one.components.constants import FORM_TYPE_FULL, FORM_TYPE_QUICK
+
 
 class PopUpCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     is_popup = None
+    quick_form_class = None
+    form_class = None
 
     def setup(self, request, *args, **kwargs):
         self.is_popup = request.GET.get("popup", None)
         super().setup(request, *args, **kwargs)
+
+    def get_form_class(self):
+        form_type = self.request.GET.get("form_type", None)
+        if not form_type:
+            return super().get_form_class()
+        if form_type.upper() == FORM_TYPE_QUICK and self.quick_form_class:
+            return self.quick_form_class
+        elif form_type.upper() == FORM_TYPE_FULL and self.form_class:
+            return self.form_class
+        else:
+            return super().get_form_class()
 
     def add_error_messages(self, form):
         errors = json.loads(form.errors.as_json())
