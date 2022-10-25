@@ -62,7 +62,7 @@ $(document).ready(function () {
                 // get form html return success
                 console.log('-----', response)
                 $modal.modal('hide')
-                $('#' + $modal.attr('target-input')).prepend(`<option value="${response['id']}">${response['name']}</option>`)
+                $('#' + $modal.attr('target-input')).prepend(`<option value="${response['id']}">${response['name']}</option>`).val(response['id'])
                 $modal.remove();
             },
             error: function (request, status, error) {
