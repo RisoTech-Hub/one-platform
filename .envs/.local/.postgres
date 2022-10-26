@@ -1,8 +1,8 @@
 # PostgreSQL
 # ------------------------------------------------------------------------------
-POSTGRES_HOST=postgres.risotech.vn
-POSTGRES_PORT=6979
-POSTGRES_DB=one-one-dev
-POSTGRES_USER=ripostgresso
-POSTGRES_PASSWORD=BjnpostgresN9uy3n
-DATABASE_URL="postgres://ripostgresso:BjnpostgresN9uy3n@postgres.risotech.vn:6979/one-one-dev"
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=one-one
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+DATABASE_URL="postgres://user:password@localhost:5432/one-one"
