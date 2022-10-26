@@ -1,0 +1,35 @@
+{% load i18n %}
+<div class="input-group">
+  <select name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %}>
+    {% for group_name, group_choices, group_index in widget.optgroups %}
+      {% if group_name %}
+        <optgroup label="{{ group_name }}">
+      {% endif %}
+    {% for widget in group_choices %}
+      {% include widget.template_name %}
+    {% endfor %}
+    {% if group_name %}
+      </optgroup>
+    {% endif %}
+    {% endfor %}
+  </select>
+  <div class="input-group-append">
+    {% if widget.attrs.update_url and widget.attrs.default_value %}
+      <a class="btn btn-warning"
+         type="button"
+         quick-update-button
+         data-action-url="{% url widget.attrs.update_url widget.attrs.default_value %}"
+         data-default-value="{{ widget.attrs.default_value }}"
+         data-target-input="{{ widget.attrs.id }}"
+      >{% trans 'Update' %}</a>
+    {% endif %}
+    {% if widget.attrs.create_url %}
+      <a class="btn btn-success"
+         type="button"
+         quick-create-button
+         data-action-url="{% url widget.attrs.create_url %}"
+         data-target-input="{{ widget.attrs.id }}"
+      >{% trans 'Create' %}</a>
+    {% endif %}
+  </div>
+</div>
