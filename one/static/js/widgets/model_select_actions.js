@@ -36,7 +36,7 @@ $(document).ready(function () {
             success: function (response) {
                 // get form html return success
                 console.log('-----', response)
-                let idModal = 'abc_fake'; // TODO: generate id modal here
+                let idModal = 'modal_fake_' + Date.now();
                 appendModalWithId('body', idModal, response, target_input)
                 $('#' + idModal).modal('show')
             },
