@@ -1,12 +1,33 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load account %}
+{% block title %} {% translate "Verify Your E-mail Address" %} {% endblock %}
 
-{% block head_title %}{% translate "Verify Your E-mail Address" %}{% endblock %}
-
-{% block inner %}
-    <h1>{% translate "Verify Your E-mail Address" %}</h1>
-
-    <p>{% blocktranslate %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktranslate %}</p>
-
-{% endblock %}
+{% block content %}
+  <!--begin::Form-->
+  <form class="form w-100" novalidate="novalidate" action="#" method="post">
+    <!--begin::Body-->
+    <div class="card-body">
+      <!--begin::Heading-->
+      <div class="text-start mb-10">
+        <!--begin::Title-->
+        <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">
+          {% translate "Verify Your E-mail Address" %}
+        </h1>
+        <!--end::Title-->
+        <!--begin::Text-->
+        <div class="text-gray-400 fw-semibold fs-6"
+             data-kt-translate="general-desc">
+          {% blocktranslate %}We have sent an e-mail to you for verification. Follow the link provided to finalize the
+            signup
+            process. Please contact us if you do not receive it within a few minutes.{% endblocktranslate %}
+        </div>
+        <!--end::Text-->
+      </div>
+      <!--begin::Heading-->
+    </div>
+    <!--begin::Body-->
+  </form>
+  <!--end::Form-->
+{% endblock content %}

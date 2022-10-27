@@ -1,21 +1,53 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% block title %} {% translate "Verify Your E-mail Address" %} {% endblock %}
 
-{% block head_title %}{% translate "Verify Your E-mail Address" %}{% endblock %}
+{% block content %}
+  <!--begin::Form-->
+  <form class="form w-100" novalidate="novalidate" action="#" method="post">
+    <!--begin::Body-->
+    <div class="card-body">
+      <!--begin::Heading-->
+      <div class="text-start mb-10">
+        <!--begin::Title-->
+        <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">
+          {% translate "Verify Your E-mail Address" %}
+        </h1>
+        <!--end::Title-->
 
-{% block inner %}
-<h1>{% translate "Verify Your E-mail Address" %}</h1>
+        <!--begin::Text-->
+        <div class="text-gray-400 fw-semibold fs-6"
+             data-kt-translate="general-desc">
+          {% blocktranslate %}This part of the site requires us to verify that
+            you are who you claim to be. For this purpose, we require that you
+            verify ownership of your e-mail address. {% endblocktranslate %}
+        </div>
+        <!--end::Text-->
 
-{% url 'account_email' as email_url %}
+        <!--begin::Text-->
+        <div class="text-gray-400 fw-semibold fs-6"
+             data-kt-translate="general-desc">
+          {% blocktranslate %}We have sent an e-mail to you for
+            verification. Please click on the link inside this e-mail. Please
+            contact us if you do not receive it within a few minutes.{% endblocktranslate %}
+        </div>
+        <!--end::Text-->
 
-<p>{% blocktranslate %}This part of the site requires us to verify that
-you are who you claim to be. For this purpose, we require that you
-verify ownership of your e-mail address. {% endblocktranslate %}</p>
+        <!--begin::Text-->
+        {% url 'account_email' as email_url %}
+        <div class="text-gray-400 fw-semibold fs-6"
+             data-kt-translate="general-desc">
+          {% blocktranslate %}<strong>Note:</strong> you can still
+            <a href="{{ email_url }}">change your e-mail address</a>
+            .{% endblocktranslate %}
+        </div>
+        <!--end::Text-->
 
-<p>{% blocktranslate %}We have sent an e-mail to you for
-verification. Please click on the link inside this e-mail. Please
-contact us if you do not receive it within a few minutes.{% endblocktranslate %}</p>
-
-<p>{% blocktranslate %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktranslate %}</p>
-{% endblock %}
+      </div>
+      <!--begin::Heading-->
+    </div>
+    <!--begin::Body-->
+  </form>
+  <!--end::Form-->
+{% endblock content %}

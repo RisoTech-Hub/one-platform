@@ -18,21 +18,38 @@ from allauth.account.views import PasswordResetView as BasePasswordResetView
 from allauth.account.views import PasswordSetView as BasePasswordSetView
 from allauth.account.views import SignupView as BaseSignupView
 from django.contrib.auth.decorators import login_required
+from django.views.generic.base import ContextMixin
+
+from one.extend.metronic import KTLayout, KTTheme
 
 
-class LoginView(BaseLoginView):
+class MetronicView(ContextMixin):
     def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+        context = super().get_context_data(**kwargs)
+        context = KTLayout.init(context)  # noqa
+        context.update(
+            {
+                "layout": KTTheme.set_layout("auth.html", context),
+            }
+        )
+        return context
+
+
+class LoginView(MetronicView, BaseLoginView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        KTTheme.add_javascript_file("js/allauth/signin.js")  # noqa
+        return context
 
 
 login = LoginView.as_view()
 
 
-class SignupView(BaseSignupView):
+class SignupView(MetronicView, BaseSignupView):
     def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+        context = super().get_context_data(**kwargs)
+        KTTheme.add_javascript_file("js/allauth/signup.js")  # noqa
+        return context
 
 
 signup = SignupView.as_view()
@@ -40,8 +57,14 @@ signup = SignupView.as_view()
 
 class ConfirmEmailView(BaseConfirmEmailView):
     def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+        context = super().get_context_data(**kwargs)
+        context = KTLayout.init(context)  # noqa
+        context.update(
+            {
+                "layout": KTTheme.set_layout("auth.html", context),  # noqa
+            }
+        )
+        return context
 
 
 confirm_email = ConfirmEmailView.as_view()
@@ -49,89 +72,89 @@ confirm_email = ConfirmEmailView.as_view()
 
 class EmailView(BaseEmailView):
     def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+        context = super().get_context_data(**kwargs)
+        context = KTLayout.init(context)  # noqa
+        context.update(
+            {
+                "layout": KTTheme.set_layout("default.html", context),  # noqa
+            }
+        )
+        return context
 
 
 email = login_required(EmailView.as_view())
 
 
-class PasswordChangeView(BasePasswordChangeView):
+class PasswordChangeView(MetronicView, BasePasswordChangeView):
     def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+        context = super().get_context_data(**kwargs)
+        KTTheme.add_javascript_file("js/allauth/password-change.js")  # noqa
+        return context
 
 
 password_change = login_required(PasswordChangeView.as_view())
 
 
-class PasswordSetView(BasePasswordSetView):
+class PasswordSetView(MetronicView, BasePasswordSetView):
     def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+        context = super().get_context_data(**kwargs)
+        KTTheme.add_javascript_file("js/allauth/password-set.js")  # noqa
+        return context
 
 
 password_set = login_required(PasswordSetView.as_view())
 
 
-class PasswordResetView(BasePasswordResetView):
+class PasswordResetView(MetronicView, BasePasswordResetView):
     def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+        context = super().get_context_data(**kwargs)
+        KTTheme.add_javascript_file("js/allauth/password-reset.js")  # noqa
+        return context
 
 
 password_reset = PasswordResetView.as_view()
 
 
-class PasswordResetDoneView(BasePasswordResetDoneView):
-    def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+class PasswordResetDoneView(MetronicView, BasePasswordResetDoneView):
+    pass
 
 
 password_reset_done = PasswordResetDoneView.as_view()
 
 
-class PasswordResetFromKeyView(BasePasswordResetFromKeyView):
+class PasswordResetFromKeyView(MetronicView, BasePasswordResetFromKeyView):
     def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+        context = super().get_context_data(**kwargs)
+        KTTheme.add_javascript_file("js/allauth/password-reset-from-key.js")  # noqa
+        return context
 
 
 password_reset_from_key = PasswordResetFromKeyView.as_view()
 
 
-class PasswordResetFromKeyDoneView(BasePasswordResetFromKeyDoneView):
-    def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+class PasswordResetFromKeyDoneView(MetronicView, BasePasswordResetFromKeyDoneView):
+    pass
 
 
 password_reset_from_key_done = PasswordResetFromKeyDoneView.as_view()
 
 
-class LogoutView(BaseLogoutView):
-    def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+class LogoutView(MetronicView, BaseLogoutView):
+    pass
 
 
 logout = LogoutView.as_view()
 
 
-class AccountInactiveView(BaseAccountInactiveView):
-    def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+class AccountInactiveView(MetronicView, BaseAccountInactiveView):
+    pass
 
 
 account_inactive = AccountInactiveView.as_view()
 
 
-class EmailVerificationSentView(BaseEmailVerificationSentView):
-    def get_context_data(self, **kwargs):
-        ret = super().get_context_data(**kwargs)
-        return ret
+class EmailVerificationSentView(MetronicView, BaseEmailVerificationSentView):
+    pass
 
 
 email_verification_sent = EmailVerificationSentView.as_view()

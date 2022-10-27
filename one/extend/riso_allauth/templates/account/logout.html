@@ -1,19 +1,44 @@
-{% extends "account/base.html" %}
+{% extends 'account/base.html' %}
 
 {% load i18n %}
 
 {% block head_title %}{% translate "Sign Out" %}{% endblock %}
 
-{% block inner %}
-<h1>{% translate "Sign Out" %}</h1>
+{% block content %}
+  <form class="form w-100" method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/> {% endif %}
+    <!--begin::Heading-->
+    <div class="text-center mb-11">
+      <!--begin::Title-->
+      <h1 class="text-dark fw-bolder mb-3">
+        {% translate "Sign Out" %}
+      </h1>
+      <!--end::Title-->
 
-<p>{% translate 'Are you sure you want to sign out?' %}</p>
+      <!--begin::Subtitle-->
+      <div class="text-gray-500 fw-semibold fs-6">
+        {% translate 'Are you sure you want to sign out?' %}
+      </div>
+      <!--end::Subtitle--->
+    </div>
+    <!--begin::Heading-->
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button class="btn btn-danger" type="submit">{% translate 'Sign Out' %}</button>
-</form>
+    <!--begin::Submit button-->
+    <div class="d-grid mb-10">
+      <button type="submit" id="kt_sign_out_submit" class="btn btn-danger me-2 flex-shrink-0">
+        <!--begin::Indicator label-->
+        <span class="indicator-label" data-kt-translate="sign-in-submit">{% translate 'Sign Out' %}</span>
+        <!--end::Indicator label-->
+        <!--begin::Indicator progress-->
+        <span class="indicator-progress">
+        <span data-kt-translate="general-progress">{% translate 'Please wait...' %}</span>
+        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+      </span>
+        <!--end::Indicator progress-->
+      </button>
+    </div>
+    <!--end::Submit button-->
+  </form>
 {% endblock %}

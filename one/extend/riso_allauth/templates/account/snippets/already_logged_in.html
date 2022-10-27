@@ -2,7 +2,6 @@
 {% load account %}
 
 {% user_display user as user_display %}
-<!--begin::Link-->
-<div class="text-red-400 fw-bold fs-4"><strong>{% trans "Note" %}:</strong> {% blocktranslate %}You are already logged in as {{ user_display }}.{% endblocktranslate %}
+<div class="text-gray-400 fw-semibold fs-6" data-kt-translate="general-desc">
+  {% blocktrans %}You are already logged in as {{ user_display }}.{% endblocktrans %}
 </div>
-<!--end::Link-->
