@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+{% load webpush_notifications %}<!DOCTYPE html>
 <html lang="en" {% print_html_attributes 'html' %}>
 <!--begin::Head-->
 <head>
-  <title>{% block title %}{% endblock title %} - Keenthemes</title>
+  {% webpush_header %}
+  <title>{% block title %}{% endblock title %}</title>
   <meta charset="utf-8"/>
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
@@ -52,6 +53,12 @@
 
 {% block layout %}
 {% endblock layout %}
+
+<div class="d-none">
+  {% webpush_button %}
+  {% block hidden-div %}
+  {% endblock hidden-div %}
+</div>
 
 {% block javascript %}
   <!--begin::Global Javascript(mandatory)-->

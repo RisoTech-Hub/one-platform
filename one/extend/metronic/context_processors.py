@@ -13,6 +13,7 @@ def layout_context(request):
 
     # Init the theme API
     KTTheme.init()
+
     # Init the base theme settings
     KTBootstrap.init()
     return {

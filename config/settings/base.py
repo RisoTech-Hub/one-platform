@@ -400,6 +400,7 @@ TINYMCE_DEFAULT_CONFIG = {
 
 # METRONIC SETTINGS
 # ------------------------------------------------------------------------------
+
 # Theme name
 KT_THEME = "metronic"
 
@@ -510,5 +511,25 @@ KT_THEME_VENDORS = {
         "js": ["plugins/custom/bootstrap-select/bootstrap-select.bundle.js"],
     },
 }
+
+# Custom libraries
+KT_CUSTOM_LIBS = {
+    "filebrowser": {
+        "css": ["filebrowser/css/filebrowser.css"],
+        "js": ["filebrowser/js/fileuploader.js", "js/filebrowser/upload_button.js"],
+    },
+    "webpush": {
+        "js": ["js/webpush/auto.js"],
+    },
+    "widget": {
+        "js": ["js/widgets/model_select_actions.js"],
+    },
+    # Custom JS always placed at the end of this list
+    "project": {
+        "css": ["css/project.css"],
+        "js": ["js/project.js"],
+    },
+}
+
 # Your stuff...
 # ------------------------------------------------------------------------------

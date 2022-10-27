@@ -2,6 +2,8 @@
 This is an entry and Bootstrap class for the theme level.
 The init() function will be called in _keenthemes/__init__.py
 """
+from django.conf import settings
+
 from one.extend.metronic.libs.theme import KTTheme
 
 
@@ -38,11 +40,18 @@ class KTBootstrapDefault:
 
         # Include global javascript files
         KTTheme.add_javascript_file("js/widgets.bundle.js")
-        KTTheme.add_javascript_file("js/custom/apps/chat/chat.js")
-        KTTheme.add_javascript_file("js/custom/utilities/modals/upgrade-plan.js")
-        KTTheme.add_javascript_file("js/custom/utilities/modals/create-app.js")
-        KTTheme.add_javascript_file("js/custom/utilities/modals/users-search.js")
-        KTTheme.add_javascript_file("js/custom/utilities/modals/new-target.js")
+        # KTTheme.add_javascript_file("js/custom/apps/chat/chat.js")
+        # KTTheme.add_javascript_file("js/custom/utilities/modals/upgrade-plan.js")
+        # KTTheme.add_javascript_file("js/custom/utilities/modals/create-app.js")
+        # KTTheme.add_javascript_file("js/custom/utilities/modals/users-search.js")
+        # KTTheme.add_javascript_file("js/custom/utilities/modals/new-target.js")
+        for lib in settings.KT_CUSTOM_LIBS:
+            if "js" in settings.KT_CUSTOM_LIBS[lib]:
+                for file in settings.KT_CUSTOM_LIBS[lib]["js"]:
+                    KTTheme.add_javascript_file(file)
+            if "css" in settings.KT_CUSTOM_LIBS[lib]:
+                for file in settings.KT_CUSTOM_LIBS[lib]["css"]:
+                    KTTheme.add_css_file(file)
 
         return context
 
