@@ -210,6 +210,7 @@ TEMPLATES = [
                 "one.contrib.sites.settings.context_processors.site_setting_processor",
             ],
             "builtins": [
+                "django.templatetags.i18n",
                 "django.templatetags.static",
                 "one.extend.metronic.templatetags.theme",
             ],

@@ -30,7 +30,10 @@ urlpatterns = (
         ),
         # Django Admin, use {% url 'admin:index' %}
         path(settings.ADMIN_URL, admin.site.urls),
+        # Django Language
+        path("i18n/", include("django.conf.urls.i18n")),
         path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
+        # Extend Packages
         path("~setting/", include("one.contrib.sites.settings.urls")),
         path("~group/", include("one.extend.riso_auth.contexts.urls")),
         # User management

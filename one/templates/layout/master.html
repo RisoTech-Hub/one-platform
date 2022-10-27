@@ -56,8 +56,27 @@
 
 <div class="d-none">
   {% webpush_button %}
+
+  <form action="{% url 'set_language' %}"
+        method="post" id="change_language_form_id">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select name="language" id="change_language_select_id">
+      {% get_current_language as LANGUAGE_CODE %}
+      {% get_available_languages as LANGUAGES %}
+      {% get_language_info_list for LANGUAGES as languages %}
+      {% for language in languages %}
+        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+          {{ language.name_local }} ({{ language.code }})
+        </option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Go">
+  </form>
+
   {% block hidden-div %}
   {% endblock hidden-div %}
+
 </div>
 
 {% block javascript %}
@@ -81,8 +100,18 @@
     <script src="{% static file %}"></script>
   {% endfor %}
   <!--end::Custom Javascript-->
+
 {% endblock javascript %}
 
+{% block inline_javascript %}
+  {% comment %}
+    Script tags with only code, no src (defer by default). To run
+    with a "defer" so that you run inline code:
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
+    </script>
+    {% endcomment %}
+{% endblock inline_javascript %}
 </body>
 <!--end::Body-->
 </html>
