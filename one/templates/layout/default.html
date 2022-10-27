@@ -1,0 +1,45 @@
+{% extends 'layout/master.html' %}
+
+{% block layout %}
+  <!--begin::Root-->
+  <div class="d-flex flex-column flex-root" id="kt_app_root">
+    <!--begin::Page-->
+    <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+{#      {% include 'partials/sidebar-layout/_header.html' %}#}
+      <!--begin::Wrapper-->
+      <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+{#        {% include 'partials/sidebar-layout/_sidebar.html' %}#}
+        <!--begin::Main-->
+        <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+          <!--begin::Content wrapper-->
+          <div class="d-flex flex-column flex-column-fluid">
+{#            {% include 'partials/sidebar-layout/_toolbar.html' %}#}
+            <!--begin::Content-->
+            <div id="kt_app_content" class="app-content flex-column-fluid">
+              <!--begin::Content container-->
+              <div id="kt_app_content_container" class="app-container container-fluid">
+                {% block content %}
+                {% endblock content %}
+              </div>
+              <!--end::Content container-->
+            </div>
+            <!--end::Content-->
+          </div>
+          <!--end::Content wrapper-->
+{#          {% include 'partials/sidebar-layout/_footer.html' %}#}
+        </div>
+        <!--end:::Main-->
+      </div>
+      <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+  </div>
+  <!--end::Root-->
+
+{#  {% include 'partials/_drawers.html' %}#}
+
+{#  {% include 'partials/_modals.html' %}#}
+
+{#  {% include 'partials/_scrolltop.html' %}#}
+
+{% endblock layout %}

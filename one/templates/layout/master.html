@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" {% print_html_attributes 'html' %}>
+<!--begin::Head-->
+<head>
+  <title>{% block title %}{% endblock title %} - Keenthemes</title>
+  <meta charset="utf-8"/>
+  <meta name="description" content=""/>
+  <meta name="keywords" content=""/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content=""/>
+  <link rel="canonical" href=""/>
+  <link rel="shortcut icon" href="{% include_favicon %}"/>
+
+  {% block css %}
+    <!--begin::Fonts-->
+    {% include_fonts %}
+    <!--end::Fonts-->
+
+    <!--begin::Vendor Stylesheets(optional)-->
+    {% get_vendors 'css' as vendors_css %}
+    {% for file in vendors_css %}
+      <link href="{{ file }}" rel="stylesheet" type="text/css"/>
+    {% endfor %}
+    <!--end::Vendor Stylesheets-->
+
+    <!--begin::Custom Stylesheets(optional)-->
+    {% get_custom_css as css %}
+    {% for file in css %}
+      <link href="{% static file %}" rel="stylesheet" type="text/css"/>
+    {% endfor %}
+    <!--end::Custom Stylesheets-->
+
+    <!--begin::Global Stylesheets(mandatory)-->
+    {% get_global_assets 'css' as assets_css %}
+    {% for file in assets_css %}
+      <link href="{% static file %}" rel="stylesheet" type="text/css"/>
+    {% endfor %}
+    <!--end::Global Stylesheets-->
+  {% endblock css %}
+
+  <!--begin::Tracking-->
+  <!--end::Tracking-->
+</head>
+<!--end::Head-->
+
+<!--begin::Body-->
+<body {% print_html_classes 'body' %} {% print_html_attributes 'body' %}>
+
+{% include 'partials/theme-mode/_init.html' %}
+
+{% block layout %}
+{% endblock layout %}
+
+{% block javascript %}
+  <!--begin::Global Javascript(mandatory)-->
+  {% get_global_assets 'js' as assets_js %}
+  {% for file in assets_js %}
+    <script src="{% static file %}"></script>
+  {% endfor %}
+  <!--end::Global Javascript-->
+
+  <!--begin::Vendors Javascript(optional)-->
+  {% get_vendors 'js' as vendors_js %}
+  {% for file in vendors_js %}
+    <script src="{{ file }}"></script>
+  {% endfor %}
+  <!--end::Vendors Javascript-->
+
+  <!--begin::Custom Javascript(optional)-->
+  {% get_custom_js as js %}
+  {% for file in js %}
+    <script src="{% static file %}"></script>
+  {% endfor %}
+  <!--end::Custom Javascript-->
+{% endblock javascript %}
+
+</body>
+<!--end::Body-->
+</html>

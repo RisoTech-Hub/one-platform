@@ -1,0 +1,15 @@
+{% firstof label 'Submit' as label %}
+{% firstof message 'Please wait...' as message %}
+
+<!--begin::Indicator label-->
+<span class="indicator-label">
+    {{ label }}
+</span>
+<!--end::Indicator label-->
+
+<!--begin::Indicator progress-->
+<span class="indicator-progress">
+    {{ message }}
+    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+</span>
+<!--end::Indicator progress-->
