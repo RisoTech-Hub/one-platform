@@ -4,16 +4,292 @@
 {% block title %}{% translate 'User managements' %}: {% translate 'Group list' %}{% endblock %}
 
 {% block content %}
-  <table class="table align-middle table-row-dashed fs-6 gy-5"
-         id="kt_table_settings"
-         data-server-side="true"
-         data-ajax="{% url 'api:group-list' %}?format=datatables"></table>
-  <div>
-    <h1>List</h1>
-    {% for object in object_list %}
-      <p>{{ object.name }}</p>
-      <p>{{ object.avatar.url }}</p>
-    {% endfor %}
-  </div>
+  <!--begin::Card-->
+  <div class="card">
+    <!--begin::Card header-->
+    <div class="card-header border-0 pt-6">
+      {% include 'partials/table/search.html' %}
+      <!--begin::Card toolbar-->
+      <div class="card-toolbar">
+        <!--begin::Toolbar-->
+        <div class="d-flex justify-content-end"
+             data-kt-table-toolbar="base">
+          {% include 'partials/table/_filter.html' %}
+          {# {% include 'partials/widgets/tables/_export.html' %}#}
+          <!--begin::Add group-->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#kt_modal_add_group">
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+            <span class="svg-icon svg-icon-2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
+                      transform="rotate(-90 11.364 20.364)"
+                      fill="currentColor"/>
+                <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"/>
+              </svg>
+            </span>
+            <!--end::Svg Icon-->
+            {% translate 'Add Group' %}
+          </button>
+          <!--end::Add group-->
+        </div>
+        <!--end::Toolbar-->
+        <!--begin::Group actions-->
+        <div class="d-flex justify-content-end align-items-center d-none"
+             data-kt-table-toolbar="selected">
+          <div class="fw-bolder me-5">
+            <span class="me-2"
+                  data-kt-table-select="selected_count"></span>{% translate 'Selected' %}
+          </div>
+          <button type="button" class="btn btn-danger"
+                  data-kt-table-select="delete_selected">{% translate 'Delete Selected' %}
+          </button>
+        </div>
+        <!--end::Group actions-->
+      </div>
+      <!--end::Card toolbar-->
+    </div>
+    <!--end::Card header-->
+    <!--begin::Card body-->
+    <div class="card-body py-4">
+      <!--begin::Table-->
+      <table class="table align-middle table-row-dashed fs-6 gy-5"
+             id="kt_table_settings"
+             data-server-side="true"
+             data-ajax="{% url 'api:group-list' %}?format=datatables">
+        <!--begin::Table head-->
+        <thead>
+        <!--begin::Table row-->
+        <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+          <th class="w-10px pe-2" data-data="id">
+            <div
+              class="form-check form-check-sm form-check-custom form-check-solid me-3">
+              <input class="form-check-input" type="checkbox"
+                     data-kt-check="true"
+                     data-kt-check-target="#kt_table_users .form-check-input"
+                     value="1"/>
+            </div>
+          </th>
 
+          <th class="min-w-125px" data-data="context.as_cell" data-name="name">{% translate 'Group' %}</th>
+
+          <th class="text-end min-w-100px" data-data="id">Actions</th>
+        </tr>
+        <!--end::Table row-->
+        </thead>
+        <!--end::Table head-->
+        <!--begin::Table body-->
+        <!--end::Table body-->
+      </table>
+      <!--end::Table-->
+    </div>
+    <!--end::Card body-->
+  </div>
+  <!--end::Card-->
 {% endblock content %}
+
+{% block modal %}
+  <!--begin::Modal - Add new group-->
+  <div class="modal fade" id="kt_modal_add_group" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+      <!--begin::Modal content-->
+      <div class="modal-content">
+        <!--begin::Modal header-->
+        <div class="modal-header" id="kt_modal_add_new_group_header">
+          <!--begin::Modal title-->
+          <h2>{% translate 'Add new group' %}</h2>
+          <!--end::Modal title-->
+          <!--begin::Close-->
+          <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+            <span class="svg-icon svg-icon-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)"
+                      fill="black"/>
+                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"/>
+              </svg>
+            </span>
+            <!--end::Svg Icon-->
+          </div>
+          <!--end::Close-->
+        </div>
+        <!--end::Modal header-->
+        <!--begin::Form-->
+        <form id="kt_modal_add_new_group_form" class="form" enctype="multipart/form-data"
+              action="{% url 'auth:group-create' %}" method="post">
+          {% csrf_token %}
+          <!--begin::Modal body-->
+          <div class="modal-body py-10 px-lg-17">
+            <!--begin::Input group-->
+            <div class="mb-5 fv-row">
+              <!--begin::Label-->
+              <label class="required fs-5 fw-bold mb-2">{% translate 'Enter New Group' %}</label>
+              <!--end::Label-->
+              <!--begin::Input-->
+              <input type="text"
+                     class="form-control form-control-solid"
+                     placeholder="{% translate 'Name' %}"
+                     name="name" id="id_name" required/>
+              <!--end::Input-->
+            </div>
+            <!--end::Input group-->
+            {% for field in context_form %}
+              <!--begin::Input group-->
+              <div class="mb-5 fv-row">
+                <!--begin::Label-->
+                <label class="fs-5 fw-bold mb-2 {% if field.field.required %}required{% endif %}">
+                  {{ field.label|title }}
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                {{ field }}
+                <!--end::Input-->
+              </div>
+              <!--end::Input group-->
+            {% endfor %}
+          </div>
+          <!--end::Modal body-->
+          <!--begin::Modal footer-->
+          <div class="modal-footer flex-center">
+            <!--begin::Button-->
+            <button type="submit" name="action_add" id="kt_modal_add_new_group_submit" class="btn btn-primary">
+              <span class="indicator-label">{% translate "Submit" %}</span>
+              <span class="indicator-progress">{% translate "Please wait" %}...
+								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+            <!--end::Button-->
+          </div>
+          <!--end::Modal footer-->
+        </form>
+        <!--end::Form-->
+      </div>
+      <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+  </div>
+  <!--end::Modal - Add new group-->
+  {% for object in object_list %}
+  <!--begin::Modal - Update group-->
+  <div class="modal fade" id="kt_modal_update_group_{{ object.id }}" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+      <!--begin::Modal content-->
+      <div class="modal-content">
+        <!--begin::Modal header-->
+        <div class="modal-header" id="kt_modal_update_group_header">
+          <!--begin::Modal title-->
+          <h2>{% translate 'Update group' %}</h2>
+          <!--end::Modal title-->
+          <!--begin::Close-->
+          <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+            <span class="svg-icon svg-icon-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)"
+                      fill="black"/>
+                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"/>
+              </svg>
+            </span>
+            <!--end::Svg Icon-->
+          </div>
+          <!--end::Close-->
+        </div>
+        <!--end::Modal header-->
+        <!--begin::Form-->
+        <form id="kt_modal_update_group_form" class="form" enctype="multipart/form-data"
+              action="{% url 'auth:group-update' object.id %}" method="post">
+          {% csrf_token %}
+          <!--begin::Modal body-->
+          <div class="modal-body py-10 px-lg-17">
+            <!--begin::Input group-->
+            <div class="mb-5 fv-row">
+              <!--begin::Label-->
+              <label class="required fs-5 fw-bold mb-2">{% translate 'Update Group' %}</label>
+              <!--end::Label-->
+              <!--begin::Input-->
+              <input type="text"
+                     class="form-control form-control-solid"
+                     placeholder="{% translate 'Name' %}"
+                     name="name" id="id_name" required/>
+              <!--end::Input-->
+            </div>
+            <!--end::Input group-->
+            {% for field in context_form %}
+              <!--begin::Input group-->
+              <div class="mb-5 fv-row">
+                <!--begin::Label-->
+                <label class="fs-5 fw-bold mb-2 {% if field.field.required %}required{% endif %}">
+                  {{ field.label|title }}
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                {{ field }}
+                <!--end::Input-->
+              </div>
+              <!--end::Input group-->
+            {% endfor %}
+          </div>
+          <!--end::Modal body-->
+          <!--begin::Modal footer-->
+          <div class="modal-footer flex-center">
+            <!--begin::Button-->
+            <button type="submit" name="action_add" id="kt_modal_update_group_submit" class="btn btn-primary">
+              <span class="indicator-label">{% translate "Submit" %}</span>
+              <span class="indicator-progress">{% translate "Please wait" %}...
+								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+            <!--end::Button-->
+          </div>
+          <!--end::Modal footer-->
+        </form>
+        <!--end::Form-->
+      </div>
+      <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+  </div>
+  <!--end::Modal - Update group-->
+  {% endfor %}
+{% endblock modal %}
+
+{% block inline_javascript %}
+  <script
+    src="{% static 'metronic/plugins/custom/datatables/datatables.bundle.js' %}"></script>
+  <script>
+    // {#    {{ ENDPOINT.CHOICE 'name' }} => list ['a', 'b'] => options => "name_id"#}
+    // {#    {{ ENDPOINT.DELETE }} method DELETE ["id", "id"]#}
+    // {#  $('#kt_table_settings').KTUser(){#}
+    //   delete_message = {% translate 'are you sure to delete?' %}
+
+    $(document).ready(function () {
+      const table = DT.init(
+        'kt_table_settings',
+        {},
+        //endpoint
+        {
+          add: '',
+          edit: '',
+          delete: "{% url 'api:group-delete' %}"
+        },
+        //language
+        {
+          confirm_delete: '',
+          delete_success: '',
+          delete_fail: '',
+
+          // TODO: same for edit and add, will implement
+          confirm_add: '',
+          add_success: '',
+          add_fail: '',
+
+          confirm_edit: '',
+          edit_success: '',
+          edit_fail: '',
+        }
+      );
+
+
+    })
+  </script>
+{% endblock inline_javascript %}
