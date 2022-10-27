@@ -1,7 +1,7 @@
 from django.conf import settings
 from rest_framework.routers import DefaultRouter, SimpleRouter
 
-from one.auth_extend.contexts.api.views import GroupViewSet
+from one.extend.riso_auth.contexts.api.views import GroupViewSet
 from one.users.api.views import UserViewSet
 
 if settings.DEBUG:

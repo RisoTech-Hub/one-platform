@@ -10,7 +10,7 @@ DEBUG = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
-    default="lO81mN6TNsjVmSYKxWZOcHTiM3tXF9nxlsz840KMuaOB5OxZq2vfsAsMJZFOHjER",
+    default="ieKutp0u2v2LgCyPVIwZZDXKxu4EJDOpXp5aJrDf555MCpd5C7g65LLdFQqjWdW6",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
@@ -56,6 +56,12 @@ if env("USE_DOCKER") == "yes":
 
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS += [".".join(ip.split(".")[:-1] + ["1"]) for ip in ips]
+    try:
+        _, _, ips = socket.gethostbyname_ex("node")
+        INTERNAL_IPS.extend(ips)
+    except socket.gaierror:
+        # The node container isn't started (yet?)
+        pass
 
 # django-extensions
 # ------------------------------------------------------------------------------
@@ -71,7 +77,10 @@ CELERY_TASK_EAGER_PROPAGATES = True
 STATICFILES_DIRS += [  # noqa F405
     os.path.join(
         os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "one", "static"
-    )
+    ),
+    os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "one", "assets"
+    ),
 ]
 
 # Your stuff...

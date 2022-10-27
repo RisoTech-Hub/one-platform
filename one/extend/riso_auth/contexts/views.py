@@ -6,7 +6,8 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, UpdateView
 
-from ...components.views import PopUpCreateView
+from one.components.views import PopUpCreateView
+
 from .api.serializers import GroupSerializer
 from .forms import ContextForm
 

@@ -3,8 +3,8 @@ from django.contrib.auth.models import Group
 from django.test import RequestFactory
 from django.urls import reverse
 
-from one.auth_extend.contexts.api.views import GroupViewSet
-from one.auth_extend.contexts.models import Context
+from one.extend.riso_auth.contexts.api.views import GroupViewSet
+from one.extend.riso_auth.contexts.models import Context
 from one.users.models import User
 
 pytestmark = pytest.mark.django_db

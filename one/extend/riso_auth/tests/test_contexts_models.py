@@ -1,7 +1,7 @@
 import pytest
 from django.contrib.auth.models import Group
 
-from one.auth_extend.contexts.signals import create_or_update_group_context
+from one.extend.riso_auth.contexts.signals import create_or_update_group_context
 
 pytestmark = pytest.mark.django_db
 

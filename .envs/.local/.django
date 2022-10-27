@@ -12,8 +12,8 @@ CELERY_BROKER_URL=redis://localhost:6379/0
 
 # Flower
 # ------------------------------------------------------------------------------
-CELERY_FLOWER_USER=APgkLLQsVNYGyUesGsIYFGbMuSRwItvZ
-CELERY_FLOWER_PASSWORD=rKUsqufFe5E696Qc5wJee2zj0ZleKm36kK2YDJEdcVsE7k1SBw8QiQJ4FqupW7q7
+CELERY_FLOWER_USER=ZOflzyjNJYiwaiXwNskojFkwRSDUoXIM
+CELERY_FLOWER_PASSWORD=N7gwkw4u5HpnNuxHvIlFp7WRWYTCRackAZPcx3Hn93feAlPVoGBhxuGNIJUa5eSE
 
 # django-webpush
 # ------------------------------------------------------------------------------

@@ -325,10 +325,15 @@ tags
 
 ### Project template
 one/media/
+one/assets/
 
 .pytest_cache/
 .ipython/
+project.css
+project.min.css
+vendors.js
+*.min.js
 .env
 .envs/*
 !.envs/.local/
-!.envs/.production.example/
+!/.envs/.production.example/

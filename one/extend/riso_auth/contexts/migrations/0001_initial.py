@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import one.auth_extend.contexts.utils
+import one.extend.riso_auth.contexts.utils
 
 
 class Migration(migrations.Migration):
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                     models.ImageField(
                         blank=True,
                         null=True,
-                        upload_to=one.auth_extend.contexts.utils.group_context_images_directory_path,
+                        upload_to=one.extend.riso_auth.contexts.utils.group_context_images_directory_path,
                         verbose_name="Avatar of group",
                     ),
                 ),

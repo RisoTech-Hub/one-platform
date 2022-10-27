@@ -32,10 +32,10 @@ urlpatterns = (
         path(settings.ADMIN_URL, admin.site.urls),
         path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
         path("~setting/", include("one.contrib.sites.settings.urls")),
-        path("~group/", include("one.auth_extend.contexts.urls")),
+        path("~group/", include("one.extend.riso_auth.contexts.urls")),
         # User management
         path("users/", include("one.users.urls", namespace="users")),
-        path("accounts/", include("one.allauth_extend.account.urls")),
+        path("accounts/", include("one.extend.riso_allauth.account.urls")),
         # Your stuff: custom urls includes go here
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

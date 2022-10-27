@@ -17,7 +17,7 @@ def create_default_group_context(sender, **kwargs):
 
 
 class GroupConfig(AppConfig):
-    name = "one.auth_extend.contexts"
+    name = "one.extend.riso_auth.contexts"
     verbose_name = _("Groups")
 
     def ready(self):

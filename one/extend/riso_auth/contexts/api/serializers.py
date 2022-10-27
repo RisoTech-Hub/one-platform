@@ -1,7 +1,7 @@
 from django.contrib.auth.models import Group
 from rest_framework.serializers import ModelSerializer
 
-from one.auth_extend.contexts.models import Context
+from one.extend.riso_auth.contexts.models import Context
 
 
 class ContextSerializer(ModelSerializer):

@@ -9,13 +9,13 @@
       let current = $("#object_id").val();
       if (value === "") {
         new PNotify({
-          title: '{% blocktrans %}Warning{% endblocktrans %}',
-          text: '{% blocktrans %}Checking value cannot be blank{% endblocktrans %}',
+          title: "{% trans 'Warning' %}",
+          text: "{% trans 'Checking value cannot be blank' %}",
         });
         return false;
       }
       $.ajax({
-        url: "{% url "check_exist_value_view" %}",
+        url: "{% url 'check_exist_value_view' %}",
         type: "GET",
         data: {
           'model': model,
@@ -26,21 +26,21 @@
         success: function (data, status, xhr) {// success callback function
           if (data === "Not Exist")
             new PNotify({
-              title: '{% blocktrans %}Notice{% endblocktrans %}',
-              text: '{% blocktrans %}Checking value can be used{% endblocktrans %}',
+              title: "{% trans 'Notice' %}",
+              text: "{% trans 'Checking value can be used' %}",
               type: 'success'
             });
           else
             new PNotify({
-              title: '{% blocktrans %}Warning{% endblocktrans %}',
-              text: '{% blocktrans %}Checking value has been used by other object{% endblocktrans %}',
+              title: "{% trans 'Warning' %}",
+              text: "{% trans 'Checking value has been used by other object' %}",
             });
 
         },
         error: function (xhr, ajaxOptions, thrownError) {
           new PNotify({
-            title: '{% blocktrans %}Notice{% endblocktrans %}',
-            text: '{% blocktrans %}Checking value can be used{% endblocktrans %}',
+            title: "{% trans 'Notice' %}",
+            text: "{% trans 'Checking value can be used' %}",
             type: 'success'
           });
         }

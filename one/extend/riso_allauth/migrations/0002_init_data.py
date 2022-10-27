@@ -4,7 +4,7 @@ from django.db import migrations
 
 def add_email_template_forward(apps, schema_editor):
     """Auto create Email template"""
-    AllauthTemplate = apps.get_model("allauth_extend", "AllauthTemplate")
+    AllauthTemplate = apps.get_model("riso_allauth", "AllauthTemplate")
 
     subjects = {
         "allauth_signup": "account/email/email_confirmation_signup",
@@ -12,7 +12,7 @@ def add_email_template_forward(apps, schema_editor):
         "allauth_confirm": "account/email/email_confirmation",
         "allauth_unknown": "account/email/unknown_account",
     }
-    path = settings.APPS_DIR / "allauth_extend" / "templates"
+    path = settings.APPS_DIR / "extend" / "riso_allauth" / "templates"
 
     for language in settings.LANGUAGES:
         for subject in subjects:
@@ -35,12 +35,12 @@ def add_email_template_forward(apps, schema_editor):
 
 def add_email_template_backward(apps, schema_editor):
     """Delete all Email template"""
-    AllauthTemplate = apps.get_model("allauth_extend", "AllauthTemplate")
+    AllauthTemplate = apps.get_model("riso_allauth", "AllauthTemplate")
     AllauthTemplate.objects.all().delete()
 
 
 class Migration(migrations.Migration):
-    dependencies = [("allauth_extend", "0001_initial")]
+    dependencies = [("riso_allauth", "0001_initial")]
 
     operations = [
         migrations.RunPython(add_email_template_forward, add_email_template_backward)

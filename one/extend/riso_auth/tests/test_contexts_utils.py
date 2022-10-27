@@ -1,7 +1,7 @@
 import pytest
 from django.contrib.auth.models import Group
 
-from one.auth_extend.contexts.utils import (
+from one.extend.riso_auth.contexts.utils import (
     group_context_images_directory_path,
     group_images_directory_path,
 )

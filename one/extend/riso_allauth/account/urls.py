@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 
-from one.allauth_extend.account import views
+from one.extend.riso_allauth.account import views
 
 urlpatterns = [
     path("signup/", views.signup, name="account_signup"),

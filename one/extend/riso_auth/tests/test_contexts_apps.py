@@ -1,8 +1,8 @@
 import pytest
 from django.contrib.auth.models import Group
 
-from one.auth_extend.contexts.apps import create_default_group_context
-from one.auth_extend.contexts.models import Context
+from one.extend.riso_auth.contexts.apps import create_default_group_context
+from one.extend.riso_auth.contexts.models import Context
 
 pytestmark = pytest.mark.django_db
 

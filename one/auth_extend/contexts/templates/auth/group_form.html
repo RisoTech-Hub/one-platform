@@ -1,6 +1,0 @@
-<form enctype="multipart/form-data" action="{{ request.path }}?popup=1" method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {{ context_form.as_p }}
-  <input type="submit" value="Submit"/>
-</form>

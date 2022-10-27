@@ -74,9 +74,9 @@ DJANGO_APPS = [
     "django.forms",
 ]
 EXTENDED_APPS = [
-    "one.allauth_extend",
+    "one.extend.riso_allauth",
     "one.contrib.sites.settings",
-    "one.auth_extend.contexts",
+    "one.extend.riso_auth.contexts",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -205,7 +205,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "one.allauth_extend.context_processors.allauth_settings",
+                "one.extend.riso_allauth.context_processors.allauth_settings",
                 "one.contrib.sites.settings.context_processors.site_setting_processor",
             ],
         },
@@ -311,13 +311,13 @@ ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_ADAPTER = "one.allauth_extend.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = "one.extend.riso_allauth.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-ACCOUNT_FORMS = {"signup": "one.allauth_extend.forms.UserSignupForm"}
+ACCOUNT_FORMS = {"signup": "one.extend.riso_allauth.forms.UserSignupForm"}
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-SOCIALACCOUNT_ADAPTER = "one.allauth_extend.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "one.extend.riso_allauth.adapters.SocialAccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-SOCIALACCOUNT_FORMS = {"signup": "one.allauth_extend.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {"signup": "one.extend.riso_allauth.forms.UserSocialSignupForm"}
 
 # django-rest-framework
 # -------------------------------------------------------------------------------

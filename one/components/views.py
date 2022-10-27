@@ -6,7 +6,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic import CreateView
 
-from one.components.constants import FORM_TYPE_FULL, FORM_TYPE_QUICK
+from .constants import FORM_TYPE_FULL, FORM_TYPE_QUICK
 
 
 class PopUpCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
