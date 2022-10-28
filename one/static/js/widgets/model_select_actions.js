@@ -1,4 +1,4 @@
-function appendModalWithId(selector = 'body', idModal = 'modal_fake', content = '', target_input = '') {
+function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm='', content = '', target_input = '') {
     $(selector).append(`
             <div class="modal fade" tabindex="-1" id="${idModal}" modal-quick-action="" target-input="${target_input}">
                 <div class="modal-dialog modal-dialog-scrollable">
@@ -16,8 +16,8 @@ function appendModalWithId(selector = 'body', idModal = 'modal_fake', content = 
                         </div>
 
                         <div class="modal-footer">
-<!--                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>-->
-<!--                            <button type="button" class="btn btn-primary">Save changes</button>-->
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" form="${idForm}" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -36,9 +36,12 @@ $(document).ready(function () {
             success: function (response) {
                 // get form html return success
                 console.log('-----', response)
-                let idModal = 'modal_fake_' + Date.now();
-                appendModalWithId('body', idModal, response, target_input)
+                const timestamp = Date.now();
+                const idModal = 'modal_fake_' + timestamp;
+                const idForm = 'form_fake_' + timestamp;
+                appendModalWithId('body', idModal, idForm, response, target_input)
                 $('#' + idModal).modal('show')
+                $('#' + idModal).find('form').attr('id', idForm)
             },
             error: function (request, status, error) {
                 alert(`${JSON.stringify(request)}\n${status}\n${error}`)
