@@ -1,11 +1,13 @@
-{% load i18n %}
 <!--begin::Form-->
 <form id="kt_account_profile_details_form"
       class="form" method="post" enctype="multipart/form-data"
       action={{ action_url }}>
   {% csrf_token %}
   <!--begin::Card body-->
-  <div class="card-body p-9">
+  <div class="card-body p-9 pt-0">
+    <div class="separator separator-dashed separator-content border-primary my-10">
+      <span class="w-250px fw-bold">{% trans 'General Infomation' %}</span>
+    </div>
     {% for field in form %}
       <!--begin::Input group-->
       <div class="row {% if forloop.last %}mb-0{% else %}mb-6{% endif %}">
@@ -21,6 +23,28 @@
         <!--end::Col-->
       </div>
       <!--end::Input group-->
+    {% endfor %}
+    {% for nested_form in nested_forms %}
+      <div class="separator separator-dashed separator-content border-primary my-10">
+        <span class="w-250px fw-bold">{{ nested_form.title|title }}</span>
+      </div>
+
+      {% for field in nested_form.form %}
+        <!--begin::Input group-->
+        <div class="row {% if forloop.last %}mb-0{% else %}mb-6{% endif %}">
+          <!--begin::Label-->
+          <label
+            class="col-lg-4 col-form-label fw-bold fs-6 {% if field.field.required %}required{% endif %}">
+            {{ field.label|title }}</label>
+          <!--end::Label-->
+          <!--begin::Col-->
+          <div class="col-lg-8 fv-row">
+            {{ field }}
+          </div>
+          <!--end::Col-->
+        </div>
+        <!--end::Input group-->
+      {% endfor %}
     {% endfor %}
   </div>
   <!--end::Card body-->

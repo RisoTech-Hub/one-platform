@@ -13,6 +13,7 @@ class PopUpCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     is_popup = None
     quick_form_class = None
     form_class = None
+    serializer_class = None
 
     def setup(self, request, *args, **kwargs):
         self.is_popup = request.GET.get("popup", None)
@@ -46,8 +47,8 @@ class PopUpCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         if self.is_popup:  # noqa
             try:
                 return JsonResponse(
-                    self.serializer_class(self.object).data, status=201
-                )  # noqa
+                    self.serializer_class(self.object).data, status=201  # noqa
+                )
             except Exception as e:
                 return JsonResponse({"error": str(e)}, status=400)
         return HttpResponseRedirect(self.get_success_url())

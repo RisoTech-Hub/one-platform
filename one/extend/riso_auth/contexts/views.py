@@ -13,6 +13,7 @@ from .forms import ContextForm
 
 
 class GroupListView(LoginRequiredMixin, ListView):
+    template_name = "app/list.html"
     model = Group
 
 
@@ -20,18 +21,32 @@ group_list_view = GroupListView.as_view()
 
 
 class GroupCreateView(PopUpCreateView):
+    template_name = "app/create.html"
     model = Group
+
+    # form_class = None
     fields = ["name"]
-    success_message = _("Group created successfully")
     serializer_class = GroupSerializer
+
+    success_message = _("Group created successfully")
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-        kwargs["context_form"] = ContextForm()
+        kwargs["nested_forms"] = [
+            {
+                "form": ContextForm(),
+                "title": _("Extend information"),
+            }
+        ]
         return kwargs
 
     def get_success_url(self):  # noqa
         return reverse("auth:group-list")
+
+    def get_template_names(self):
+        if self.is_popup:
+            return ["forms/one-col-form.html"]
+        return [self.template_name]
 
     def form_valid(self, form):
         object = form.save()  # noqa
