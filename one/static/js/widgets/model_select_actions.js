@@ -35,7 +35,7 @@ $(document).ready(function () {
             data: null,
             success: function (response) {
                 // get form html return success
-                console.log('-----', response)
+                // console.log('-----', response)
                 const timestamp = Date.now();
                 const idModal = 'modal_fake_' + timestamp;
                 const idForm = 'form_fake_' + timestamp;
@@ -63,7 +63,7 @@ $(document).ready(function () {
             data: formData,
             success: function (response) {
                 // get form html return success
-                console.log('-----', response)
+                // console.log('-----', response)
                 $modal.modal('hide')
                 $('#' + $modal.attr('target-input')).prepend(`<option value="${response['id']}" selected>${response['name']}</option>`)
                 $modal.remove();
