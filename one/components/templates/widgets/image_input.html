@@ -1,53 +1,57 @@
 {% if widget.is_initial %}image-input-empty{% else %}{% endif %}
 <!--begin::Image input-->
- <div class="image-input {% if widget.value.url %}image-input-outline{% else %}image-input-empty{% endif %}" data-kt-image-input="true" style="background-image: url({% static 'media/svg/avatars/blank.svg' %})">
-     <!--begin::Image preview wrapper-->
-     <div class="image-input-wrapper w-125px h-125px" {% if widget.value.url %}style="background-image: url({{ widget.value.url }})"{% endif %}></div>
-     <!--end::Image preview wrapper-->
+<div class="image-input {% if widget.value.url %}image-input-outline{% else %}image-input-empty{% endif %}"
+     data-kt-image-input="true" style="background-image: url({% static 'media/svg/avatars/blank.svg' %})">
+  <!--begin::Image preview wrapper-->
+  <div class="image-input-wrapper w-125px h-125px"
+       {% if widget.value.url %}style="background-image: url({{ widget.value.url }})"{% endif %}></div>
+  <!--end::Image preview wrapper-->
 
-     <!--begin::Edit button-->
-     <label class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
-        data-kt-image-input-action="change"
-        data-bs-toggle="tooltip"
-        data-bs-dismiss="click"
-        title="{% trans 'Change avatar' %}">
-         <i class="bi bi-pencil-fill fs-7"></i>
+  <!--begin::Edit button-->
+  <label class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+         data-kt-image-input-action="change"
+         data-bs-toggle="tooltip"
+         data-bs-dismiss="click"
+         title="{% trans 'Change avatar' %}">
+    <i class="bi bi-pencil-fill fs-7"></i>
 
-         <!--begin::Inputs-->
-{#         <input#}
-{#          type="{{ widget.type }}"#}
-{#          name="{{ widget.name }}"{% if widget.value != None %}#}
-{#          value="{{ widget.value|stringformat:'s' }}"{% endif %}#}
-{#          {% include "django/forms/widgets/attrs.html" %}>#}
-{#         <input type="hidden" name="{{ widget.name }}_remove" />#}
-       <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-         <input type="hidden" name="avatar_remove" />
-         <!--end::Inputs-->
-     </label>
-     <!--end::Edit button-->
+    <!--begin::Inputs-->
+    {#         <input#}
+    {#          type="{{ widget.type }}"#}
+    {#          name="{{ widget.name }}"{% if widget.value != None %}#}
+    {#          value="{{ widget.value|stringformat:'s' }}"{% endif %}#}
+    {#          {% include "django/forms/widgets/attrs.html" %}>#}
+    {#         <input type="hidden" name="{{ widget.name }}_remove" />#}
+    <input type="file" name="avatar" accept=".png, .jpg, .jpeg"/>
+    <input type="hidden" name="avatar_remove"/>
+    <!--end::Inputs-->
+  </label>
+  <!--end::Edit button-->
 
-     <!--begin::Cancel button-->
-     <span class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+  <!--begin::Cancel button-->
+  <span class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
         data-kt-image-input-action="cancel"
         data-bs-toggle="tooltip"
         data-bs-dismiss="click"
         title="{% trans 'Cancel avatar' %}">
          <i class="bi bi-x fs-2"></i>
      </span>
-     <!--end::Cancel button-->
+  <!--end::Cancel button-->
 
-     <!--begin::Remove button-->
-     <span class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+  <!--begin::Remove button-->
+  <span class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
         data-kt-image-input-action="remove"
         data-bs-toggle="tooltip"
         data-bs-dismiss="click"
         title="{% trans 'Remove avatar' %}">
          <i class="bi bi-x fs-2"></i>
      </span>
-     <!--end::Remove button-->
- </div>
- <!--end::Image input-->
+  <!--end::Remove button-->
+</div>
+<!--end::Image input-->
 
-<script defer type="text/javascript">
-  KTImageInput.createInstances();
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", () => {
+    KTImageInput.createInstances();
+  });
 </script>
