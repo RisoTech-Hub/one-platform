@@ -1,15 +1,13 @@
 import json
 
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect, JsonResponse
-from django.views.generic import CreateView
+from django.views.generic.edit import FormMixin as BaseFormMixin
 
 from .constants import FORM_TYPE_FULL, FORM_TYPE_QUICK
 
 
-class PopUpCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class FormMixin(BaseFormMixin):
     is_popup = None
     quick_form_class = None
     form_class = None

@@ -4,9 +4,9 @@ from django.contrib.auth.models import Group
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView
 
-from one.components.views import PopUpCreateView
+from one.components.views import FormMixin
 
 from .api.serializers import GroupSerializer
 from .forms import ContextForm, GroupForm
@@ -20,7 +20,7 @@ class GroupListView(LoginRequiredMixin, ListView):
 group_list_view = GroupListView.as_view()
 
 
-class GroupCreateView(PopUpCreateView):
+class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateView):
     template_name = "app/create.html"
     model = Group
 
@@ -63,23 +63,38 @@ class GroupCreateView(PopUpCreateView):
 group_create_view = GroupCreateView.as_view()
 
 
-class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateView):
+    template_name = "app/create.html"
     model = Group
-    fields = ["name", "permissions"]
+
+    form_class = GroupForm
+    serializer_class = GroupSerializer
     success_message = _("Group successfully updated")
+
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+
+        if self.request.method == "POST":
+            context_form = ContextForm(
+                self.request.POST, self.request.FILES, instance=self.object.context
+            )
+        else:
+            context_form = ContextForm(instance=self.object.context)
+        kwargs["nested_forms"] = [
+            {
+                "form": context_form,
+                "title": _("Extend information"),
+            }
+        ]
+        return kwargs
 
     def get_success_url(self):  # noqa
         return reverse("auth:group-list")
 
-    def get_context_data(self, **kwargs):
-        kwargs = super().get_context_data(**kwargs)
-        if self.request.method == "POST":
-            kwargs["context_form"] = ContextForm(
-                self.request.POST, self.request.FILES, instance=self.object.context
-            )
-        else:
-            kwargs["context_form"] = ContextForm(instance=self.object.context)
-        return kwargs
+    def get_template_names(self):
+        if self.is_popup:
+            return ["forms/quick-add-form.html"]
+        return [self.template_name]
 
     def post(self, request, *args, **kwargs):
         """
