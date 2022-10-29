@@ -1,11 +1,11 @@
 <!--begin::Form-->
 <form id="kt_account_profile_details_form"
       class="form" method="post" enctype="multipart/form-data"
-      action={{ action_url }}>
+      action={{ request.path }}?popup=1>
   {% csrf_token %}
   <!--begin::Card body-->
-  <div class="card-body p-9 pt-0">
-    <div class="separator separator-dashed separator-content border-primary my-10">
+  <div class="card-body p-5 pt-0">
+    <div class="separator separator-dashed separator-content border-primary mb-5">
       <span class="w-250px fw-bold">{% trans 'General Infomation' %}</span>
     </div>
     {% for field in form %}
@@ -19,6 +19,7 @@
         <!--begin::Col-->
         <div class="col-lg-8 fv-row">
           {{ field }}
+          <div class="fv-plugins-message-container valid-feedback">{{ field.help_text }}</div>
         </div>
         <!--end::Col-->
       </div>
@@ -28,6 +29,7 @@
       <div class="separator separator-dashed separator-content border-primary my-10">
         <span class="w-250px fw-bold">{{ nested_form.title|title }}</span>
       </div>
+
       {% for field in nested_form.form %}
         <!--begin::Input group-->
         <div class="row {% if forloop.last %}mb-0{% else %}mb-6{% endif %}">
@@ -39,6 +41,7 @@
           <!--begin::Col-->
           <div class="col-lg-8 fv-row">
             {{ field }}
+            <div class="fv-plugins-message-container valid-feedback">{{ field.help_text }}</div>
           </div>
           <!--end::Col-->
         </div>
@@ -47,18 +50,5 @@
     {% endfor %}
   </div>
   <!--end::Card body-->
-  <!--begin::Actions-->
-  <div class="card-footer d-flex justify-content-end py-6 px-9">
-    <button type="reset"
-            class="btn btn-light btn-active-light-primary me-2">
-      {% translate 'Discard' %}
-    </button>
-    <button type="submit"
-            class="btn btn-primary"
-            id="kt_account_profile_details_submit">
-      {% translate 'Save Changes' %}
-    </button>
-  </div>
-  <!--end::Actions-->
 </form>
 <!--end::Form-->

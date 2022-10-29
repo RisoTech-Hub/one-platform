@@ -115,7 +115,7 @@
                 <div class="flex-column current" data-kt-stepper-element="content">
                   {% csrf_token %}
                   {% for field in form %}
-                    {% include 'forms/one_row_field.html' %}
+                    {% include 'forms/one-row-field.html' %}
                   {% endfor %}
                 </div>
                 <!--end::Step 1-->
@@ -124,10 +124,10 @@
                 <div class="flex-column" data-kt-stepper-element="content">
                   {% for field in setting_form %}
                     {% if field.label != 'Site' %}
-                      {% include 'forms/one_row_field.html' %}
+                      {% include 'forms/one-row-field.html' %}
                     {% else %}
                       <div class="d-none">
-                        {% include 'forms/one_row_field.html' %}
+                        {% include 'forms/one-row-field.html' %}
                       </div>
                     {% endif %}
                   {% endfor %}

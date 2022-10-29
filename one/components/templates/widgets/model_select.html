@@ -27,7 +27,7 @@
       <a class="btn btn-success"
          type="button"
          quick-create-button
-         data-action-url="{% url widget.attrs.create_url %}"
+         data-action-url="{% url widget.attrs.create_url %}?popup=1"
          data-target-input="{{ widget.attrs.id }}"
       >{% trans 'Create' %}</a>
     {% endif %}

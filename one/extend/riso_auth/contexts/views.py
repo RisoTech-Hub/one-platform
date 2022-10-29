@@ -9,7 +9,7 @@ from django.views.generic import ListView, UpdateView
 from one.components.views import PopUpCreateView
 
 from .api.serializers import GroupSerializer
-from .forms import ContextForm
+from .forms import ContextForm, GroupForm
 
 
 class GroupListView(LoginRequiredMixin, ListView):
@@ -24,8 +24,7 @@ class GroupCreateView(PopUpCreateView):
     template_name = "app/create.html"
     model = Group
 
-    # form_class = None
-    fields = ["name"]
+    form_class = GroupForm
     serializer_class = GroupSerializer
 
     success_message = _("Group created successfully")
@@ -45,7 +44,7 @@ class GroupCreateView(PopUpCreateView):
 
     def get_template_names(self):
         if self.is_popup:
-            return ["forms/one-col-form.html"]
+            return ["forms/quick-add-form.html"]
         return [self.template_name]
 
     def form_valid(self, form):

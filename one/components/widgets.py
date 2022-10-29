@@ -1,5 +1,5 @@
 from django.forms import Select
-from django.forms.widgets import DateInput, Input, SelectMultiple, TextInput
+from django.forms.widgets import DateInput, FileInput, Input, SelectMultiple, TextInput
 
 
 class BootstrapInput(Input):
@@ -47,3 +47,7 @@ class SpanDateInput(DateInput):
         self.attrs["class"] = "form-control"
         self.attrs["data-plugin-datepicker"] = ""
         self.attrs["data-date-format"] = "dd/mm/yyyy"
+
+
+class ImageInput(FileInput):
+    template_name = "widgets/image_input.html"
