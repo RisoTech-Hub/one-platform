@@ -23,5 +23,9 @@ class Context(Model):
         upload_to=group_context_images_directory_path,
     )
 
+    class Meta:
+        verbose_name = _("Context")
+        verbose_name_plural = _("Contexts")
+
     def __str__(self):
         return self.group.name

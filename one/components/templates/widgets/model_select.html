@@ -14,14 +14,16 @@
     {% endfor %}
   </select>
   <div class="input-group-append">
-    {% if widget.attrs.update_url and widget.attrs.default_value %}
-      <a class="btn btn-warning"
-         type="button"
-         quick-update-button
-         data-action-url="{% url widget.attrs.update_url widget.attrs.default_value %}?popup=1"
-         data-default-value="{{ widget.attrs.default_value }}"
-         data-target-input="{{ widget.attrs.id }}"
-      >{% trans 'Update' %}</a>
+    {% if not widget.attrs.multiple %}
+      {% if widget.attrs.update_url and widget.attrs.default_value %}
+        <a class="btn btn-warning"
+           type="button"
+           quick-update-button
+           data-action-url="{% url widget.attrs.update_url widget.attrs.default_value %}?popup=1"
+           data-default-value="{{ widget.attrs.default_value }}"
+           data-target-input="{{ widget.attrs.id }}"
+        >{% trans 'Update' %}</a>
+      {% endif %}
     {% endif %}
     {% if widget.attrs.create_url %}
       <a class="btn btn-success"

@@ -43,11 +43,6 @@ class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Create
     def get_success_url(self):  # noqa
         return reverse("auth:group-list")
 
-    def get_template_names(self):
-        if self.is_popup:
-            return ["forms/quick-add-form.html"]
-        return [self.template_name]
-
     def form_valid(self, form):
         object = form.save()  # noqa
         context_form = ContextForm(
@@ -91,11 +86,6 @@ class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Update
 
     def get_success_url(self):  # noqa
         return reverse("auth:group-list")
-
-    def get_template_names(self):
-        if self.is_popup:
-            return ["forms/quick-add-form.html"]
-        return [self.template_name]
 
     def post(self, request, *args, **kwargs):
         """

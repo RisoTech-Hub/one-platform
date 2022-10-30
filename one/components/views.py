@@ -50,3 +50,8 @@ class FormMixin(BaseFormMixin):
             except Exception as e:
                 return JsonResponse({"error": str(e)}, status=400)
         return HttpResponseRedirect(self.get_success_url())
+
+    def get_template_names(self):
+        if self.is_popup:
+            return ["forms/quick-add-form.html"]
+        return super().get_template_names()  # noqa
