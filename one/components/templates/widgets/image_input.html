@@ -1,7 +1,8 @@
-{% if widget.is_initial %}image-input-empty{% else %}{% endif %}
 <!--begin::Image input-->
 <div class="image-input {% if widget.value.url %}image-input-outline{% else %}image-input-empty{% endif %}"
-     data-kt-image-input="true" style="background-image: url({% static 'media/svg/avatars/blank.svg' %})">
+     data-kt-image-input="true" style="background-image: url({% static 'media/svg/avatars/blank.svg' %})"
+     id="id_div_wrapper_{{ widget.name }}"
+>
   <!--begin::Image preview wrapper-->
   <div class="image-input-wrapper w-125px h-125px"
        {% if widget.value.url %}style="background-image: url({{ widget.value.url }})"{% endif %}></div>
@@ -16,14 +17,12 @@
     <i class="bi bi-pencil-fill fs-7"></i>
 
     <!--begin::Inputs-->
-    {#         <input#}
-    {#          type="{{ widget.type }}"#}
-    {#          name="{{ widget.name }}"{% if widget.value != None %}#}
-    {#          value="{{ widget.value|stringformat:'s' }}"{% endif %}#}
-    {#          {% include "django/forms/widgets/attrs.html" %}>#}
-    {#         <input type="hidden" name="{{ widget.name }}_remove" />#}
-    <input type="file" name="avatar" accept=".png, .jpg, .jpeg"/>
-    <input type="hidden" name="avatar_remove"/>
+    <input
+      type="{{ widget.type }}"
+      name="{{ widget.name }}"{% if widget.value != None %}
+      value="{{ widget.value|stringformat:'s' }}"{% endif %}
+      {% include "django/forms/widgets/attrs.html" %}>
+    <input type="hidden" name="{{ widget.name }}_remove"/>
     <!--end::Inputs-->
   </label>
   <!--end::Edit button-->
@@ -39,6 +38,16 @@
   <!--end::Cancel button-->
 
   <!--begin::Remove button-->
+  {% if not widget.required %}
+    <span class="clearable-file-input d-none">
+      <input type="checkbox"
+             name="{{ widget.checkbox_name }}"
+             id="{{ widget.checkbox_id }}"
+        {% if widget.attrs.disabled %} disabled{% endif %}>
+      <label for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+    </span>
+  {% endif %}
+
   <span class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
         data-kt-image-input-action="remove"
         data-bs-toggle="tooltip"
@@ -53,5 +62,11 @@
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", () => {
     KTImageInput.createInstances();
+    let imageInputElement = document.querySelector("#id_div_wrapper_{{ widget.name }}");
+    let imageInput = KTImageInput.getInstance(imageInputElement);
+    imageInput.on("kt.imageinput.removed", function () {
+      document.querySelector("#{{ widget.checkbox_id }}").checked = true;
+    });
   });
+
 </script>
