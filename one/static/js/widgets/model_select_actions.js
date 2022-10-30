@@ -1,4 +1,4 @@
-function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm='', content = '', target_input = '') {
+function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm = '', content = '', target_input = '') {
     $(selector).append(`
             <div class="modal fade" tabindex="-1" id="${idModal}" modal-quick-action="" target-input="${target_input}">
                 <div class="modal-dialog modal-dialog-scrollable">
@@ -25,6 +25,13 @@ function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm='',
     `)
 }
 
+function reInitAllWidget() {
+    // https://preview.keenthemes.com/good/documentation/forms/image-input.html
+    if (KTImageInput) {
+        KTImageInput.createInstances();
+    }
+}
+
 $(document).ready(function () {
     $(document).on('click', '[quick-create-button], [quick-update-button]', function () {
         const action_url = $(this).data('action-url')
@@ -43,6 +50,8 @@ $(document).ready(function () {
                 $('#' + idModal).modal('show')
                 $('#' + idModal).find('form').attr('id', idForm)
                 $('#id_modal_title').text($('#id_form_title').val())
+
+                reInitAllWidget()
             },
             error: function (request, status, error) {
                 alert(`${JSON.stringify(request)}\n${status}\n${error}`)
