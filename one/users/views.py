@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
 
+from one.components.views import FormMixin
 from one.users.forms import UserAdminChangeForm
 
 User = get_user_model()
@@ -20,11 +21,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 user_detail_view = UserDetailView.as_view()
 
 
-class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-
+class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateView):
     model = User
+
     form_class = UserAdminChangeForm
-    # fields = ["name", "groups"]
+
     success_message = _("Information successfully updated")
 
     def get_success_url(self):

@@ -18,7 +18,7 @@
       <a class="btn btn-warning"
          type="button"
          quick-update-button
-         data-action-url="{% url widget.attrs.update_url widget.attrs.default_value %}"
+         data-action-url="{% url widget.attrs.update_url widget.attrs.default_value %}?popup=1"
          data-default-value="{{ widget.attrs.default_value }}"
          data-target-input="{{ widget.attrs.id }}"
       >{% trans 'Update' %}</a>

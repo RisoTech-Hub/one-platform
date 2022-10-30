@@ -5,6 +5,7 @@
   {% csrf_token %}
   <!--begin::Card body-->
   <div class="card-body p-5 pt-0">
+    <input type="hidden" value="{{ form_title }}" id="id_form_title">
     <div class="separator separator-dashed separator-content border-primary mb-5">
       <span class="w-250px fw-bold">{% trans 'General Infomation' %}</span>
     </div>

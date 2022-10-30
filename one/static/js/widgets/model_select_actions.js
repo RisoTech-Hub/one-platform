@@ -4,7 +4,7 @@ function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm='',
                 <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
+                            <h5 class="modal-title" id="id_modal_title">Modal title</h5>
 
                             <!--begin::Close-->
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -42,6 +42,7 @@ $(document).ready(function () {
                 appendModalWithId('body', idModal, idForm, response, target_input)
                 $('#' + idModal).modal('show')
                 $('#' + idModal).find('form').attr('id', idForm)
+                $('#id_modal_title').text($('#id_form_title').val())
             },
             error: function (request, status, error) {
                 alert(`${JSON.stringify(request)}\n${status}\n${error}`)

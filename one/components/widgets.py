@@ -18,7 +18,7 @@ class SelectTwo(Select):
     def __init__(self, attrs=None, choices=()):
         super().__init__(attrs, choices)
         self.attrs["class"] = "form-control"
-        self.attrs["data-plugin-selectTwo"] = True
+        self.attrs["data-control"] = "select2"
 
 
 class SelectTwoMultiple(SelectTwo, SelectMultiple):
@@ -27,10 +27,6 @@ class SelectTwoMultiple(SelectTwo, SelectMultiple):
 
 class ModelSelectTwo(SelectTwo):
     template_name = "widgets/model_select.html"
-
-    def __init__(self, attrs=None, choices=()):
-        super().__init__(attrs, choices)
-        self.attrs["class"] = "custom-select"
 
 
 class ModelSelectTwoMultiple(ModelSelectTwo, SelectMultiple):

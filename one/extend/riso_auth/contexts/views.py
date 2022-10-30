@@ -31,6 +31,7 @@ class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Create
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
+        kwargs["form_title"] = _("Create Group")
         kwargs["nested_forms"] = [
             {
                 "form": ContextForm(),
@@ -64,7 +65,7 @@ group_create_view = GroupCreateView.as_view()
 
 
 class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateView):
-    template_name = "app/create.html"
+    template_name = "app/update.html"
     model = Group
 
     form_class = GroupForm
