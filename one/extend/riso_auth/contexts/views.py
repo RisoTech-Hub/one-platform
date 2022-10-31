@@ -16,6 +16,11 @@ class GroupListView(LoginRequiredMixin, ListView):
     template_name = "app/list.html"
     model = Group
 
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        kwargs["list_url"] = reverse("auth:group-list")
+        return kwargs
+
 
 group_list_view = GroupListView.as_view()
 
