@@ -515,6 +515,8 @@ KT_THEME_VENDORS = {
 
 # Custom libraries
 KT_CUSTOM_LIBS = {
+    # Metronic Reinit libs always placed at top of this list
+    "metronic": {"js": ["js/metronic/init.js"]},
     "filebrowser": {
         "css": ["filebrowser/css/filebrowser.css"],
         "js": ["filebrowser/js/fileuploader.js", "js/filebrowser/upload_button.js"],
