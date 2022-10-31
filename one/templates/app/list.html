@@ -191,11 +191,26 @@
     <!--end::Content-->
 
     <!--begin::Sidebar-->
-    <div class="d-none d-lg-flex flex-column flex-lg-row-auto w-100 w-lg-275px ms-lg-7 ms-xl-10"
-         id="kt_drawer_filter_form"
-         data-kt-drawer="true" data-kt-drawer-activate="false"
-         data-kt-drawer-direction="start" data-kt-drawer-name="kt-drawer-filter-form"
-         data-kt-drawer-toggle="#kt_filter_form_toggle" data-kt-drawer-width="225px">
+    {#    <div class=""#}
+    {#         id="kt_drawer_filter_form"#}
+    {#         data-kt-drawer="true" data-kt-drawer-activate="false"#}
+    {#         data-kt-drawer-direction="end" data-kt-drawer-name="kt-drawer-filter-form"#}
+    {#         data-kt-drawer-toggle="#kt_filter_form_toggle" data-kt-drawer-width="225px">#}
+    {#      ..........#}
+    {#    </div>#}
+    <!--end::Sidebar-->
+
+    <!--begin::View component-->
+    <div
+      id="kt_drawer_example_basic"
+      class="bg-white position-static d-md-none"
+      data-kt-drawer="true"
+      data-kt-drawer-direction="end"
+      data-kt-drawer-activate="true"
+      data-kt-drawer-toggle="#kt_filter_form_toggle"
+      data-kt-drawer-close="#kt_drawer_example_basic_close"
+      data-kt-drawer-width="225px"
+    >
       <!--begin::Sticky aside-->
       <div class="card card-flush mb-0" data-kt-sticky="true"
            data-kt-sticky-animation="false"
@@ -206,16 +221,35 @@
            data-kt-sticky-zindex="95">
         <!--begin::Aside content-->
         <div class="card-body">
-
+          tttt
         </div>
         <!--end::Aside content-->
       </div>
       <!--end::Sticky aside-->
     </div>
-    <!--end::Sidebar-->
+    <!--end::View component-->
   </div>
+
   <!--end::List Content -->
+
+  <style>
+    .drawer {
+      display: none !important;
+    }
+
+    .drawer.drawer-on {
+      display: flex !important;
+    }
+  </style>
 {% endblock content %}
 
 {% block inline_javascript %}
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      KTDrawer.createInstances();
+
+      var drawerElement = document.querySelector("#kt_filter_form_toggle");
+      var drawer = KTDrawer.getInstance(drawerElement);
+    })
+  </script>
 {% endblock inline_javascript %}
