@@ -10,6 +10,7 @@
         <div class="card-header align-items-center py-5 gap-2 gap-md-5">
           <!--begin::Actions-->
           <div class="d-flex flex-wrap gap-2">
+
             <!--begin::Checkbox-->
             <div class="form-check form-check-sm form-check-custom form-check-solid me-4 me-lg-7">
               <input class="form-check-input" data-kt-check="true"
@@ -18,30 +19,30 @@
                      value="1"/>
             </div>
             <!--end::Checkbox-->
-            <!--begin::Reload-->
-            <a class="btn btn-sm btn-icon btn-light btn-active-light-primary"
-               data-bs-dismiss="click"
-               data-bs-placement="top" data-bs-toggle="tooltip"
-               href="#" title="Reload">
-              <!--begin::Svg Icon | path: icons/duotune/arrows/arr029.svg-->
-              {% get_svg_icon 'duotune/arrows/arr029.svg' 'svg-icon svg-icon-2' %}
-              <!--end::Svg Icon-->
-            </a>
-            <!--end::Reload-->
+
             <!--begin::Delete-->
-            <a class="btn btn-sm btn-icon btn-light btn-active-light-primary"
-               data-bs-dismiss="click"
-               data-bs-placement="top" data-bs-toggle="tooltip"
-               href="#" title="Delete">
-              <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-              {% get_svg_icon 'duotune/general/gen027.svg' 'svg-icon svg-icon-2' %}
-              <!--end::Svg Icon-->
-            </a>
+            <div class="d-flex justify-content-end align-items-center d-none" data-kt-table-toolbar="selected">
+              <div class="fw-bolder me-5">
+                <span class="me-2" data-kt-table-select="selected_count"></span>{% trans 'Selected' %}
+              </div>
+              <a class="btn btn-sm btn-icon btn-danger btn-active-light-danger"
+                 data-bs-dismiss="click"
+                 data-bs-placement="top"
+                 data-bs-toggle="tooltip"
+                 data-kt-table-select="delete_selected"
+                 href="#"
+                 title="{% trans 'Delete Selected' %}">
+                <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                {% get_svg_icon 'duotune/general/gen027.svg' 'svg-icon svg-icon-2' %}
+                <!--end::Svg Icon-->
+              </a>
+            </div>
             <!--end::Delete-->
           </div>
           <!--end::Actions-->
+
           <!--begin::Actions-->
-          <div class="d-flex align-items-center flex-wrap gap-2">
+          <div class="d-flex align-items-center flex-wrap gap-2" data-kt-table-toolbar="base">
             <!--begin::Search-->
             <div class="d-flex align-items-center position-relative">
               <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -49,9 +50,7 @@
               <!--end::Svg Icon-->
               <input
                 class="form-control form-control-sm form-control-solid mw-100 min-w-125px min-w-lg-150px min-w-xxl-200px ps-12"
-                data-kt-inbox-listing-filter="search" data-kt-table-filter="search"
-                placeholder="{% trans 'Search Inbox' %}"
-                type="text"/>
+                data-kt-table-filter="search" placeholder="{% trans 'Search Inbox' %}" type="text"/>
             </div>
             <!--end::Search-->
             <!--begin::Toggle-->
@@ -63,49 +62,12 @@
             <!--end::Toggle-->
           </div>
           <!--end::Actions-->
-          <!--begin::Card toolbar-->
-          <div class="card-toolbar">
-            <!--begin::Toolbar-->`
-            <div class="d-flex justify-content-end"
-                 data-kt-table-toolbar="base">
-      {#        {% include 'partials/widgets/tables/_filter.html' %}#}
-              {# {% include 'partials/widgets/tables/_export.html' %}#}
-      {#        {% include 'partials/widgets/tables/_new_object.html' %}#}
-
-            </div>
-            <!--end::Toolbar-->
-            <!--begin::Group actions-->
-            <div class="d-flex justify-content-end align-items-center d-none"
-                 data-kt-table-toolbar="selected">
-              <div class="fw-bolder me-5">
-                  <span class="me-2"
-                        data-kt-table-select="selected_count"></span>Selected
-              </div>
-              <button type="button" class="btn btn-danger"
-                      data-kt-table-select="delete_selected">Delete Selected
-              </button>
-            </div>
-            <!--end::Group actions-->
-
-          </div>
-          <!--end::Card toolbar-->
         </div>
         <div class="card-body p-0 hover-scroll-overlay">
           <!--begin::Table-->
           <table class="table table-hover table-row-dashed fs-6 gy-5 my-0 min-w-900px"
                  id="kt_datatable_list" data-server-side="true"
                  data-ajax="{{ list_url }}?format=datatables">
-            <!--begin::Table head-->
-            <thead>
-            <tr>
-            </tr>
-            </thead>
-            <!--end::Table head-->
-            <!--begin::Table body-->
-            <tbody>
-
-            </tbody>
-            <!--end::Table body-->
           </table>
           <!--end::Table-->
         </div>
@@ -132,12 +94,38 @@
            data-kt-sticky-offset="{default: false, xl: '100px'}"
            data-kt-sticky-top="100px"
            data-kt-sticky-width="{lg: '275px'}"
-           data-kt-sticky-zindex="95">
+           data-kt-sticky-zindex="95"
+           data-kt-table-filter="form"
+      >
         <!--begin::Aside content-->
-        <div class="card-body p-2">
-          <!--begin::Button-->
-          <a class="btn btn-primary fw-bold w-100 mb-8" href="#">{% trans 'Filter' %}</a>
-          <!--end::Button-->
+        <div class="card-body p-2" data-kt-table-filter="body">
+        </div>
+        <div class="card-footer border-0 d-flex gap-3 pb-9 pt-0" id="kt_app_layout_builder_footer">
+          <button type="submit"
+                  class="btn btn-primary flex-grow-1 fw-semibold"
+                  data-kt-menu-dismiss="true"
+                  data-kt-table-filter="filter"
+          >
+            <!--begin::Indicator label-->
+            <span class="indicator-label">{% translate 'Apply' %}</span>
+            <!--end::Indicator label-->
+            <!--begin::Indicator progress-->
+            <span class="indicator-progress">{% trans 'Please wait...' %}
+						<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            <!--end::Indicator progress-->
+          </button>
+          <button type="reset"
+                  class="btn btn-light flex-grow-1 fw-semibold"
+                  data-kt-menu-dismiss="true"
+                  data-kt-table-filter="reset">
+            <!--begin::Indicator label-->
+            <span class="indicator-label">{% translate 'Reset' %}</span>
+            <!--end::Indicator label-->
+            <!--begin::Indicator progress-->
+            <span class="indicator-progress">{% trans 'Please wait...' %}
+						<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            <!--end::Indicator progress-->
+          </button>
         </div>
         <!--end::Aside content-->
       </div>
@@ -160,16 +148,37 @@
 
 {% block javascript %}
   {{ block.super }}
-  <script src="{% static 'js/table.js' %}" ></script>
+  <script src="{% static 'js/table.js' %}"></script>
 {% endblock javascript %}
 
 {% block inline_javascript %}
   <script>
-  $(document).ready(function () {
-    const table = DT.init('kt_datatable_list', {},
-      {
-        delete: ''
-      });
-  })
+    $(document).ready(function () {
+      const table = DT.init(
+        'kt_datatable_list',
+        {},
+        //endpoint
+        {
+          add: "",
+          edit: "",
+          delete: "{% url 'api:group-delete' %}"
+        },
+        //language
+        {
+          confirm_delete: "",
+          delete_success: "",
+          delete_fail: "",
+
+          // TODO: same for edit and add, will implement
+          confirm_add: "",
+          add_success: "",
+          add_fail: "",
+
+          confirm_edit: "",
+          edit_success: "",
+          edit_fail: "",
+        }
+      );
+    })
   </script>
 {% endblock inline_javascript %}
