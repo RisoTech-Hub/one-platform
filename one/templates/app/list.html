@@ -179,45 +179,36 @@
     <!--end::Content-->
 
     <!--begin::Sidebar-->
-    {#    <div class=""#}
-    {#         id="kt_drawer_filter_form"#}
-    {#         data-kt-drawer="true" data-kt-drawer-activate="false"#}
-    {#         data-kt-drawer-direction="end" data-kt-drawer-name="kt-drawer-filter-form"#}
-    {#         data-kt-drawer-toggle="#kt_filter_form_toggle" data-kt-drawer-width="225px">#}
-    {#      ..........#}
-    {#    </div>#}
-    <!--end::Sidebar-->
-
-    <!--begin::View component-->
     <div
-      id="kt_drawer_example_basic"
-      class="rounded position-static d-md-none"
+      id="kt_drawer_filter_form"
+      class="d-none rounded position-static d-md-none w-100 w-lg-275px ms-lg-5 ms-xl-7"
       data-kt-drawer="true"
       data-kt-drawer-direction="end"
       data-kt-drawer-activate="true"
       data-kt-drawer-toggle="#kt_filter_form_toggle"
-      data-kt-drawer-close="#kt_drawer_example_basic_close"
-      data-kt-drawer-width="225px"
+      data-kt-drawer-overlay="false"
+      data-kt-drawer-width="300px"
     >
       <!--begin::Sticky aside-->
       <div class="card card-flush mb-0 w-100" data-kt-sticky="true"
            data-kt-sticky-animation="false"
            data-kt-sticky-left="auto"
-           data-kt-sticky-name="inbox-aside-sticky"
            data-kt-sticky-offset="{default: false, xl: '100px'}"
-           data-kt-sticky-top="100px" data-kt-sticky-width="{lg: '275px'}"
+           data-kt-sticky-top="100px"
+           data-kt-sticky-width="{lg: '275px'}"
            data-kt-sticky-zindex="95">
         <!--begin::Aside content-->
-        <div class="card-body ">
-          tttt
+        <div class="card-body p-2">
+          <!--begin::Button-->
+          <a class="btn btn-primary fw-bold w-100 mb-8" href="#">{% trans 'Filter' %}</a>
+          <!--end::Button-->
         </div>
         <!--end::Aside content-->
       </div>
       <!--end::Sticky aside-->
     </div>
-    <!--end::View component-->
+    <!--end::Sidebar-->
   </div>
-
   <!--end::List Content -->
 
   <style>
@@ -232,12 +223,4 @@
 {% endblock content %}
 
 {% block inline_javascript %}
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      KTDrawer.createInstances();
-
-      var drawerElement = document.querySelector("#kt_filter_form_toggle");
-      var drawer = KTDrawer.getInstance(drawerElement);
-    })
-  </script>
 {% endblock inline_javascript %}
