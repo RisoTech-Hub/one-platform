@@ -9,6 +9,7 @@ from django.views.generic import CreateView, ListView, UpdateView
 from one.components.views import FormMixin
 
 from .api.serializers import GroupSerializer
+from .filters import GroupFilter
 from .forms import ContextForm, GroupForm
 
 
@@ -18,7 +19,8 @@ class GroupListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-        kwargs["list_url"] = reverse("auth:group-list")
+        kwargs["api_list_url"] = reverse("api:group-list")
+        kwargs["filter"] = GroupFilter()
         return kwargs
 
 

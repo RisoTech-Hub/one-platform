@@ -67,7 +67,7 @@
           <!--begin::Table-->
           <table class="table table-hover table-row-dashed fs-6 gy-5 my-0 min-w-900px"
                  id="kt_datatable_list" data-server-side="true"
-                 data-ajax="{{ list_url }}?format=datatables">
+                 data-ajax="{{ api_list_url }}?format=datatables">
           </table>
           <!--end::Table-->
         </div>
@@ -98,7 +98,8 @@
            data-kt-table-filter="form"
       >
         <!--begin::Aside content-->
-        <div class="card-body p-2" data-kt-table-filter="body">
+        <div class="card-body p-2" data-kt-table-filter="">
+          {{ filter.form }}
         </div>
         <div class="card-footer border-0 d-flex gap-3 pb-9 pt-0" id="kt_app_layout_builder_footer">
           <button type="submit"

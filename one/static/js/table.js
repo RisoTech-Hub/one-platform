@@ -118,6 +118,7 @@ var DT = (function () {
                 // TODO: HANDLE META DATA FOR FORM FILTER WILL APPEND TO SELECT, RETURN FROM API
             },
         };
+
         // Init datatable --- more info on datatables: https://datatables.net/manual/
         datatable = $(table).DataTable({
             ...defaultOptions,
@@ -176,14 +177,14 @@ var DT = (function () {
 
     // init Filter Form
     const initFilterForm = (options) => {
-        const filterForm = document.querySelector('[data-kt-table-filter="form"]');
-        const filterBody = filterForm.querySelector(
-            '[data-kt-table-filter="body"]'
-        );
-        options.forEach(function (item) {
-            console.log(item);
-            filterBody.append(item);
-        })
+        // const filterForm = document.querySelector('[data-kt-table-filter="form"]');
+        // const filterBody = filterForm.querySelector(
+        //     '[data-kt-table-filter="body"]'
+        // );
+        // options.forEach(function (item) {
+        //     console.log(item);
+        //     filterBody.append(item);
+        // })
     }
 
     // Filter Datatable
