@@ -10,15 +10,6 @@
         <div class="card-header align-items-center py-5 gap-2 gap-md-5">
           <!--begin::Actions-->
           <div class="d-flex flex-wrap gap-2">
-            <!--begin::Checkbox-->
-            <div class="form-check form-check-sm form-check-custom form-check-solid me-4 me-lg-7">
-              <input class="form-check-input" data-kt-check="true"
-                     data-kt-check-target="#kt_inbox_listing .form-check-input"
-                     type="checkbox"
-                     value="1"/>
-            </div>
-            <!--end::Checkbox-->
-
             <!--begin::Delete-->
             <div class="d-flex justify-content-end align-items-center d-none" data-kt-table-toolbar="selected">
               <div class="fw-bolder me-5">
@@ -68,10 +59,9 @@
           <table class="table table-hover table-row-dashed fs-6 gy-5 my-0 min-w-900px"
                  id="kt_datatable_list" data-server-side="true"
                  data-ajax="{{ api_list_url }}?format=datatables">
-          </table>
-          <!--begin::Table head-->
-          <thead>
-          <!--begin::Table Thread-->
+            <!--begin::Table head-->
+            <thead>
+            <!--begin::Table Thread-->
             <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
               <th class="w-10px pe-2" data-data="id">
                 <div
@@ -82,11 +72,13 @@
                 </div>
               </th>
               <th class="text-end min-w-100px" data-data="id"></th>
-              <th class="min-w-125px" data-data="context.as_cell" data-name="name">{% translate 'Group' %}</th>
+              <th class="min-w-125px" data-data="name" data-name="name">{% translate 'Group' %}</th>
             </tr>
-          <!--end::Table Thread-->
-          </thead>
-          <!--end::Table head-->
+            <!--end::Table Thread-->
+            </thead>
+            <!--end::Table head-->
+          </table>
+
           <!--end::Table-->
         </div>
       </div>
