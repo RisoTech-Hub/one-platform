@@ -70,7 +70,7 @@ var DT = (function () {
                 },
                 {
                     orderable: false, // Disable ordering on column (actions)
-                    targets: 1,
+                    targets: -1,
                     render: function (data, type, row, meta) {
                         return `<div class="d-flex justify-content-end flex-shrink-0">
                         ${iconView(row)}
