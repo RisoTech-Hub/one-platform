@@ -1,4 +1,5 @@
 from django.core.exceptions import FieldError
+from django.utils.translation import gettext_lazy as _
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -30,8 +31,27 @@ class BaseModelViewSet(ModelViewSet):
             for item in self.filter_fields
         ]
 
+    def get_labels(self):  # noqa
+        return "labels", {
+            "confirm_delete": _("Are you sure you want to delete selected records?"),
+            "delete_success": _("Deleted Completely"),
+            "delete_fail": _("This record was not deleted."),
+            "confirm_btn_delete": _("Yes, delete!"),
+            "cancel_btn_delete": _("No, cancel"),
+            "notification_success_delete": _("You have deleted all selected records!."),
+            "notification_confirm_button": _("Ok, got it!"),
+            "notification_error_title": _("Notice"),
+            "notification_error_text": _("Something is error:"),
+            "confirm_add": _(""),
+            "add_success": _(""),
+            "add_fail": _(""),
+            "confirm_edit": _(""),
+            "edit_success": _(""),
+            "edit_fail": _(""),
+        }
+
     class Meta:
-        datatables_extra_json = ("get_options",)
+        datatables_extra_json = ("get_labels",)
 
     def get_model(self):
         """return model of class"""
