@@ -99,7 +99,10 @@
       >
         <!--begin::Aside content-->
         <div class="card-body p-2" data-kt-table-filter="">
-          {{ filter.form }}
+          {% for field in filter.form %}
+            {% include "forms/floating-label-field.html" %}
+          {% endfor %}
+
         </div>
         <div class="card-footer border-0 d-flex gap-3 pb-9 pt-0" id="kt_app_layout_builder_footer">
           <button type="submit"
