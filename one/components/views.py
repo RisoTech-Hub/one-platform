@@ -17,10 +17,10 @@ class FormMixin(BaseFormMixin):
 
     def setup(self, request, *args, **kwargs):
         self.is_popup = request.GET.get("popup", None)
-        super().setup(request, *args, **kwargs)
+        super().setup(request, *args, **kwargs)  # noqa
 
     def get_form_class(self):
-        form_type = self.request.GET.get("form_type", None)
+        form_type = self.request.GET.get("form_type", None)  # noqa
         if not form_type:
             return super().get_form_class()
         if form_type.upper() == FORM_TYPE_QUICK and self.quick_form_class:
@@ -34,7 +34,7 @@ class FormMixin(BaseFormMixin):
         errors = json.loads(form.errors.as_json())
         if errors:
             for error in errors:
-                messages.error(self.request, errors[error][0]["message"])
+                messages.error(self.request, errors[error][0]["message"])  # noqa
 
     def form_invalid(self, form):
         if self.is_popup:
