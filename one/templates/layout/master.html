@@ -39,6 +39,9 @@
       <link href="{% static file %}" rel="stylesheet" type="text/css"/>
     {% endfor %}
     <!--end::Global Stylesheets-->
+
+    {% block inline_css %}
+    {% endblock inline_css %}
   {% endblock css %}
 
   <!--begin::Tracking-->

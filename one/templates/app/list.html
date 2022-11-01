@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
+
+{% block inline_css %}
+  <style>
+    .drawer {
+      display: none !important;
+    }
+
+    .drawer.drawer-on {
+      display: flex !important;
+    }
+  </style>
+{% endblock inline_css %}
+
 {% block content %}
   <!--begin::List Content -->
   <div class="d-flex flex-column flex-lg-row">
@@ -40,7 +53,7 @@
               <!--end::Svg Icon-->
               <input
                 class="form-control form-control-sm form-control-solid mw-100 min-w-125px min-w-lg-150px min-w-xxl-200px ps-12"
-                data-kt-table-filter="search" placeholder="{% trans 'Search Inbox' %}" type="text"/>
+                data-kt-table-filter="search" placeholder="{% trans 'Enter keyword' %}" type="text"/>
             </div>
             <!--end::Search-->
             <!--begin::Toggle-->
@@ -58,18 +71,16 @@
           <!--begin::Table-->
           <table class="table table-hover table-row-dashed fs-6 gy-5 my-0 min-w-900px"
                  id="kt_datatable_list" data-server-side="true"
-                 data-ajax="{{ api_list_url }}?format=datatables">
+                 data-ajax="{% url api_urls.list %}?format=datatables">
             <!--begin::Table head-->
             <thead>
             <!--begin::Table Thread-->
             <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-              <th class="w-10px pe-2" data-data="id">
-
-              </th>
+              <th class="w-10px pe-2" data-data="id"></th>
               {% for field in table_fields %}
                 <th class="min-w-125px" data-data="{{ field.col_name }}" data-type="{{ field.type }}">{{ field.verbose_name|title }}</th>
               {% endfor %}
-{#              <th class="min-w-125px text-end pe-4" data-data="" data-sortable="false">{% translate 'Action' %}</th>#}
+              <th class="min-w-125px text-end pe-4" data-data="" data-sortable="false">{% translate 'Action' %}</th>
             </tr>
             <!--end::Table Thread-->
             </thead>
@@ -145,16 +156,6 @@
     <!--end::Sidebar-->
   </div>
   <!--end::List Content -->
-
-  <style>
-    .drawer {
-      display: none !important;
-    }
-
-    .drawer.drawer-on {
-      display: flex !important;
-    }
-  </style>
 {% endblock content %}
 
 {% block javascript %}
@@ -172,7 +173,7 @@
         {
           add: "",
           edit: "",
-          delete: "{% url 'api:group-delete' %}"
+          delete: "{% url api_urls.delete %}",
         },
         //language
         {

@@ -19,7 +19,29 @@ class GroupListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-        kwargs["api_list_url"] = reverse("api:group-list")
+        kwargs["page_title"] = _("Group List")
+        kwargs["page_breadcrumb"] = [
+            {"name": _("Home"), "url": reverse("home")},
+            {"name": _("Groups"), "url": reverse("auth:group-list")},
+        ]
+        kwargs["actions"] = [
+            {
+                "label": _("Create Group"),
+                "url": reverse("auth:group-create"),
+                "class": "btn-icon-primary",
+                "icon": "duotune/general/gen035.svg",
+            },
+            {
+                "label": _("Quick Create Group"),
+                "url": f"{reverse('auth:group-create')}?popup=1",
+                "class": "btn-icon-success",
+                "icon": "duotune/general/gen035.svg",
+            },
+        ]
+        kwargs["api_urls"] = {
+            "list": "api:group-list",
+            "delete": "api:group-delete",
+        }
         kwargs["filter"] = GroupFilter()
         kwargs["table_fields"] = self.get_table_fields()
         return kwargs

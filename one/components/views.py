@@ -75,7 +75,6 @@ class ListView(BaseListView):
                         "col_name": field.name,
                         "verbose_name": field.verbose_name,
                         "order": 0 if field.name == "id" else 1,
-                        "type": field.get_internal_type(),
                     }
                 )
             elif (
@@ -94,7 +93,6 @@ class ListView(BaseListView):
                                 "col_name": f"{field.name}.{nested_field.name}",
                                 "verbose_name": nested_field.verbose_name,
                                 "order": 1,
-                                "type": nested_field.get_internal_type(),
                             }
                         )
             else:

@@ -1,0 +1,18 @@
+<!--begin::Primary button-->
+<a
+  href="{{ action.url }}"
+  class="btn btn-icon {{ action.class }}"
+
+  data-bs-toggle="tooltip"
+  data-bs-delay-hide="1000"
+  data-bs-placement="top"
+  title="{{ action.label }}"
+
+  {% if action.type %}
+  data-bs-toggle="modal"
+  data-bs-target="#{{ action.modal_id }}"
+  {% endif %}
+>
+  {% get_svg_icon action.icon 'svg-icon svg-icon-1' %}
+</a>
+<!--end::Primary button-->
