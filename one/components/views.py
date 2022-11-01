@@ -1,7 +1,9 @@
 import json
 
 from django.contrib import messages
+from django.db.models import ManyToManyField, ManyToManyRel, ManyToOneRel
 from django.http import HttpResponseRedirect, JsonResponse
+from django.views.generic import ListView as BaseListView
 from django.views.generic.edit import FormMixin as BaseFormMixin
 
 from .constants import FORM_TYPE_FULL, FORM_TYPE_QUICK
@@ -55,3 +57,46 @@ class FormMixin(BaseFormMixin):
         if self.is_popup:
             return ["forms/quick-add-form.html"]
         return super().get_template_names()  # noqa
+
+
+class ListView(BaseListView):
+    table_exclude_fields = []
+    table_exclude_rel = [ManyToManyRel, ManyToOneRel, ManyToManyField]
+
+    def get_table_fields(self):
+        fields = self.model._meta.get_fields()  # noqa
+        data = []
+        for field in fields:
+            if not field.is_relation and not (
+                field.name in self.table_exclude_fields + ["password"]
+            ):
+                data.append(
+                    {
+                        "col_name": field.name,
+                        "verbose_name": field.verbose_name,
+                        "order": 0 if field.name == "id" else 1,
+                        "type": field.get_internal_type(),
+                    }
+                )
+            elif (
+                field.is_relation
+                and not (type(field) in self.table_exclude_rel)
+                and not (field.related_model is self.model)
+            ):
+                nested_fields = field.related_model._meta.get_fields()  # noqa
+                for nested_field in nested_fields:
+                    if not nested_field.is_relation and not (
+                        nested_field.name
+                        in self.table_exclude_fields + ["password", "id"]
+                    ):
+                        data.append(
+                            {
+                                "col_name": f"{field.name}.{nested_field.name}",
+                                "verbose_name": nested_field.verbose_name,
+                                "order": 1,
+                                "type": nested_field.get_internal_type(),
+                            }
+                        )
+            else:
+                pass
+        return sorted(data, key=lambda item: item["order"])

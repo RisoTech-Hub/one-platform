@@ -4,9 +4,9 @@ from django.contrib.auth.models import Group
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, UpdateView
 
-from one.components.views import FormMixin
+from one.components.views import FormMixin, ListView
 
 from .api.serializers import GroupSerializer
 from .filters import GroupFilter
@@ -21,6 +21,7 @@ class GroupListView(LoginRequiredMixin, ListView):
         kwargs = super().get_context_data(**kwargs)
         kwargs["api_list_url"] = reverse("api:group-list")
         kwargs["filter"] = GroupFilter()
+        kwargs["table_fields"] = self.get_table_fields()
         return kwargs
 
 
