@@ -71,6 +71,8 @@ var DT = (function () {
                 {
                     orderable: false, // Disable ordering on column (actions)
                     targets: -1,
+                    title: "Action",
+                    className: "text-end",
                     render: function (data, type, row, meta) {
                         return `<div class="d-flex justify-content-end flex-shrink-0">
                         ${iconView(row)}
@@ -80,12 +82,17 @@ var DT = (function () {
                     },
                 },
             ],
+
+            fixedColumns: {
+                left: 1
+            },
             processing: true,
             dom: "lrtip", // DataTable element position
             language: {
-                processing: '<div data-kt-indicator="on"><span class="indicator-progress">\n' +
-                    '        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>\n' +
-                    "    </span></div>",
+                processing: "<div class='d-block'><span class='spinner-border w-15px h-15px text-muted align-middle me-2'></span></div>",
+                // processing: '<div data-kt-indicator="on"><span class="indicator-progress">\n' +
+                //     '        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>\n' +
+                //     "    </span></div>",
             },
             rowCallback: function (row, data) {
                 $(row)
