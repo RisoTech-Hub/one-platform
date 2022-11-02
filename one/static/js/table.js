@@ -100,6 +100,7 @@ var DT = (function () {
             initToggleToolbar(endpoint.delete, language);
             handleDeleteRows(endpoint.delete, language);
             toggleToolbars();
+            $('input[data-kt-check="true"]').prop("checked", false);
         });
 
         $(document).on("change", '#' + tableId + ' td input[type="checkbox"]', function () {
@@ -134,8 +135,6 @@ var DT = (function () {
     var initCheck = function () {
         // Toggle Handler
         KTUtil.on(document.body, '[data-kt-check="true"]', 'change', function (e) {
-
-
             var check = this;
             var targets = document.querySelectorAll(check.getAttribute('data-kt-check-target'));
 
@@ -153,13 +152,14 @@ var DT = (function () {
                         }
                     }
 
-                    // console.log('---arr_selected', arr_selected)
+                    console.log('---arr_selected', arr_selected)
+
                 } else {
                     target.classList.toggle('active');
                 }
             });
 
-
+            toggleToolbars()
         });
     }
 
@@ -462,7 +462,7 @@ var DT = (function () {
             toolbarSelected.classList.add("d-none");
         }
 
-        $('input[data-kt-check="true"]').prop("checked", totalCount === count);
+        // $('input[data-kt-check="true"]').prop("checked", totalCount === count);
     };
 
     return {
