@@ -201,7 +201,7 @@ var DT = (function () {
         const filterButton = filterForm.querySelector(
             '[data-kt-table-filter="filter"]'
         );
-        const selectOptions = filterForm.querySelectorAll("select");
+        const selectOptions = filterForm.querySelectorAll("[name]");
 
         // Filter datatable on submit
         filterButton.addEventListener("click", function () {
