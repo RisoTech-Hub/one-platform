@@ -1,0 +1,31 @@
+main, span, ol, ul, pre, div {
+  --kt-scrollbar-width: 1rem;
+  --kt-scrollbar-height: 1rem;
+  scrollbar-width: auto;
+  scrollbar-color: var(--kt-scrollbar-color) transparent;
+}
+main::-webkit-scrollbar, span::-webkit-scrollbar, ol::-webkit-scrollbar, ul::-webkit-scrollbar, pre::-webkit-scrollbar, div::-webkit-scrollbar {
+  width: var(--kt-scrollbar-width);
+  height: var(--kt-scrollbar-height);
+}
+main::-webkit-scrollbar-track, span::-webkit-scrollbar-track, ol::-webkit-scrollbar-track, ul::-webkit-scrollbar-track, pre::-webkit-scrollbar-track, div::-webkit-scrollbar-track {
+  border-radius: 0.5rem;
+}
+main::-webkit-scrollbar-thumb, span::-webkit-scrollbar-thumb, ol::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb, pre::-webkit-scrollbar-thumb, div::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background-color: var(--kt-scrollbar-color);
+}
+main::-webkit-scrollbar-corner, span::-webkit-scrollbar-corner, ol::-webkit-scrollbar-corner, ul::-webkit-scrollbar-corner, pre::-webkit-scrollbar-corner, div::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+main:hover, span:hover, ol:hover, ul:hover, pre:hover, div:hover {
+  scrollbar-color: var(--kt-scrollbar-hover-color) transparent;
+}
+main:hover::-webkit-scrollbar-thumb, span:hover::-webkit-scrollbar-thumb, ol:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb, pre:hover::-webkit-scrollbar-thumb, div:hover::-webkit-scrollbar-thumb {
+  background-color: var(--kt-scrollbar-hover-color);
+}
+main:hover::-webkit-scrollbar-corner, span:hover::-webkit-scrollbar-corner, ol:hover::-webkit-scrollbar-corner, ul:hover::-webkit-scrollbar-corner, pre:hover::-webkit-scrollbar-corner, div:hover::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/*# sourceMappingURL=project.css.map */
