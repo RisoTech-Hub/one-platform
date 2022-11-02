@@ -86,12 +86,8 @@ var DT = (function () {
                 left: 1
             },
             processing: true,
-            dom: "lrtip", // DataTable element position
             language: {
                 processing: "<div class='d-block'><span class='spinner-border w-15px h-15px text-muted align-middle me-2'></span></div>",
-                // processing: '<div data-kt-indicator="on"><span class="indicator-progress">\n' +
-                //     '        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>\n' +
-                //     "    </span></div>",
             },
             rowCallback: function (row, data) {
                 $(row)
@@ -104,10 +100,10 @@ var DT = (function () {
             drawCallback: function (settings) {
 
                 // ?Initialize tooltip bootstrap
-                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
+                const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                    return new bootstrap.Tooltip(tooltipTriggerEl)
+                })
 
                 if (settings && settings["json"]) {
                     totalCount = parseInt(settings["json"]["recordsFiltered"]);
