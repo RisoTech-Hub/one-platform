@@ -85,19 +85,6 @@ var DT = (function () {
                         initFilterForm(settings["json"]["options"]);
                     }
                 }
-
-                $(document).on("change", '#' + tableId + ' td input[type="checkbox"]', function () {
-                    if ($(this).is(":checked")) {
-                        arr_selected.push($(this).val());
-                    } else {
-                        arr_selected.splice(arr_selected.indexOf($(this).val()), 1);
-                    }
-                    // console.log('arr_selected: ', arr_selected);
-
-                    toggleToolbars();
-                });
-
-                // TODO: HANDLE META DATA FOR FORM FILTER WILL APPEND TO SELECT, RETURN FROM API
             },
         };
 
@@ -113,6 +100,16 @@ var DT = (function () {
             toggleToolbars();
         });
 
+        $(document).on("change", '#' + tableId + ' td input[type="checkbox"]', function () {
+            if ($(this).is(":checked")) {
+                arr_selected.push($(this).val());
+            } else {
+                arr_selected.splice(arr_selected.indexOf($(this).val()), 1);
+            }
+            // console.log('arr_selected: ', arr_selected);
+
+            toggleToolbars();
+        });
         // $('input[data-kt-check="true"]').on("change", function () {
         //     if (this.checked) {
         //         $('tbody td [type="checkbox"]').prop("checked", true);
