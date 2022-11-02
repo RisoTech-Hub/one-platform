@@ -54,7 +54,7 @@ var DT = (function () {
                 orderable: false, // Disable ordering on column 0 (checkbox)
                 targets: 0, render: function (data, type, full, meta) {
                     return `<div class="form-check form-check-sm form-check-custom form-check-solid">
-                       <input class="form-check-input widget-9-check" type="checkbox" value="${data}">
+                       <input class="form-check-input widget-9-check" type="checkbox" name="id" value="${data}">
                      </div>`;
                 },
             }, {
@@ -106,7 +106,7 @@ var DT = (function () {
             } else {
                 arr_selected.splice(arr_selected.indexOf($(this).val()), 1);
             }
-            // console.log('arr_selected: ', arr_selected);
+            console.log('arr_selected: ', arr_selected);
 
             toggleToolbars();
         });
@@ -132,7 +132,7 @@ var DT = (function () {
     var initCheck = function () {
         // Toggle Handler
         KTUtil.on(document.body, '[data-kt-check="true"]', 'change', function (e) {
-            // toggleToolbars()
+
 
             var check = this;
             var targets = document.querySelectorAll(check.getAttribute('data-kt-check-target'));
@@ -140,11 +140,24 @@ var DT = (function () {
             KTUtil.each(targets, function (target) {
                 if (target.type == 'checkbox') {
                     target.checked = check.checked;
-                    // toggleToolbars()
+                    if (target.checked) {
+                        arr_selected.push(target.value)
+                        arr_selected = Array.from(new Set(arr_selected))
+                    } else {
+                        // console.log('else----arr_selected', arr_selected)
+                        const indexed = arr_selected.indexOf($(target).val())
+                        if (indexed > -1) {
+                            arr_selected.splice(indexed, 1)
+                        }
+                    }
+
+                    // console.log('---arr_selected', arr_selected)
                 } else {
                     target.classList.toggle('active');
                 }
             });
+
+
         });
     }
 
@@ -368,6 +381,10 @@ var DT = (function () {
                         data: JSON.stringify(arr_selected),
                         success: function (response) {
                             datatable.draw()
+                            arr_selected = [];
+                            toggleToolbars(); // Detect checked checkboxes
+                            initToggleToolbar(_url_delete, _language); // Re-init toolbar to recalculate checkboxes
+
                             toastr.success(_language.delete_success || "You have deleted all selected records!.")
                             toastr.options.onHidden = function () {
                                 console.log('goodbye');
@@ -386,9 +403,6 @@ var DT = (function () {
                                 console.log('---------headerCheckbox', headerCheckbox)
                                 headerCheckbox.checked = false;
 
-                                arr_selected = [];
-                                toggleToolbars(); // Detect checked checkboxes
-                                initToggleToolbar(_url_delete, _language); // Re-init toolbar to recalculate checkboxes
 
                             }
 
