@@ -43,7 +43,6 @@ $(document).ready(function () {
 
                 reInitAllWidget()
 
-                redrawTable();
             }, error: function (request, status, error) {
                 toastr.error(`${JSON.stringify(request)}\n${status}\n${error}`)
             }
