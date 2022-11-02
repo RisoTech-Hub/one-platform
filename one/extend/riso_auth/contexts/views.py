@@ -28,14 +28,14 @@ class GroupListView(LoginRequiredMixin, ListView):
             {
                 "label": _("Create Group"),
                 "url": reverse("auth:group-create"),
-                "class": "btn-icon-primary",
-                "icon": "duotune/general/gen035.svg",
+                "class": "primary",
+                "icon": "duotune/arrows/arr075.svg",
             },
             {
                 "label": _("Quick Create Group"),
                 "url": f"{reverse('auth:group-create')}?popup=1",
-                "class": "btn-icon-success",
-                "icon": "duotune/general/gen035.svg",
+                "class": "success",
+                "icon": "duotune/arrows/arr075.svg",
             },
         ]
         kwargs["api_urls"] = {

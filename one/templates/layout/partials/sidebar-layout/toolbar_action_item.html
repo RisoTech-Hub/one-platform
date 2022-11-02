@@ -1,7 +1,7 @@
 <!--begin::Primary button-->
 <a
   href="{{ action.url }}"
-  class="btn btn-icon {{ action.class }}"
+  class="btn btn-sm btn-icon btn-color-{{ action.class }} btn-light btn-active-light-{{ action.class }}"
 
   data-bs-toggle="tooltip"
   data-bs-delay-hide="1000"
@@ -13,6 +13,6 @@
   data-bs-target="#{{ action.modal_id }}"
   {% endif %}
 >
-  {% get_svg_icon action.icon 'svg-icon svg-icon-1' %}
+  {% get_svg_icon action.icon 'svg-icon svg-icon-3 m-0' %}
 </a>
 <!--end::Primary button-->
