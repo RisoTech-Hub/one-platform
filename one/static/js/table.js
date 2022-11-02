@@ -19,7 +19,7 @@ var DT = (function () {
     ) {
         table = document.getElementById(tableId);
 
-        const iconDelete = (row) => `<a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-id="${row["id"]}" data-kt-table-filter="delete_row">
+        const iconDelete = (row) => `<a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete row" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger" data-id="${row["id"]}" data-kt-table-filter="delete_row">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +82,6 @@ var DT = (function () {
                     },
                 },
             ],
-
             fixedColumns: {
                 left: 1
             },
@@ -103,7 +102,13 @@ var DT = (function () {
                     );
             },
             drawCallback: function (settings) {
-                console.log();
+
+                // ?Initialize tooltip bootstrap
+                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
                 if (settings && settings["json"]) {
                     totalCount = parseInt(settings["json"]["recordsFiltered"]);
                     if (settings["json"]["options"]) {
@@ -379,8 +384,8 @@ var DT = (function () {
                 icon: "warning",
                 showCancelButton: true,
                 buttonsStyling: false,
-                confirmButtonText: "Yes, delete!",
-                cancelButtonText: "No, cancel",
+                confirmButtonText: _language.confirm_btn_delete || "Yes, delete!",
+                cancelButtonText: _language.cancel_btn_delete || "No, cancel",
                 customClass: {
                     confirmButton: "btn fw-bold btn-danger",
                     cancelButton: "btn fw-bold btn-active-light-primary",
@@ -400,45 +405,35 @@ var DT = (function () {
                         processData: false,
                         data: JSON.stringify(arr_selected),
                         success: function (response) {
-                            Swal.fire({
-                                text: "You have deleted all selected records!.",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary",
-                                },
-                            })
-                                .then(function () {
-                                    // Remove all selected customers
-                                    checkboxes.forEach((c) => {
-                                        if (c.checked) {
-                                            datatable
-                                                .row($(c.closest("tbody tr")))
-                                                .remove()
-                                                .draw();
-                                        }
-                                    });
-
-                                    // Remove header checked box
-                                    const headerCheckbox =
-                                        table.querySelectorAll('[type="checkbox"]')[0];
-                                    headerCheckbox.checked = false;
-                                })
-                                .then(function () {
-                                    arr_selected = [];
-                                    toggleToolbars(); // Detect checked checkboxes
-                                    initToggleToolbar(_url_delete, _language); // Re-init toolbar to recalculate checkboxes
+                            datatable.draw()
+                            toastr.success(_language.delete_success || "You have deleted all selected records!.")
+                            toastr.options.onHidden = function () {
+                                console.log('goodbye');
+                                // Remove all selected customers
+                                checkboxes.forEach((c) => {
+                                    if (c.checked) {
+                                        datatable
+                                            .row($(c.closest("tbody tr")))
+                                            .remove()
+                                            .draw();
+                                    }
                                 });
+
+                                // Remove header checked box
+                                const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
+                                console.log('---------headerCheckbox', headerCheckbox)
+                                headerCheckbox.checked = false;
+
+                                arr_selected = [];
+                                toggleToolbars(); // Detect checked checkboxes
+                                initToggleToolbar(_url_delete, _language); // Re-init toolbar to recalculate checkboxes
+
+                            }
+
                         },
                         error: function (request, status, error) {
-                            Swal.fire({
-                                title: "Notice",
-                                text: "Something is error: " + error,
-                                icon: "error",
-                                type: "error",
-                            }).then(function () {
-                            });
+                            toastr.error(_language.delete_fail || "This record was not deleted.")
+
                         },
                     });
                 } else if (result.dismiss === "cancel") {
