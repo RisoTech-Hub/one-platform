@@ -67,18 +67,24 @@
           <!--end::Actions-->
         </div>
 
-        <div class="card-body p-4 hover-scroll-overlay">
+        <div class="card-body p-0 hover-scroll-overlay">
           <!--begin::Table-->
-          <table class="table table-hover table-row-dashed fs-6 gy-5 my-0 min-w-900px"
+          <table class="table table-hover table-row-dashed fs-6 gy-5 gs-2 my-0 min-w-900px"
                  id="kt_datatable_list" data-server-side="true"
                  data-ajax="{% url api_urls.list %}?format=datatables">
             <!--begin::Table head-->
             <thead>
             <!--begin::Table Thread-->
             <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-              <th class="w-10px pe-2" data-data="id"></th>
+              <th class="w-10px pe-2" data-data="id">
+                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                  <input class="form-check-input" type="checkbox" data-kt-check="true"
+                         data-kt-check-target="#kt_datatable_list .form-check-input" value="1">
+                </div>
+              </th>
               {% for field in table_fields %}
-                <th class="min-w-125px" data-data="{{ field.col_name }}" data-type="{{ field.type }}">{{ field.verbose_name|title }}</th>
+                <th class="min-w-125px" data-data="{{ field.col_name }}"
+                    data-type="{{ field.type }}">{{ field.verbose_name|title }}</th>
               {% endfor %}
               <th class="min-w-125px text-end pe-4" data-data="null" data-sortable="false">{% translate 'Action' %}</th>
             </tr>
@@ -106,7 +112,7 @@
       data-kt-drawer-width="300px"
     >
       <!--begin::Sticky aside-->
-      <div class="card card-flush mb-0 w-100" data-kt-sticky="true"
+      <div class="card card-flush mb-0 p-2 w-100" data-kt-sticky="true"
            data-kt-sticky-animation="false"
            data-kt-sticky-left="auto"
            data-kt-sticky-offset="{default: false, xl: '100px'}"
@@ -117,6 +123,10 @@
       >
         <!--begin::Aside content-->
         <div class="card-body p-2" data-kt-table-filter="">
+          <div class="text-gray-500 fs-6 fw-semibold mb-2">
+            {% translate 'Filter' %}
+          </div>
+
           {% for field in filter.form %}
             {% include "forms/floating-label-field.html" %}
           {% endfor %}
@@ -168,7 +178,11 @@
     $(document).ready(function () {
       const table = DT.init(
         'kt_datatable_list',
-        {},
+        {
+          fixedColumns: {
+            right: 1
+          }
+        },
         //endpoint
         {
           add: "",
