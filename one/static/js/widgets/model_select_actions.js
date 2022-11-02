@@ -29,6 +29,7 @@ $(document).ready(function () {
     $(document).on('click', '[quick-create-button], [quick-update-button], [quick-add-button]', function () {
         const action_url = $(this).data('action-url')
         const target_input = $(this).data('target-input')
+        console.log('action_url', action_url)
         $.ajax({
             url: action_url, method: "get", data: null, success: function (response) {
                 // get form html return success

@@ -26,7 +26,7 @@ var DT = (function () {
                                         <!--end::Svg Icon-->
                                       </a>`
 
-        const iconEdit = (row) => `<a href="javascript:void(0);" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
+        const iconEdit = (row) => `<button type="button" data-action-url="${endpoint.edit.replace('0000', row.id)}" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +35,7 @@ var DT = (function () {
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
-                                </a>`
+                                </button>`
 
         const iconView = (row) => `<a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="view_row">
                                     <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-10-09-043348/core/html/src/media/icons/duotune/arrows/arr095.svg-->
