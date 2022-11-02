@@ -40,6 +40,10 @@ class GroupListView(LoginRequiredMixin, ListView):
                 "attributes": "quick-add-button",
             },
         ]
+        kwargs["urls"] = {
+            # "view": "auth:group-view",
+            "update": "auth:group-update",
+        }
         kwargs["api_urls"] = {
             "list": "api:group-list",
             "delete": "api:group-delete",

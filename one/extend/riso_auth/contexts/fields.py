@@ -15,7 +15,7 @@ def quick_add_group_field():
             {
                 "create_url": "auth:group-create",
                 "update_url": "auth:group-update",
-                "default_value": 999,
+                "default_value": "0000",
             }
         ),
     )
