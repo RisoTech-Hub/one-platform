@@ -32,10 +32,12 @@ class GroupListView(LoginRequiredMixin, ListView):
                 "icon": "duotune/arrows/arr075.svg",
             },
             {
+                "type": "modal",
                 "label": _("Quick Create Group"),
                 "url": f"{reverse('auth:group-create')}?popup=1",
                 "class": "success",
                 "icon": "duotune/arrows/arr075.svg",
+                "attributes": "quick-add-button",
             },
         ]
         kwargs["api_urls"] = {
@@ -61,7 +63,14 @@ class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Create
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-        kwargs["form_title"] = _("Create Group")
+        kwargs["page_title"] = _("Group Create")
+        kwargs["page_breadcrumb"] = [
+            {"name": _("Home"), "url": reverse("home")},
+            {"name": _("Groups"), "url": reverse("auth:group-list")},
+            {"name": _("Group Create"), "url": ""},
+        ]
+
+        kwargs["form_title"] = _("Group Form")
         kwargs["nested_forms"] = [
             {
                 "form": ContextForm(),
@@ -99,6 +108,14 @@ class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Update
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
+        kwargs["page_title"] = _("Group Update")
+        kwargs["page_breadcrumb"] = [
+            {"name": _("Home"), "url": reverse("home")},
+            {"name": _("Groups"), "url": reverse("auth:group-list")},
+            {"name": _("Group Update"), "url": ""},
+        ]
+
+        kwargs["form_title"] = _("Group Update")
 
         if self.request.method == "POST":
             context_form = ContextForm(

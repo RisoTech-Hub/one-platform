@@ -1,6 +1,5 @@
 <!--begin::Primary button-->
 <a
-  href="{{ action.url }}"
   class="btn btn-sm btn-icon btn-color-{{ action.class }} btn-light btn-active-light-{{ action.class }}"
 
   data-bs-toggle="tooltip"
@@ -8,10 +7,13 @@
   data-bs-placement="top"
   title="{{ action.label }}"
 
-  {% if action.type %}
-  data-bs-toggle="modal"
-  data-bs-target="#{{ action.modal_id }}"
+  {% if action.type == "modal" %}
+  data-action-url="{{ action.url }}"
+  {{ action.attributes }}
+  {% else %}
+  href="{{ action.url }}"
   {% endif %}
+
 >
   {% get_svg_icon action.icon 'svg-icon svg-icon-3 m-0' %}
 </a>

@@ -34,7 +34,7 @@
     }
 
 $(document).ready(function () {
-    $(document).on('click', '[quick-create-button], [quick-update-button]', function () {
+    $(document).on('click', '[quick-create-button], [quick-update-button], [quick-add-button]', function () {
         const action_url = $(this).data('action-url')
         const target_input = $(this).data('target-input')
         $.ajax({
