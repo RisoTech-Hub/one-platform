@@ -54,10 +54,8 @@ var DT = (function () {
                                 </a>`
 
         const defaultOptions = {
-            info: false,
             order: [],
             pageLength: 10,
-            lengthChange: false,
             columnDefs: [
                 {
                     orderable: false, // Disable ordering on column 0 (checkbox)
@@ -82,9 +80,6 @@ var DT = (function () {
                     },
                 },
             ],
-            fixedColumns: {
-                left: 1
-            },
             processing: true,
             language: {
                 processing: "<div class='d-block'><span class='spinner-border w-15px h-15px text-muted align-middle me-2'></span></div>",
@@ -98,7 +93,6 @@ var DT = (function () {
                     );
             },
             drawCallback: function (settings) {
-
                 // ?Initialize tooltip bootstrap
                 const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
                 const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

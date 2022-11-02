@@ -67,9 +67,9 @@
           <!--end::Actions-->
         </div>
 
-        <div class="card-body p-0">
+        <div class="card-body p-2">
           <!--begin::Table-->
-          <table class="table table-hover table-row-dashed fs-6 gy-5 gs-2 my-0 min-w-900px"
+          <table data-kt-scroll="true" class="table table-hover table-row-dashed fs-6 gy-5 gs-2 my-0 min-w-900px"
                  id="kt_datatable_list" data-server-side="true"
                  data-ajax="{% url api_urls.list %}?format=datatables">
             <!--begin::Table head-->
@@ -178,9 +178,11 @@
     $(document).ready(function () {
       const table = DT.init(
         'kt_datatable_list',
-        {
+        //option
+        { "scrollX": true,
           fixedColumns: {
-            right: 1
+            left: 2,
+            right: 1,
           }
         },
         //endpoint
