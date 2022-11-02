@@ -11,12 +11,7 @@ var DT = (function () {
     var totalCount = 0;
 
     // Private functions
-    var initTable = function (
-        tableId = "",
-        options = {},
-        endpoint = {},
-        language = {}
-    ) {
+    var initTable = function (tableId = "", options = {}, endpoint = {}, language = {}) {
         table = document.getElementById(tableId);
 
         const iconDelete = (row) => `<a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete row" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger" data-id="${row["id"]}" data-kt-table-filter="delete_row">
@@ -31,7 +26,7 @@ var DT = (function () {
                                         <!--end::Svg Icon-->
                                       </a>`
 
-        const iconEdit = (row) => `<a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
+        const iconEdit = (row) => `<a href="javascript:void(0);" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,45 +50,29 @@ var DT = (function () {
                                 </a>`
 
         const defaultOptions = {
-            order: [],
-            pageLength: 10,
-            columnDefs: [
-                {
-                    orderable: false, // Disable ordering on column 0 (checkbox)
-                    targets: 0,
-                    render: function (data, type, full, meta) {
-                        return `<div class="form-check form-check-sm form-check-custom form-check-solid">
+            order: [], pageLength: 10, columnDefs: [{
+                orderable: false, // Disable ordering on column 0 (checkbox)
+                targets: 0, render: function (data, type, full, meta) {
+                    return `<div class="form-check form-check-sm form-check-custom form-check-solid">
                        <input class="form-check-input widget-9-check" type="checkbox" value="${data}">
                      </div>`;
-                    },
                 },
-                {
-                    orderable: false, // Disable ordering on column (actions)
-                    targets: -1,
-                    title: "Action",
-                    className: "text-end",
-                    render: function (data, type, row, meta) {
-                        return `<div class="d-flex justify-content-end flex-shrink-0">
+            }, {
+                orderable: false, // Disable ordering on column (actions)
+                targets: -1, title: "Action", className: "text-end", render: function (data, type, row, meta) {
+                    return `<div class="d-flex justify-content-end flex-shrink-0">
                         ${iconView(row)}
                         ${iconEdit(row)}
                         ${iconDelete(row)}
                     </div>`;
-                    },
                 },
-            ],
-            processing: true,
-            language: {
+            },], processing: true, language: {
                 processing: "<div class='d-block'><span class='spinner-border w-15px h-15px text-muted align-middle me-2'></span></div>",
-            },
-            rowCallback: function (row, data) {
+            }, rowCallback: function (row, data) {
                 $(row)
-                    .find("input.asset-checkbox-select")
-                    .prop(
-                        "checked",
-                        arr_selected.findIndex((item) => item === data["ID"]) > -1
-                    );
-            },
-            drawCallback: function (settings) {
+                    .find("input.form-check-input[type='checkbox']")
+                    .prop("checked", arr_selected.findIndex((item) => item.toString() === data["id"].toString()) > -1);
+            }, drawCallback: function (settings) {
                 // ?Initialize tooltip bootstrap
                 const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
                 const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -107,7 +86,7 @@ var DT = (function () {
                     }
                 }
 
-                $(document).on("change", tableId + 'td input[type="checkbox"]', function () {
+                $(document).on("change", '#' + tableId + ' td input[type="checkbox"]', function () {
                     if ($(this).is(":checked")) {
                         arr_selected.push($(this).val());
                     } else {
@@ -124,8 +103,7 @@ var DT = (function () {
 
         // Init datatable --- more info on datatables: https://datatables.net/manual/
         datatable = $(table).DataTable({
-            ...defaultOptions,
-            ...options
+            ...defaultOptions, ...options
         });
 
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
@@ -154,6 +132,25 @@ var DT = (function () {
         return datatable;
     };
 
+    var initCheck = function () {
+        // Toggle Handler
+        KTUtil.on(document.body, '[data-kt-check="true"]', 'change', function (e) {
+            // toggleToolbars()
+
+            var check = this;
+            var targets = document.querySelectorAll(check.getAttribute('data-kt-check-target'));
+
+            KTUtil.each(targets, function (target) {
+                if (target.type == 'checkbox') {
+                    target.checked = check.checked;
+                    // toggleToolbars()
+                } else {
+                    target.classList.toggle('active');
+                }
+            });
+        });
+    }
+
     var handleViewRow = () => {
         $(document).on('click', 'td [data-kt-table-filter="edit_row"]', function () {
             const id = $(this).attr('data-id')
@@ -170,9 +167,7 @@ var DT = (function () {
 
     // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
     var handleSearchDatatable = () => {
-        const filterSearch = document.querySelector(
-            '[data-kt-table-filter="search"]'
-        );
+        const filterSearch = document.querySelector('[data-kt-table-filter="search"]');
         filterSearch.addEventListener("keyup", function (e) {
             datatable.search(e.target.value).draw();
         });
@@ -194,9 +189,7 @@ var DT = (function () {
     var handleFilterDatatable = () => {
         // Select filter options
         const filterForm = document.querySelector('[data-kt-table-filter="form"]');
-        const filterButton = filterForm.querySelector(
-            '[data-kt-table-filter="filter"]'
-        );
+        const filterButton = filterForm.querySelector('[data-kt-table-filter="filter"]');
         const selectOptions = filterForm.querySelectorAll("[name]");
 
         // Filter datatable on submit
@@ -224,16 +217,12 @@ var DT = (function () {
     // Reset Filter
     var handleResetForm = () => {
         // Select reset button
-        const resetButton = document.querySelector(
-            '[data-kt-table-filter="reset"]'
-        );
+        const resetButton = document.querySelector('[data-kt-table-filter="reset"]');
 
         // Reset datatable
         resetButton.addEventListener("click", function () {
             // Select filter options
-            const filterForm = document.querySelector(
-                '[data-kt-table-filter="form"]'
-            );
+            const filterForm = document.querySelector('[data-kt-table-filter="form"]');
             const selectOptions = filterForm.querySelectorAll("select");
 
             // Reset select2 values -- more info: https://select2.org/programmatic-control/add-select-clear-items
@@ -249,9 +238,7 @@ var DT = (function () {
     // Delete subscription
     var handleDeleteRows = (_url_delete = "", _language) => {
         // Select all delete buttons
-        const deleteButtons = table.querySelectorAll(
-            '[data-kt-table-filter="delete_row"]'
-        );
+        const deleteButtons = table.querySelectorAll('[data-kt-table-filter="delete_row"]');
         const url_delete = _url_delete;
 
         deleteButtons.forEach((d) => {
@@ -268,24 +255,21 @@ var DT = (function () {
 
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
-                    text: _language.confirmDelete ||
-                        "Are you sure you want to delete this(these) record?",
+                    text: _language.confirmDelete || "Are you sure you want to delete this(these) record?",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: false,
                     confirmButtonText: "Yes, delete!",
                     cancelButtonText: "No, cancel",
                     customClass: {
-                        confirmButton: "btn fw-bold btn-danger",
-                        cancelButton: "btn fw-bold btn-active-light-primary",
+                        confirmButton: "btn fw-bold btn-danger", cancelButton: "btn fw-bold btn-active-light-primary",
                     },
                 }).then(function (result) {
                     if (result.value) {
                         $.ajax({
                             url: _url_delete,
                             headers: {
-                                "X-CSRFToken": $('[name="csrfmiddlewaretoken"]').val(),
-                                Authorization: "Basic cm9vdDox", // TODO: will receipt token
+                                "X-CSRFToken": $('[name="csrfmiddlewaretoken"]').val(), Authorization: "Basic cm9vdDox", // TODO: will receipt token
                                 "Content-Type": "application/json",
                             },
                             method: "delete",
@@ -315,10 +299,7 @@ var DT = (function () {
                             },
                             error: function (request, status, error) {
                                 Swal.fire({
-                                    title: "Notice",
-                                    text: "Something is error: " + error,
-                                    icon: "error",
-                                    type: "error",
+                                    title: "Notice", text: "Something is error: " + error, icon: "error", type: "error",
                                 }).then(function () {
                                 });
                             },
@@ -347,15 +328,9 @@ var DT = (function () {
 
         // Select elements
         toolbarBase = document.querySelector('[data-kt-table-toolbar="base"]');
-        toolbarSelected = document.querySelector(
-            '[data-kt-table-toolbar="selected"]'
-        );
-        selectedCount = document.querySelector(
-            '[data-kt-table-select="selected_count"]'
-        );
-        const deleteSelected = document.querySelector(
-            '[data-kt-table-select="delete_selected"]'
-        );
+        toolbarSelected = document.querySelector('[data-kt-table-toolbar="selected"]');
+        selectedCount = document.querySelector('[data-kt-table-select="selected_count"]');
+        const deleteSelected = document.querySelector('[data-kt-table-select="delete_selected"]');
 
         // Toggle delete selected toolbar
         checkboxes.forEach((c) => {
@@ -378,8 +353,7 @@ var DT = (function () {
                 confirmButtonText: _language.confirm_btn_delete || "Yes, delete!",
                 cancelButtonText: _language.cancel_btn_delete || "No, cancel",
                 customClass: {
-                    confirmButton: "btn fw-bold btn-danger",
-                    cancelButton: "btn fw-bold btn-active-light-primary",
+                    confirmButton: "btn fw-bold btn-danger", cancelButton: "btn fw-bold btn-active-light-primary",
                 },
             }).then(function (result) {
                 if (result.value) {
@@ -446,14 +420,20 @@ var DT = (function () {
     const toggleToolbars = () => {
         // Select refreshed checkbox DOM elements
         const allCheckboxes = table.querySelectorAll('tbody td [type="checkbox"]');
-        // console.log('all checkbox', allCheckboxes)
+
         // Detect checkboxes state & count
         let checkedState = false;
-        let count = 0;
+        // console.log('arr selected:', arr_selected.length)
+        // let count = arr_selected.length || 0;
+        let count = arr_selected.length;
+
+        if (count > 0) {
+            checkedState = true;
+        }
 
         // Count checked boxes
         allCheckboxes.forEach((c) => {
-            if (c.checked) {
+            if (c.checked && arr_selected.findIndex(item => $(c).val().toString() === item.toString()) === -1) {
                 checkedState = true;
                 count++;
             }
@@ -474,20 +454,15 @@ var DT = (function () {
 
     return {
         // Public functions
-        init: function (
-            _tableId = "",
-            _options = {},
-            _endpoint = {
-                delete: "",
-            },
-            _language = {},
-            _extra_columundefs = [{
-                searchable: false, // Disable ordering on column 0 (checkbox)
-                targets: 1,
+        init: function (_tableId = "", _options = {}, _endpoint = {
+            delete: "",
+        }, _language = {}, _extra_columundefs = [{
+            searchable: false, // Disable ordering on column 0 (checkbox)
+            targets: 1,
 
-            },]
-        ) {
+        },]) {
             initTable(_tableId, _options, _endpoint, _language);
+            initCheck();
             handleSearchDatatable();
             handleViewRow();
             handleEditRow();

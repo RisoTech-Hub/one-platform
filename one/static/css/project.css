@@ -1,6 +1,6 @@
 main, span, ol, ul, pre, div {
-  --kt-scrollbar-width: 1rem;
-  --kt-scrollbar-height: 1rem;
+  --kt-scrollbar-width: 0.8rem;
+  --kt-scrollbar-height: 0.8rem;
   scrollbar-width: auto;
   scrollbar-color: var(--kt-scrollbar-color) transparent;
 }

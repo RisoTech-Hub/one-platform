@@ -4,3 +4,9 @@ function reInitAllWidget() {
         KTImageInput.createInstances();
     }
 }
+
+function redrawTable() {
+    if(table){
+        table.draw()
+    }
+}

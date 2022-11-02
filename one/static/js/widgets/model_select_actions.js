@@ -1,13 +1,5 @@
- function appendModalWithId(
-    selector = 'body',
-    idModal = 'modal_fake',
-    idForm = '',
-    content = '',
-    target_input = '',
-    close_label = '',
-    save_changes_label = ''
-    ) {
-        $(selector).append(`
+function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm = '', content = '', target_input = '', close_label = '', save_changes_label = '') {
+    $(selector).append(`
             <div class="modal fade" tabindex="-1" id="${idModal}" modal-quick-action="" target-input="${target_input}">
                 <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
@@ -31,39 +23,29 @@
                 </div>
             </div>
         `)
-    }
+}
 
 $(document).ready(function () {
     $(document).on('click', '[quick-create-button], [quick-update-button], [quick-add-button]', function () {
         const action_url = $(this).data('action-url')
         const target_input = $(this).data('target-input')
         $.ajax({
-            url: action_url,
-            method: "get",
-            data: null,
-            success: function (response) {
+            url: action_url, method: "get", data: null, success: function (response) {
                 // get form html return success
                 // console.log('-----', response)
                 const timestamp = Date.now();
                 const idModal = 'modal_fake_' + timestamp;
                 const idForm = 'form_fake_' + timestamp;
-                appendModalWithId(
-                    'body',
-                    idModal,
-                    idForm,
-                    response,
-                    target_input,
-                    $('#id_btn_close_label').val(),
-                    $('#id_btn_save_changes_label').val(),
-                )
+                appendModalWithId('body', idModal, idForm, response, target_input, $('#id_btn_close_label').val(), $('#id_btn_save_changes_label').val(),)
                 $('#id_modal_title').text($('#id_form_title').val())
                 $('#' + idModal).modal('show')
                 $('#' + idModal).find('form').attr('id', idForm)
 
                 reInitAllWidget()
-            },
-            error: function (request, status, error) {
-                alert(`${JSON.stringify(request)}\n${status}\n${error}`)
+
+                redrawTable();
+            }, error: function (request, status, error) {
+                toastr.error(`${JSON.stringify(request)}\n${status}\n${error}`)
             }
         });
     })
@@ -75,20 +57,19 @@ $(document).ready(function () {
         const formData = new FormData(this)
         const $modal = $(this).closest('.modal')
         $.ajax({
-            url,
-            method,
-            contentType: false,
-            processData: false,
-            data: formData,
+            url, method, contentType: false, processData: false, data: formData,
             success: function (response) {
                 // get form html return success
                 // console.log('-----', response)
                 $modal.modal('hide')
-                $('#' + $modal.attr('target-input')).prepend(`<option value="${response['id']}" selected>${response['name']}</option>`)
+                if ($modal.attr('target-input') && $('#' + $modal.attr('target-input'))) {
+                    $('#' + $modal.attr('target-input')).prepend(`<option value="${response['id']}" selected>${response['name']}</option>`)
+                }
                 $modal.remove();
-            },
-            error: function (request, status, error) {
-                alert(`${JSON.stringify(request)}\n${status}\n${error}`)
+
+                redrawTable();
+            }, error: function (request, status, error) {
+                toastr.error(`${JSON.stringify(request)}\n${status}\n${error}`)
             }
         });
     })

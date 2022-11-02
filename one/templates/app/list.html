@@ -174,13 +174,16 @@
   <script src="{% static 'js/table.js' %}"></script>
 {% endblock javascript %}
 
+
 {% block inline_javascript %}
   <script>
+    var table;
     $(document).ready(function () {
-      const table = DT.init(
+      table = DT.init(
         'kt_datatable_list',
         //option
-        { "scrollX": true,
+        {
+          "scrollX": true,
           fixedColumns: {
             left: 2,
             right: 1,
