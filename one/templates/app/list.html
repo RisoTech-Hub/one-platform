@@ -80,7 +80,7 @@
               {% for field in table_fields %}
                 <th class="min-w-125px" data-data="{{ field.col_name }}" data-type="{{ field.type }}">{{ field.verbose_name|title }}</th>
               {% endfor %}
-              <th class="min-w-125px text-end pe-4" data-data="" data-sortable="false">{% translate 'Action' %}</th>
+              <th class="min-w-125px text-end pe-4" data-data="null" data-sortable="false">{% translate 'Action' %}</th>
             </tr>
             <!--end::Table Thread-->
             </thead>
