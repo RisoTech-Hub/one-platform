@@ -29,7 +29,7 @@
   <!--end::Menu separator-->
   <!--begin::Menu item-->
   <div class="menu-item px-5">
-    <a href="{% url 'users:detail' request.user.username %}"
+    <a href="{% url 'users:detail' user.username %}"
        class="menu-link px-5">{% translate "My Profile" %}</a>
   </div>
   <!--end::Menu item-->

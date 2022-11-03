@@ -18,6 +18,7 @@ from allauth.account.views import PasswordResetView as BasePasswordResetView
 from allauth.account.views import PasswordSetView as BasePasswordSetView
 from allauth.account.views import SignupView as BaseSignupView
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 from django.views.generic.base import ContextMixin
 
 from one.extend.metronic import KTLayout, KTTheme
@@ -71,6 +72,8 @@ confirm_email = ConfirmEmailView.as_view()
 
 
 class EmailView(BaseEmailView):
+    success_url = reverse_lazy("users:redirect")
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context = KTLayout.init(context)  # noqa
@@ -86,6 +89,8 @@ email = login_required(EmailView.as_view())
 
 
 class PasswordChangeView(MetronicView, BasePasswordChangeView):
+    success_url = reverse_lazy("users:redirect")
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         KTTheme.add_javascript_file("js/allauth/password-change.js")  # noqa
