@@ -42,12 +42,9 @@ class BaseModelViewSet(ModelViewSet):
             "notification_confirm_button": _("Ok, got it!"),
             "notification_error_title": _("Notice"),
             "notification_error_text": _("Something is error:"),
-            "confirm_add": _(""),
-            "add_success": _(""),
-            "add_fail": _(""),
-            "confirm_edit": _(""),
-            "edit_success": _(""),
-            "edit_fail": _(""),
+            "action_col_title": _("Actions"),
+            "edit_row": _("Update Item"),
+            "view_row": _("View Item"),
         }
 
     class Meta:
