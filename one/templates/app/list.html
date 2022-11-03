@@ -32,6 +32,7 @@
                  data-bs-dismiss="click"
                  data-bs-placement="top"
                  data-bs-toggle="tooltip"
+                 data-bs-trigger="hover"
                  data-kt-table-select="delete_selected"
                  href="#"
                  title="{% trans 'Delete Selected' %}">
@@ -104,24 +105,24 @@
     <!--begin::Sidebar-->
     <div
       id="kt_drawer_filter_form"
-      class="d-none rounded position-static d-md-none w-100 w-lg-275px ms-lg-5 ms-xl-7"
+      class="d-none position-relative rounded position-static d-md-none w-100 w-lg-275px h-auto ms-lg-5 ms-xl-7"
       data-kt-drawer="true"
       data-kt-drawer-direction="end"
       data-kt-drawer-activate="true"
       data-kt-drawer-toggle="#kt_filter_form_toggle"
       data-kt-drawer-overlay="false"
       data-kt-drawer-width="300px"
-    >
+
+      style="align-self: start">
       <!--begin::Sticky aside-->
-      <div class="card card-flush mb-0 p-2 w-100" data-kt-sticky="true"
+      <div class="card card-flush mb-0 p-2" data-kt-sticky="true"
            data-kt-sticky-animation="false"
            data-kt-sticky-left="auto"
            data-kt-sticky-offset="{default: false, xl: '100px'}"
            data-kt-sticky-top="100px"
            data-kt-sticky-width="{lg: '275px'}"
            data-kt-sticky-zindex="95"
-           data-kt-table-filter="form"
-      >
+           data-kt-table-filter="form">
         <!--begin::Aside content-->
         <div class="card-body p-2" data-kt-table-filter="">
           <div class="text-gray-500 fs-6 fw-semibold mb-2">
@@ -137,8 +138,7 @@
           <button type="submit"
                   class="btn btn-primary flex-grow-1 fw-semibold"
                   data-kt-menu-dismiss="true"
-                  data-kt-table-filter="filter"
-          >
+                  data-kt-table-filter="filter">
             <!--begin::Indicator label-->
             <span class="indicator-label">{% translate 'Apply' %}</span>
             <!--end::Indicator label-->

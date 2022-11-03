@@ -9,12 +9,12 @@ var DT = (function () {
     var toolbarSelected;
     var selectedCount;
     var totalCount = 0;
-
+    var labels = {}
     // Private functions
     var initTable = function (tableId = "", options = {}, endpoint = {}, language = {}) {
         table = document.getElementById(tableId);
 
-        const iconDelete = (row) => `<a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete row" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger" data-id="${row["id"]}" data-kt-table-filter="delete_row">
+        const iconDelete = (row) => `<a href="javascript:void(0);" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['delete_row'] || 'Delete row'}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger" data-id="${row["id"]}" data-kt-table-filter="delete_row">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +26,7 @@ var DT = (function () {
                                         <!--end::Svg Icon-->
                                       </a>`
 
-        const iconEdit = (row) => `<button type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit row" data-action-url="${endpoint.edit.replace('0000', row.id)}" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
+        const iconEdit = (row) => `<button type="button" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['edit_row'] || 'Edit row'}" data-action-url="${endpoint.edit.replace('0000', row.id)}" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +82,9 @@ var DT = (function () {
                 })
 
                 if (settings && settings["json"]) {
+                    console.log(settings)
                     totalCount = parseInt(settings["json"]["recordsFiltered"]);
+                    labels = parseInt(settings["json"]["labels"]);
                     if (settings["json"]["options"]) {
                         initFilterForm(settings["json"]["options"]);
                     }
@@ -202,27 +204,28 @@ var DT = (function () {
         // Select filter options
         const filterForm = document.querySelector('[data-kt-table-filter="form"]');
         const filterButton = filterForm.querySelector('[data-kt-table-filter="filter"]');
-        const selectOptions = filterForm.querySelectorAll("[name]");
+        const inputName = filterForm.querySelectorAll("[name]");
 
+        $(filterForm).on('submit', function (e) {
+            e.preventDefault();
+        })
         // Filter datatable on submit
         filterButton.addEventListener("click", function () {
-            var filterString = "";
+            const filterString = [];
 
             // Get filter values
-            selectOptions.forEach((item, index) => {
+            inputName.forEach((item, index) => {
                 if (item.value && item.value !== "") {
-                    if (index !== 0) {
-                        filterString += " ";
-                    }
+
 
                     // Build filter value options
-                    filterString += item.value;
+                    filterString.push(item.name + '=' + item.value);
                 }
             });
 
             console.log("filterString: ", filterString);
             // Filter datatable --- official docs reference: https://datatables.net/reference/api/search()
-            datatable.search(filterString).draw();
+            datatable.search(filterString.join('&')).draw();
         });
     };
 
@@ -235,11 +238,11 @@ var DT = (function () {
         resetButton.addEventListener("click", function () {
             // Select filter options
             const filterForm = document.querySelector('[data-kt-table-filter="form"]');
-            const selectOptions = filterForm.querySelectorAll("select");
+            const inputName = filterForm.querySelectorAll("[name]");
 
             // Reset select2 values -- more info: https://select2.org/programmatic-control/add-select-clear-items
-            selectOptions.forEach((select) => {
-                $(select).val("").trigger("change");
+            inputName.forEach((input) => {
+                $(input).val("").trigger("change");
             });
 
             // Reset datatable --- official docs reference: https://datatables.net/reference/api/search()
