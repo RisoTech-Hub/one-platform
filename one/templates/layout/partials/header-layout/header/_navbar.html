@@ -1,53 +1,53 @@
 <!--begin::Navbar-->
 <div class="app-navbar flex-shrink-0">
-  <!--begin::Search-->
-  <div class="app-navbar-item align-items-stretch ms-1 ms-lg-3">
+{#  <!--begin::Search-->#}
+{#  <div class="app-navbar-item align-items-stretch ms-1 ms-lg-3">#}
 {#    {% include '../search/_dropdown.html' %}#}
-  </div>
-  <!--end::Search-->
-  <!--begin::Activities-->
-  <div class="app-navbar-item ms-1 ms-lg-3">
-    <!--begin::Drawer toggle-->
-    <div
-      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px"
-      id="kt_activities_toggle">{% get_svg_icon 'duotune/general/gen032.svg' 'svg-icon svg-icon-1' %}</div>
-    <!--end::Drawer toggle-->
-  </div>
-  <!--end::Activities-->
-  <!--begin::Notifications-->
-  <div class="app-navbar-item ms-1 ms-lg-3">
-    <!--begin::Menu- wrapper-->
-    <div
-      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px"
-      data-kt-menu-trigger="click" data-kt-menu-attach="parent"
-      data-kt-menu-placement="bottom-end">{% get_svg_icon 'duotune/general/gen022.svg' 'svg-icon svg-icon-1' %}</div>
+{#  </div>#}
+{#  <!--end::Search-->#}
+{#  <!--begin::Activities-->#}
+{#  <div class="app-navbar-item ms-1 ms-lg-3">#}
+{#    <!--begin::Drawer toggle-->#}
+{#    <div#}
+{#      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px"#}
+{#      id="kt_activities_toggle">{% get_svg_icon 'duotune/general/gen032.svg' 'svg-icon svg-icon-1' %}</div>#}
+{#    <!--end::Drawer toggle-->#}
+{#  </div>#}
+{#  <!--end::Activities-->#}
+{#  <!--begin::Notifications-->#}
+{#  <div class="app-navbar-item ms-1 ms-lg-3">#}
+{#    <!--begin::Menu- wrapper-->#}
+{#    <div#}
+{#      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px"#}
+{#      data-kt-menu-trigger="click" data-kt-menu-attach="parent"#}
+{#      data-kt-menu-placement="bottom-end">{% get_svg_icon 'duotune/general/gen022.svg' 'svg-icon svg-icon-1' %}</div>#}
 {#    {% include 'partials/menus/_notifications-menu.html' %}#}
-    <!--end::Menu wrapper-->
-  </div>
-  <!--end::Notifications-->
-  <!--begin::Chat-->
-  <div class="app-navbar-item ms-1 ms-lg-3">
-    <!--begin::Menu wrapper-->
-    <div
-      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px position-relative"
-      id="kt_drawer_chat_toggle">{% get_svg_icon 'duotune/communication/com012.svg' 'svg-icon svg-icon-1' %}
-      <span
-        class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
-    </div>
-    <!--end::Menu wrapper-->
-  </div>
-  <!--end::Chat-->
-  <!--begin::Quick links-->
-  <div class="app-navbar-item ms-1 ms-lg-3">
-    <!--begin::Menu wrapper-->
-    <div
-      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px"
-      data-kt-menu-trigger="click" data-kt-menu-attach="parent"
-      data-kt-menu-placement="bottom-end">{% get_svg_icon 'duotune/general/gen025.svg' 'svg-icon svg-icon-1' %}</div>
+{#    <!--end::Menu wrapper-->#}
+{#  </div>#}
+{#  <!--end::Notifications-->#}
+{#  <!--begin::Chat-->#}
+{#  <div class="app-navbar-item ms-1 ms-lg-3">#}
+{#    <!--begin::Menu wrapper-->#}
+{#    <div#}
+{#      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px position-relative"#}
+{#      id="kt_drawer_chat_toggle">{% get_svg_icon 'duotune/communication/com012.svg' 'svg-icon svg-icon-1' %}#}
+{#      <span#}
+{#        class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>#}
+{#    </div>#}
+{#    <!--end::Menu wrapper-->#}
+{#  </div>#}
+{#  <!--end::Chat-->#}
+{#  <!--begin::Quick links-->#}
+{#  <div class="app-navbar-item ms-1 ms-lg-3">#}
+{#    <!--begin::Menu wrapper-->#}
+{#    <div#}
+{#      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px"#}
+{#      data-kt-menu-trigger="click" data-kt-menu-attach="parent"#}
+{#      data-kt-menu-placement="bottom-end">{% get_svg_icon 'duotune/general/gen025.svg' 'svg-icon svg-icon-1' %}</div>#}
 {#    {% include 'partials/menus/_quick-links-menu.html' %}#}
-    <!--end::Menu wrapper-->
-  </div>
-  <!--end::Quick links-->
+{#    <!--end::Menu wrapper-->#}
+{#  </div>#}
+{#  <!--end::Quick links-->#}
   <!--begin::Theme mode-->
   <div class="app-navbar-item ms-1 ms-lg-3">
     {% include 'partials/theme-mode/_main.html' with toggle_btn_class='btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px'  toggle_btn_icon_class='svg-icon svg-icon-2' %}
@@ -60,7 +60,7 @@
          data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
       <img src="{% static 'media/avatars/300-1.jpg' %}" alt="user"/>
     </div>
-{#    {% include 'partials/menus/_user-account-menu.html' %}#}
+    {% include 'partials/menus/user-account-menu.html' %}
     <!--end::Menu wrapper-->
   </div>
   <!--end::User menu-->
