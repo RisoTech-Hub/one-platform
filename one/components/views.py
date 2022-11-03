@@ -65,7 +65,10 @@ class FormMixin(BaseFormMixin):
         if self.is_popup:  # noqa
             try:
                 return JsonResponse(
-                    self.serializer_class(self.object).data, status=201  # noqa
+                    self.serializer_class(
+                        self.object,
+                    ).data,
+                    status=201,  # noqa
                 )
             except Exception as e:
                 return JsonResponse({"error": str(e)}, status=400)

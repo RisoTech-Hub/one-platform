@@ -1,7 +1,6 @@
 {% extends "users/base.html" %}
 {% load humanize %}
 
-
 {% block inner_content %}
   <!--begin::Container-->
   <div class="card mb-5 mb-xl-10">
@@ -170,74 +169,6 @@
     <!--end::Card body-->
   </div>
   <!--end::Container-->
-
-  <!--begin::Container-->
-  <div class="card mb-5 mb-xl-10">
-    <!--begin::Content-->
-    <div class="collapse show">
-      <!--begin::Login sessions-->
-      <div class="card mb-5 mb-xl-10">
-        <!--begin::Card header-->
-        <div class="card-header">
-          <!--begin::Title-->
-          <div class="card-title">
-            <h2>{% trans 'Login Logs' %}</h2>
-          </div>
-          <!--end::Title-->
-        </div>
-        <!--end::Card header-->
-
-        <!--begin::Card body-->
-        <div class="card-body p-0">
-          <!--begin::Table wrapper-->
-          <div class="table-responsive">
-            <!--begin::Table-->
-            <table class="table table-flush align-middle table-row-bordered table-row-solid gy-4 gs-9"
-                   id="user_profile_login_log_table">
-              <!--begin::Table head-->
-              <thead class="border-gray-200 fs-5 fw-bold bg-lighten" id="user_profile_log_header">
-              <!--begin::Table row-->
-              <tr>
-                <th class="min-w-100px">{% trans 'Country' %}</th>
-                <th>{% trans 'City' %}</th>
-                <th>{% trans 'IP Address' %}</th>
-                <th>{% trans 'Time' %}</th>
-              </tr>
-              <!--end::Table row-->
-              </thead>
-              <!--end::Table head-->
-              <!--begin::Table body-->
-              <tbody class=" fs-6 fw-bold text-gray-600">
-              {% for log in user.login_set.all %}
-                <tr>
-                  <!--begin::Invoice=-->
-                  <td>{{ log.country }}</td>
-                  <!--end::Invoice=-->
-                  <!--begin::Status=-->
-                  <td>{{ log.city }}</td>
-                  <!--end::Status=-->
-                  <!--begin::Amount=-->
-                  <td>{{ log.ip }}</td>
-                  <!--end::Amount=-->
-                  <!--begin::Amount=-->
-                  <td>{{ log.date|naturalday }}</td>
-                  <!--end::Amount=-->
-                </tr>
-              {% endfor %}
-              </tbody>
-              <!--end::Table body-->
-            </table>
-            <!--end::Table-->
-          </div>
-          <!--end::Table wrapper-->
-        </div>
-        <!--end::Card body-->
-      </div>
-      <!--end::Login sessions-->
-    </div>
-    <!--end::Content-->
-  </div>
-  <!--end::Container-->
 {% endblock inner_content %}
 
 {% block modal %}
@@ -254,15 +185,7 @@
           <!--end::Modal title-->
           <!--begin::Close-->
           <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-            <span class="svg-icon svg-icon-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)"
-                      fill="black"/>
-                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"/>
-              </svg>
-            </span>
-            <!--end::Svg Icon-->
+            {% get_svg_icon 'duotune/arrows/arr061.svg' 'svg-icon svg-icon-1' %}
           </div>
           <!--end::Close-->
         </div>
@@ -320,15 +243,7 @@
           <!--end::Modal title-->
           <!--begin::Close-->
           <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-            <span class="svg-icon svg-icon-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)"
-                      fill="black"/>
-                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"/>
-              </svg>
-            </span>
-            <!--end::Svg Icon-->
+            {% get_svg_icon 'duotune/arrows/arr061.svg' 'svg-icon svg-icon-1' %}
           </div>
           <!--end::Close-->
         </div>
@@ -424,104 +339,6 @@
   </div>
   <!--end::Modal - Change password-->
 
-  <!--begin::Modal - Update user details-->
-  <div class="modal fade" id="user_profile_update_profile_modal" tabindex="-1" aria-hidden="true">
-    <!--begin::Modal dialog-->
-    <div class="modal-dialog modal-dialog-centered mw-650px">
-      <!--begin::Modal content-->
-      <div class="modal-content">
-        <!--begin::Form-->
-        <form id="user_profile_update_profile_form"
-              class="form" method="post" enctype="multipart/form-data"
-              action="{% url 'users:update' %}">
-          {% csrf_token %}
-          <!--begin::Modal header-->
-          <div class="modal-header" id="user_profile_update_profile_header">
-            <!--begin::Modal title-->
-            <h2 class="fw-bolder">{% trans 'Update User Details' %}</h2>
-            <!--end::Modal title-->
-            <!--begin::Close-->
-            <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
-              <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-              <span class="svg-icon svg-icon-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                     fill="none">
-                  <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                        transform="rotate(-45 6 17.3137)" fill="currentColor"/>
-                  <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)"
-                        fill="currentColor"/>
-                </svg>
-              </span>
-              <!--end::Svg Icon-->
-            </div>
-            <!--end::Close-->
-          </div>
-          <!--end::Modal header-->
-          <!--begin::Modal body-->
-          <div class="modal-body py-10 px-lg-17">
-            <!--begin::Scroll-->
-            <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_update_user_scroll" data-kt-scroll="true"
-                 data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
-                 data-kt-scroll-dependencies="#user_profile_update_profile_header"
-                 data-kt-scroll-wrappers="#kt_modal_update_user_scroll" data-kt-scroll-offset="300px">
-              <!--begin::User toggle-->
-              <div class="fw-boldest fs-3 rotate collapsible mb-7" data-bs-toggle="collapse"
-                   href="#kt_modal_update_user_user_info" role="button" aria-expanded="false"
-                   aria-controls="kt_modal_update_user_user_info">{% trans 'User Information' %}
-                <span class="ms-2 rotate-180">
-                  <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                  <span class="svg-icon svg-icon-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         fill="none">
-                      <path
-                        d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                        fill="currentColor"/>
-                    </svg>
-                  </span>
-                  <!--end::Svg Icon-->
-                </span>
-              </div>
-              <!--end::User toggle-->
-              <!--begin::User form-->
-              <div id="kt_modal_update_user_user_info" class="collapse show">
-                {% for field in user_update_form %}
-                  <!--begin::Input group-->
-                  <div
-                    class="{% if forloop.first %}mb-7{% elif forloop.last %}fv-row mb-15{% else %}fv-row mb-7{% endif %}">
-                    <!--begin::Label-->
-                    <label class="fs-6 fw-bold mb-2 {% if field.field.required %}required{% endif %}">
-                      <span>{{ field.label|title }}</span>
-                    </label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    {{ field }}
-                    <!--end::Input-->
-                  </div>
-                  <!--end::Input group-->
-                {% endfor %}
-              </div>
-              <!--end::User form-->
-            </div>
-            <!--end::Scroll-->
-          </div>
-          <!--end::Modal body-->
-          <!--begin::Modal footer-->
-          <div class="modal-footer flex-center">
-            <!--begin::Button-->
-            <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
-              <span class="indicator-label">{% trans "Submit" %}</span>
-              <span class="indicator-progress">{% trans "Please wait" %}...
-              <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-            </button>
-            <!--end::Button-->
-          </div>
-          <!--end::Modal footer-->
-        </form>
-        <!--end::Form-->
-      </div>
-    </div>
-  </div>
-  <!--end::Modal - Update user details-->
 {% endblock modal %}
 
 {% block inline_javascript %}

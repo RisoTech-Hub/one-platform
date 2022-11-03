@@ -6,7 +6,8 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
 
 from one.components.views import FormMixin
-from one.users.forms import UserAdminChangeForm
+from one.users.api.serializers import SimpleUserSerializer
+from one.users.forms import UserChangeForm
 
 User = get_user_model()
 
@@ -17,16 +18,38 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     slug_field = "username"
     slug_url_kwarg = "username"
 
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        kwargs["page_title"] = _("User Overview")
+        kwargs["page_breadcrumb"] = [
+            {"name": _("Home"), "url": reverse("home")},
+            {"name": _("User Detail"), "url": ""},
+        ]
+        update_view = UserUpdateView(request=self.request, object=self.object)  # noqa
+        kwargs["user_update_form"] = update_view.get_context_data()["form"]
+        return kwargs
+
 
 user_detail_view = UserDetailView.as_view()
 
 
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateView):
+    template_name = "app/update.html"
     model = User
 
-    form_class = UserAdminChangeForm
-
+    form_class = UserChangeForm
+    serializer_class = SimpleUserSerializer
     success_message = _("Information successfully updated")
+
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        kwargs["page_title"] = _("Update User")
+        kwargs["page_breadcrumb"] = [
+            {"name": _("Home"), "url": reverse("home")},
+            {"name": _("User Update"), "url": ""},
+        ]
+        kwargs["form_title"] = _("Update User")
+        return kwargs
 
     def get_success_url(self):
         assert (

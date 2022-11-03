@@ -24,17 +24,12 @@
         <!--begin::Name-->
         <a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3">
           {% if user.name %}
-            {{ user.as_name|safe|title }}
+            {{ user.name|safe|title }}
           {% else %}
             {{ user.username|safe|title }}
           {% endif %}
         </a>
         <!--end::Name-->
-        <!--begin::Position-->
-        <div class="mb-9">
-          {{ user.display_level_html|safe }}
-        </div>
-        <!--end::Position-->
       </div>
       <!--end::User Info-->
       <!--end::Summary-->
@@ -47,8 +42,12 @@
           </span>
         </div>
         <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="{% translate 'Edit profile details' %}">
-          <a href="#" class="btn btn-sm btn-light-primary" data-bs-toggle="modal"
-             data-bs-target="#user_profile_update_profile_modal">{% translate 'Edit' %}</a>
+          <a href="#"
+             class="btn btn-sm btn-light-primary"
+             type="button"
+             quick-update-button
+             data-action-url="{% url 'users:update' %}?popup=1"
+          >{% translate 'Edit' %}</a>
         </span>
       </div>
       <!--end::Details toggle-->
