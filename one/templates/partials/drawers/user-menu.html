@@ -1,0 +1,62 @@
+<!--begin::Chat drawer-->
+<div id="kt_drawer_user_menu" class="bg-body" data-kt-drawer="true" data-kt-drawer-name="user-menu"
+     data-kt-drawer-activate="true"
+     data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'300px', 'md': '500px'}"
+     data- kt-drawer-direction="end"
+     data-kt-drawer-toggle="#kt_drawer_user_menu_toggle" data-kt-drawer-close="#kt_drawer_user_menu_close">
+  <!--begin::Messenger-->
+  <div class="card w-100 rounded-0 border-0" id="kt_drawer_user_menu">
+    <!--begin::Card header-->
+    <div class="card-header p-0 min-h-75px" id="kt_drawer_user_menu_header">
+      <!--begin::Title-->
+      <div class="card-title m-0">
+        <!--begin::Menu item-->
+        <div class="menu-item">
+          <div class="menu-content d-flex align-items-center px-3">
+            <!--begin::Avatar-->
+            <div class="symbol symbol-75px me-5">
+              <img alt="Logo" src="{% static 'media/avatars/300-1.jpg' %}"/>
+            </div>
+            <!--end::Avatar-->
+            <!--begin::Username-->
+            <div class="d-flex flex-column">
+              <div class="fw-bold d-flex align-items-center fs-5">
+                {% if user.name %}{{ user.name }}{% else %}{{ user.username }}{% endif %}
+                {% for group in groups %}
+                  <span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">{{ group }}</span>
+                {% endfor %}
+              </div>
+              <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{ user.email }}</a>
+            </div>
+            <!--end::Username-->
+          </div>
+        </div>
+        <!--end::Menu item-->
+      </div>
+      <!--end::Title-->
+      <!--begin::Card toolbar-->
+      <div class="card-toolbar pe-5">
+        <!--begin::Close-->
+        <div class="btn btn-sm btn-icon btn-active-light-primary"
+             id="kt_drawer_user_menu_close">{% get_svg_icon 'duotune/arrows/arr061.svg' 'svg-icon svg-icon-2' %}</div>
+        <!--end::Close-->
+      </div>
+      <!--end::Card toolbar-->
+    </div>
+    <!--end::Card header-->
+    <!--begin::Card body-->
+    <div class="card-body" id="kt_drawer_user_menu_body">
+      <!--begin::Messages-->
+      <div class="scroll-y me-n5 pe-5" data-kt-element="messages" data-kt-scroll="true"
+           data-kt-scroll-activate="true" data-kt-scroll-height="auto"
+           data-kt-scroll-dependencies="#kt_drawer_user_menu_header"
+           data-kt-scroll-wrappers="#kt_drawer_user_menu_body" data-kt-scroll-offset="0px">
+
+      </div>
+      <!--end::Messages-->
+    </div>
+    <!--end::Card body-->
+  </div>
+  <!--end::Messenger-->
+</div>
+<!--end::Chat drawer-->

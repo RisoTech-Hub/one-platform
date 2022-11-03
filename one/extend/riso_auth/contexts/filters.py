@@ -10,7 +10,9 @@ class GroupFilter(FilterSet):
         field_name="name",
         lookup_expr="contains",
         label=_("Name"),
-        widget=BootstrapInput({"placeholder": _("Name")}),
+        widget=BootstrapInput(
+            {"placeholder": _("Name"), "data-kt-table-filter-col": "name"}
+        ),
     )
 
     class Meta:

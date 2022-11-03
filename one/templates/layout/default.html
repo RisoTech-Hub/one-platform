@@ -36,10 +36,11 @@
   </div>
   <!--end::Root-->
 
-  {#  {% include 'layout/partials/_drawers.html' %}#}
+  {#  {% include 'partials/_drawers.html' %}#}
+  {% include 'partials/drawers/user-menu.html' %}
 
   {#  {% include 'layout/partials/_modals.html' %}#}
 
-    {% include 'partials/scrolltop.html' %}
+  {% include 'partials/scrolltop.html' %}
 
 {% endblock layout %}

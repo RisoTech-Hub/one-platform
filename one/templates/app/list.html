@@ -211,6 +211,20 @@
           edit_fail: "",
         }
       );
+
+      table.columns().every(function () {
+        var that = this;
+        var col_name = that.header().attributes['data-data'].value;
+        var selector = $('[data-kt-table-filter-col="' + col_name + '"]');
+        if (selector) {
+          selector.on('keyup', function () {
+            that
+              .search($(this).val())
+              .draw();
+          });
+        }
+      });
     })
+
   </script>
 {% endblock inline_javascript %}
