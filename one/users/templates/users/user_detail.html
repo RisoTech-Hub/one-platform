@@ -16,7 +16,7 @@
           <div class="card-header">
             <!--begin::Title-->
             <div class="card-title">
-              <h2>{% translate 'Email' %}</h2>
+              <h2>{% trans 'Email' %}</h2>
             </div>
             <!--end::Title-->
             <!--begin::Toolbar-->
@@ -26,23 +26,23 @@
                 <span data-bs-toggle="modal" data-bs-target="#user_profile_add_email_modal">
                   <button class="btn btn-sm btn-icon btn-color-primary btn-light btn-active-light-primary"
                           type="button" name="action_create"
-                          data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Add new email' %}">
+                          data-bs-toggle="tooltip" data-bs-placement="top" title="{% trans 'Add new email' %}">
                     {% get_svg_icon 'duotune/arrows/arr075.svg' 'svg-icon svg-icon-3' %}
                   </button>
                 </span>
                 <button class="btn btn-sm btn-icon btn-color-success btn-light btn-active-light-success"
                         type="submit" name="action_primary"
-                        data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Set email as primary' %}">
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="{% trans 'Set email as primary' %}">
                   {% get_svg_icon 'duotune/abstract/abs024.svg' 'svg-icon svg-icon-3' %}
                 </button>
                 <button class="btn btn-sm btn-icon btn-color-warning btn-light btn-active-light-warning"
                         type="submit" name="action_send"
-                        data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Resend verify email' %}">
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="{% trans 'Resend verify email' %}">
                   {% get_svg_icon 'duotune/communication/com002.svg' 'svg-icon svg-icon-3' %}
                 </button>
                 <button class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
                         type="submit" name="action_remove"
-                        data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Delete email' %}">
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="{% trans 'Delete email' %}">
                   {% get_svg_icon 'duotune/general/gen027.svg' 'svg-icon svg-icon-3' %}
                 </button>
                 <!--end::Action-->
@@ -61,9 +61,9 @@
                   <!--begin::Thead-->
                   <thead class="border-gray-200 fs-5 fw-bold bg-lighten">
                   <tr>
-                    <th class="w-125px">{% translate 'Selected' %}</th>
-                    <th class="min-w-250px">{% translate 'Email' %}</th>
-                    <th class="min-w-100px">{% translate 'Status' %}</th>
+                    <th class="w-125px">{% trans 'Selected' %}</th>
+                    <th class="min-w-250px">{% trans 'Email' %}</th>
+                    <th class="min-w-100px">{% trans 'Status' %}</th>
                   </tr>
                   </thead>
                   <!--end::Thead-->
@@ -84,16 +84,16 @@
                       <td>
                         {{ emailaddress.email }}
                         {% if emailaddress.primary %}
-                         {% get_svg_icon 'duotune/abstract/abs024.svg' 'svg-icon svg-icon-3 svg-icon-success' %}
+                          {% get_svg_icon 'duotune/abstract/abs024.svg' 'svg-icon svg-icon-3 svg-icon-success' %}
                         {% endif %}
                       </td>
                       <td>
                         {% if emailaddress.verified %}
                           <span
-                            class="badge badge-light-success fs-7 fw-bolder">{% translate "Verified" %}</span>
+                            class="badge badge-light-success fs-7 fw-bolder">{% trans "Verified" %}</span>
                         {% else %}
                           <span
-                            class="badge badge-light-danger fs-7 fw-bolder">{% translate "Unverified" %}</span>
+                            class="badge badge-light-danger fs-7 fw-bolder">{% trans "Unverified" %}</span>
                         {% endif %}
                       </td>
                     </tr>
@@ -104,7 +104,7 @@
                 <!--end::Table-->
               {% else %}
                 <p>
-                  <strong>{% translate 'Warning:' %}</strong> {% translate "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." %}
+                  <strong>{% trans 'Warning:' %}</strong> {% trans "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." %}
                 </p>
               {% endif %}
             </div>
@@ -125,7 +125,7 @@
     <div class="card-header border-0">
       <!--begin::Card title-->
       <div class="card-title">
-        <h2>{% translate 'Profile' %}</h2>
+        <h2>{% trans 'Profile' %}</h2>
       </div>
       <!--end::Card title-->
     </div>
@@ -139,7 +139,7 @@
           <!--begin::Table body-->
           <tbody class="fs-6 fw-bold text-gray-600">
           <tr>
-            <td>{% translate 'Password' %}</td>
+            <td>{% trans 'Password' %}</td>
             <td>******</td>
             <td class="text-end">
               <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto"
@@ -181,7 +181,7 @@
         <div class="card-header">
           <!--begin::Title-->
           <div class="card-title">
-            <h2>{% translate 'Login Logs' %}</h2>
+            <h2>{% trans 'Login Logs' %}</h2>
           </div>
           <!--end::Title-->
         </div>
@@ -198,10 +198,10 @@
               <thead class="border-gray-200 fs-5 fw-bold bg-lighten" id="user_profile_log_header">
               <!--begin::Table row-->
               <tr>
-                <th class="min-w-100px">{% translate 'Country' %}</th>
-                <th>{% translate 'City' %}</th>
-                <th>{% translate 'IP Address' %}</th>
-                <th>{% translate 'Time' %}</th>
+                <th class="min-w-100px">{% trans 'Country' %}</th>
+                <th>{% trans 'City' %}</th>
+                <th>{% trans 'IP Address' %}</th>
+                <th>{% trans 'Time' %}</th>
               </tr>
               <!--end::Table row-->
               </thead>
@@ -250,7 +250,7 @@
         <!--begin::Modal header-->
         <div class="modal-header" id="kt_modal_add_new_email_header">
           <!--begin::Modal title-->
-          <h2>{% translate 'Add new email' %}</h2>
+          <h2>{% trans 'Add new email' %}</h2>
           <!--end::Modal title-->
           <!--begin::Close-->
           <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -275,12 +275,12 @@
             <!--begin::Input group-->
             <div class="mb-5 fv-row">
               <!--begin::Label-->
-              <label class="required fs-5 fw-bold mb-2">{% translate 'Enter New Email Address' %}</label>
+              <label class="required fs-5 fw-bold mb-2">{% trans 'Enter New Email Address' %}</label>
               <!--end::Label-->
               <!--begin::Input-->
               <input type="email"
                      class="form-control form-control-solid"
-                     placeholder="{% translate 'Email Address' %}"
+                     placeholder="{% trans 'Email Address' %}"
                      name="email" id="id_email" required/>
               <!--end::Input-->
             </div>
@@ -291,8 +291,8 @@
           <div class="modal-footer flex-center">
             <!--begin::Button-->
             <button type="submit" name="action_add" id="kt_modal_add_new_email_submit" class="btn btn-primary">
-              <span class="indicator-label">{% translate "Submit" %}</span>
-              <span class="indicator-progress">{% translate "Please wait" %}...
+              <span class="indicator-label">{% trans "Submit" %}</span>
+              <span class="indicator-progress">{% trans "Please wait" %}...
 								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
             </button>
             <!--end::Button-->
@@ -316,7 +316,7 @@
         <!--begin::Modal header-->
         <div class="modal-header" id="kt_modal_change_password_header">
           <!--begin::Modal title-->
-          <h2>{% translate 'Change password' %}</h2>
+          <h2>{% trans 'Change password' %}</h2>
           <!--end::Modal title-->
           <!--begin::Close-->
           <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -344,7 +344,7 @@
             <div class="card-body">
               <!--begin::Input group-->
               <div class="fv-row mb-7">
-                <label class="form-label fw-bolder text-dark fs-6">{% translate "Current Password" %}</label>
+                <label class="form-label fw-bolder text-dark fs-6">{% trans "Current Password" %}</label>
                 <input class="form-control form-control-lg form-control-solid"
                        type="password" placeholder=""
                        name="oldpassword" autocomplete="off" id="id_oldpassword"/>
@@ -355,7 +355,7 @@
                 <!--begin::Wrapper-->
                 <div class="mb-1">
                   <!--begin::Label-->
-                  <label class="form-label fw-bolder text-dark fs-6">{% translate "Password" %}</label>
+                  <label class="form-label fw-bolder text-dark fs-6">{% trans "Password" %}</label>
                   <!--end::Label-->
                   <!--begin::Input wrapper-->
                   <div class="position-relative mb-3">
@@ -363,7 +363,7 @@
                            type="password" placeholder="" name="password1"
                            autocomplete="off" id="id_password1"/>
                     <span
-                      class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
+                      class="btn btn-sm btn-icon position-absolute trans-middle top-50 end-0 me-n2"
                       data-kt-password-meter-control="visibility">
                       <i class="bi bi-eye-slash fs-2"></i>
                       <i class="bi bi-eye fs-2 d-none"></i>
@@ -386,15 +386,15 @@
                 </div>
                 <!--end::Wrapper-->
                 <!--begin::Hint-->
-                <div class="text-muted">{% blocktranslate %}Use 8 or more characters with a mix of letters,
-                  numbers &amp; symbols.{% endblocktranslate %}
+                <div class="text-muted">{% blocktrans %}Use 8 or more characters with a mix of letters,
+                  numbers &amp; symbols.{% endblocktrans %}
                 </div>
                 <!--end::Hint-->
               </div>
               <!--end::Input group=-->
               <!--begin::Input group-->
               <div class="fv-row mb-5">
-                <label class="form-label fw-bolder text-dark fs-6">{% translate "Confirm Password" %}</label>
+                <label class="form-label fw-bolder text-dark fs-6">{% trans "Confirm Password" %}</label>
                 <input class="form-control form-control-lg form-control-solid"
                        type="password" placeholder="" name="password2"
                        autocomplete="off" id="id_password2"/>
@@ -408,8 +408,8 @@
           <div class="modal-footer flex-center">
             <!--begin::Button-->
             <button type="submit" name="action_add" id="user_change_password_submit" class="btn btn-primary">
-              <span class="indicator-label">{% translate "Submit" %}</span>
-              <span class="indicator-progress">{% translate "Please wait" %}...
+              <span class="indicator-label">{% trans "Submit" %}</span>
+              <span class="indicator-progress">{% trans "Please wait" %}...
 								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
             </button>
             <!--end::Button-->
@@ -438,7 +438,7 @@
           <!--begin::Modal header-->
           <div class="modal-header" id="user_profile_update_profile_header">
             <!--begin::Modal title-->
-            <h2 class="fw-bolder">{% translate 'Update User Details' %}</h2>
+            <h2 class="fw-bolder">{% trans 'Update User Details' %}</h2>
             <!--end::Modal title-->
             <!--begin::Close-->
             <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -467,7 +467,7 @@
               <!--begin::User toggle-->
               <div class="fw-boldest fs-3 rotate collapsible mb-7" data-bs-toggle="collapse"
                    href="#kt_modal_update_user_user_info" role="button" aria-expanded="false"
-                   aria-controls="kt_modal_update_user_user_info">{% translate 'User Information' %}
+                   aria-controls="kt_modal_update_user_user_info">{% trans 'User Information' %}
                 <span class="ms-2 rotate-180">
                   <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                   <span class="svg-icon svg-icon-3">
@@ -509,8 +509,8 @@
           <div class="modal-footer flex-center">
             <!--begin::Button-->
             <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
-              <span class="indicator-label">{% translate "Submit" %}</span>
-              <span class="indicator-progress">{% translate "Please wait" %}...
+              <span class="indicator-label">{% trans "Submit" %}</span>
+              <span class="indicator-progress">{% trans "Please wait" %}...
               <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
             </button>
             <!--end::Button-->
@@ -527,7 +527,7 @@
 {% block inline_javascript %}
   <script type="text/javascript">
     window.addEventListener('DOMContentLoaded', function () {
-      const message = "{% translate 'Do you really want to remove the selected e-mail address?' %}";
+      const message = "{% trans 'Do you really want to remove the selected e-mail address?' %}";
       const actions = document.getElementsByName('action_remove');
       if (actions.length) {
         actions[0].addEventListener("click", function (e) {
@@ -554,17 +554,17 @@
           'oldpassword': {
             validators: {
               notEmpty: {
-                message: '{% translate "Current password is required" %}'
+                message: '{% trans "Current password is required" %}'
               }
             }
           },
           'password1': {
             validators: {
               notEmpty: {
-                message: '{% translate "The password is required" %}'
+                message: '{% trans "The password is required" %}'
               },
               callback: {
-                message: '{% translate "Please enter valid password" %}',
+                message: '{% trans "Please enter valid password" %}',
                 callback: function (input) {
                   if (input.value.length > 0) {
                     return validatePassword();
@@ -576,13 +576,13 @@
           'password2': {
             validators: {
               notEmpty: {
-                message: '{% translate "The password confirmation is required" %}'
+                message: '{% trans "The password confirmation is required" %}'
               },
               identical: {
                 compare: function () {
                   return form.querySelector('[name="password1"]').value;
                 },
-                message: '{% translate "The password and its confirm are not the same" %}'
+                message: '{% trans "The password and its confirm are not the same" %}'
               }
             }
           }
@@ -601,44 +601,29 @@
         }
       }
     );
-
     // Handle form submit
     submitButton.addEventListener('click', function (e) {
       e.preventDefault();
-
       validator.revalidateField('password1');
-
       validator.validate().then(function (status) {
-        if (status == 'Valid') {
+        if (status === 'Valid') {
           // Show loading indication
           submitButton.setAttribute('data-kt-indicator', 'on');
-
           // Disable button to avoid multiple click
           submitButton.disabled = true;
-
           form.submit();
         } else {
           // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-          Swal.fire({
-            text: "{% translate 'Sorry, looks like there are some errors detected, please try again' %}.",
-            icon: "error",
-            buttonsStyling: false,
-            confirmButtonText: "{% translate 'Ok, got it' %}!",
-            customClass: {
-              confirmButton: "btn btn-primary"
-            }
-          });
+          toastr.error("{% trans 'Sorry, looks like there are some errors detected, please try again' %}", "{% trans 'Error' %}")
         }
       });
     });
-
     // Handle password input
     form.querySelector('input[name="password1"]').addEventListener('input', function () {
       if (this.value.length > 0) {
         validator.updateFieldStatus('password1', 'NotValidated');
       }
     });
-
     // Password input validation
     let validatePassword = function () {
       return (passwordMeter.getScore() === 100);
