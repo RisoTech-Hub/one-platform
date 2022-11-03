@@ -1,12 +1,10 @@
-from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group
-from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, UpdateView
 
-from one.components.views import FormMixin, ListView
+from one.components.views import FormMixin, ListView, SuccessMessageMixin
 
 from .api.serializers import GroupSerializer
 from .filters import GroupFilter
@@ -150,9 +148,9 @@ class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Update
         form = self.get_form()
         if form.is_valid():
             if context_form.is_valid():
-                self.form_valid(context_form)
+                self.form_valid(context_form, is_nested=True)
                 return self.form_valid(form)
-        messages.error(request, _("Context has error"))
+            self.add_error_messages(context_form)
         return self.form_invalid(form)
 
 

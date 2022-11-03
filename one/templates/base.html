@@ -4,28 +4,19 @@
 {% block javascript %}
   {{ block.super }}
 
-  {% if messages %}
-    {% for message in messages %}
-      <script>
-        // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-        Swal.fire({
-          text: "{{ message }}!",
-          icon: "{% if message.tags %}{{ message.tags }}{% else %}success{% endif %}",
-          buttonsStyling: false,
-          confirmButtonText: "{% translate 'Ok' %}!",
-          customClass: {
-            confirmButton: "btn btn-primary"
-          }
-        });
-      </script>
-    {% endfor %}
-  {% endif %}
-
-  {% if form.errors %}
-    <script id="id_form_error" type="application/json">
-      {{ form.errors.as_json }}
-    </script>
-    <script>
+{#  <script>#}
+{#      // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/#}
+{#      Swal.fire({#}
+{#        text: "{{ message }}!",#}
+{#        icon: "{% if message.tags %}{{ message.tags }}{% else %}success{% endif %}",#}
+{#        buttonsStyling: false,#}
+{#        confirmButtonText: "{% translate 'Ok' %}!",#}
+{#        customClass: {#}
+{#          confirmButton: "btn btn-primary"#}
+{#        }#}
+{#      });#}
+{#    </script>#}
+  <script>
       toastr.options = {
         "closeButton": true,
         "debug": false,
@@ -42,6 +33,27 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
       };
+  </script>
+
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == "success" %}
+        <script>
+          toastr.success("{{ message }}", "{% trans 'Success' %}");
+        </script>
+      {% else %}
+        <script>
+          toastr.error("{{ message }}", "{% trans 'Error' %}");
+        </script>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if form.errors %}
+    <script id="id_form_error" type="application/json">
+      {{ form.errors.as_json }}
+    </script>
+    <script>
       const form_errors = JSON.parse(document.getElementById('id_form_error').textContent.replaceAll('&quot;', '"'));
       $.each(form_errors, function (key, value) {
         $.each(value, function (index, _value) {

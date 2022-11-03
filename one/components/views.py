@@ -9,6 +9,25 @@ from django.views.generic.edit import FormMixin as BaseFormMixin
 from .constants import FORM_TYPE_FULL, FORM_TYPE_QUICK
 
 
+class SuccessMessageMixin:
+    """
+    Add a success message on successful form submission.
+    """
+
+    success_message = ""
+
+    def form_valid(self, form, *args, **kwargs):
+        response = super().form_valid(form)  # noqa
+        success_message = self.get_success_message(form.cleaned_data)
+        is_nested = kwargs.get("is_nested", False)
+        if success_message and not self.is_popup and not is_nested:  # noqa
+            messages.success(self.request, success_message)  # noqa
+        return response
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % cleaned_data
+
+
 class FormMixin(BaseFormMixin):
     is_popup = None
     quick_form_class = None
@@ -39,7 +58,6 @@ class FormMixin(BaseFormMixin):
     def form_invalid(self, form):
         if self.is_popup:
             return JsonResponse({"errors": form.errors}, status=400)
-        self.add_error_messages(form)
         return super().form_invalid(form)
 
     def form_valid(self, form):
