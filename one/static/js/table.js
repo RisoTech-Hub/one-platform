@@ -9,12 +9,19 @@ var DT = (function () {
     var toolbarSelected;
     var selectedCount;
     var totalCount = 0;
-    var labels = {}
-    // Private functions
-    var initTable = function (tableId = "", options = {}, endpoint = {}, language = {}) {
-        table = document.getElementById(tableId);
+    var labels = {};
 
-        const iconDelete = (row) => `<a href="javascript:void(0);" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['delete_row'] || 'Delete row'}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger" data-id="${row["id"]}" data-kt-table-filter="delete_row">
+
+    var iconEdit = () => {
+        return ''
+    }, iconView = () => {
+        return ''
+    }, iconDelete = () => {
+        return ''
+    };
+
+    var renderButtonActionList = function (row, endpoint) {
+        iconDelete = (row) => `<a href="javascript:void(0);" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['delete_row'] || 'Delete row'}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger" data-id="${row["id"]}" data-kt-table-filter="delete_row">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +33,8 @@ var DT = (function () {
                                         <!--end::Svg Icon-->
                                       </a>`
 
-        const iconEdit = (row) => `<button type="button" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['edit_row'] || 'Edit row'}" data-action-url="${endpoint.edit.replace('0000', row.id)}" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
+
+        iconEdit = (row) => `<button type="button" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['edit_row'] || 'Edit row1111'}" data-action-url="${endpoint.edit.replace('0000', row.id)}" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,19 +45,16 @@ var DT = (function () {
                                     <!--end::Svg Icon-->
                                 </button>`
 
-        // const iconView = (row) => `<a href="javascript:void(0);" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="view_row">
-        //                             <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-10-09-043348/core/html/src/media/icons/duotune/arrows/arr095.svg-->
-        //                             <span class="svg-icon svg-icon-3">
-        //                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        //                                     <path opacity="0.3" d="M4.7 17.3V7.7C4.7 6.59543 5.59543 5.7 6.7 5.7H9.8C10.2694 5.7 10.65 5.31944 10.65 4.85C10.65 4.38056 10.2694 4 9.8 4H5C3.89543 4 3 4.89543 3 6V19C3 20.1046 3.89543 21 5 21H18C19.1046 21 20 20.1046 20 19V14.2C20 13.7306 19.6194 13.35 19.15 13.35C18.6806 13.35 18.3 13.7306 18.3 14.2V17.3C18.3 18.4046 17.4046 19.3 16.3 19.3H6.7C5.59543 19.3 4.7 18.4046 4.7 17.3Z" fill="currentColor"/>
-        //                                     <rect x="21.9497" y="3.46448" width="13" height="2" rx="1" transform="rotate(135 21.9497 3.46448)" fill="currentColor"/>
-        //                                     <path d="M19.8284 4.97161L19.8284 9.93937C19.8284 10.5252 20.3033 11 20.8891 11C21.4749 11 21.9497 10.5252 21.9497 9.93937L21.9497 3.05029C21.9497 2.498 21.502 2.05028 20.9497 2.05028L14.0607 2.05027C13.4749 2.05027 13 2.52514 13 3.11094C13 3.69673 13.4749 4.17161 14.0607 4.17161L19.0284 4.17161C19.4702 4.17161 19.8284 4.52978 19.8284 4.97161Z" fill="currentColor"/>
-        //                                 </svg>
-        //                             </span>
-        //                             <!--end::Svg Icon-->
-        //                         </a>`
+        iconView = () => ``
+    }
 
-        const iconView = (row) => ``
+    // Private functions
+    var initTable = function (tableId = "", options = {}, endpoint = {}, language = {}) {
+        table = document.getElementById(tableId);
+
+        labels = {
+            ...language, ...labels
+        }
 
         const defaultOptions = {
             order: [], pageLength: 10, columnDefs: [{
@@ -62,15 +67,19 @@ var DT = (function () {
             }, {
                 orderable: false, // Disable ordering on column (actions)
                 targets: -1, title: "Action", className: "text-end", render: function (data, type, row, meta) {
+                    console.log('target-1-----------labels', labels)
+                    renderButtonActionList(row, endpoint)
                     return `<div class="d-flex justify-content-end flex-shrink-0">
                         ${iconView(row)}
                         ${iconEdit(row)}
                         ${iconDelete(row)}
                     </div>`;
                 },
-            },], processing: true, language: {
+            }], processing: true, language: {
                 processing: "<div class='d-block'><span class='spinner-border w-15px h-15px text-muted align-middle me-2'></span></div>",
             }, rowCallback: function (row, data) {
+                console.log('rowCallback-----labels', labels)
+
                 $(row)
                     .find("input.form-check-input[type='checkbox']")
                     .prop("checked", arr_selected.findIndex((item) => item.toString() === data["id"].toString()) > -1);
@@ -82,15 +91,24 @@ var DT = (function () {
                 })
 
                 if (settings && settings["json"]) {
-                    console.log(settings)
                     totalCount = parseInt(settings["json"]["recordsFiltered"]);
-                    labels = parseInt(settings["json"]["labels"]);
+
                     if (settings["json"]["options"]) {
                         initFilterForm(settings["json"]["options"]);
                     }
                 }
             },
         };
+
+        $(document).on('xhr.dt', function (e, settings) {
+
+            if (settings && settings["json"]) {
+                labels = {
+                    ...language, ...settings["json"]["labels"]
+                };
+                console.log('preInit----labels', labels)
+            }
+        });
 
         // Init datatable --- more info on datatables: https://datatables.net/manual/
         datatable = $(table).DataTable({
@@ -115,6 +133,7 @@ var DT = (function () {
 
             toggleToolbars();
         });
+
         // $('input[data-kt-check="true"]').on("change", function () {
         //     if (this.checked) {
         //         $('tbody td [type="checkbox"]').prop("checked", true);
@@ -166,7 +185,7 @@ var DT = (function () {
     }
 
     var handleViewRow = () => {
-        $(document).on('click', 'td [data-kt-table-filter="edit_row"]', function () {
+        $(document).on('click', 'td [data-kt-table-filter="view_row"]', function () {
             const id = $(this).attr('data-id')
             console.log('click view in row with id: ', id)
         })
@@ -251,7 +270,7 @@ var DT = (function () {
     };
 
     // Delete subscription
-    var handleDeleteRows = (_url_delete = "", _language) => {
+    var handleDeleteRows = (_url_delete = "") => {
         // Select all delete buttons
         const deleteButtons = table.querySelectorAll('[data-kt-table-filter="delete_row"]');
         const url_delete = _url_delete;
@@ -266,16 +285,15 @@ var DT = (function () {
                 // const parent = e.target.closest('tr');
 
                 let id = $(this).attr("data-id");
-                // let url_delete = $(this).attr('data-url')
 
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
-                    text: _language.confirmDelete || "Are you sure you want to delete this(these) record?",
+                    text: labels.confirmDelete || "Are you sure you want to delete this(these) record?",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: false,
-                    confirmButtonText: "Yes, delete!",
-                    cancelButtonText: "No, cancel",
+                    confirmButtonText: labels.confirm_btn_delete || "Yes, delete!",
+                    cancelButtonText: labels.cancel_btn_delete || "No, cancel",
                     customClass: {
                         confirmButton: "btn fw-bold btn-danger", cancelButton: "btn fw-bold btn-active-light-primary",
                     },
@@ -294,10 +312,10 @@ var DT = (function () {
                             data: JSON.stringify([id]),
                             success: function (response) {
                                 Swal.fire({
-                                    text: _language.delete_success || "You have deleted!",
+                                    text: labels.delete_success || "You have deleted!",
                                     icon: "success",
                                     buttonsStyling: false,
-                                    confirmButtonText: "Ok, got it!",
+                                    confirmButtonText: labels.notification_confirm_button || "Ok, got it!",
                                     customClass: {
                                         confirmButton: "btn fw-bold btn-primary",
                                     },
@@ -321,10 +339,10 @@ var DT = (function () {
                         });
                     } else if (result.dismiss === "cancel") {
                         Swal.fire({
-                            text: _language.delete_fail || "This record was not deleted.",
+                            text: labels.delete_fail || "This record was not deleted.",
                             icon: "error",
                             buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
+                            confirmButtonText: labels.notification_confirm_button || "Ok, got it!",
                             customClass: {
                                 confirmButton: "btn fw-bold btn-primary",
                             },
@@ -336,7 +354,7 @@ var DT = (function () {
     };
 
     // Init toggle toolbar
-    var initToggleToolbar = (_url_delete = "", _language = {}) => {
+    var initToggleToolbar = (_url_delete = "") => {
         // Toggle selected action toolbar
         // Select all checkboxes
         const checkboxes = table.querySelectorAll('[type="checkbox"]');
@@ -361,12 +379,12 @@ var DT = (function () {
         deleteSelected.addEventListener("click", function () {
             // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
             Swal.fire({
-                text: _language.confirm_delete || "Are you sure you want to delete selected records?",
+                text: labels.confirm_delete || "Are you sure you want to delete selected records?",
                 icon: "warning",
                 showCancelButton: true,
                 buttonsStyling: false,
-                confirmButtonText: _language.confirm_btn_delete || "Yes, delete!",
-                cancelButtonText: _language.cancel_btn_delete || "No, cancel",
+                confirmButtonText: labels.confirm_btn_delete || "Yes, delete!",
+                cancelButtonText: labels.cancel_btn_delete || "No, cancel",
                 customClass: {
                     confirmButton: "btn fw-bold btn-danger", cancelButton: "btn fw-bold btn-active-light-primary",
                 },
@@ -388,9 +406,9 @@ var DT = (function () {
                             datatable.draw()
                             arr_selected = [];
                             toggleToolbars(); // Detect checked checkboxes
-                            initToggleToolbar(_url_delete, _language); // Re-init toolbar to recalculate checkboxes
+                            initToggleToolbar(_url_delete); // Re-init toolbar to recalculate checkboxes
 
-                            toastr.success(_language.delete_success || "You have deleted all selected records!.")
+                            toastr.success(labels.delete_success || "You have deleted all selected records!.")
                             toastr.options.onHidden = function () {
                                 console.log('goodbye');
                                 // Remove all selected customers
@@ -413,7 +431,7 @@ var DT = (function () {
 
                         },
                         error: function (request, status, error) {
-                            toastr.error(_language.delete_fail || "This record was not deleted.")
+                            toastr.error(labels.delete_fail || "This record was not deleted.")
 
                         },
                     });
