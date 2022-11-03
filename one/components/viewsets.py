@@ -47,8 +47,14 @@ class BaseModelViewSet(ModelViewSet):
             "view_row": _("View Item"),
         }
 
+    def get_action_list(self):  # noqa
+        return "action_list", ["add", "change", "delete", "view"]
+
+    def get_actions(self):  # noqa
+        return "actions", ["change", "delete"]
+
     class Meta:
-        datatables_extra_json = ("get_labels",)
+        datatables_extra_json = ("get_labels", "get_actions", "get_action_list")
 
     def get_model(self):
         """return model of class"""
