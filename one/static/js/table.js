@@ -330,7 +330,7 @@ var DT = (function () {
                         $.ajax({
                             url: _url_delete,
                             headers: {
-                                "X-CSRFToken": $('[name="csrfmiddlewaretoken"]').val(), Authorization: "Basic cm9vdDox", // TODO: will receipt token
+                                "X-CSRFToken": $('[name="csrfmiddlewaretoken"]').val(),
                                 "Content-Type": "application/json",
                             },
                             method: "delete",
