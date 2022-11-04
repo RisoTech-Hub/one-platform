@@ -525,7 +525,7 @@ KT_CUSTOM_LIBS = {
         "js": ["js/webpush/auto.js"],
     },
     "widget": {
-        "js": ["js/widgets/model_select_actions.js"],
+        "js": ["js/widgets/model_select_actions.js", "js/utilities.js"],
     },
     # Custom JS always placed at the end of this list
     "project": {

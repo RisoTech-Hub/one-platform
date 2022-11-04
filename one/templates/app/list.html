@@ -59,7 +59,7 @@
             <!--end::Search-->
             <!--begin::Toggle-->
             <a class="btn btn-sm btn-icon btn-color-primary btn-light btn-active-light-primary"
-               data-bs-placement="top" data-bs-toggle="tooltip"
+               data-bs-placement="top" data-bs-toggle="tooltip" data-bs-trigger="hover"
                id="kt_filter_form_toggle" title="{% trans 'Filters' %}">
               {% get_svg_icon 'duotune/general/gen031.svg' 'svg-icon svg-icon-3 m-0' %}
             </a>
@@ -86,7 +86,9 @@
                 </div>
               </th>
               {% for field in table_fields %}
-                <th class="min-w-125px" data-data="{{ field.col_name }}"
+                <th class="min-w-125px"
+                    data-data="{{ field.col_name }}"
+                    data-name="{{ field.col_name }}"
                     data-type="{{ field.type }}">{{ field.verbose_name|title }}</th>
               {% endfor %}
               <th class="min-w-125px text-end pe-4" data-data="null" data-sortable="false">{% translate 'Action' %}</th>
@@ -211,19 +213,6 @@
           edit_fail: "",
         }
       );
-
-      table.columns().every(function () {
-        var that = this;
-        var col_name = that.header().attributes['data-data'].value;
-        var selector = $('[data-kt-table-filter-col="' + col_name + '"]');
-        if (selector) {
-          selector.on('keyup', function () {
-            that
-              .search($(this).val())
-              .draw();
-          });
-        }
-      });
     })
 
   </script>

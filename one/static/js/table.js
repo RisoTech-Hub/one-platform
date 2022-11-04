@@ -10,6 +10,7 @@ var DT = (function () {
     var selectedCount;
     var totalCount = 0;
     var labels = {};
+    var actions = [];
 
 
     var iconEdit = () => {
@@ -21,7 +22,9 @@ var DT = (function () {
     };
 
     var renderButtonActionList = function (row, endpoint) {
-        iconDelete = (row) => `<a href="javascript:void(0);" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['delete_row'] || 'Delete row'}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger" data-id="${row["id"]}" data-kt-table-filter="delete_row">
+        if (actions.indexOf('delete') !== -1) {
+            iconDelete = (row) => `<a href="javascript:void(0);" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['delete_row'] || 'Delete row'}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger" data-id="${row["id"]}" data-kt-table-filter="delete_row">
+
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,9 +35,10 @@ var DT = (function () {
                                         </span>
                                         <!--end::Svg Icon-->
                                       </a>`
+        }
 
-
-        iconEdit = (row) => `<button type="button" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['edit_row'] || 'Edit row1111'}" data-action-url="${endpoint.edit.replace('0000', row.id)}" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
+        if (actions.indexOf('change') !== -1) {
+            iconEdit = (row) => `<button type="button" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['edit_row'] || 'Edit row1111'}" data-action-url="${endpoint.edit.replace('0000', row.id)}" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +48,9 @@ var DT = (function () {
                                     </span>
                                     <!--end::Svg Icon-->
                                 </button>`
+        }
 
+        // TODO: write here more if have view action
         iconView = () => ``
     }
 
@@ -57,33 +63,36 @@ var DT = (function () {
         }
 
         const defaultOptions = {
-            order: [], pageLength: 10, columnDefs: [{
-                orderable: false, // Disable ordering on column 0 (checkbox)
-                targets: 0, render: function (data, type, full, meta) {
-                    return `<div class="form-check form-check-sm form-check-custom form-check-solid">
+            order: [], pageLength: 10,
+            columnDefs: [
+                {
+                    orderable: false, // Disable ordering on column 0 (checkbox)
+                    targets: 0, render: function (data, type, full, meta) {
+                        return `<div class="form-check form-check-sm form-check-custom form-check-solid">
                        <input class="form-check-input widget-9-check" type="checkbox" name="id" value="${data}">
                      </div>`;
+                    },
                 },
-            }, {
-                orderable: false, // Disable ordering on column (actions)
-                targets: -1, title: "Action", className: "text-end", render: function (data, type, row, meta) {
-                    console.log('target-1-----------labels', labels)
-                    renderButtonActionList(row, endpoint)
-                    return `<div class="d-flex justify-content-end flex-shrink-0">
+                {
+                    orderable: false, // Disable ordering on column (actions)
+                    targets: -1, title: "Action", className: "text-end", render: function (data, type, row, meta) {
+                        renderButtonActionList(row, endpoint)
+                        return `<div class="d-flex justify-content-end flex-shrink-0">
                         ${iconView(row)}
                         ${iconEdit(row)}
                         ${iconDelete(row)}
                     </div>`;
-                },
-            }], processing: true, language: {
+                    },
+                }],
+            processing: true, language: {
                 processing: "<div class='d-block'><span class='spinner-border w-15px h-15px text-muted align-middle me-2'></span></div>",
-            }, rowCallback: function (row, data) {
-                console.log('rowCallback-----labels', labels)
-
+            },
+            rowCallback: function (row, data) {
                 $(row)
                     .find("input.form-check-input[type='checkbox']")
                     .prop("checked", arr_selected.findIndex((item) => item.toString() === data["id"].toString()) > -1);
-            }, drawCallback: function (settings) {
+            },
+            drawCallback: function (settings) {
                 // ?Initialize tooltip bootstrap
                 const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
                 const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -98,15 +107,36 @@ var DT = (function () {
                     }
                 }
             },
+            initComplete: function (settings, json) {
+                datatable.columns().every(function () {
+                    var that = this;
+                    var col_name = that.header().attributes['data-data'].value;
+                    var selector = $('[data-kt-table-filter-col="' + col_name + '"]');
+                    if (selector) {
+                        const indexCol = datatable.column(`${col_name}:name`).index()
+                        selector.on('keyup',
+                            debounce(function () {
+                                console.log('------debounce callback')
+                                that
+                                    .column(indexCol)
+                                    .search($(this).val())
+                                    .draw();
+                            }, 800)
+                        )
+                    }
+                })
+            },
         };
 
-        $(document).on('xhr.dt', function (e, settings) {
 
+        $(document).on('xhr.dt', function (e, settings) {
             if (settings && settings["json"]) {
+                actions = settings["json"]["actions"]
+
                 labels = {
                     ...language, ...settings["json"]["labels"]
                 };
-                console.log('preInit----labels', labels)
+
             }
         });
 
@@ -129,7 +159,7 @@ var DT = (function () {
             } else {
                 arr_selected.splice(arr_selected.indexOf($(this).val()), 1);
             }
-            console.log('arr_selected: ', arr_selected);
+            // console.log('arr_selected: ', arr_selected);
 
             toggleToolbars();
         });
@@ -166,14 +196,12 @@ var DT = (function () {
                         arr_selected.push(target.value)
                         arr_selected = Array.from(new Set(arr_selected))
                     } else {
-                        // console.log('else----arr_selected', arr_selected)
                         const indexed = arr_selected.indexOf($(target).val())
                         if (indexed > -1) {
                             arr_selected.splice(indexed, 1)
                         }
                     }
 
-                    console.log('---arr_selected', arr_selected)
 
                 } else {
                     target.classList.toggle('active');
@@ -265,7 +293,8 @@ var DT = (function () {
             });
 
             // Reset datatable --- official docs reference: https://datatables.net/reference/api/search()
-            datatable.search("").draw();
+            datatable.search("").columns().search('').draw();
+
         });
     };
 
@@ -410,7 +439,6 @@ var DT = (function () {
 
                             toastr.success(labels.delete_success || "You have deleted all selected records!.")
                             toastr.options.onHidden = function () {
-                                console.log('goodbye');
                                 // Remove all selected customers
                                 checkboxes.forEach((c) => {
                                     if (c.checked) {
