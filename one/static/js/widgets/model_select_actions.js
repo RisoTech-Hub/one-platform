@@ -1,13 +1,19 @@
 function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm = '', content = '', target_input = '', close_label = '', save_changes_label = '') {
     $(selector).append(`
             <div class="modal fade" tabindex="-1" id="${idModal}" modal-quick-action="" target-input="${target_input}">
-                <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="id_modal_title"></h5>
 
                             <!--begin::Close-->
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                             <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                    <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                </svg>
+                             </div>
+
                             <!--end::Close-->
                         </div>
 
@@ -15,7 +21,7 @@ function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm = '
                             ${content}
                         </div>
 
-                        <div class="modal-footer">
+                        <div class="modal-footer flex-center">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">${close_label}</button>
                             <button type="submit" form="${idForm}" class="btn btn-primary">${save_changes_label}</button>
                         </div>
