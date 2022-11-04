@@ -1,7 +1,7 @@
 function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm = '', content = '', target_input = '', close_label = '', save_changes_label = '') {
     $(selector).append(`
             <div class="modal fade" tabindex="-1" id="${idModal}" modal-quick-action="" target-input="${target_input}">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="id_modal_title"></h5>
@@ -17,7 +17,7 @@ function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm = '
                             <!--end::Close-->
                         </div>
 
-                        <div class="modal-body">
+                        <div class="modal-body py-10 px-lg-17">
                             ${content}
                         </div>
 
