@@ -263,7 +263,6 @@ var DT = (function () {
             inputName.forEach((item, index) => {
                 if (item.value && item.value !== "") {
 
-
                     // Build filter value options
                     filterString.push(item.name + '=' + item.value);
                 }
@@ -271,7 +270,8 @@ var DT = (function () {
 
             console.log("filterString: ", filterString);
             // Filter datatable --- official docs reference: https://datatables.net/reference/api/search()
-            datatable.search(filterString.join('&')).draw();
+            // datatable.search(filterString.join('&')).draw();
+            datatable.draw();
         });
     };
 
