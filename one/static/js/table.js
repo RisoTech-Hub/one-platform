@@ -120,7 +120,6 @@ var DT = (function () {
                                 that
                                     .column(indexCol)
                                     .search($(this).val())
-                                    .draw();
                             }, 800)
                         )
                     }
