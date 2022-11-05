@@ -1,34 +1,51 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.sites.models import Site
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import UpdateView
 
-from .forms import SettingForm
+from one.components.views import SuccessMessageMixin
+
+from .forms import SettingForm, SiteForm
 
 
 class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    template_name = "app/update.html"
     model = Site
-    fields = ["name", "domain"]
-    success_message = _("Information successfully updated")
 
-    def get_success_url(self):
-        return reverse("settings:site")
-
-    def get_object(self):
-        return Site.objects.get_current()
+    form_class = SiteForm
+    success_message = _("Site successfully updated")
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
+        kwargs["page_title"] = _("Site Update")
+        kwargs["page_breadcrumb"] = [
+            {"name": _("Home"), "url": reverse("home")},
+            {"name": _("Site Update"), "url": ""},
+        ]
+
+        kwargs["form_title"] = _("Site Update")
+
         if self.request.method == "POST":
-            kwargs["setting_form"] = SettingForm(
+            setting_form = SettingForm(
                 self.request.POST, self.request.FILES, instance=self.object.setting
             )
         else:
-            kwargs["setting_form"] = SettingForm(instance=self.object.setting)
+            setting_form = SettingForm(instance=self.object.setting)
+        kwargs["nested_forms"] = [
+            {
+                "form": setting_form,
+                "title": _("Site Settings"),
+            }
+        ]
         return kwargs
+
+    def get_success_url(self):  # noqa
+        return reverse("settings:site")
+
+    def get_object(self):  # noqa
+        return Site.objects.get_current()
 
     def post(self, request, *args, **kwargs):
         """
@@ -42,9 +59,9 @@ class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         form = self.get_form()
         if form.is_valid():
             if setting_form.is_valid():
-                self.form_valid(setting_form)
+                self.form_valid(setting_form, is_nested=True)
                 return self.form_valid(form)
-        messages.error(request, _("Step Images has error"))
+            messages.error(request, _("Step Images has error"))
         return self.form_invalid(form)
 
 

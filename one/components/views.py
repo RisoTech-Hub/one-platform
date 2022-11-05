@@ -14,6 +14,7 @@ class SuccessMessageMixin:
     Add a success message on successful form submission.
     """
 
+    is_popup = False
     success_message = ""
 
     def form_valid(self, form, *args, **kwargs):
