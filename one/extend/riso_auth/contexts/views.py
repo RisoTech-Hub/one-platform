@@ -47,7 +47,6 @@ class GroupListView(LoginRequiredMixin, ListView):
             "delete": "api:group-delete",
         }
         kwargs["filter"] = GroupFilter()
-        kwargs["table_fields"] = self.get_table_fields()
         return kwargs
 
 

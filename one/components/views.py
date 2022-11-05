@@ -85,6 +85,11 @@ class ListView(BaseListView):
     table_exclude_fields = []
     table_exclude_rel = [ManyToManyRel, ManyToOneRel, ManyToManyField]
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["table_fields"] = self.get_table_fields()
+        return context
+
     def get_table_fields(self):
         fields = self.model._meta.get_fields()  # noqa
         data = []
