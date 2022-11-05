@@ -4,7 +4,7 @@
 
 Set git to ignore idea files changes
 
-    $ git update-index --assume-unchanged .idea/misc.xml .idea/one.iml .idea/modules.xml .idea/runConfigurations/* .idea/vcs.xml .idea/webResources.xml
+    $ git update-index --assume-unchanged .idea/misc.xml .idea/one.iml .idea/modules.xml .idea/runConfigurations/* .idea/vcs.xml .idea/webResources.xml .idea/inspectionProfiles/Project_Default.xml
 
 Set pre-commit hook
 

@@ -45,6 +45,8 @@ class BaseModelViewSet(ModelViewSet):
             "action_col_title": _("Actions"),
             "edit_row": _("Update Item"),
             "view_row": _("View Item"),
+            "error": _("Error"),
+            "success": _("Success"),
         }
 
     def get_action_list(self):  # noqa

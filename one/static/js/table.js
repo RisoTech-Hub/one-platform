@@ -23,8 +23,15 @@ var DT = (function () {
 
     var renderButtonActionList = function (row, endpoint) {
         if (actions.indexOf('delete') !== -1) {
-            iconDelete = (row) => `<a href="javascript:void(0);" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['delete_row'] || 'Delete row'}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger" data-id="${row["id"]}" data-kt-table-filter="delete_row">
-
+            iconDelete = (row) => `<a
+                                        href="javascript:void(0);"
+                                        data-bs-trigger="hover"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="${labels['delete_row'] || 'Delete row'}"
+                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm text-hover-danger"
+                                        data-id="${row["id"]}"
+                                        data-kt-table-filter="delete_row">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +45,17 @@ var DT = (function () {
         }
 
         if (actions.indexOf('change') !== -1) {
-            iconEdit = (row) => `<button type="button" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top" title="${labels['edit_row'] || 'Edit row1111'}" data-action-url="${endpoint.edit.replace('0000', row.id)}" quick-update-button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-id="${row["id"]}" data-kt-table-filter="edit_row">
+            iconEdit = (row) => `<button
+                                    type="button"
+                                    data-bs-trigger="hover"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="${labels['edit_row'] || 'Edit row1111'}"
+                                    data-action-url="${endpoint.edit.replace('0000', row.id)}"
+                                    quick-update-button
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                    data-id="${row["id"]}"
+                                    data-kt-table-filter="edit_row">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,10 +118,6 @@ var DT = (function () {
 
                 if (settings && settings["json"]) {
                     totalCount = parseInt(settings["json"]["recordsFiltered"]);
-
-                    if (settings["json"]["options"]) {
-                        initFilterForm(settings["json"]["options"]);
-                    }
                 }
             },
             initComplete: function (settings, json) {
@@ -116,7 +129,6 @@ var DT = (function () {
                         const indexCol = datatable.column(`${col_name}:name`).index()
                         selector.on('keyup',
                             debounce(function () {
-                                console.log('------debounce callback')
                                 that
                                     .column(indexCol)
                                     .search($(this).val())
@@ -127,7 +139,6 @@ var DT = (function () {
             },
         };
 
-
         $(document).on('xhr.dt', function (e, settings) {
             if (settings && settings["json"]) {
                 actions = settings["json"]["actions"]
@@ -135,7 +146,6 @@ var DT = (function () {
                 labels = {
                     ...language, ...settings["json"]["labels"]
                 };
-
             }
         });
 
@@ -158,26 +168,8 @@ var DT = (function () {
             } else {
                 arr_selected.splice(arr_selected.indexOf($(this).val()), 1);
             }
-            // console.log('arr_selected: ', arr_selected);
-
             toggleToolbars();
         });
-
-        // $('input[data-kt-check="true"]').on("change", function () {
-        //     if (this.checked) {
-        //         $('tbody td [type="checkbox"]').prop("checked", true);
-        //     } else {
-        //         $('tbody td [type="checkbox"]').prop("checked", false);
-        //     }
-        //     toggleToolbars();
-        // });
-
-        // $('#kt_table_settings tbody td input[type="checkbox"]').on(
-        //     "change",
-        //     function () {
-        //         toggleToolbars();
-        //     }
-        // );
 
         return datatable;
     };
@@ -200,8 +192,6 @@ var DT = (function () {
                             arr_selected.splice(indexed, 1)
                         }
                     }
-
-
                 } else {
                     target.classList.toggle('active');
                 }
@@ -214,14 +204,12 @@ var DT = (function () {
     var handleViewRow = () => {
         $(document).on('click', 'td [data-kt-table-filter="view_row"]', function () {
             const id = $(this).attr('data-id')
-            console.log('click view in row with id: ', id)
         })
     }
 
     var handleEditRow = () => {
         $(document).on('click', 'td [data-kt-table-filter="edit_row"]', function () {
             const id = $(this).attr('data-id')
-            console.log('click edit in row with id: ', id)
         })
     }
 
@@ -232,18 +220,6 @@ var DT = (function () {
             datatable.search(e.target.value).draw();
         });
     };
-
-    // init Filter Form
-    const initFilterForm = (options) => {
-        // const filterForm = document.querySelector('[data-kt-table-filter="form"]');
-        // const filterBody = filterForm.querySelector(
-        //     '[data-kt-table-filter="body"]'
-        // );
-        // options.forEach(function (item) {
-        //     console.log(item);
-        //     filterBody.append(item);
-        // })
-    }
 
     // Filter Datatable
     var handleFilterDatatable = () => {
@@ -268,7 +244,6 @@ var DT = (function () {
                 }
             });
 
-            console.log("filterString: ", filterString);
             // Filter datatable --- official docs reference: https://datatables.net/reference/api/search()
             // datatable.search(filterString.join('&')).draw();
             datatable.draw();
@@ -305,7 +280,6 @@ var DT = (function () {
 
         deleteButtons.forEach((d) => {
             // Delete button on click
-            // console.log('url-delete', url_delete)
             $(d).attr("data-url", url_delete);
             d.addEventListener("click", function (e) {
                 e.preventDefault();
@@ -339,42 +313,18 @@ var DT = (function () {
                             processData: false,
                             data: JSON.stringify([id]),
                             success: function (response) {
-                                Swal.fire({
-                                    text: labels.delete_success || "You have deleted!",
-                                    icon: "success",
-                                    buttonsStyling: false,
-                                    confirmButtonText: labels.notification_confirm_button || "Ok, got it!",
-                                    customClass: {
-                                        confirmButton: "btn fw-bold btn-primary",
-                                    },
-                                })
-                                    .then(function () {
-                                        // Remove current row
-                                        // datatable.row($(parent)).remove().draw();
-                                        datatable.draw();
-                                    })
-                                    .then(function () {
-                                        // Detect checked checkboxes
-                                        toggleToolbars();
-                                    });
+                                toastr.success(labels.delete_success || "Deleted Completely", labels.success || "Success");
+                                datatable.draw();
+                                toggleToolbars();
                             },
                             error: function (request, status, error) {
-                                Swal.fire({
-                                    title: "Notice", text: "Something is error: " + error, icon: "error", type: "error",
-                                }).then(function () {
-                                });
+                                toastr.info(
+                                    labels.notification_error_text || "Something is error: " + error,
+                                    labels.notification_error_title || "Notice");
                             },
                         });
                     } else if (result.dismiss === "cancel") {
-                        Swal.fire({
-                            text: labels.delete_fail || "This record was not deleted.",
-                            icon: "error",
-                            buttonsStyling: false,
-                            confirmButtonText: labels.notification_confirm_button || "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn fw-bold btn-primary",
-                            },
-                        });
+                        toastr.error(labels.delete_fail || "This record was not deleted.", labels.error || "Error");
                     }
                 });
             });
@@ -422,7 +372,6 @@ var DT = (function () {
                         url: _url_delete,
                         headers: {
                             "X-CSRFToken": $('[name="csrfmiddlewaretoken"]').val(),
-                            Authorization: "Basic cm9vdDox",
                             "Content-Type": "application/json",
                         },
                         method: "delete",
@@ -450,29 +399,14 @@ var DT = (function () {
 
                                 // Remove header checked box
                                 const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
-                                console.log('---------headerCheckbox', headerCheckbox)
                                 headerCheckbox.checked = false;
-
-
                             }
-
                         },
                         error: function (request, status, error) {
                             toastr.error(labels.delete_fail || "This record was not deleted.")
-
                         },
                     });
-                } else if (result.dismiss === "cancel") {
-                    // Swal.fire({
-                    //     text: "Selected customers was not deleted.",
-                    //     icon: "error",
-                    //     buttonsStyling: false,
-                    //     confirmButtonText: "Ok, got it!",
-                    //     customClass: {
-                    //         confirmButton: "btn fw-bold btn-primary",
-                    //     }
-                    // });
-                }
+                } else if (result.dismiss === "cancel") {}
             });
         });
     };
@@ -484,7 +418,6 @@ var DT = (function () {
 
         // Detect checkboxes state & count
         let checkedState = false;
-        // console.log('arr selected:', arr_selected.length)
         // let count = arr_selected.length || 0;
         let count = arr_selected.length;
 
