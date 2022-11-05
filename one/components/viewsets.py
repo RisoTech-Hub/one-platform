@@ -13,6 +13,7 @@ class BaseModelViewSet(ModelViewSet):
     Custom ModelViewSet
     """
 
+    actions = None
     filter_fields = []
 
     def get_options(self):
@@ -53,6 +54,8 @@ class BaseModelViewSet(ModelViewSet):
         return "action_list", ["add", "change", "delete", "view"]
 
     def get_actions(self):  # noqa
+        if self.actions is not None:
+            return "actions", self.actions
         return "actions", ["change", "delete"]
 
     class Meta:

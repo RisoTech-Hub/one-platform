@@ -103,6 +103,7 @@ class ListView(BaseListView):
                 field.is_relation
                 and not (type(field) in self.table_exclude_rel)
                 and not (field.related_model is self.model)
+                and not (field.name in self.table_exclude_fields + ["password"])
             ):
                 nested_fields = field.related_model._meta.get_fields()  # noqa
                 for nested_field in nested_fields:
