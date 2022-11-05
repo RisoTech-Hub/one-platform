@@ -24,4 +24,4 @@ class GroupFilter(FilterSet):
 
     class Meta:
         model = Group
-        fields = ["name"]
+        fields = ["id", "name"]
