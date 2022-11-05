@@ -1,5 +1,9 @@
 from allauth.account.forms import SignupForm
 from allauth.socialaccount.forms import SignupForm as SocialSignupForm
+from django.forms import ModelForm
+
+from one.components.forms import CharField
+from one.extend.riso_allauth.models import AllauthTemplate
 
 
 class UserSignupForm(SignupForm):
@@ -16,3 +20,11 @@ class UserSocialSignupForm(SocialSignupForm):
     Default fields will be added automatically.
     See UserSignupForm otherwise.
     """
+
+
+class TemplateForm(ModelForm):
+    subject = CharField()
+
+    class Meta:
+        model = AllauthTemplate
+        fields = ["subject", "content"]

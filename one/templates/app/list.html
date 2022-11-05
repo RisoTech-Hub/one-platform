@@ -133,7 +133,11 @@
           </div>
 
           {% for field in filter.form %}
-            {% include "forms/floating-label-field.html" %}
+            {% if field.field.widget.input_type == 'select' %}
+              {% include "forms/select-filter-field.html" %}
+              {% else %}
+              {% include "forms/floating-label-field.html" %}
+            {% endif %}
           {% endfor %}
 
         </div>

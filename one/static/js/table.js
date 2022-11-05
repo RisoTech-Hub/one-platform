@@ -127,13 +127,25 @@ var DT = (function () {
                     var selector = $('[data-kt-table-filter-col="' + col_name + '"]');
                     if (selector) {
                         const indexCol = datatable.column(`${col_name}:name`).index()
-                        selector.on('keyup',
-                            debounce(function () {
-                                that
-                                    .column(indexCol)
-                                    .search($(this).val())
-                            }, 200)
-                        )
+                        if (selector.is('select')) {
+                            selector.on('change',
+                                debounce(function () {
+                                    console.log($(this))
+                                    that
+                                        .column(indexCol)
+                                        .search($(this).val())
+                                }, 200)
+                            )
+                        } else {
+                            selector.on('keyup',
+                                debounce(function () {
+                                    console.log($(this))
+                                    that
+                                        .column(indexCol)
+                                        .search($(this).val())
+                                }, 200)
+                            )
+                        }
                     }
                 })
             },
