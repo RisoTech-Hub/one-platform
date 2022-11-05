@@ -80,7 +80,7 @@ var DT = (function () {
         }
 
         const defaultOptions = {
-            order: [], pageLength: 10,
+            order: [[1, 'desc']], pageLength: 10,
             columnDefs: [
                 {
                     orderable: false, // Disable ordering on column 0 (checkbox)
@@ -406,7 +406,8 @@ var DT = (function () {
                             toastr.error(labels.delete_fail || "This record was not deleted.")
                         },
                     });
-                } else if (result.dismiss === "cancel") {}
+                } else if (result.dismiss === "cancel") {
+                }
             });
         });
     };

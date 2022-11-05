@@ -6,7 +6,7 @@ function reInitAllWidget() {
 }
 
 function redrawTable() {
-    if(table){
-        table.draw()
+    if (table) {
+        table.draw(false)
     }
 }
