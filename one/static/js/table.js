@@ -80,7 +80,7 @@ var DT = (function () {
         }
 
         const defaultOptions = {
-            order: [[1, 'desc']], pageLength: 10,
+            pageLength: 10,
             columnDefs: [
                 {
                     orderable: false, // Disable ordering on column 0 (checkbox)

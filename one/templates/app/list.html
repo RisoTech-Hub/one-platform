@@ -135,7 +135,7 @@
           {% for field in filter.form %}
             {% if field.field.widget.input_type == 'select' %}
               {% include "forms/select-filter-field.html" %}
-              {% else %}
+            {% else %}
               {% include "forms/floating-label-field.html" %}
             {% endif %}
           {% endfor %}
@@ -189,6 +189,7 @@
         'kt_datatable_list',
         //option
         {
+          order: [[1, 'desc']],
           "scrollX": true,
           fixedColumns: {
             left: 1,
