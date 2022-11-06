@@ -1,6 +1,7 @@
 from allauth.account.forms import SignupForm
 from allauth.socialaccount.forms import SignupForm as SocialSignupForm
 from django.forms import ModelForm
+from tinymce.widgets import TinyMCE
 
 from one.components.forms import CharField
 from one.extend.riso_allauth.models import AllauthTemplate
@@ -24,6 +25,7 @@ class UserSocialSignupForm(SocialSignupForm):
 
 class TemplateForm(ModelForm):
     subject = CharField()
+    content = CharField(widget=TinyMCE())
 
     class Meta:
         model = AllauthTemplate

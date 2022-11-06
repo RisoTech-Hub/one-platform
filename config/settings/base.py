@@ -383,21 +383,6 @@ USER_ONLINE_TIMEOUT = 300
 # their last seen is removed from the cache
 USER_LAST_SEEN_TIMEOUT = 60 * 60 * 24 * 7
 
-# Django TinyMCE
-# ------------------------------------------------------------------------------
-TINYMCE_DEFAULT_CONFIG = {
-    "height": "320px",
-    "width": "960px",
-    "menubar": "file edit view insert format tools table help",
-    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
-    "fullscreen insertdatetime media table paste code help wordcount spellchecker",
-    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
-    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
-    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
-    "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
-    "a11ycheck ltr rtl | showcomments addcomment code",
-    "custom_undo_redo_levels": 10,
-}
 
 # METRONIC SETTINGS
 # ------------------------------------------------------------------------------
@@ -533,6 +518,24 @@ KT_CUSTOM_LIBS = {
         "js": ["js/project.js"],
     },
 }
+
+
+# Django TinyMCE
+# ------------------------------------------------------------------------------
+TINYMCE_JS_URL = STATIC_URL + KT_THEME_VENDORS["tinymce"]["js"][0]
+TINYMCE_DEFAULT_CONFIG = {
+    "height": "320px",
+    "menubar": "file edit view insert format tools table help",
+    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
+    "fullscreen insertdatetime media table paste code help wordcount spellchecker",
+    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
+    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
+    "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
+    "a11ycheck ltr rtl | showcomments addcomment code",
+    "custom_undo_redo_levels": 10,
+}
+
 
 # Your stuff...
 # ------------------------------------------------------------------------------
