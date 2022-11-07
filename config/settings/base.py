@@ -523,6 +523,7 @@ KT_CUSTOM_LIBS = {
 # Django TinyMCE
 # ------------------------------------------------------------------------------
 TINYMCE_JS_URL = STATIC_URL + KT_THEME_VENDORS["tinymce"]["js"][0]
+TINYMCE_JS_ROOT = STATIC_URL + "plugins/custom/tinymce"
 TINYMCE_DEFAULT_CONFIG = {
     "height": "320px",
     "menubar": "file edit view insert format tools table help",
