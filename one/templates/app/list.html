@@ -134,7 +134,7 @@
 
           {% for field in filter.form %}
             {% if field.field.widget.input_type == 'select' %}
-              {% include "forms/select-filter-field.html" %}
+              {% include "forms/floating-label-select-field.html" %}
             {% else %}
               {% include "forms/floating-label-field.html" %}
             {% endif %}

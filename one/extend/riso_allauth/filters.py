@@ -3,7 +3,7 @@ from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django_filters import ChoiceFilter, FilterSet, NumberFilter
 
-from one.components.widgets import BootstrapInput, SelectTwo
+from one.components.widgets import BootstrapInput, FloatingLabelSelectTwo
 from one.extend.riso_allauth.models import AllauthTemplate
 
 
@@ -19,11 +19,7 @@ class AllauthTemplateFilter(FilterSet):
         field_name="language",
         label=_("Language"),
         choices=settings.LANGUAGES,
-        widget=SelectTwo(
-            {
-                "data-kt-table-filter-col": "language",
-            }
-        ),
+        widget=FloatingLabelSelectTwo({"data-kt-table-filter-col": "language"}),
     )
 
     class Meta:

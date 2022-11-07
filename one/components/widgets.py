@@ -53,3 +53,17 @@ class SpanDateInput(DateInput):
 
 class ImageInput(ClearableFileInput):
     template_name = "widgets/image_input.html"
+
+
+# class FloatingLabelInput(TextInput):
+#
+#     def __init__(self, attrs=None):
+#         super().__init__(attrs)
+#         self.attrs["class"] = "form-select form-select-transparent"
+
+
+class FloatingLabelSelectTwo(Select):
+    def __init__(self, attrs=None, choices=()):
+        super().__init__(attrs, choices)
+        self.attrs["class"] = "form-select form-select-transparent"
+        self.attrs["data-control"] = "select2"
