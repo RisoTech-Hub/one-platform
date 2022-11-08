@@ -1,0 +1,44 @@
+<div class="table-responsive mb-10">
+  {{ formset.formset.management_form }}
+  <!--begin::Table-->
+  <table class="table g-5 gs-0 mb-0 fw-bold text-gray-700" data-kt-element="items"
+         id="id_table_formset_{{ formset.prefix }}">
+    <!--begin::Table head-->
+    <thead>
+    <tr class="border-bottom fs-7 fw-bold text-gray-700 text-uppercase">
+      {% with form=formset.formset.0 %}
+        {% for field in form %}
+          {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
+          {% else %}
+            <th class="{% if forloop.last %}text-end{% else %}w-200px{% endif %} ">{{ field.label|title }}</th>
+          {% endif %}
+        {% endfor %}
+      {% endwith %}
+    </tr>
+    </thead>
+    <!--end::Table head-->
+    <!--begin::Table body-->
+    <tbody>
+    {% for form in formset.formset %}
+      <tr class="border-bottom border-bottom-dashed" data-kt-element="item">
+        {% for field in form %}
+          {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
+          {% else %}
+            <td>
+              {{ field }}
+            </td>
+          {% endif %}
+        {% endfor %}
+      </tr>
+    {% endfor %}
+
+    </tbody>
+    <!--end::Table body-->
+  </table>
+</div>
+<button class="btn btn-link py-1" data-kt-element="add-item">Add item</button>
+<script defer>
+  window.addEventListener('DOMContentLoaded', function () {
+    $("#id_table_formset_{{ formset.prefix }}").DataTable();
+  });
+</script>
