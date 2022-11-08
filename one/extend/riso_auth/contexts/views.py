@@ -128,6 +128,7 @@ class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Update
             {
                 "form": context_form,
                 "title": _("Extend information"),
+                "hidden_fields": [],
             }
         ]
         return kwargs

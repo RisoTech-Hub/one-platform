@@ -2,7 +2,7 @@
 <div class="card mb-5 mb-xl-10">
   <!--begin::Card header-->
   <div class="card-header collapsible border-0 cursor-pointer rotate" data-bs-toggle="collapse"
-       data-bs-target="#kt_default_form" aria-expanded="true" aria-controls="kt_account_profile_details">
+       data-bs-target="#kt_default_form" aria-expanded="true" aria-controls="kt_form_details">
     <!--begin::Card title-->
     <div class="card-title m-0">
       <h3 class="fw-bold m-0">{{ form_title }}</h3>
@@ -17,7 +17,7 @@
   <!--begin::Card header-->
   <!--begin::Content-->
   <div id="kt_default_form" class="collapse show">
-    {% include 'forms/one-col-form.html' %}
+    {% include 'forms/base.html' %}
   </div>
   <!--end::Content-->
 </div>

@@ -1,0 +1,71 @@
+<div class="card card-bordered">
+  <div class="card-header collapsible cursor-pointer rotate" data-bs-toggle="collapse"
+       data-bs-target="#kt_formset_collapsible">
+    <h3 class="card-title">{{ formset.title|title }}</h3>
+    <div class="card-toolbar rotate-180">
+      {% get_svg_icon 'duotune/arrows/arr066.svg' 'svg-icon svg-icon-1' %}
+    </div>
+  </div>
+  <div id="kt_formset_collapsible" class="collapse">
+    <div class="card-body p-0 pt-5">
+      {{ formset.formset.management_form }}
+      <div class="hover-scroll-overlay-y h-300px">
+        {% for form in formset.formset %}
+          <div class="row">
+            <div class="col-md-11">
+              <!--begin::Form group-->
+              <div class="form-group row">
+                {% for field in form %}
+                  <div class="col-md-auto">
+                    {% if field.field.widget.input_type == 'select' %}
+                      {% include "fields/floating-label-select-field.html" %}
+                    {% elif field.field.widget.input_type == 'hidden' %}
+                      {{ field }}
+                    {% elif field.field.widget.input_type == 'checkbox' %}
+                      {{ field }}
+                    {% elif field.name in formset.hidden_fields %}
+                      <div class="d-none">{{ field }}</div>
+                    {% else %}
+                      {% include "fields/floating-label-field.html" %}
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+              <!--end::Form group-->
+            </div>
+            <div class="col-md-auto">
+              <a
+                class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
+                data-bs-toggle="tooltip"
+                data-bs-delay-hide="1000"
+                data-bs-placement="top"
+                title="{% trans 'Delete this line' %}"
+              >
+                {% get_svg_icon "duotune/general/gen027.svg" 'svg-icon svg-icon-3 m-0' %}
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+
+        <div class="{{ formset.prefix }}-empty-form-div">
+          <div class="{{ formset.prefix }}-__prefix__">
+            {% for field in formset.formset.empty_form %}
+
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer d-flex justify-content-end py-6 px-9">
+      <a
+        class="btn btn-sm btn-icon btn-color-primary btn-light btn-active-light-primary"
+        data-bs-toggle="tooltip"
+        data-bs-delay-hide="1000"
+        data-bs-placement="top"
+        title="{% trans 'Add new line' %}"
+      >
+        {% get_svg_icon "duotune/arrows/arr075.svg" 'svg-icon svg-icon-3 m-0' %}
+      </a>
+    </div>
+  </div>
+</div>
