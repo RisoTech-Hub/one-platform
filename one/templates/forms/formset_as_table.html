@@ -1,42 +1,73 @@
-<div class="table-responsive mb-10">
-  {{ formset.formset.management_form }}
-  <!--begin::Table-->
-  <table class="table g-5 gs-0 mb-0 fw-bold text-gray-700" data-kt-element="items"
-         id="id_table_formset_{{ formset.prefix }}">
-    <!--begin::Table head-->
-    <thead>
-    <tr class="border-bottom fs-7 fw-bold text-gray-700 text-uppercase">
-      {% with form=formset.formset.0 %}
-        {% for field in form %}
-          {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
-          {% else %}
-            <th class="{% if forloop.last %}text-end{% else %}w-200px{% endif %} ">{{ field.label|title }}</th>
-          {% endif %}
-        {% endfor %}
-      {% endwith %}
-    </tr>
-    </thead>
-    <!--end::Table head-->
-    <!--begin::Table body-->
-    <tbody>
-    {% for form in formset.formset %}
-      <tr class="border-bottom border-bottom-dashed" data-kt-element="item">
-        {% for field in form %}
-          {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
-          {% else %}
-            <td>
-              {{ field }}
-            </td>
-          {% endif %}
-        {% endfor %}
-      </tr>
-    {% endfor %}
+<div class="card card-bordered">
+  <div class="card-header collapsible cursor-pointer rotate" data-bs-toggle="collapse"
+       data-bs-target="#kt_formset_collapsible">
+    <h3 class="card-title">{{ formset.title|title }}</h3>
+    <div class="card-toolbar rotate-180">
+      {% get_svg_icon 'duotune/arrows/arr066.svg' 'svg-icon svg-icon-1' %}
+    </div>
+  </div>
+  <div id="kt_formset_collapsible" class="collapse">
+    <div class="card-body">
 
-    </tbody>
-    <!--end::Table body-->
-  </table>
+      {{ formset.formset.management_form }}
+      <!--begin::Table-->
+      <table class="table g-5 gs-0 mb-0 fw-bold text-gray-700" data-kt-element="items"
+             id="id_table_formset_{{ formset.prefix }}">
+        <!--begin::Table head-->
+        <thead>
+        <tr class="border-bottom fs-7 fw-bold text-gray-700 text-uppercase">
+          {% with form=formset.formset.0 %}
+            {% for field in form %}
+              {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
+              {% else %}
+                <th class="{% if forloop.last %}text-end{% else %}w-200px{% endif %} ">{{ field.label|title }}</th>
+              {% endif %}
+            {% endfor %}
+          {% endwith %}
+        </tr>
+        </thead>
+        <!--end::Table head-->
+        <!--begin::Table body-->
+        <tbody>
+        {% for form in formset.formset %}
+          <tr class="border-bottom border-bottom-dashed" data-kt-element="item">
+            {% for field in form %}
+              {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
+                <td class="d-none">{{ field }}</td>
+              {% else %}
+                <td>
+                  {% if forloop.last %}
+                    <button type="button" class="btn btn-sm btn-icon btn-active-color-primary"
+                            data-kt-element="remove-item">
+                      {% get_svg_icon 'duotune/general/gen027.svg' 'svg-icon svg-icon-3' %}
+                    </button>
+                  {% else %}
+                    {{ field }}
+                  {% endif %}
+                </td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+        {% endfor %}
+        </tbody>
+        <!--end::Table body-->
+      </table>
+
+    </div>
+    <div class="card-footer d-flex justify-content-end py-6 px-9">
+      <a
+        class="btn btn-sm btn-icon btn-color-primary btn-light btn-active-light-primary"
+        data-bs-toggle="tooltip"
+        data-bs-delay-hide="1000"
+        data-bs-placement="top"
+        title="{% trans 'Add new line' %}"
+      >
+        {% get_svg_icon "duotune/arrows/arr075.svg" 'svg-icon svg-icon-3 m-0' %}
+      </a>
+    </div>
+  </div>
 </div>
-<button class="btn btn-link py-1" data-kt-element="add-item">Add item</button>
+
 <script defer>
   window.addEventListener('DOMContentLoaded', function () {
     $("#id_table_formset_{{ formset.prefix }}").DataTable();
