@@ -10,7 +10,8 @@
     </div>
     {% for field in form %}
       <!--begin::Input group-->
-      <div class="row {% if forloop.last %}mb-0{% else %}mb-6{% endif %}">
+      <div
+        class="row {% if forloop.last %}mb-0{% else %}mb-6{% endif %} {% if field.name in hidden_fields %}d-none{% endif %}">
         <!--begin::Label-->
         <label
           class="col-lg-4 col-form-label fw-bold fs-6 {% if field.field.required %}required{% endif %}">
@@ -24,13 +25,15 @@
       </div>
       <!--end::Input group-->
     {% endfor %}
+
     {% for nested_form in nested_forms %}
       <div class="separator separator-dashed separator-content border-primary my-10">
         <span class="w-250px fw-bold">{{ nested_form.title|title }}</span>
       </div>
       {% for field in nested_form.form %}
         <!--begin::Input group-->
-        <div class="row {% if forloop.last %}mb-0{% else %}mb-6{% endif %}">
+        <div
+          class="row {% if forloop.last %}mb-0{% else %}mb-6{% endif %} {% if field.name in nested_form.hidden_fields %}d-none{% endif %}">
           <!--begin::Label-->
           <label
             class="col-lg-4 col-form-label fw-bold fs-6 {% if field.field.required %}required{% endif %}">
@@ -45,6 +48,77 @@
         <!--end::Input group-->
       {% endfor %}
     {% endfor %}
+
+    {% for formset in formsets %}
+      <div class="py-5">
+        <div class="rounded border p-5">
+          <div class="separator separator-dashed separator-content border-primary my-10">
+            <span class="w-250px fw-bold">{{ formset.title|title }}</span>
+          </div>
+
+          <div>
+            {{ formset.formset.management_form }}
+            <div class="row hover-scroll-overlay h-300px">
+              {% for form in formset.formset %}
+                <div class="col-md-11">
+                  <!--begin::Form group-->
+                  <div class="form-group row">
+                    {% for field in form %}
+                      <div class="col-md-auto">
+                        {% if field.field.widget.input_type == 'select' %}
+                          {% include "forms/floating-label-select-field.html" %}
+                        {% elif field.field.widget.input_type == 'hidden' %}
+                          {{ field }}
+                        {% elif field.field.widget.input_type == 'checkbox' %}
+                          {{ field }}
+                        {% elif field.name in formset.hidden_fields %}
+                          <div class="d-none">{{ field }}</div>
+                        {% else %}
+                          {% include "forms/floating-label-field.html" %}
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <!--end::Form group-->
+                </div>
+                <div class="col-md-auto">
+                  <a
+                    class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
+                    data-bs-toggle="tooltip"
+                    data-bs-delay-hide="1000"
+                    data-bs-placement="top"
+                    title="{% trans 'Delete this line' %}"
+                  >
+                    {% get_svg_icon "duotune/general/gen027.svg" 'svg-icon svg-icon-3 m-0' %}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+            <!--begin::Form group-->
+            <div class="form-group mt-5">
+              <a
+                class="btn btn-sm btn-icon btn-color-primary btn-light btn-active-light-primary"
+                data-bs-toggle="tooltip"
+                data-bs-delay-hide="1000"
+                data-bs-placement="top"
+                title="{% trans 'Add new line' %}"
+              >
+                {% get_svg_icon "duotune/arrows/arr075.svg" 'svg-icon svg-icon-3 m-0' %}
+              </a>
+            </div>
+            <!--end::Form group-->
+            <div class="{{ formset.prefix }}-empty-form-div">
+              <div class="{{ formset.prefix }}-__prefix__">
+                {% for field in formset.formset.empty_form %}
+
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
   </div>
   <!--end::Card body-->
   <!--begin::Actions-->

@@ -7,6 +7,7 @@ from django.db.models import (
     CharField,
     DateTimeField,
     ForeignKey,
+    Manager,
     Model,
     UUIDField,
 )
@@ -144,7 +145,7 @@ class BaseModel(MetaModel):
         return super().save(*args, **kwargs)
 
 
-class LingualModel(BaseModel):
+class LingualModel(Model):
     """
     Abstract Multi language Model
 
@@ -158,6 +159,7 @@ class LingualModel(BaseModel):
         default=settings.VIETNAMESE,
     )
     lingual_objects = LingualManager()
+    objects = Manager()
 
     class Meta:
         abstract = True

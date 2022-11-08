@@ -3,15 +3,6 @@ function reInitAllWidget() {
     if (KTImageInput) {
         KTImageInput.createInstances();
     }
-
-    let options = {selector: ".tinymce", height: "480"};
-
-    if (KTThemeMode.getMode() === "dark") {
-        options["skin"] = "oxide-dark";
-        options["content_css"] = "dark";
-    }
-
-    tinymce.init(options);
 }
 
 function redrawTable() {

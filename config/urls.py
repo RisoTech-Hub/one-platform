@@ -42,6 +42,7 @@ urlpatterns = (
         path("~setting/", include("one.contrib.sites.settings.urls")),
         path("~group/", include("one.extend.riso_auth.contexts.urls")),
         path("~allauth/", include("one.extend.riso_allauth.urls")),
+        path("~menu/", include("one.core.menu.urls")),
         # User management
         path("users/", include("one.users.urls", namespace="users")),
         path("accounts/", include("one.extend.riso_allauth.account.urls")),
