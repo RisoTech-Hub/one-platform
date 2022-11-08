@@ -11,6 +11,9 @@ def layout_context(request):
         return {}
     global_context = RequestContext(request)
 
+    # TODO: check theme direction
+    # settings.KT_THEME_DIRECTION = "ltr"
+
     # Init the theme API
     KTTheme.init()
 
