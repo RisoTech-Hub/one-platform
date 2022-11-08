@@ -49,6 +49,11 @@ class MenuCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateV
     def get_success_url(self):  # noqa
         return reverse("menu:menu-list")
 
+    def get_template_names(self):
+        if self.request.GET.get("modern", None):
+            return ["menu/menu-drag-drop.html"]
+        return super().get_template_names()  # noqa
+
 
 menu_create_view = MenuCreateView.as_view()
 
@@ -113,6 +118,11 @@ class MenuUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateV
 
     def get_success_url(self):  # noqa
         return reverse("menu:menu-list")
+
+    def get_template_names(self):
+        if self.request.GET.get("modern", None):
+            return ["menu/menu-drag-drop.html"]
+        return super().get_template_names()  # noqa
 
 
 menu_update_view = MenuUpdateView.as_view()
