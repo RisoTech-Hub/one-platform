@@ -3,19 +3,7 @@
 
 {% block javascript %}
   {{ block.super }}
-
-{#  <script>#}
-{#      // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/#}
-{#      Swal.fire({#}
-{#        text: "{{ message }}!",#}
-{#        icon: "{% if message.tags %}{{ message.tags }}{% else %}success{% endif %}",#}
-{#        buttonsStyling: false,#}
-{#        confirmButtonText: "{% translate 'Ok' %}!",#}
-{#        customClass: {#}
-{#          confirmButton: "btn btn-primary"#}
-{#        }#}
-{#      });#}
-{#    </script>#}
+  {{ form.media }}
   <script>
       toastr.options = {
         "closeButton": true,
