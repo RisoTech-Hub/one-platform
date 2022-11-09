@@ -11,48 +11,6 @@ from .filters import GroupFilter
 from .forms import ContextForm, GroupForm
 
 
-class GroupListView(LoginRequiredMixin, ListView):
-    template_name = "app/list.html"
-    model = Group
-
-    def get_context_data(self, **kwargs):
-        kwargs = super().get_context_data(**kwargs)
-        kwargs["page_title"] = _("Group List")
-        kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
-            {"name": _("Groups"), "url": reverse("auth:group-list")},
-        ]
-        kwargs["actions"] = [
-            {
-                "label": _("Create Group"),
-                "url": reverse("auth:group-create"),
-                "class": "primary",
-                "icon": "duotune/arrows/arr075.svg",
-            },
-            {
-                "type": "modal",
-                "label": _("Quick Create Group"),
-                "url": f"{reverse('auth:group-create')}?popup=1",
-                "class": "success",
-                "icon": "duotune/arrows/arr075.svg",
-                "attributes": "quick-add-button",
-            },
-        ]
-        kwargs["urls"] = {
-            # "view": "auth:group-view",
-            "update": "auth:group-update",
-        }
-        kwargs["api_urls"] = {
-            "list": "api:group-list",
-            "delete": "api:group-delete",
-        }
-        kwargs["filter"] = GroupFilter()
-        return kwargs
-
-
-group_list_view = GroupListView.as_view()
-
-
 class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateView):
     template_name = "app/create.html"
     model = Group
@@ -97,6 +55,48 @@ class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Create
 
 
 group_create_view = GroupCreateView.as_view()
+
+
+class GroupListView(LoginRequiredMixin, ListView):
+    template_name = "app/list.html"
+    model = Group
+
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        kwargs["page_title"] = _("Group List")
+        kwargs["page_breadcrumb"] = [
+            {"name": _("Home"), "url": reverse("home")},
+            {"name": _("Groups"), "url": reverse("auth:group-list")},
+        ]
+        kwargs["actions"] = [
+            {
+                "label": _("Create Group"),
+                "url": reverse("auth:group-create"),
+                "class": "primary",
+                "icon": "duotune/arrows/arr075.svg",
+            },
+            {
+                "type": "modal",
+                "label": _("Quick Create Group"),
+                "url": f"{reverse('auth:group-create')}?popup=1",
+                "class": "success",
+                "icon": "duotune/arrows/arr075.svg",
+                "attributes": "quick-add-button",
+            },
+        ]
+        kwargs["urls"] = {
+            # "view": "auth:group-view",
+            "update": "auth:group-update",
+        }
+        kwargs["api_urls"] = {
+            "list": "api:group-list",
+            "delete": "api:group-delete",
+        }
+        kwargs["filter"] = GroupFilter()
+        return kwargs
+
+
+group_list_view = GroupListView.as_view()
 
 
 class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateView):
