@@ -1,8 +1,8 @@
 """Declare Forms here."""
 from django.conf import settings
-from django.forms import ChoiceField, ModelForm, inlineformset_factory
+from django.forms import ChoiceField, inlineformset_factory
 
-from one.components.forms import CharField, FloatingLabelChoiceField
+from one.components.forms import CharField, FloatingLabelChoiceField, ModelForm
 from one.components.widgets import SelectTwo
 from one.core.menu.models import Menu, MenuItem
 

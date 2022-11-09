@@ -1,7 +1,6 @@
 from django.contrib.auth.models import Group
-from django.forms import ModelForm
 
-from one.components.forms import CharField, ImageField
+from one.components.forms import CharField, ImageField, ModelForm
 
 from .models import Context
 

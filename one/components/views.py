@@ -67,9 +67,9 @@ class FormMixin(BaseFormMixin):
             try:
                 return JsonResponse(
                     self.serializer_class(
-                        self.object,
+                        self.object,  # noqa
                     ).data,
-                    status=201,  # noqa
+                    status=201,
                 )
             except Exception as e:
                 return JsonResponse({"error": str(e)}, status=400)
@@ -79,6 +79,12 @@ class FormMixin(BaseFormMixin):
         if self.is_popup:
             return ["forms/quick-add-form.html"]
         return super().get_template_names()  # noqa
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.method in ("POST", "PUT"):  # noqa
+            kwargs["request"] = self.request  # noqa
+        return kwargs
 
 
 class ListView(BaseListView):
