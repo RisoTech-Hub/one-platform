@@ -7,6 +7,7 @@ from django.db.models import (
     CharField,
     DateTimeField,
     ForeignKey,
+    JSONField,
     Manager,
     Model,
     UUIDField,
@@ -92,17 +93,7 @@ class MetaModel(Model):
 
 
 class BaseModel(MetaModel):
-    """
-    Abstract Base model
-
-    id: UUIDField, random UUID
-    time_created: DateTimeField, Created time of object
-    time_modified: DateTimeField, Last modified time of object
-    creator: User, created by
-    last_modified_by: User, Last modified by
-    """
-
-    id = UUIDField(primary_key=True, default=uuid4, editable=False)
+    id = UUIDField(_("ID"), primary_key=True, default=uuid4, editable=False)
     time_created = DateTimeField(
         verbose_name=_("Created on"), auto_now_add=True, null=True
     )
@@ -127,17 +118,9 @@ class BaseModel(MetaModel):
     )
 
     class Meta:
-        """Meta override abstract"""
-
         abstract = True
 
     def save(self, *args, **kwargs):
-        """
-        Auto update time_modified
-        :param args:
-        :param kwargs:
-        :return:
-        """
         if not self.time_created:
             self.time_created = timezone.now()
 
@@ -146,12 +129,6 @@ class BaseModel(MetaModel):
 
 
 class LingualModel(Model):
-    """
-    Abstract Multi language Model
-
-    language: CharField, language of object
-    """
-
     language = CharField(
         max_length=2,
         verbose_name=_("Language"),
@@ -167,3 +144,66 @@ class LingualModel(Model):
     @property
     def language_verbose(self):
         return dict(settings.LANGUAGES)[self.language]
+
+
+class SEOModel(Model):
+    title = CharField(max_length=255, verbose_name=_("Title"), null=True, blank=True)
+
+    # description = CharField(
+    #     max_length=255, verbose_name=_("Description"), null=True, blank=True
+    # )
+    # keywords = CharField(
+    #     max_length=255, verbose_name=_("Keywords"), null=True, blank=True
+    # )
+    # og_title = CharField(
+    #     max_length=255, verbose_name=_("OG Title"), null=True, blank=True
+    # )
+    # og_description = CharField(
+    #     max_length=255, verbose_name=_("OG Description"), null=True, blank=True
+    # )
+    # og_image = ImageField(
+    #     upload_to="og_images", verbose_name=_("OG Image"), null=True, blank=True
+    # )
+    # og_url = CharField(
+    #     max_length=255, verbose_name=_("OG URL"), null=True, blank=True
+    # )
+    # og_type = CharField(
+    #     max_length=255, verbose_name=_("OG Type"), null=True, blank=True
+    # )
+    # og_locale = CharField(
+    #     max_length=255, verbose_name=_("OG Locale"), null=True, blank=True
+    # )
+    # og_site_name = CharField(
+    #     max_length=255, verbose_name=_("OG Site Name"), null=True, blank=True
+    # )
+    # twitter_title = CharField(
+    #     max_length=255, verbose_name=_("Twitter Title"), null=True, blank=True
+    # )
+    # twitter_description = CharField(
+    #     max_length=255, verbose_name=_("Twitter Description"), null=True, blank=True
+    # )
+    # twitter_image = ImageField(
+    #     upload_to="twitter_images",
+    #     verbose_name=_("Twitter Image"),
+    #     null=True,
+    #     blank=True,
+    # )
+    # twitter_card = CharField(
+    #     max_length=255, verbose_name=_("Twitter Card"), null=True, blank=True
+    # )
+    # twitter_site = CharField(
+    #     max_length=255, verbose_name=_("Twitter Site"), null=True, blank=True
+    # )
+    # twitter_creator = CharField(
+    #     max_length=255, verbose_name=_("Twitter Creator"), null=True, blank=True
+    # )
+
+    class Meta:
+        abstract = True
+
+
+class DynamicModel(Model):
+    dynamic = JSONField(default=dict)
+
+    class Meta:
+        abstract = True

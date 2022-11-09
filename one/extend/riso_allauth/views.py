@@ -14,6 +14,7 @@ from .models import AllauthTemplate
 class TemplateListView(LoginRequiredMixin, ListView):
     template_name = "app/list.html"
     model = AllauthTemplate
+
     table_exclude_fields = [
         "id",
         "creator",

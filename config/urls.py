@@ -20,6 +20,10 @@ third_urlpatterns = [
     path("tinymce/", include("tinymce.urls")),
 ]
 
+cms_urlpatterns = [
+    path("home/", include("one.cms.home.urls")),
+]
+
 urlpatterns = (
     third_urlpatterns
     + [
@@ -43,7 +47,9 @@ urlpatterns = (
         path("~group/", include("one.extend.riso_auth.contexts.urls")),
         path("~allauth/", include("one.extend.riso_allauth.urls")),
         path("~menu/", include("one.core.menu.urls")),
-        # User management
+        # CMS Management
+        path("~cms/", include(cms_urlpatterns)),
+        # User Management
         path("users/", include("one.users.urls", namespace="users")),
         path("accounts/", include("one.extend.riso_allauth.account.urls")),
         # Your stuff: custom urls includes go here

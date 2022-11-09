@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.forms import Select
 from django.forms.widgets import (
     ClearableFileInput,
@@ -5,6 +6,7 @@ from django.forms.widgets import (
     Input,
     SelectMultiple,
     TextInput,
+    Widget,
 )
 
 
@@ -55,15 +57,15 @@ class ImageInput(ClearableFileInput):
     template_name = "widgets/image_input.html"
 
 
-# class FloatingLabelInput(TextInput):
-#
-#     def __init__(self, attrs=None):
-#         super().__init__(attrs)
-#         self.attrs["class"] = "form-select form-select-transparent"
-
-
 class FloatingLabelSelectTwo(Select):
     def __init__(self, attrs=None, choices=()):
         super().__init__(attrs, choices)
         self.attrs["class"] = "form-select form-select-transparent"
         self.attrs["data-control"] = "select2"
+
+
+class JSONEditorWidget(Widget):
+    template_name = "widgets/json_editor.html"
+
+    class Media:
+        js = (getattr(settings, "JSON_EDITOR_JS", "json_editor.js"),)

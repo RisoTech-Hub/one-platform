@@ -3,6 +3,7 @@ import json
 from django.contrib import messages
 from django.db.models import ManyToManyField, ManyToManyRel, ManyToOneRel
 from django.http import HttpResponseRedirect, JsonResponse
+from django.views.generic import CreateView as BaseCreateView
 from django.views.generic import ListView as BaseListView
 from django.views.generic.edit import FormMixin as BaseFormMixin
 
@@ -39,6 +40,12 @@ class FormMixin(BaseFormMixin):
         self.is_popup = request.GET.get("popup", None)
         super().setup(request, *args, **kwargs)  # noqa
 
+    def add_error_messages(self, form):
+        errors = json.loads(form.errors.as_json())
+        if errors:
+            for error in errors:
+                messages.error(self.request, errors[error][0]["message"])  # noqa
+
     def get_form_class(self):
         form_type = self.request.GET.get("form_type", None)  # noqa
         if not form_type:
@@ -50,11 +57,16 @@ class FormMixin(BaseFormMixin):
         else:
             return super().get_form_class()
 
-    def add_error_messages(self, form):
-        errors = json.loads(form.errors.as_json())
-        if errors:
-            for error in errors:
-                messages.error(self.request, errors[error][0]["message"])  # noqa
+    def get_template_names(self):
+        if self.is_popup:
+            return ["forms/quick-add-form.html"]
+        return super().get_template_names()  # noqa
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.method in ("POST", "PUT"):  # noqa
+            kwargs["request"] = self.request  # noqa
+        return kwargs
 
     def form_invalid(self, form):
         if self.is_popup:
@@ -75,16 +87,17 @@ class FormMixin(BaseFormMixin):
                 return JsonResponse({"error": str(e)}, status=400)
         return HttpResponseRedirect(self.get_success_url())
 
-    def get_template_names(self):
-        if self.is_popup:
-            return ["forms/quick-add-form.html"]
-        return super().get_template_names()  # noqa
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        if self.request.method in ("POST", "PUT"):  # noqa
-            kwargs["request"] = self.request  # noqa
+class CreateView(BaseCreateView):
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        kwargs["hidden_fields"] = ["creator", "last_modified_by"]
         return kwargs
+
+    def get_initial(self):
+        initial = super().get_initial()
+        user = self.request.user  # noqa
+        return initial | {"creator": user} | {"last_modified_by": user}
 
 
 class ListView(BaseListView):
