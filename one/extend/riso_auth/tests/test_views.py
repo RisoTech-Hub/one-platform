@@ -24,7 +24,7 @@ class TestGroupListView:
 
         view.request = request
         view.object_list = Group.objects.all()
-        assert "breadcrumb" in view.get_context_data()
+        assert "page_breadcrumb" in view.get_context_data()
 
 
 class TestGroupCreateView:
@@ -71,4 +71,4 @@ class TestGroupCreateView:
 
         view.request = request
         response = view.post(request)
-        assert response.status_code == 302
+        assert response.status_code == 200
