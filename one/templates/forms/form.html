@@ -2,22 +2,25 @@
   <div class="row">{% endif %}
 
 {% for field in form %}
-  <!--begin::Input group-->
-  <div
-    class="{% if col == 2 %}col-md-6{% endif %} row {% if forloop.last %}mb-0{% else %}mb-6{% endif %} {% if field.name in hidden_fields %}d-none{% endif %}">
-    <!--begin::Label-->
-    <label
-      class="col-lg-4 col-form-label fw-bold fs-6 {% if field.field.required %}required{% endif %}">
-      {{ field.label|title }}</label>
-    <!--end::Label-->
-    <!--begin::Col-->
-    <div class="col-lg-8 fv-row">
-      {{ field }}
-      <div class="fv-plugins-message-container valid-feedback">{{ field.help_text }}</div>
+  {% if field.name == 'dynamic' %}
+  {% else %}
+    <!--begin::Input group-->
+    <div
+      class="{% if col == 2 %}col-md-6{% endif %} row {% if forloop.last %}mb-0{% else %}mb-6{% endif %} {% if field.name in hidden_fields %}d-none{% endif %}">
+      <!--begin::Label-->
+      <label
+        class="col-lg-4 col-form-label fw-bold fs-6 {% if field.field.required %}required{% endif %}">
+        {{ field.label|title }}</label>
+      <!--end::Label-->
+      <!--begin::Col-->
+      <div class="col-lg-8 fv-row">
+        {{ field }}
+        <div class="fv-plugins-message-container valid-feedback">{{ field.help_text }}</div>
+      </div>
+      <!--end::Col-->
     </div>
-    <!--end::Col-->
-  </div>
-  <!--end::Input group-->
+    <!--end::Input group-->
+  {% endif %}
 {% endfor %}
 
 {% if col == 2 %}
