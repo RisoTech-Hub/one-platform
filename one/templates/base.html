@@ -4,37 +4,40 @@
 {% block javascript %}
   {{ block.super }}
   {{ form.media }}
+{% endblock javascript %}
+
+{% block global_javascript %}
   <script>
-      toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": true,
-        "progressBar": true,
-        "positionClass": "toastr-top-center",
-        "preventDuplicates": false,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-      };
+    toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": true,
+      "progressBar": true,
+      "positionClass": "toastr-top-center",
+      "preventDuplicates": false,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    };
   </script>
 
   {% if messages %}
     {% for message in messages %}
       <script>
-      {% if message.tags == "success" %}
+        {% if message.tags == "success" %}
           toastr.success("{{ message }}", "{% trans 'Success' %}");
-      {% elif message.tags == "info" %}
+        {% elif message.tags == "info" %}
           toastr.info("{{ message }}", "{% trans 'Info' %}");
-      {% elif message.tags == "warning" %}
+        {% elif message.tags == "warning" %}
           toastr.warning("{{ message }}", "{% trans 'Warning' %}");
-      {% else %}
+        {% else %}
           toastr.error("{{ message }}", "{% trans 'Error' %}");
-      {% endif %}
+        {% endif %}
       </script>
     {% endfor %}
   {% endif %}
@@ -65,4 +68,4 @@
     }
   </script>
   <!--end::Django language-->
-{% endblock javascript %}
+{% endblock global_javascript %}

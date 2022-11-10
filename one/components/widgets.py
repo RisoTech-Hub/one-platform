@@ -67,5 +67,9 @@ class FloatingLabelSelectTwo(Select):
 class JSONEditorWidget(Widget):
     template_name = "widgets/json_editor.html"
 
+    def __init__(self, attrs=None):  # noqa
+        super().__init__(attrs)
+        self.attrs["class"] = "d-none"
+
     class Media:
         js = (getattr(settings, "JSON_EDITOR_JS", "json_editor.js"),)
