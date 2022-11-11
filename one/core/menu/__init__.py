@@ -1,1 +1,1 @@
-from .menu import Menu, MenuItem  # noqa
+from .menu import Menu  # noqa

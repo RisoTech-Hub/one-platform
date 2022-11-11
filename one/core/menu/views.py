@@ -45,7 +45,7 @@ class MenuCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateV
                 "prefix": "items",
             }
         ]
-        kwargs["menu_items"] = RegistedMenu.process(request=self.request)
+        kwargs["menu_items"] = RegistedMenu.process()
         return kwargs
 
     def get_success_url(self):  # noqa
