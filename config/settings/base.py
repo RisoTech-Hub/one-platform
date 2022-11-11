@@ -386,7 +386,6 @@ USER_ONLINE_TIMEOUT = 300
 # their last seen is removed from the cache
 USER_LAST_SEEN_TIMEOUT = 60 * 60 * 24 * 7
 
-
 # METRONIC SETTINGS
 # ------------------------------------------------------------------------------
 
@@ -513,7 +512,11 @@ KT_CUSTOM_LIBS = {
         "js": ["js/webpush/auto.js"],
     },
     "widget": {
-        "js": ["js/widgets/model_select_actions.js", "js/utilities.js"],
+        "js": [
+            "js/widgets/model_select_actions.js",
+            "js/widgets/table_multiple_formset.js",
+            "js/utilities.js",
+        ],
     },
     # Custom JS always placed at the end of this list
     "project": {
@@ -521,7 +524,6 @@ KT_CUSTOM_LIBS = {
         "js": ["js/project.js"],
     },
 }
-
 
 # Django TinyMCE
 # ------------------------------------------------------------------------------
@@ -539,7 +541,6 @@ TINYMCE_DEFAULT_CONFIG = {
     "a11ycheck ltr rtl | showcomments addcomment code",
     "custom_undo_redo_levels": 10,
 }
-
 
 # Your stuff...
 # ------------------------------------------------------------------------------
