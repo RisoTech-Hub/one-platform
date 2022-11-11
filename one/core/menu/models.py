@@ -7,7 +7,6 @@ from one.components.models import LingualModel
 
 
 class Menu(LingualModel):
-
     id = UUIDField(_("ID"), primary_key=True, default=uuid4, editable=False)
     name = CharField(_("Name of Menu"), blank=False, null=False, max_length=255)
     render = JSONField(_("Render Json"), blank=True, null=True, default=dict)
@@ -16,7 +15,7 @@ class Menu(LingualModel):
         verbose_name = _("Menu")
         verbose_name_plural = _("Menus")
 
-    def __int__(self):
+    def __str__(self):
         return f"{self.language_verbose} {self.name}"
 
 
@@ -46,5 +45,5 @@ class MenuItem(Model):
         verbose_name = _("Menu Item")
         verbose_name_plural = _("Menu Items")
 
-    def __int__(self):
+    def __str__(self):
         return f"{self.menu} {self.label}"
