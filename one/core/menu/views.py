@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, UpdateView
 
 from one.components.views import FormMixin, ListView, SuccessMessageMixin
+from one.core.menu.menu import Menu as RegistedMenu
 
 from .api.serializers import MenuSerializer
 from .filters import MenuFilter
@@ -44,6 +45,7 @@ class MenuCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateV
                 "prefix": "items",
             }
         ]
+        kwargs["menu_items"] = RegistedMenu.process(request=self.request)
         return kwargs
 
     def get_success_url(self):  # noqa
