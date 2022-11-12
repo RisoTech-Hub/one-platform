@@ -6,6 +6,7 @@ from django.views.generic import CreateView, UpdateView
 
 from one.components.views import FormMixin, ListView, SuccessMessageMixin
 
+from .actions import get_core_group_add, get_core_group_quick_add
 from .api.serializers import GroupSerializer
 from .filters import GroupFilter
 from .forms import ContextForm, GroupForm
@@ -68,22 +69,7 @@ class GroupListView(LoginRequiredMixin, ListView):
             {"name": _("Home"), "url": reverse("home")},
             {"name": _("Groups"), "url": reverse("auth:group-list")},
         ]
-        kwargs["actions"] = [
-            {
-                "label": _("Create Group"),
-                "url": reverse("auth:group-create"),
-                "class": "primary",
-                "icon": "duotune/arrows/arr075.svg",
-            },
-            {
-                "type": "modal",
-                "label": _("Quick Create Group"),
-                "url": f"{reverse('auth:group-create')}?popup=1",
-                "class": "success",
-                "icon": "duotune/arrows/arr075.svg",
-                "attributes": "quick-add-button",
-            },
-        ]
+        kwargs["actions"] = [get_core_group_add(), get_core_group_quick_add()]
         kwargs["urls"] = {
             # "view": "auth:group-view",
             "update": "auth:group-update",

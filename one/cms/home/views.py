@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import UpdateView
 
+from one.cms.home.actions import get_cms_home_add, get_cms_home_quick_add
 from one.cms.home.api.serializers import CMSHomeSerializer
 from one.cms.home.filters import CMSHomeFilter
 from one.cms.home.forms import CMSHomeForm
@@ -58,22 +59,7 @@ class CMSHomeListView(LoginRequiredMixin, ListView):
             {"name": _("Home"), "url": reverse("home")},
             {"name": _("CMS Homes"), "url": reverse("cmshome:cmshome-list")},
         ]
-        kwargs["actions"] = [
-            {
-                "label": _("Create CMS Home"),
-                "url": reverse("cmshome:cmshome-create"),
-                "class": "primary",
-                "icon": "duotune/arrows/arr075.svg",
-            },
-            {
-                "type": "modal",
-                "label": _("Quick Create CMS Home"),
-                "url": f"{reverse('cmshome:cmshome-create')}?popup=1",
-                "class": "success",
-                "icon": "duotune/arrows/arr075.svg",
-                "attributes": "quick-add-button",
-            },
-        ]
+        kwargs["actions"] = [get_cms_home_add(), get_cms_home_quick_add()]
         kwargs["urls"] = {
             "update": "cmshome:cmshome-update",
         }
