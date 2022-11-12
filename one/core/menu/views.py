@@ -6,6 +6,7 @@ from django.views.generic import CreateView, UpdateView
 from one.components.views import FormMixin, ListView, SuccessMessageMixin
 from one.core.menu.menu import Menu as RegistedMenu
 
+from .actions import get_core_menu_add
 from .api.serializers import MenuSerializer
 from .filters import MenuFilter
 from .forms import MenuForm, MenuItemFormSet
@@ -74,14 +75,7 @@ class MenuListView(LoginRequiredMixin, ListView):
             {"name": _("Menus"), "url": ""},
         ]
 
-        kwargs["actions"] = [
-            {
-                "label": _("Create Menu"),
-                "url": reverse("menu:menu-create"),
-                "class": "primary",
-                "icon": "duotune/arrows/arr075.svg",
-            }
-        ]
+        kwargs["actions"] = [get_core_menu_add()]
 
         kwargs["urls"] = {
             "update": "menu:menu-update",
