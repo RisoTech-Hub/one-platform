@@ -1,8 +1,8 @@
 from django.core.exceptions import FieldError
 from django.utils.translation import gettext_lazy as _
-from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.status import HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST
 from rest_framework.viewsets import ModelViewSet
 
 from one.utils.data_processing import getattr_in_chain
@@ -73,4 +73,13 @@ class BaseModelViewSet(ModelViewSet):
         except FieldError:
             pass
         instances.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=HTTP_204_NO_CONTENT)
+
+
+class DeniedDeleteModelViewSet(BaseModelViewSet):
+    @action(detail=False, methods=["delete"])
+    def delete(self, request, *args, **kwargs):
+        return Response(status=HTTP_400_BAD_REQUEST)
+
+    def destroy(self, request, *args, **kwargs):
+        return Response(status=HTTP_400_BAD_REQUEST)

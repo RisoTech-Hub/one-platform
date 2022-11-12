@@ -10,7 +10,7 @@ class MenuItemSerializer(ModelSerializer):
 
 
 class MenuSerializer(ModelSerializer):
-    items = MenuItemSerializer()
+    items = MenuItemSerializer(many=True)
 
     class Meta:
         model = Menu

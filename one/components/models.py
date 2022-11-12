@@ -203,6 +203,7 @@ class SEOModel(Model):
 
 
 class DynamicModel(Model):
+    schema_id = CharField(_("Schema ID"), max_length=255, null=True)
     dynamic = JSONField(default=dict)
 
     class Meta:

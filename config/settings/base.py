@@ -97,7 +97,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "one.components",
     "one.users",
+    # CORE
     "one.core.menu",
+    "one.core.dynamic",
     # CMS
     "one.cms.home",
     # Your stuff: custom apps go here
