@@ -1,0 +1,40 @@
+{% load schemas %}
+<!--begin::fieldschemas drawer-->
+<div id="kt_fieldschemas" class="bg-body"
+     data-kt-drawer="true"
+     data-kt-drawer-name="fieldschemas"
+     data-kt-drawer-activate="true"
+     data-kt-drawer-overlay="true"
+     data-kt-drawer-width="{default:'600px', 'lg': '900px'}"
+     data-kt-drawer-direction="end"
+     data-kt-drawer-toggle="#kt_fieldschemas_toggle"
+     data-kt-drawer-close="#kt_fieldschemas_close">
+  <div class="card w-100 rounded-0 border-0">
+    <!--begin::Header-->
+    <div class="card-header" id="kt_fieldschemas_header">
+      <h3 class="card-title fw-bold text-dark">{% trans 'Dynamic Fields' %}</h3>
+      <div class="card-toolbar">
+        <button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n5"
+                id="kt_fieldschemas_close">{% get_svg_icon 'duotune/arrows/arr061.svg' 'svg-icon svg-icon-1' %}</button>
+      </div>
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body position-relative" id="kt_fieldschemas_body">
+      <!--begin::Content-->
+      <div id="kt_fieldschemas_scroll" class="position-relative scroll-y me-n5 pe-5" data-kt-scroll="true"
+           data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_fieldschemas_body"
+           data-kt-scroll-dependencies="#kt_fieldschemas_header" data-kt-scroll-offset="5px">
+        {% field_schema_choices content_type=content_type %}
+
+        <div id="id_div_field_schema_form">
+
+        </div>
+
+      </div>
+      <!--end::Content-->
+    </div>
+    <!--end::Body-->
+  </div>
+</div>
+<!--end::fieldschemas drawer-->

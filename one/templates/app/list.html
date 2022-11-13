@@ -14,6 +14,11 @@
 {% endblock inline_css %}
 
 {% block content %}
+  <div class="d-none" id="id_div_content_type">
+    <select name="model" required="" id="id_model">
+      <option value="{{ content_type.id }}" selected>{{ content_type.app_label }} - {{ content_type.model }}</option>
+    </select>
+  </div>
   <!--begin::List Content -->
   <div class="d-flex flex-column flex-lg-row">
     <!--begin::Content-->
@@ -67,6 +72,7 @@
           </div>
           <!--end::Actions-->
         </div>
+
 
         <div class="card-body p-2">
           <!--begin::Table-->
@@ -181,6 +187,7 @@
 {% endblock javascript %}
 
 {% block inline_javascript %}
+
   <script>
     var table;
     $(document).ready(function () {

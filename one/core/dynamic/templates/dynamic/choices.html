@@ -1,0 +1,55 @@
+<div class="mb-10">
+  <label for="id_select_field_schema" class="form-label">{% trans 'Dynamic Field Schema' %}</label>
+  <select id="id_select_field_schema" class="form-select"
+          data-placeholder="{% trans 'Select schema to update' %}">
+    <option></option>
+    <option value="__NEW__">{% trans 'New Schema' %}</option>
+    {% for schema in schemas %}
+      <option value="{{ schema.id }}">{{ schema.name }}</option>
+    {% endfor %}
+  </select>
+</div>
+<script defer>
+  window.addEventListener('DOMContentLoaded', function () {
+    var field_schema_select = document.getElementById('id_select_field_schema');
+    var field_schema_form = document.getElementById('id_div_field_schema_form');
+    field_schema_select.addEventListener("change", function () {
+      let field_schema_id = field_schema_select.value;
+      if (field_schema_id !== '__NEW__') {
+        append_update_form(field_schema_id);
+      } else {
+        append_add_form();
+      }
+    });
+
+    function init_field_model() {
+      var dest_div = document.getElementById('id_div_field_schema_model');
+      var source_div = document.getElementById('id_div_content_type');
+      dest_div.innerHTML = source_div.innerHTML;
+    }
+
+    function append_add_form() {
+      let url = '{% url 'fieldschema:fieldschema-create' %}?popup=1';
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          field_schema_form.innerHTML = data;
+        })
+        .then(() => {
+          init_field_model();
+        })
+    }
+
+    function append_update_form(field_schema_id) {
+      let url = '{% url 'fieldschema:fieldschema-update' '999' %}?popup=1'.replace('999', field_schema_id);
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          field_schema_form.innerHTML = data;
+        })
+        .then(() => {
+          init_field_model();
+        })
+    }
+  });
+</script>

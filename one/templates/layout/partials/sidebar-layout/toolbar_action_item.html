@@ -10,6 +10,8 @@
   {% if action.type == "modal" %}
   data-action-url="{{ action.url }}"
   {{ action.attributes }}
+  {% elif action.type == "drawer" %}
+  id="{{ action.url }}"
   {% else %}
   href="{{ action.url }}"
   {% endif %}

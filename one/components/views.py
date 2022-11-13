@@ -1,6 +1,7 @@
 import json
 
 from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
 from django.db.models import ManyToManyField, ManyToManyRel, ManyToOneRel
 from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic import CreateView as BaseCreateView
@@ -107,6 +108,7 @@ class ListView(BaseListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["table_fields"] = self.get_table_fields()
+        context["content_type"] = ContentType.objects.get_for_model(self.model)
         return context
 
     def get_table_fields(self):
