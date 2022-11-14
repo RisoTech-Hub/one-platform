@@ -1,5 +1,4 @@
-<div class="mb-10">
-  <label for="id_select_field_schema" class="form-label">{% trans 'Dynamic Field Schema' %}</label>
+<div class="form-floating min-w-200px">
   <select id="id_select_field_schema" class="form-select"
           data-placeholder="{% trans 'Select schema to update' %}">
     <option></option>
@@ -8,6 +7,7 @@
       <option value="{{ schema.id }}">{{ schema.name }}</option>
     {% endfor %}
   </select>
+  <label for="floatingSelect">{% trans 'Select Schema' %}</label>
 </div>
 <script defer>
   window.addEventListener('DOMContentLoaded', function () {

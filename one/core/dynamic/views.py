@@ -40,7 +40,7 @@ class FieldSchemaCreateView(
             {
                 "formset": field_formset,
                 "title": _("Field Schema Items"),
-                "hidden_fields": [],
+                "hidden_fields": ["attrs"],
                 "prefix": "items",
             }
         ]
