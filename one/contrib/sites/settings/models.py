@@ -28,6 +28,18 @@ class Setting(Model):
         null=True,
         upload_to=setting_images_directory_path,
     )
+    dark_logo = ImageField(
+        _("Dark Logo of site"),
+        blank=True,
+        null=True,
+        upload_to=setting_images_directory_path,
+    )
+    small_logo = ImageField(
+        _("Small Logo of site"),
+        blank=True,
+        null=True,
+        upload_to=setting_images_directory_path,
+    )
     mobile_logo = ImageField(
         _("Mobile logo of site"),
         blank=True,

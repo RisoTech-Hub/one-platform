@@ -5,10 +5,12 @@
   <div class="d-flex flex-column flex-root" id="kt_app_root">
     <!--begin::Page-->
     <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
-      {% include 'layout/partials/sidebar-layout/_header.html' %}
+      <!--begin::Head Wrapper-->
+      {% include 'layout/partials/sidebar-layout/header.html' %}
+      <!--end::Head Wrapper-->
       <!--begin::Wrapper-->
       <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-                {% include 'layout/partials/sidebar-layout/_sidebar.html' %}
+                {% include 'layout/partials/sidebar-layout/sidebar.html' %}
         <!--begin::Main-->
         <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
           <!--begin::Content wrapper-->
@@ -26,7 +28,7 @@
             <!--end::Content-->
           </div>
           <!--end::Content wrapper-->
-          {% include 'layout/partials/sidebar-layout/_footer.html' %}
+          {% include 'layout/partials/sidebar-layout/footer.html' %}
         </div>
         <!--end:::Main-->
       </div>
