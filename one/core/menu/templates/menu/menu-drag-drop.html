@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {{ menu_items }}
 
+  {{ registed_menu_items }}
+
+<hr>
   {{ form }}
+<hr>
+  {% include 'forms/formset_as_div.html' %}
 
-  {{ formsets.0.formset }}
 {% endblock content %}
 
 {% block inline_javascript %}

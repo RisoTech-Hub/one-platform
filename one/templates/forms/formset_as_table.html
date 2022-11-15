@@ -30,15 +30,16 @@
         <!--begin::Table body-->
         <tbody>
         {% for form in formset.formset %}
-          <tr class="border-bottom border-bottom-dashed" data-kt-element="item">
+          <tr class="border-bottom border-bottom-dashed" data-kt-element="item" data-kt-index="{{ forloop.counter0 }}">
             {% for field in form %}
               {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
                 <td class="d-none">{{ field }}</td>
               {% else %}
                 <td>
                   {% if forloop.last %}
+                    <div class="d-none">{{ field }}</div>
                     <button type="button" class="btn btn-sm btn-icon btn-active-color-primary"
-                            data-kt-element="remove-item">
+                            data-kt-element="remove-item" data-line-index="{{ forloop.parentloop.counter0 }}">
                       {% get_svg_icon 'duotune/general/gen027.svg' 'svg-icon svg-icon-3' %}
                     </button>
                   {% else %}

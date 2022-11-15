@@ -38,15 +38,14 @@ class MenuCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateV
         else:
             menu_item_formset = MenuItemFormSet(prefix="items")
 
-        kwargs["formsets"] = [
-            {
-                "formset": menu_item_formset,
-                "title": _("Menu Items"),
-                "hidden_fields": ["unique_code"],
-                "prefix": "items",
-            }
-        ]
-        kwargs["menu_items"] = RegistedMenu.process()
+        kwargs["formset"] = {
+            "formset": menu_item_formset,
+            "title": _("Menu Items"),
+            "hidden_fields": ["unique_code"],
+            "prefix": "items",
+        }
+
+        kwargs["registed_menu_items"] = RegistedMenu.process()
 
         kwargs["col"] = 2
         return kwargs

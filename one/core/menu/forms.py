@@ -36,4 +36,4 @@ class MenuItemForm(ModelForm):
         fields = "__all__"
 
 
-MenuItemFormSet = inlineformset_factory(Menu, MenuItem, form=MenuItemForm, extra=10)
+MenuItemFormSet = inlineformset_factory(Menu, MenuItem, form=MenuItemForm, extra=1)
