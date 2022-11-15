@@ -36,6 +36,12 @@ $(document).ready(function () {
         const action_url = $(this).data('action-url')
         const target_input = $(this).data('target-input')
         console.log('action_url', action_url)
+
+        if (action_url.indexOf('popup') === -1) {
+            window.location.href = action_url;
+            return false;
+        }
+
         $.ajax({
             url: action_url, method: "get", data: null, success: function (response) {
                 // get form html return success
@@ -63,8 +69,7 @@ $(document).ready(function () {
         const formData = new FormData(this)
         const $modal = $(this).closest('.modal')
         $.ajax({
-            url, method, contentType: false, processData: false, data: formData,
-            success: function (response) {
+            url, method, contentType: false, processData: false, data: formData, success: function (response) {
                 // get form html return success
                 // console.log('-----', response)
                 $modal.modal('hide')
