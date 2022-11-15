@@ -13,6 +13,10 @@ class MenuForm(ModelForm):
         widget=SelectTwo(),
     )
     name = CharField()
+    position = ChoiceField(
+        choices=Menu.POSITION_CHOICES,
+        widget=SelectTwo(),
+    )
 
     class Meta:
         model = Menu

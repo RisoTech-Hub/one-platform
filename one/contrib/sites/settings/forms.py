@@ -8,6 +8,8 @@ from .models import Setting
 class SettingForm(ModelForm):
     favicon = ImageField(required=False)
     logo = ImageField(required=False)
+    dark_logo = ImageField(required=False)
+    small_logo = ImageField(required=False)
     mobile_logo = ImageField(required=False)
 
     class Meta:

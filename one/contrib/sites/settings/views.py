@@ -39,6 +39,7 @@ class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
                 "title": _("Site Settings"),
             }
         ]
+        kwargs["col"] = 2
         return kwargs
 
     def get_success_url(self):  # noqa

@@ -47,6 +47,8 @@ class MenuCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateV
             }
         ]
         kwargs["menu_items"] = RegistedMenu.process()
+
+        kwargs["col"] = 2
         return kwargs
 
     def get_success_url(self):  # noqa

@@ -7,9 +7,27 @@ from one.components.models import LingualModel
 
 
 class Menu(LingualModel):
+    POSITION_TOP = "top"
+    POSITION_BOTTOM = "bottom"
+    POSITION_SIDEBAR = "sidebar"
+
+    POSITION_CHOICES = (
+        (POSITION_TOP, _("Top")),
+        (POSITION_BOTTOM, _("Bottom")),
+        (POSITION_SIDEBAR, _("Sidebar")),
+    )
+
     id = UUIDField(_("ID"), primary_key=True, default=uuid4, editable=False)
     name = CharField(_("Name of Menu"), blank=False, null=False, max_length=255)
     render = JSONField(_("Render Json"), blank=True, null=True, default=dict)
+    position = CharField(
+        _("Position"),
+        blank=False,
+        null=False,
+        max_length=255,
+        choices=POSITION_CHOICES,
+        default=POSITION_SIDEBAR,
+    )
 
     class Meta:
         verbose_name = _("Menu")
