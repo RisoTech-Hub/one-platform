@@ -31,6 +31,7 @@ class ModelForm(BaseModelForm):
 
 
 class DynamicForm(ModelForm):
+    schema_id = CharField(required=False, widget=BootstrapInput())
     dynamic = JSONField(required=False, widget=JSONEditorWidget())
 
     # def clean_extra_fields(self, *args, **kwargs):

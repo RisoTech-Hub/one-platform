@@ -6,6 +6,7 @@ from django.db.models import ManyToManyField, ManyToManyRel, ManyToOneRel
 from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic import CreateView as BaseCreateView
 from django.views.generic import ListView as BaseListView
+from django.views.generic import UpdateView as BaseUpdateView
 from django.views.generic.edit import FormMixin as BaseFormMixin
 
 from .constants import FORM_TYPE_FULL, FORM_TYPE_QUICK
@@ -92,7 +93,7 @@ class FormMixin(BaseFormMixin):
 class CreateView(BaseCreateView):
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-        kwargs["hidden_fields"] = ["creator", "last_modified_by"]
+        kwargs["hidden_fields"] = ["creator", "last_modified_by", "schema_id"]
         return kwargs
 
     def get_initial(self):
@@ -147,3 +148,10 @@ class ListView(BaseListView):
             else:
                 pass
         return sorted(data, key=lambda item: item["order"])
+
+
+class UpdateView(BaseUpdateView):
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        kwargs["hidden_fields"] = ["creator", "last_modified_by", "schema_id"]
+        return kwargs

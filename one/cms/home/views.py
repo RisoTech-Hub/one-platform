@@ -1,14 +1,19 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import UpdateView
 
 from one.cms.home.actions import get_cms_home_add, get_cms_home_quick_add
 from one.cms.home.api.serializers import CMSHomeSerializer
 from one.cms.home.filters import CMSHomeFilter
 from one.cms.home.forms import CMSHomeForm
 from one.cms.home.models import CMSHome
-from one.components.views import CreateView, FormMixin, ListView, SuccessMessageMixin
+from one.components.views import (
+    CreateView,
+    FormMixin,
+    ListView,
+    SuccessMessageMixin,
+    UpdateView,
+)
 from one.core.dynamic.actions import get_core_dynamic_field_schema_drawer
 
 
