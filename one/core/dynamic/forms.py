@@ -1,7 +1,9 @@
 """Declare Forms here."""
-from django.forms import inlineformset_factory
+from django.forms import ChoiceField, inlineformset_factory
 
 from one.components.forms import CharField, ModelForm
+from one.components.widgets import BootstrapInput, FloatingLabelSelectTwo
+from one.core.dynamic.constants import FIELD_TYPE_CHOICE_INPUT
 from one.core.dynamic.models import Field, FieldSchema
 
 
@@ -14,6 +16,9 @@ class FieldSchemaForm(ModelForm):
 
 
 class FieldForm(ModelForm):
+    name = CharField(widget=BootstrapInput(attrs={"placeholder": "Name"}))
+    type = ChoiceField(choices=FIELD_TYPE_CHOICE_INPUT, widget=FloatingLabelSelectTwo())
+
     class Meta:
         model = Field
         fields = "__all__"

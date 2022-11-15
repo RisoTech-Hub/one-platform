@@ -36,9 +36,7 @@
     <!--end::Form-->
 
     <!--begin::Formsets-->
-    {% for formset in formsets %}
-      {% include "forms/formset.html" %}
-    {% endfor %}
+    {% include "forms/formset_as_div.html" %}
     <!--end::Formsets-->
   </div>
   <!--end::Card body-->

@@ -16,10 +16,6 @@ class CharField(BaseCharField):
     widget = BootstrapInput
 
 
-class FloatingLabelCharField(BaseCharField):
-    widget = BootstrapInput
-
-
 class ImageField(BaseImageField):
     widget = ImageInput
 

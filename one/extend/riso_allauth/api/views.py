@@ -7,3 +7,6 @@ class TemplateViewSet(BaseModelViewSet):
     queryset = AllauthTemplate.objects.all()
     serializer_class = TemplateSerializer
     actions = ["change"]
+
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)

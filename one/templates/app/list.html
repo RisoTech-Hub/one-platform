@@ -205,7 +205,7 @@
         //endpoint
         {
           add: "",
-          edit: "{% url urls.update '0000' %}?popup=1",
+          edit: "{% url urls.update '0000' %}{% if skip_popup %}{% else %}?popup=1{% endif %}",
           delete: "{% url api_urls.delete %}",
         },
         //language

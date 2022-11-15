@@ -1,0 +1,53 @@
+<div class="separator separator-dashed separator-content border-primary my-10">
+  <span class="w-250px fw-bold">{{ formset.title|title }}</span>
+</div>
+
+{{ formset.formset.management_form }}
+<div class="hover-scroll-overlay h-300px px-5">
+  {% for form in formset.formset %}
+    <div class="row">
+      <div class="{% if 'DELETE-BTN' in formset.hidden_fields %}col-md-12{% else %}col-md-11{% endif %} p-0">
+        <!--begin::Form group-->
+        <div class="form-group row pe-5">
+          {% for field in form %}
+            <div
+              class="col-md-auto {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}d-none{% endif %} ">
+              {% if field.field.widget.input_type == 'select' %}
+                {% include "fields/floating-label-select-field.html" %}
+              {% elif field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
+                {{ field }}
+              {% elif field.field.widget.input_type == 'checkbox' %}
+                {{ field }}
+              {% else %}
+                {% include "fields/floating-label-field.html" %}
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        <!--end::Form group-->
+      </div>
+      {% if 'DELETE-BTN' in formset.hidden_fields %}
+        {% else %}
+        <div class="col-md-1">
+          <a
+            class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
+            data-bs-toggle="tooltip"
+            data-bs-delay-hide="1000"
+            data-bs-placement="top"
+            title="{% trans 'Delete this line' %}"
+          >
+            {% get_svg_icon "duotune/general/gen027.svg" 'svg-icon svg-icon-3 m-0' %}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <div class="{{ formset.prefix }}-empty-form-div">
+    <div class="{{ formset.prefix }}-__prefix__">
+      {% for field in formset.formset.empty_form %}
+
+      {% endfor %}
+    </div>
+  </div>
+</div>

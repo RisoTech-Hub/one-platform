@@ -43,6 +43,7 @@ class TemplateListView(LoginRequiredMixin, ListView):
             "delete": "api:allauthtemplate-delete",
         }
         kwargs["filter"] = AllauthTemplateFilter()
+        kwargs["skip_popup"] = True
         return kwargs
 
 

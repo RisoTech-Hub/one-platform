@@ -11,4 +11,4 @@ class TemplateSerializer(ModelSerializer):
         fields = ["id", "subject", "language"]
 
     def get_language(self, obj):  # noqa
-        return obj.get_language_display()
+        return obj.language_verbose

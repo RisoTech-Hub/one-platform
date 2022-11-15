@@ -52,8 +52,11 @@ class AllauthTemplate(Model):
     )
 
     language = CharField(
+        _("Language"),
         max_length=2,
-        verbose_name=_("Language"),
+        blank=True,
+        null=True,
+        editable=False,
         choices=settings.LANGUAGES,
         default=settings.VIETNAMESE,
     )
@@ -88,3 +91,7 @@ class AllauthTemplate(Model):
     @property
     def language_verbose(self):
         return dict(settings.LANGUAGES)[self.language]
+
+    @property
+    def code_verbose(self):
+        return dict(ALLAUTH_TEMPLATES)[self.code]

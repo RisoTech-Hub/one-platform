@@ -36,14 +36,13 @@ class FieldSchemaCreateView(
         else:
             field_formset = FieldFormSet(prefix="items")
 
-        kwargs["formsets"] = [
-            {
-                "formset": field_formset,
-                "title": _("Field Schema Items"),
-                "hidden_fields": ["attrs"],
-                "prefix": "items",
-            }
-        ]
+        kwargs["formset"] = {
+            "formset": field_formset,
+            "title": _("Field Schema Items"),
+            "hidden_fields": ["attrs", "DELETE", "DELETE-BTN"],
+            "prefix": "items",
+        }
+
         return kwargs
 
     def get_success_url(self):  # noqa

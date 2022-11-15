@@ -15,19 +15,24 @@ FIELD_TYPE_TEXTFIELD = "TextField"
 FIELD_TYPE_TIMEFIELD = "TimeField"
 
 FIELD_TYPE_CHOICES = (
-    (FIELD_TYPE_BOOLEANFIELD, _("Boolean Field")),
+    # (FIELD_TYPE_BOOLEANFIELD, _("Boolean Field")),
     (FIELD_TYPE_CHARFIELD, _("Char Field")),
-    (FIELD_TYPE_DATEFIELD, _("Date Field")),
-    (FIELD_TYPE_DATETIMEFIELD, _("DateTime Field")),
-    (FIELD_TYPE_DECIMALFIELD, _("Decimal Field")),
-    (FIELD_TYPE_EMAILFIELD, _("Email Field")),
-    (FIELD_TYPE_FILEFIELD, _("File Field")),
-    (FIELD_TYPE_FLOATFIELD, _("Float Field")),
-    (FIELD_TYPE_IMAGEFIELD, _("Image Field")),
-    (FIELD_TYPE_INTEGERFIELD, _("Integer Field")),
-    (FIELD_TYPE_SLUGFIELD, _("Slug Field")),
-    (FIELD_TYPE_TEXTFIELD, _("Text Field")),
-    (FIELD_TYPE_TIMEFIELD, _("Time Field")),
+    # (FIELD_TYPE_DATEFIELD, _("Date Field")),
+    # (FIELD_TYPE_DATETIMEFIELD, _("DateTime Field")),
+    # (FIELD_TYPE_DECIMALFIELD, _("Decimal Field")),
+    # (FIELD_TYPE_EMAILFIELD, _("Email Field")),
+    # (FIELD_TYPE_FILEFIELD, _("File Field")),
+    # (FIELD_TYPE_FLOATFIELD, _("Float Field")),
+    # (FIELD_TYPE_IMAGEFIELD, _("Image Field")),
+    # (FIELD_TYPE_INTEGERFIELD, _("Integer Field")),
+    # (FIELD_TYPE_SLUGFIELD, _("Slug Field")),
+    # (FIELD_TYPE_TEXTFIELD, _("Text Field")),
+    # (FIELD_TYPE_TIMEFIELD, _("Time Field")),
+)
+
+FIELD_TYPE_CHOICE_INPUT = (
+    ("", _("Select Field Type")),
+    *FIELD_TYPE_CHOICES,
 )
 
 FIELD_TYPE_DEFAULT_ATTRS = {
