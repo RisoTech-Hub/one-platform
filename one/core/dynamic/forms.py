@@ -1,7 +1,8 @@
 """Declare Forms here."""
 from django.forms import ChoiceField, inlineformset_factory
 
-from one.components.forms import CharField, ModelForm
+from one.components.fields import CharField
+from one.components.forms import ModelForm
 from one.components.widgets import BootstrapInput, FloatingLabelSelectTwo
 from one.core.dynamic.constants import FIELD_TYPE_CHOICE_INPUT
 from one.core.dynamic.models import Field, FieldSchema

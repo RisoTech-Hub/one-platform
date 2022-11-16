@@ -1,0 +1,11 @@
+
+{% regroup form by field.group as field_groups %}
+{% for group in field_groups %}
+<div class="group">
+{{ group }}
+  {% for field in group.list %}
+    {{ field.name }}
+  {% endfor %}
+</div>
+  <hr>
+{% endfor %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include 'app/form_tabs.html' %}
+{% endblock content %}
+
+{% block inline_javascript %}
+  {{ block.super }}
+  {{ form.media }}
+{% endblock inline_javascript %}

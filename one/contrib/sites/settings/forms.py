@@ -1,6 +1,7 @@
 from django.contrib.sites.models import Site
 
-from one.components.forms import CharField, ImageField, ModelForm
+from one.components.fields import CharField, ImageField
+from one.components.forms import ModelForm
 
 from .models import Setting
 

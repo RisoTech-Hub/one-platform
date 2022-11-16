@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from one.components.models import BaseModel, DynamicModel, SEOModel
 
 
-class CMSHome(SEOModel, DynamicModel, BaseModel):
+class CMSHome(DynamicModel, SEOModel, BaseModel):
     name = CharField(max_length=255, verbose_name=_("Name"), null=True, blank=True)
 
     class Meta:

@@ -1,27 +1,10 @@
-from django.forms import CharField as BaseCharField
-from django.forms import ChoiceField as BaseChoiceField
-from django.forms import ImageField as BaseImageField
-from django.forms import JSONField
+from django.forms import JSONField, ModelChoiceField
 from django.forms import ModelForm as BaseModelForm
+from django.utils.translation import gettext_lazy as _
 
-from one.components.widgets import (
-    BootstrapInput,
-    FloatingLabelSelectTwo,
-    ImageInput,
-    JSONEditorWidget,
-)
-
-
-class CharField(BaseCharField):
-    widget = BootstrapInput
-
-
-class ImageField(BaseImageField):
-    widget = ImageInput
-
-
-class FloatingLabelChoiceField(BaseChoiceField):
-    widget = FloatingLabelSelectTwo
+from one.components.fields import CharField
+from one.components.widgets import BootstrapInput, JSONEditorWidget
+from one.users.models import User
 
 
 class ModelForm(BaseModelForm):
@@ -30,9 +13,23 @@ class ModelForm(BaseModelForm):
         super().__init__(*args, **kwargs)
 
 
+class BaseForm(ModelForm):
+    creator = ModelChoiceField(queryset=User.objects.all(), required=False)
+    creator.group = _("Hidden")
+    last_modified_by = ModelChoiceField(queryset=User.objects.all(), required=False)
+    last_modified_by.group = _("Hidden")
+
+
+class SEOForm(ModelForm):
+    title = CharField(required=True, widget=BootstrapInput())
+    title.group = _("SEO")
+
+
 class DynamicForm(ModelForm):
     schema_id = CharField(required=False, widget=BootstrapInput())
+    schema_id.group = _("Dynamic")
     dynamic = JSONField(required=False, widget=JSONEditorWidget())
+    dynamic.group = _("Dynamic")
 
     # def clean_extra_fields(self, *args, **kwargs):
     #     extra_fields = self.cleaned_data.get("extra_fields")
