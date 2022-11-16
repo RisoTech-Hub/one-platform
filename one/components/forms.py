@@ -1,7 +1,7 @@
 from django.forms import JSONField, ModelChoiceField
 from django.forms import ModelForm as BaseModelForm
-from django.utils.translation import gettext_lazy as _
 
+from one.components.constants import TAB_GROUP_DYNAMIC, TAB_GROUP_HIDDEN, TAB_GROUP_SEO
 from one.components.fields import CharField
 from one.components.widgets import BootstrapInput, JSONEditorWidget
 from one.users.models import User
@@ -15,21 +15,21 @@ class ModelForm(BaseModelForm):
 
 class BaseForm(ModelForm):
     creator = ModelChoiceField(queryset=User.objects.all(), required=False)
-    creator.group = _("Hidden")
+    creator.group = TAB_GROUP_HIDDEN
     last_modified_by = ModelChoiceField(queryset=User.objects.all(), required=False)
-    last_modified_by.group = _("Hidden")
+    last_modified_by.group = TAB_GROUP_HIDDEN
 
 
 class SEOForm(ModelForm):
     title = CharField(required=True, widget=BootstrapInput())
-    title.group = _("SEO")
+    title.group = TAB_GROUP_SEO
 
 
 class DynamicForm(ModelForm):
     schema_id = CharField(required=False, widget=BootstrapInput())
-    schema_id.group = _("Dynamic")
+    schema_id.group = TAB_GROUP_DYNAMIC
     dynamic = JSONField(required=False, widget=JSONEditorWidget())
-    dynamic.group = _("Dynamic")
+    dynamic.group = TAB_GROUP_DYNAMIC
 
     # def clean_extra_fields(self, *args, **kwargs):
     #     extra_fields = self.cleaned_data.get("extra_fields")

@@ -1,0 +1,26 @@
+
+{{ field }}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Initialize the editor with a JSON schema
+    var editor = new JSONEditor(document.getElementById('id_div_dynamic_wrapper'), {
+      schema: {
+        type: "object",
+        properties: {
+          title: {
+            type: "string"
+          },
+          slug: {
+            type: "string"
+          },
+          keyword: {
+            type: "string"
+          },
+          description: {
+            type: "string"
+          },
+        }
+      }
+    });
+  });
+</script>

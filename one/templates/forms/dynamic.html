@@ -3,32 +3,7 @@
     <div class="separator separator-dashed separator-content border-primary my-10">
       <span class="w-250px fw-bold">{% trans 'Extra Infomation' %}</span>
     </div>
-    {{ field }}
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Initialize the editor with a JSON schema
-        var editor = new JSONEditor(document.getElementById('id_div_dynamic_wrapper'), {
-          schema: {
-            type: "object",
-            properties: {
-              title: {
-                type: "string"
-              },
-              slug: {
-                type: "string"
-              },
-              keyword: {
-                type: "string"
-              },
-              description: {
-                type: "string"
-              },
-            }
-          }
-        });
-      });
-    </script>
-
+    {% include 'fields/dynamic-field.html' %}
   {% else %}
   {% endif %}
 {% endfor %}

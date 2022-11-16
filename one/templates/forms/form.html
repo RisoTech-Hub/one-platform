@@ -3,6 +3,7 @@
 
 {% for field in form %}
   {% if field.name == 'dynamic' %}
+    {% include 'fields/dynamic-field.html' %}
   {% else %}
     <!--begin::Input group-->
     <div

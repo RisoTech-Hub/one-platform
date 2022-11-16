@@ -8,17 +8,18 @@ from one.cms.home.filters import CMSHomeFilter
 from one.cms.home.forms import CMSHomeForm
 from one.cms.home.models import CMSHome
 from one.components.views import (
-    CreateView,
     FormMixin,
     ListView,
     SuccessMessageMixin,
+    TabCreateView,
     UpdateView,
 )
 from one.core.dynamic.actions import get_core_dynamic_field_schema_drawer
 
 
-class CMSHomeCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateView):
-    template_name = "app/create.html"
+class CMSHomeCreateView(
+    LoginRequiredMixin, SuccessMessageMixin, FormMixin, TabCreateView
+):
     model = CMSHome
 
     form_class = CMSHomeForm
@@ -34,7 +35,8 @@ class CMSHomeCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Crea
             {"name": _("CMS Homes"), "url": reverse("cmshome:cmshome-list")},
             {"name": _("CMS Home Create"), "url": ""},
         ]
-
+        if self.is_popup:
+            kwargs["hidden_fields"] = kwargs["hidden_fields"] + ["dynamic"]
         kwargs["form_title"] = _("CMS Home Form")
         return kwargs
 
@@ -46,7 +48,6 @@ cmshome_create_view = CMSHomeCreateView.as_view()
 
 
 class CMSHomeListView(LoginRequiredMixin, ListView):
-    template_name = "app/list.html"
     model = CMSHome
 
     table_exclude_fields = [
@@ -85,7 +86,6 @@ cmshome_list_view = CMSHomeListView.as_view()
 
 
 class CMSHomeUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateView):
-    template_name = "app/update.html"
     model = CMSHome
 
     form_class = CMSHomeForm

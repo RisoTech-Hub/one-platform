@@ -1,11 +1,17 @@
-
+<ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x mb-5 fs-6">
+  {% for tab in tabs %}
+    <li class="nav-item {% if tab in hidden_tabs %}d-none{% endif %} ">
+      <a class="nav-link {% if active_tab == tab %}active{% endif %}" data-bs-toggle="tab"
+         href="#{{ tab }}_panel">{% translate tab %}</a>
+    </li>
+  {% endfor %}
+</ul>
 {% regroup form by field.group as field_groups %}
-{% for group in field_groups %}
-<div class="group">
-{{ group }}
-  {% for field in group.list %}
-    {{ field.name }}
+<div class="tab-content">
+  {% for group in field_groups %}
+    <div class="tab-pane fade show {% if active_tab == group.grouper %}active{% endif %}" id="{{ group.grouper }}_panel"
+         role="tabpanel">
+      {% include 'forms/form.html' with form=group.list %}
+    </div>
   {% endfor %}
 </div>
-  <hr>
-{% endfor %}

@@ -9,7 +9,14 @@ from django.views.generic import ListView as BaseListView
 from django.views.generic import UpdateView as BaseUpdateView
 from django.views.generic.edit import FormMixin as BaseFormMixin
 
-from .constants import FORM_TYPE_FULL, FORM_TYPE_QUICK
+from .constants import (
+    FORM_TYPE_FULL,
+    FORM_TYPE_QUICK,
+    TAB_GROUP_DYNAMIC,
+    TAB_GROUP_GENERAL,
+    TAB_GROUP_HIDDEN,
+    TAB_GROUP_SEO,
+)
 
 
 class SuccessMessageMixin:
@@ -91,6 +98,8 @@ class FormMixin(BaseFormMixin):
 
 
 class CreateView(BaseCreateView):
+    template_name = "app/create.html"
+
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs["hidden_fields"] = ["creator", "last_modified_by", "schema_id"]
@@ -102,7 +111,30 @@ class CreateView(BaseCreateView):
         return initial | {"creator": user} | {"last_modified_by": user}
 
 
+class TabCreateView(CreateView):
+    template_name = "app/create_tabs.html"
+
+    tabs = []
+    hidden_tabs = []
+
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        active_tab = self.request.GET.get("active_tab", None)
+        kwargs["active_tab"] = active_tab if active_tab else TAB_GROUP_GENERAL
+        kwargs["hidden_tabs"] = (
+            self.hidden_tabs if self.hidden_tabs else [TAB_GROUP_HIDDEN]
+        )
+        kwargs["tabs"] = (
+            self.tabs
+            if self.tabs
+            else [TAB_GROUP_HIDDEN, TAB_GROUP_GENERAL, TAB_GROUP_DYNAMIC, TAB_GROUP_SEO]
+        )
+        return kwargs
+
+
 class ListView(BaseListView):
+    template_name = "app/list.html"
+
     table_exclude_fields = []
     table_exclude_rel = [ManyToManyRel, ManyToOneRel, ManyToManyField]
 
@@ -151,7 +183,30 @@ class ListView(BaseListView):
 
 
 class UpdateView(BaseUpdateView):
+    template_name = "app/update.html"
+
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs["hidden_fields"] = ["creator", "last_modified_by", "schema_id"]
+        return kwargs
+
+
+class TabUpdateView(UpdateView):
+    template_name = "app/update_tabs.html"
+
+    tabs = []
+    hidden_tabs = []
+
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        active_tab = self.request.GET.get("active_tab", None)
+        kwargs["active_tab"] = active_tab if active_tab else TAB_GROUP_GENERAL
+        kwargs["hidden_tabs"] = (
+            self.hidden_tabs if self.hidden_tabs else [TAB_GROUP_HIDDEN]
+        )
+        kwargs["tabs"] = (
+            self.tabs
+            if self.tabs
+            else [TAB_GROUP_HIDDEN, TAB_GROUP_GENERAL, TAB_GROUP_DYNAMIC, TAB_GROUP_SEO]
+        )
         return kwargs

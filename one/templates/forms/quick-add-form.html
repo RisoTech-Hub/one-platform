@@ -11,7 +11,7 @@
     </div>
     {% for field in form %}
       <!--begin::Input group-->
-      <div class="row {% if forloop.last %}mb-0{% else %}mb-6{% endif %}">
+      <div class="row {% if forloop.last %}mb-0{% else %}mb-6{% endif %} {% if field.name in hidden_fields %}d-none{% endif %}">
         <!--begin::Label-->
         <label
           class="col-lg-4 col-form-label fw-bold fs-6 {% if field.field.required %}required{% endif %}">
@@ -26,6 +26,7 @@
       </div>
       <!--end::Input group-->
     {% endfor %}
+
     {% for nested_form in nested_forms %}
       <div class="separator separator-dashed separator-content border-primary my-10">
         <span class="w-250px fw-bold">{{ nested_form.title|title }}</span>
