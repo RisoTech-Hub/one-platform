@@ -125,7 +125,7 @@ class TabCreateView(CreateView):
             self.hidden_tabs if self.hidden_tabs else [TAB_GROUP_HIDDEN]
         )
         kwargs["tabs"] = (
-            self.tabs
+            self.tabs + [TAB_GROUP_HIDDEN]
             if self.tabs
             else [TAB_GROUP_HIDDEN, TAB_GROUP_GENERAL, TAB_GROUP_DYNAMIC, TAB_GROUP_SEO]
         )

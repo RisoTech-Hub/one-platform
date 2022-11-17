@@ -22,7 +22,6 @@ class TemplateListView(LoginRequiredMixin, ListView):
         "time_modified",
         "last_modified_by",
         "content",
-        "code",
         "is_protected",
     ]
 

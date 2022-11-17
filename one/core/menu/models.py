@@ -3,10 +3,8 @@ from uuid import uuid4
 from django.db.models import CASCADE, CharField, ForeignKey, JSONField, Model, UUIDField
 from django.utils.translation import gettext_lazy as _
 
-from one.components.models import LingualModel
 
-
-class Menu(LingualModel):
+class Menu(Model):
     POSITION_TOP = "top"
     POSITION_BOTTOM = "bottom"
     POSITION_SIDEBAR = "sidebar"
@@ -34,7 +32,7 @@ class Menu(LingualModel):
         verbose_name_plural = _("Menus")
 
     def __str__(self):
-        return f"{self.language_verbose} {self.name}"
+        return self.name
 
 
 class MenuItem(Model):

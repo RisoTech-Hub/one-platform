@@ -7,18 +7,28 @@ import one.contrib.sites.settings.utils
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sites', '0005_setting'),
+        ("sites", "0005_setting"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='setting',
-            name='dark_logo',
-            field=models.ImageField(blank=True, null=True, upload_to=one.contrib.sites.settings.utils.setting_images_directory_path, verbose_name='Dark Logo of site'),
+            model_name="setting",
+            name="dark_logo",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to=one.contrib.sites.settings.utils.setting_images_directory_path,
+                verbose_name="Dark Logo of site",
+            ),
         ),
         migrations.AddField(
-            model_name='setting',
-            name='small_logo',
-            field=models.ImageField(blank=True, null=True, upload_to=one.contrib.sites.settings.utils.setting_images_directory_path, verbose_name='Small Logo of site'),
+            model_name="setting",
+            name="small_logo",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to=one.contrib.sites.settings.utils.setting_images_directory_path,
+                verbose_name="Small Logo of site",
+            ),
         ),
     ]

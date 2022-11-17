@@ -4,11 +4,11 @@ from one.extend.riso_allauth.models import AllauthTemplate
 
 
 class TemplateSerializer(ModelSerializer):
-    language = SerializerMethodField()
+    code = SerializerMethodField()
 
     class Meta:
         model = AllauthTemplate
-        fields = ["id", "subject", "language"]
+        fields = ["id", "subject", "code"]
 
-    def get_language(self, obj):  # noqa
-        return obj.language_verbose
+    def get_code(self, obj):  # noqa
+        return obj.code_verbose

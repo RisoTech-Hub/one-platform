@@ -50,7 +50,7 @@ class AccountAdapter(DefaultAccountAdapter):
         mail_type = subjects[template_prefix]
 
         subject, bodies = context_render_from_template(
-            mail_type, context, subject_context, requests_process.language_code()
+            mail_type, context, subject_context
         )
 
         msg = EmailMessage(subject.strip(), bodies, from_email, [email])

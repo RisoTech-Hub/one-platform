@@ -1,5 +1,4 @@
 """Declare Forms here."""
-from django.conf import settings
 from django.forms import ChoiceField, inlineformset_factory
 
 from one.components.fields import CharField, FloatingLabelChoiceField
@@ -9,10 +8,6 @@ from one.core.menu.models import Menu, MenuItem
 
 
 class MenuForm(ModelForm):
-    language = ChoiceField(
-        choices=settings.LANGUAGES,
-        widget=SelectTwo(),
-    )
     name = CharField()
     position = ChoiceField(
         choices=Menu.POSITION_CHOICES,
@@ -30,6 +25,7 @@ class MenuItemForm(ModelForm):
     label = CharField()
     link = CharField()
     icon = CharField()
+
     # unique_code
 
     class Meta:

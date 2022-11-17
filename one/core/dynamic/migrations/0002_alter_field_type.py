@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dynamic', '0001_initial'),
+        ("dynamic", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='field',
-            name='type',
-            field=models.CharField(choices=[('CharField', 'Char Field')], default='CharField', max_length=50, verbose_name='Type of Field'),
+            model_name="field",
+            name="type",
+            field=models.CharField(
+                choices=[("CharField", "Char Field")],
+                default="CharField",
+                max_length=50,
+                verbose_name="Type of Field",
+            ),
         ),
     ]

@@ -14,23 +14,21 @@ def add_email_template_forward(apps, schema_editor):
     }
     path = settings.APPS_DIR / "extend" / "riso_allauth" / "templates"
 
-    for language in settings.LANGUAGES:
-        for subject in subjects:
-            AllauthTemplate.objects.create(
-                code=subject,
-                language=language[0],
-                is_protected=True,
-                subject=open(
-                    "{0}/{1}_subject.txt".format(path, subjects[subject]),
-                    "r",
-                    encoding="utf-8",
-                ).read(),
-                content=open(
-                    "{0}/{1}_message.html".format(path, subjects[subject]),
-                    "r",
-                    encoding="utf-8",
-                ).read(),
-            )
+    for subject in subjects:
+        AllauthTemplate.objects.create(
+            code=subject,
+            is_protected=True,
+            subject=open(
+                "{0}/{1}_subject.txt".format(path, subjects[subject]),
+                "r",
+                encoding="utf-8",
+            ).read(),
+            content=open(
+                "{0}/{1}_message.html".format(path, subjects[subject]),
+                "r",
+                encoding="utf-8",
+            ).read(),
+        )
 
 
 def add_email_template_backward(apps, schema_editor):
