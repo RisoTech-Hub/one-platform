@@ -10,7 +10,7 @@ from django.db import migrations
 def _update_or_create_site_with_sequence(site_model, connection, domain, name):
     """Update or create the site with default ID and keep the DB sequence in sync."""
     site, created = site_model.objects.update_or_create(
-        id=settings.SITE_ID,
+        id=getattr(settings, "SITE_ID", 1),
         defaults={
             "domain": domain,
             "name": name,

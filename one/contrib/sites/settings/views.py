@@ -21,8 +21,6 @@ class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Site Update")
 
-        kwargs["form_title"] = _("Site Update")
-
         if self.request.method == "POST":
             setting_form = SettingForm(
                 self.request.POST, self.request.FILES, instance=self.object.setting
@@ -42,7 +40,7 @@ class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return reverse("settings:site")
 
     def get_object(self):  # noqa
-        return Site.objects.get_current()
+        return Site.objects.get_current(self.request)
 
     def post(self, request, *args, **kwargs):
         """
