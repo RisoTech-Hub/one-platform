@@ -187,7 +187,9 @@ $(document).ready(function () {
                 }
                 $modal.remove();
 
+                toastr.success("{% translate 'Successfully' %}");
                 redrawTable();
+
             }, error: function (request, status, error) {
                 console.log('error--------------', request, status, error)
                 $.each(request.responseJSON, function (key, value) {
@@ -219,6 +221,7 @@ $(document).ready(function () {
                 var drawerElement = document.querySelector('#' + $drawer.attr('id'));
                 var drawer = KTDrawer.getInstance(drawerElement);
                 drawer.hide();
+                toastr.success("{% translate 'Successfully' %}");
             }, error: function (request, status, error) {
                 console.log('error--------------', request, status, error)
                 $.each(request.responseJSON, function (key, value) {
