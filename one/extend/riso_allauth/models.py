@@ -1,6 +1,7 @@
 from uuid import uuid4
 
 from django.db.models import BooleanField, CharField, Model, TextField, UUIDField
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from .constants import ALLAUTH_TEMPLATES
@@ -32,6 +33,9 @@ class AllauthTemplate(Model):
     class Meta:
         verbose_name = _("Allauth Template")
         verbose_name_plural = _("Allauth Templates")
+
+    def get_absolute_url(self):
+        return reverse("allauth:template-update", kwargs={"pk": self.pk})
 
     @property
     def code_verbose(self):

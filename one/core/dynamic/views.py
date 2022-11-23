@@ -24,10 +24,6 @@ class FieldSchemaCreateView(
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Field Schema Create")
-        kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
-            {"name": _("Field Schema Create"), "url": ""},
-        ]
 
         kwargs["form_title"] = _("Field Schema Create")
         kwargs["hidden_fields"] = ["render"]
@@ -70,10 +66,6 @@ class FieldSchemaUpdateView(
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Field Schema Update")
-        kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
-            {"name": _("Field Schema Update"), "url": ""},
-        ]
 
         kwargs["form_title"] = _("Field Schema Update")
         return kwargs

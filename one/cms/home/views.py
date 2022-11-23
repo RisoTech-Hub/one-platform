@@ -31,9 +31,7 @@ class CMSHomeCreateView(
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("CMS Home Create")
         kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
             {"name": _("CMS Homes"), "url": reverse("cmshome:cmshome-list")},
-            {"name": _("CMS Home Create"), "url": ""},
         ]
         if self.is_popup:
             kwargs["hidden_fields"] = kwargs["hidden_fields"] + ["dynamic"]
@@ -63,7 +61,6 @@ class CMSHomeListView(LoginRequiredMixin, ListView):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("CMS Home List")
         kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
             {"name": _("CMS Homes"), "url": reverse("cmshome:cmshome-list")},
         ]
         kwargs["actions"] = [
@@ -96,9 +93,7 @@ class CMSHomeUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Upda
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("CMS Home Update")
         kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
             {"name": _("CMS Homes"), "url": reverse("cmshome:cmshome-list")},
-            {"name": _("CMS Home Update"), "url": ""},
         ]
 
         kwargs["form_title"] = _("CMS Home Update")

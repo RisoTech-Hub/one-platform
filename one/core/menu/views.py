@@ -26,9 +26,7 @@ class MenuCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateV
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Menu Create")
         kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
             {"name": _("Menus"), "url": reverse("menu:menu-list")},
-            {"name": _("Menu Create"), "url": ""},
         ]
 
         kwargs["form_title"] = _("Menu Form")
@@ -79,10 +77,6 @@ class MenuListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Menu List")
-        kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
-            {"name": _("Menus"), "url": ""},
-        ]
 
         kwargs["actions"] = [get_core_menu_add()]
 
@@ -113,9 +107,7 @@ class MenuUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateV
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Menu Update")
         kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
             {"name": _("Menus"), "url": reverse("menu:menu-list")},
-            {"name": _("Menu Update"), "url": ""},
         ]
 
         kwargs["form_title"] = _("Menu Update")

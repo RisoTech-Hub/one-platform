@@ -15,6 +15,8 @@ class TemplateListView(LoginRequiredMixin, ListView):
     template_name = "app/list.html"
     model = AllauthTemplate
 
+    filter_class = AllauthTemplateFilter
+
     table_exclude_fields = [
         "id",
         "creator",
@@ -28,10 +30,6 @@ class TemplateListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Template List")
-        kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
-            {"name": _("Templates"), "url": ""},
-        ]
 
         kwargs["urls"] = {
             "update": "allauth:template-update",
@@ -41,7 +39,6 @@ class TemplateListView(LoginRequiredMixin, ListView):
             "list": "api:allauthtemplate-list",
             "delete": "api:allauthtemplate-delete",
         }
-        kwargs["filter"] = AllauthTemplateFilter()
         kwargs["skip_popup"] = True
         return kwargs
 
@@ -63,16 +60,11 @@ class TemplateUpdateView(
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Template Update")
         kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
             {"name": _("Templates"), "url": reverse("allauth:template-list")},
-            {"name": _("Template Update"), "url": ""},
         ]
 
         kwargs["form_title"] = _("Template Update")
         return kwargs
-
-    def get_success_url(self):  # noqa
-        return reverse("allauth:template-list")
 
 
 template_update_view = TemplateUpdateView.as_view()

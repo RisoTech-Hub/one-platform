@@ -8,22 +8,55 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='AllauthTemplate',
+            name="AllauthTemplate",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('code', models.CharField(blank=True, choices=[('allauth_signup', 'allauth_signup'), ('allauth_reset', 'allauth_reset'), ('allauth_confirm', 'allauth_confirm'), ('allauth_unknown', 'allauth_unknown')], editable=False, max_length=50, null=True, verbose_name='Specific code for core app')),
-                ('subject', models.CharField(blank=True, max_length=1000, null=True, verbose_name='Subject of email')),
-                ('is_protected', models.BooleanField(default=False, verbose_name='Is protected')),
-                ('content', models.TextField(verbose_name='Html content')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "code",
+                    models.CharField(
+                        blank=True,
+                        choices=[
+                            ("allauth_signup", "allauth_signup"),
+                            ("allauth_reset", "allauth_reset"),
+                            ("allauth_confirm", "allauth_confirm"),
+                            ("allauth_unknown", "allauth_unknown"),
+                        ],
+                        editable=False,
+                        max_length=50,
+                        null=True,
+                        verbose_name="Specific code for core app",
+                    ),
+                ),
+                (
+                    "subject",
+                    models.CharField(
+                        blank=True,
+                        max_length=1000,
+                        null=True,
+                        verbose_name="Subject of email",
+                    ),
+                ),
+                (
+                    "is_protected",
+                    models.BooleanField(default=False, verbose_name="Is protected"),
+                ),
+                ("content", models.TextField(verbose_name="Html content")),
             ],
             options={
-                'verbose_name': 'Allauth Template',
-                'verbose_name_plural': 'Allauth Templates',
+                "verbose_name": "Allauth Template",
+                "verbose_name_plural": "Allauth Templates",
             },
         ),
     ]

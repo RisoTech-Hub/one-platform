@@ -20,10 +20,6 @@ class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Site Update")
-        kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
-            {"name": _("Site Update"), "url": ""},
-        ]
 
         kwargs["form_title"] = _("Site Update")
 

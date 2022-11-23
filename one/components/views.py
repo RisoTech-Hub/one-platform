@@ -135,6 +135,10 @@ class TabCreateView(CreateView):
 class ListView(BaseListView):
     template_name = "app/list.html"
 
+    # Filter
+    filter_class = None
+
+    # Datatable
     table_exclude_fields = []
     table_exclude_rel = [ManyToManyRel, ManyToOneRel, ManyToManyField]
 
@@ -142,6 +146,7 @@ class ListView(BaseListView):
         context = super().get_context_data(**kwargs)
         context["table_fields"] = self.get_table_fields()
         context["content_type"] = ContentType.objects.get_for_model(self.model)
+        context["filter"] = self.filter_class() if self.filter_class else None
         return context
 
     def get_table_fields(self):

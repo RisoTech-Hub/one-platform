@@ -15,7 +15,7 @@ from .constants import (
     TEMPLATE_SIGNUP,
     TEMPLATE_UNKNOWN,
 )
-from .utils import context_render_from_template
+from .selectors import context_render_from_template
 
 
 class AccountAdapter(DefaultAccountAdapter):

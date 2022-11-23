@@ -21,10 +21,6 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("User Overview")
-        kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
-            {"name": _("User Detail"), "url": ""},
-        ]
         update_view = UserUpdateView(request=self.request, object=self.object)  # noqa
         kwargs["user_update_form"] = update_view.get_context_data()["form"]
         return kwargs
@@ -44,10 +40,6 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateV
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Update User")
-        kwargs["page_breadcrumb"] = [
-            {"name": _("Home"), "url": reverse("home")},
-            {"name": _("User Update"), "url": ""},
-        ]
         kwargs["form_title"] = _("Update User")
         return kwargs
 
