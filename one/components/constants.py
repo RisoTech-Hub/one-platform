@@ -1,10 +1,10 @@
 from django.utils.translation import gettext_lazy as _
 
-FORM_TYPE_QUICK = "QUICK_FORM"
-FORM_TYPE_FULL = "FULL_FORM"
+FORM_TYPE_POPUP = "POPUP_FORM"
+FORM_TYPE_PAGE = "PAGE_FORM"
 FORM_TYPE_CHOICES = (
-    (FORM_TYPE_QUICK, _("Quick Form")),
-    (FORM_TYPE_FULL, _("Full Form")),
+    (FORM_TYPE_POPUP, _("Popup Form")),
+    (FORM_TYPE_PAGE, _("Page Form")),
 )
 
 TAB_GROUP_HIDDEN = _("TAB-HIDDEN")

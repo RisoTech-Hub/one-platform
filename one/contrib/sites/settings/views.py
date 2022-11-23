@@ -12,6 +12,7 @@ from one.contrib.sites.settings.forms import SettingForm, SiteForm
 
 class SiteUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateView):
     template_name = "app/update.html"
+    popup_template_name = "forms/drawer_form.html"
     model = Site
 
     form_class = SiteForm
@@ -23,9 +24,12 @@ class SiteUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateV
         kwargs["app_name"] = _("Site Settings")
         kwargs["page_title"] = _("Update site settings")
 
-        setting_form = SettingForm(instance=self.object.setting)
+        # setting_form_class = PopupSettingForm if self.is_popup else SettingForm
+        setting_form_class = SettingForm
+
+        setting_form = setting_form_class(instance=self.object.setting)
         if self.request.method == "POST":
-            setting_form = SettingForm(
+            setting_form = setting_form_class(
                 self.request.POST, self.request.FILES, instance=self.object.setting
             )
         kwargs["nested_forms"] = [
@@ -34,7 +38,6 @@ class SiteUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateV
                 "title": _("Site Settings"),
             }
         ]
-        kwargs["col"] = 2
         return kwargs
 
     def get_success_url(self):  # noqa

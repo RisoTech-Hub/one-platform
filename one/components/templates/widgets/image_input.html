@@ -1,7 +1,8 @@
 <!--begin::Image input-->
-<div class="image-input {% if widget.value.url %}image-input-outline{% else %}image-input-empty{% endif %}"
-     data-kt-image-input="true" style="background-image: url({% static 'media/svg/avatars/blank.svg' %})"
-     id="id_div_wrapper_{{ widget.name }}"
+<div
+  class="image-input {% if widget.value.url %}image-input-outline{% else %}image-input-empty{% endif %} image-input-placeholder"
+  data-kt-image-input="true" style="background-image: url({% static 'media/svg/avatars/blank.svg' %})"
+  id="id_div_wrapper_{{ widget.name }}"
 >
   <!--begin::Image preview wrapper-->
   <div class="image-input-wrapper w-125px h-125px"

@@ -9,9 +9,9 @@ from django.views.generic import ListView as BaseListView
 from django.views.generic import UpdateView as BaseUpdateView
 from django.views.generic.edit import FormMixin as BaseFormMixin
 
-from .constants import (
-    FORM_TYPE_FULL,
-    FORM_TYPE_QUICK,
+from one.components.constants import (
+    FORM_TYPE_PAGE,
+    FORM_TYPE_POPUP,
     TAB_GROUP_DYNAMIC,
     TAB_GROUP_GENERAL,
     TAB_GROUP_HIDDEN,
@@ -40,8 +40,9 @@ class SuccessMessageMixin:
 
 
 class FormMixin(BaseFormMixin):
+    popup_template_name = "forms/popup_form.html"
     is_popup = None
-    quick_form_class = None
+    popup_form_class = None
     form_class = None
     serializer_class = None
 
@@ -59,17 +60,19 @@ class FormMixin(BaseFormMixin):
         form_type = self.request.GET.get("form_type", None)  # noqa
         if not form_type:
             return super().get_form_class()
-        if form_type.upper() == FORM_TYPE_QUICK and self.quick_form_class:
-            return self.quick_form_class
-        elif form_type.upper() == FORM_TYPE_FULL and self.form_class:
+        if form_type.upper() == FORM_TYPE_POPUP and self.popup_form_class:
+            return self.popup_form_class
+        elif form_type.upper() == FORM_TYPE_PAGE and self.form_class:
             return self.form_class
         else:
             return super().get_form_class()
 
     def get_template_names(self):
-        if self.is_popup:
-            return ["forms/quick-add-form.html"]
-        return super().get_template_names()  # noqa
+        return (
+            [self.popup_template_name]
+            if self.is_popup
+            else super().get_template_names()  # noqa
+        )
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

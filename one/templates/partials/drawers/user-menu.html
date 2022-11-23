@@ -160,18 +160,6 @@
           <div class="mh-450px scroll-y me-n5 pe-5">
             <!--begin::Row-->
             <div class="row g-2">
-              {% if perms.sites.view_site %}
-                <!--begin::Col-->
-                <div class="col-4">
-                  <a href="{% url "settings:site" %}"
-                     class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded py-4 px-3 mb-3">
-                    {% get_svg_icon 'duotune/general/gen062.svg' 'svg-icon svg-icon-2x w-25px h-25px mb-2' %}
-                    <span class="fw-semibold">{% trans 'Sites' %}</span>
-                  </a>
-                </div>
-                <!--end::Col-->
-              {% endif %}
-
               {% if perms.auth.view_group %}
                 <!--begin::Col-->
                 <div class="col-4">

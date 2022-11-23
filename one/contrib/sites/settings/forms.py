@@ -17,6 +17,12 @@ class SettingForm(ModelForm):
         exclude = ["site"]
 
 
+class PopupSettingForm(ModelForm):
+    class Meta:
+        model = Setting
+        exclude = ["site"]
+
+
 class SiteForm(ModelForm):
     name = CharField()
     domain = CharField()
