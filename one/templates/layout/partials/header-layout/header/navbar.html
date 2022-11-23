@@ -71,12 +71,16 @@
     <!--begin::Site-->
     <div class="app-navbar-item ms-1 ms-lg-3">
       <!--begin::Menu wrapper-->
-      <div
-        class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px position-relative"
-        id="kt_site_settings_toggle">{% get_svg_icon 'duotune/general/gen019.svg' 'svg-icon svg-icon-1' %}
-      </div>
+      <span data-bs-toggle="tooltip" data-bs-placement="top" title="{% trans 'Site Setting' %}">
+        <a
+          class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px position-relative"
+          href="#" data-action-url="{% url 'settings:site' %}?popup=1" data-theme="drawer">
+          {% get_svg_icon 'duotune/general/gen019.svg' 'svg-icon svg-icon-1' %}
+        </a>
+      </span>
       <!--end::Menu wrapper-->
     </div>
+
     <!--end::Site-->
   {% endif %}
   <!--begin::Header menu toggle-->
