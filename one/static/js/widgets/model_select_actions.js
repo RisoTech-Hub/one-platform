@@ -47,11 +47,12 @@ function appendDrawerWithId(selector = 'body', idDrawer = 'drawer_fake', idForm 
   <!--begin::Messenger-->
   <div class="card rounded-0 w-100">
 			<!--begin::Card header-->
-			<div class="card-header pe-5">
+			<div class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 p-0 min-h-75px"
+                style="background-image:url('')">
 				<!--begin::Title-->
 				<div class="card-title">
 					<!--begin::User-->
-					Form
+					<span class="span_title"></span>
 					<!--end::User-->
 				</div>
 				<!--end::Title-->
@@ -76,7 +77,7 @@ function appendDrawerWithId(selector = 'body', idDrawer = 'drawer_fake', idForm 
 			<!--end::Card header-->
 			<!--begin::Card body-->
 			<div class="card-body pt-5 hover-scroll-overlay-y">
-				<form id="${idForm}">
+				<form id="${idForm}" enctype="multiple/data">
 				    ${content}
                 </form>
 			</div>
@@ -121,7 +122,7 @@ $(document).ready(function () {
                     var idDrawerForm = "kt_form_drawer_fake_" + timestamp
 
                     appendDrawerWithId('body', idDrawer, idDrawerForm, response, target_input, $('#id_btn_close_label').val(), $('#id_btn_save_changes_label').val(),)
-
+                    $('.span_title').text($('#' + idDrawerForm + ' [name="id_form_title"]').val());
                     KTDrawer.createInstances();
                     var drawerElement = document.querySelector('#' + idDrawer);
                     var drawer = KTDrawer.getInstance(drawerElement);
