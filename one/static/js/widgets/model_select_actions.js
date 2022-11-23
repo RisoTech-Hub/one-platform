@@ -47,12 +47,11 @@ function appendDrawerWithId(selector = 'body', idDrawer = 'drawer_fake', idForm 
   <!--begin::Messenger-->
   <div class="card rounded-0 w-100">
 			<!--begin::Card header-->
-			<div class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 p-0 min-h-75px"
-                style="background-image:url('')">
+			<div class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 min-h-75px">
 				<!--begin::Title-->
-				<div class="card-title">
+				<div class="card-title m-0 pe-5">
 					<!--begin::User-->
-					<span class="span_title"></span>
+					<span class="span_title text-gray-200"></span>
 					<!--end::User-->
 				</div>
 				<!--end::Title-->
@@ -122,8 +121,11 @@ $(document).ready(function () {
                     var idDrawerForm = "kt_form_drawer_fake_" + timestamp
 
                     appendDrawerWithId('body', idDrawer, idDrawerForm, response, target_input, $('#id_btn_close_label').val(), $('#id_btn_save_changes_label').val(),)
-                    $('.span_title').text($('#' + idDrawerForm + ' [name="id_form_title"]').val());
-                    $('#' + idDrawer + ' .card-header').css('background-image', $('#' + idDrawerForm + ' [name="id_form_bg"]').val());
+                    $('.span_title').text($('#' + idDrawerForm + ' #id_form_title').val());
+                    let selectorHeader = '#' + idDrawer + ' .card-header'
+                    console.log('selectorHeader', selectorHeader)
+                    $(selectorHeader).css('background-image', 'url(' + $('#' + 'trans_label_div' + ' #id_drawer_header_bg').val() + ')');
+
                     KTDrawer.createInstances();
                     var drawerElement = document.querySelector('#' + idDrawer);
                     var drawer = KTDrawer.getInstance(drawerElement);
@@ -189,12 +191,15 @@ $(document).ready(function () {
         const method = $(this).attr('method')
         const url = $(this).attr('action')
         const formData = new FormData(this)
-        const $modal = $(this).closest('.modal')
+        // const $modal = $(this).closest('.modal')
+        const $drawer = $(this).closest('.drawer')
         $.ajax({
             url, method, contentType: false, processData: false, data: formData, success: function (response) {
                 // get form html return success
                 // console.log('-----', response)
-
+                var drawerElement = document.querySelector('#' + $drawer.attr('id'));
+                var drawer = KTDrawer.getInstance(drawerElement);
+                drawer.hide();
             }, error: function (request, status, error) {
                 console.log('error--------------', request, status, error)
                 $.each(request.responseJSON, function (key, value) {
