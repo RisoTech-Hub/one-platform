@@ -35,6 +35,7 @@ function appendDrawerWithId(selector = 'body', idDrawer = 'drawer_fake', idForm 
     $(selector).append(`
             <!--begin::Chat drawer-->
 <div id="${idDrawer}" class="bg-body"
+    quick-action
      data-kt-drawer="true"
      data-kt-drawer-name="user-menu"
      data-kt-drawer-activate="true"
@@ -147,7 +148,7 @@ $(document).ready(function () {
         });
     })
 
-    $(document).on('submit', '.modal[modal-quick-action] form', function (e) {
+    $(document).on('submit', '.modal[modal-quick-action] form, .drawer[quick-action] form', function (e) {
         e.preventDefault();
         const method = $(this).attr('method')
         const url = $(this).attr('action')
