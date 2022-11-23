@@ -2,7 +2,7 @@ from django.contrib.sites.models import Site
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from .models import Setting
+from one.contrib.sites.settings.models import Setting
 
 
 @receiver(post_save, sender=Site)

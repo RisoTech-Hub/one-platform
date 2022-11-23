@@ -2,7 +2,7 @@ from django.contrib.sites.models import Site
 from django.db.models import CASCADE, ImageField, Model, OneToOneField
 from django.utils.translation import gettext_lazy as _
 
-from .utils import setting_images_directory_path
+from one.contrib.sites.settings.utils import setting_images_directory_path
 
 
 class Setting(Model):
@@ -47,11 +47,11 @@ class Setting(Model):
         upload_to=setting_images_directory_path,
     )
 
-    def __str__(self):
-        return self.site.name
-
     class Meta:
         app_label = "sites"
+
+    def __str__(self):
+        return self.site.name
 
     @property
     def logo_url(self):

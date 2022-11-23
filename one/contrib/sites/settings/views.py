@@ -6,8 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import UpdateView
 
 from one.components.views import SuccessMessageMixin
-
-from .forms import SettingForm, SiteForm
+from one.contrib.sites.settings.forms import SettingForm, SiteForm
 
 
 class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
@@ -56,7 +55,7 @@ class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             if setting_form.is_valid():
                 self.form_valid(setting_form, is_nested=True)
                 return self.form_valid(form)
-            messages.error(request, _("Step Images has error"))
+            messages.error(request, _("Site settings has error"))
         return self.form_invalid(form)
 
 

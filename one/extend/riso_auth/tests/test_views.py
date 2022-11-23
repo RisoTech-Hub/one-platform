@@ -24,7 +24,7 @@ class TestGroupListView:
 
         view.request = request
         view.object_list = Group.objects.all()
-        assert "page_breadcrumb" in view.get_context_data()
+        assert "page_title" in view.get_context_data()
 
 
 class TestGroupCreateView:

@@ -7,6 +7,7 @@ from .base import env
 
 # GENERAL
 # ------------------------------------------------------------------------------
+SITE_ID = 1
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
