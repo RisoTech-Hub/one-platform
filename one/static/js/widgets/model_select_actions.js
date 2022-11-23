@@ -123,6 +123,7 @@ $(document).ready(function () {
 
                     appendDrawerWithId('body', idDrawer, idDrawerForm, response, target_input, $('#id_btn_close_label').val(), $('#id_btn_save_changes_label').val(),)
                     $('.span_title').text($('#' + idDrawerForm + ' [name="id_form_title"]').val());
+                    $('#' + idDrawer + ' .card-header').css('background-image', $('#' + idDrawerForm + ' [name="id_form_bg"]').val());
                     KTDrawer.createInstances();
                     var drawerElement = document.querySelector('#' + idDrawer);
                     var drawer = KTDrawer.getInstance(drawerElement);
@@ -149,7 +150,7 @@ $(document).ready(function () {
         });
     })
 
-    $(document).on('submit', '.modal[modal-quick-action] form, .drawer[quick-action] form', function (e) {
+    $(document).on('submit', '.modal[modal-quick-action] form', function (e) {
         e.preventDefault();
         const method = $(this).attr('method')
         const url = $(this).attr('action')
@@ -166,6 +167,34 @@ $(document).ready(function () {
                 $modal.remove();
 
                 redrawTable();
+            }, error: function (request, status, error) {
+                console.log('error--------------', request, status, error)
+                $.each(request.responseJSON, function (key, value) {
+                    $.each(value, function (index, _value) {
+                        if (key === "__all__") {
+                            toastr.error(_value, "{% translate 'Error' %}");
+                        } else {
+                            toastr.error(_value, key.toUpperCase());
+                        }
+                    });
+                });
+
+                //toastr.error(`${JSON.stringify(request)}\n${status}\n${error}`)
+            }
+        });
+    })
+
+    $(document).on('submit', '.drawer[quick-action] form', function (e) {
+        e.preventDefault();
+        const method = $(this).attr('method')
+        const url = $(this).attr('action')
+        const formData = new FormData(this)
+        const $modal = $(this).closest('.modal')
+        $.ajax({
+            url, method, contentType: false, processData: false, data: formData, success: function (response) {
+                // get form html return success
+                // console.log('-----', response)
+
             }, error: function (request, status, error) {
                 console.log('error--------------', request, status, error)
                 $.each(request.responseJSON, function (key, value) {
