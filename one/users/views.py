@@ -20,9 +20,8 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-        kwargs["page_title"] = _("User Overview")
-        update_view = UserUpdateView(request=self.request, object=self.object)  # noqa
-        kwargs["user_update_form"] = update_view.get_context_data()["form"]
+        kwargs["app_name"] = _("User Profile")
+        kwargs["page_title"] = _("My Profile")
         return kwargs
 
 
