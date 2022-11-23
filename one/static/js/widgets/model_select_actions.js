@@ -1,11 +1,17 @@
-function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm = '', content = '', target_input = '', close_label = '', save_changes_label = '') {
+function appendModalWithId(
+    selector = 'body',
+    idModal = 'modal_fake',
+    idForm = '',
+    content = '',
+    target_input = '',
+    close_label = '',
+    save_changes_label = '') {
     $(selector).append(`
             <div class="modal fade" tabindex="-1" id="${idModal}" modal-quick-action="" target-input="${target_input}">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="id_modal_title"></h5>
-
                             <!--begin::Close-->
                              <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +19,6 @@ function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm = '
                                     <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
                                 </svg>
                              </div>
-
                             <!--end::Close-->
                         </div>
 
@@ -31,84 +36,75 @@ function appendModalWithId(selector = 'body', idModal = 'modal_fake', idForm = '
         `)
 }
 
-function appendDrawerWithId(selector = 'body', idDrawer = 'drawer_fake', idForm = '', content = '', target_input = '', close_label = '', save_changes_label = 'Save') {
+function appendDrawerWithId(
+    selector = 'body',
+    idDrawer = 'drawer_fake',
+    idForm = '',
+    content = '',
+    target_input = '',
+    close_label = '',
+    save_changes_label = 'Save') {
     $(selector).append(`
             <!--begin::Chat drawer-->
-<div id="${idDrawer}" class="bg-body"
-    quick-action
-     data-kt-drawer="true"
-     data-kt-drawer-name="user-menu"
-     data-kt-drawer-activate="true"
-     data-kt-drawer-overlay="true"
-     data-kt-drawer-width="{default:'300px', 'md': '500px'}"
-     data-kt-drawer-direction="end"
-     data-kt-drawer-toggle="#kt_drawer_user_menu_toggle"
-     data-kt-drawer-close="#kt_drawer_user_menu_close">
-  <!--begin::Messenger-->
-  <div class="card rounded-0 w-100">
-			<!--begin::Card header-->
-			<div class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 p-0 min-h-75px">
-				<!--begin::Title-->
-				<div class="card-title m-0">
-					<!--begin::User-->
-<!--					<span class="span_title text-gray-200"></span>-->
-					<!--end::User-->
-					<div class="menu-item">
-          <div class="menu-content d-flex align-items-center px-3">
-            <!--begin::Avatar-->
-
-            <!--end::Avatar-->
-            <!--begin::Username-->
-            <div class="d-flex flex-column">
-              <div class="fw-bold d-flex align-items-center fs-5">
-                <h3 class="card-title fs-3 fw-bold text-white flex-column m-0 span_title">
-                  Root
-                </h3>
-
-              </div>
-
+            <div id="${idDrawer}" class="bg-body"
+                 quick-action
+                 data-kt-drawer="true"
+                 data-kt-drawer-name="${idDrawer}"
+                 data-kt-drawer-activate="true"
+                 data-kt-drawer-overlay="true"
+                 data-kt-drawer-width="{default:'300px', 'md': '500px'}"
+                 data-kt-drawer-direction="end"
+                 data-kt-drawer-toggle="#${idDrawer}_toggle"
+                 data-kt-drawer-close="#${idDrawer}_close">
+                <!--begin::Messenger-->
+                <div class="card w-100 rounded-0 border-0" id="${idDrawer}" >
+                    <!--begin::Card header-->
+                    <div class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 py-4"
+                         id="${idDrawer}_header">
+                        <!--begin::Title-->
+                        <div class="card-title m-0">
+                            <div class="menu-item">
+                              <div class="menu-content d-flex align-items-center px-3">
+                                <!--begin::Title-->
+                                <h3 class="card-title fs-3 fw-bold text-white flex-column m-0 span_title">
+                                </h3>
+                                <!--end::Title-->
+                              </div>
+                            </div>
+                        </div>
+                        <!--end::Title-->
+                        <!--begin::Card toolbar-->
+                        <div class="card-toolbar">
+                            <!--begin::Close-->
+                            <div class="btn btn-sm btn-icon bg-white bg-opacity-25 btn-color-white p-0 w-20px h-20px rounded-1"
+                                 id="${idDrawer}_close"
+                                 data-kt-drawer-dismiss="true">
+                                <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                    </svg>
+                                </span>
+                            </div>
+                            <!--end::Close-->
+                        </div>
+                        <!--end::Card toolbar-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body pt-5" id="${idDrawer}_body">
+                        ${content}
+                    </div>
+                    <!--end::Card body-->
+                    <!--begin::Card footer-->
+                    <div class="card-footer text-center" id="${idDrawer}_footer">
+                        <button type="submit" form="${idForm}" class="btn btn-primary">${save_changes_label}</button>
+                    </div>
+                    <!--end::Card footer-->
+                </div>
+                <!--end::Messenger-->
             </div>
-            <!--end::Username-->
-          </div>
-        </div>
-				</div>
-				<!--end::Title-->
-				<!--begin::Card toolbar-->
-				<div class="card-toolbar">
-					<!--begin::Close-->
-					<div class="btn btn-sm btn-icon btn-active-light-primary" id="kt_drawer_example_dismiss_close" data-kt-drawer-dismiss="true">
-						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-						<span class="svg-icon svg-icon-2">
-															<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-																<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-															</svg>
-														</span>
-						<!--end::Svg Icon-->
-					</div>
-					<!--end::Close-->
-				</div>
-				<!--end::Card toolbar-->
-			</div>
-
-			<!--end::Card header-->
-			<!--begin::Card body-->
-			<div class="card-body pt-5 hover-scroll-overlay-y">
-				    ${content}
-			</div>
-			<!--end::Card body-->
-			<!--begin::Card footer-->
-			<div class="card-footer text-center">
-				<!--begin::Dismiss button-->
-			    <button class="btn btn-light-danger me-2" data-kt-drawer-dismiss="true">Close</button>
-			    <!--end::Dismiss button-->
-			    <button type="submit" form="${idForm}" class="btn btn-primary">${save_changes_label}</button>
-			</div>
-			<!--end::Card footer-->
-		</div>
-  <!--end::Messenger-->
-</div>
-<!--end::Chat drawer-->
+            <!--end::Chat drawer-->
         `)
 }
 
@@ -116,7 +112,6 @@ $(document).ready(function () {
     $(document).on('click', '[quick-create-button], [quick-update-button], [quick-add-button]', function () {
         const action_url = $(this).data('action-url')
         const target_input = $(this).data('target-input')
-        console.log('action_url', action_url)
         const self = this;
 
         if (action_url.indexOf('popup') === -1) {
@@ -125,12 +120,13 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: action_url, method: "get", data: null, success: function (response) {
+            url: action_url,
+            method: "get",
+            data: null,
+            success: function (response) {
                 // get form html return success
-                // console.log('-----', response)
                 const timestamp = Date.now();
                 const theme = $(self).data('theme');
-                console.log('theme', theme)
                 if (theme === 'drawer') {
 
                     var idDrawer = "kt_drawer_fake_" + timestamp
@@ -141,7 +137,6 @@ $(document).ready(function () {
 
                     $('.span_title').text($('#' + idDrawerForm + ' #id_form_title').val());
                     let selectorHeader = '#' + idDrawer + ' .card-header'
-                    console.log('selectorHeader', selectorHeader)
                     $(selectorHeader).css('background-image', 'url(' + $('#' + 'trans_label_div' + ' #id_drawer_header_bg').val() + ')');
 
 
@@ -151,7 +146,6 @@ $(document).ready(function () {
                     drawer.show();
 
                     drawer.on("kt.drawer.after.hidden", function () {
-                        console.log("kt.drawer.after.hidden event is fired");
                         $('#' + idDrawer).remove();
                     });
                 } else {
@@ -165,7 +159,8 @@ $(document).ready(function () {
                     reInitAllWidget();
                 }
 
-            }, error: function (request, status, error) {
+            },
+            error: function (request, status, error) {
                 toastr.error(`${JSON.stringify(request)}\n${status}\n${error}`)
             }
         });
@@ -178,9 +173,13 @@ $(document).ready(function () {
         const formData = new FormData(this)
         const $modal = $(this).closest('.modal')
         $.ajax({
-            url, method, contentType: false, processData: false, data: formData, success: function (response) {
+            url,
+            method,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
                 // get form html return success
-                // console.log('-----', response)
                 $modal.modal('hide')
                 if ($modal.attr('target-input') && $('#' + $modal.attr('target-input'))) {
                     $('#' + $modal.attr('target-input')).prepend(`<option value="${response['id']}" selected>${response['name']}</option>`)
@@ -190,8 +189,8 @@ $(document).ready(function () {
                 toastr.success('Successfully');
                 redrawTable();
 
-            }, error: function (request, status, error) {
-                console.log('error--------------', request, status, error)
+            },
+            error: function (request, status, error) {
                 $.each(request.responseJSON, function (key, value) {
                     $.each(value, function (index, _value) {
                         if (key === "__all__") {
@@ -201,8 +200,6 @@ $(document).ready(function () {
                         }
                     });
                 });
-
-                //toastr.error(`${JSON.stringify(request)}\n${status}\n${error}`)
             }
         });
     })
@@ -215,15 +212,19 @@ $(document).ready(function () {
         // const $modal = $(this).closest('.modal')
         const $drawer = $(this).closest('.drawer')
         $.ajax({
-            url, method, contentType: false, processData: false, data: formData, success: function (response) {
+            url,
+            method,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
                 // get form html return success
-                // console.log('-----', response)
                 var drawerElement = document.querySelector('#' + $drawer.attr('id'));
                 var drawer = KTDrawer.getInstance(drawerElement);
                 drawer.hide();
                 toastr.success('Successfully');
-            }, error: function (request, status, error) {
-                console.log('error--------------', request, status, error)
+            },
+            error: function (request, status, error) {
                 $.each(request.responseJSON, function (key, value) {
                     $.each(value, function (index, _value) {
                         if (key === "__all__") {
@@ -233,8 +234,6 @@ $(document).ready(function () {
                         }
                     });
                 });
-
-                //toastr.error(`${JSON.stringify(request)}\n${status}\n${error}`)
             }
         });
     })
