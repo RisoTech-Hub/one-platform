@@ -81,7 +81,7 @@ function appendDrawerWithId(selector = 'body', idDrawer = 'drawer_fake', idForm 
 
 			<!--end::Card header-->
 			<!--begin::Card body-->
-			<div class="card-body pt-0 hover-scroll-overlay-y">
+			<div class="card-body pt-5 hover-scroll-overlay-y">
 				<form id="${idForm}">
 				    ${content}
                 </form>
