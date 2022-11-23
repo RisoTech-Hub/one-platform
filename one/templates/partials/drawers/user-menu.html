@@ -11,7 +11,10 @@
   <!--begin::Messenger-->
   <div class="card w-100 rounded-0 border-0" id="kt_drawer_user_menu">
     <!--begin::Card header-->
-    <div class="card-header p-0 min-h-75px" id="kt_drawer_user_menu_header">
+    <div
+      class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 p-0 min-h-75px"
+      style="background-image:url('{% static "images/misc/header-bg.jpeg" %}')"
+      id="kt_drawer_user_menu_header">
       <!--begin::Title-->
       <div class="card-title m-0">
         <!--begin::Menu item-->
@@ -32,12 +35,14 @@
             <!--begin::Username-->
             <div class="d-flex flex-column">
               <div class="fw-bold d-flex align-items-center fs-5">
-                {% if user.name %}{{ user.name }}{% else %}{{ user.username }}{% endif %}
+                <h3 class="card-title fs-3 fw-bold text-white flex-column m-0">
+                  {% if user.name %}{{ user.name|title }}{% else %}{{ user.username|title }}{% endif %}
+                </h3>
                 {% for group in groups %}
                   <span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">{{ group }}</span>
                 {% endfor %}
               </div>
-              <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{ user.email }}</a>
+              <a href="#" class="text-white opacity-50 fs-7 fw-semibold pt-1">{{ user.email }}</a>
             </div>
             <!--end::Username-->
           </div>
@@ -48,7 +53,7 @@
       <!--begin::Card toolbar-->
       <div class="card-toolbar pe-5">
         <!--begin::Close-->
-        <div class="btn btn-sm btn-icon btn-active-light-primary"
+        <div class="btn btn-sm btn-icon bg-white bg-opacity-25 btn-color-white p-0 w-20px h-20px rounded-1"
              id="kt_drawer_user_menu_close">{% get_svg_icon 'duotune/arrows/arr061.svg' 'svg-icon svg-icon-2' %}</div>
         <!--end::Close-->
       </div>

@@ -5,7 +5,7 @@ from django.contrib.sites.models import Site
 from django.http import HttpRequest
 from django.test import RequestFactory
 
-from one.contrib.sites.settings.views import SiteDetailView
+from one.contrib.sites.settings.views import SiteUpdateView
 from one.users.models import User
 
 pytestmark = pytest.mark.django_db
@@ -16,7 +16,7 @@ class TestSiteDetailView:
         return None
 
     def test_get_success_url(self, user: User, rf: RequestFactory):
-        view = SiteDetailView()
+        view = SiteUpdateView()
         request = rf.get("/fake-url/")
         request.user = user
 
@@ -25,7 +25,7 @@ class TestSiteDetailView:
         assert view.get_success_url() == "/~setting/"
 
     def test_get_object(self, user: User, rf: RequestFactory):
-        view = SiteDetailView()
+        view = SiteUpdateView()
         request = rf.get("/fake-url/")
         request.user = user
 
@@ -34,7 +34,7 @@ class TestSiteDetailView:
         assert view.get_object() == Site.objects.first()
 
     def test_form_valid(self, user: User, rf: RequestFactory):
-        view = SiteDetailView()
+        view = SiteUpdateView()
         request = rf.post(
             "/fake-url/",
             data={
@@ -57,7 +57,7 @@ class TestSiteDetailView:
         assert response.status_code == 302
 
     def test_form_invalid(self, user: User, rf: RequestFactory):
-        view = SiteDetailView()
+        view = SiteUpdateView()
         request = rf.post("/fake-url/")
 
         # Add the session/message middleware to the request

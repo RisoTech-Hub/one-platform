@@ -11,14 +11,21 @@
      data-kt-drawer-close="#kt_fieldschemas_close">
   <div class="card w-100 rounded-0 border-0">
     <!--begin::Header-->
-    <div class="card-header" id="kt_fieldschemas_header">
-      <div class="card-title min-w-200px">
+    <div
+      class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 p-0 min-h-75px"
+      style="background-image:url('{% static "images/misc/header-bg.jpeg" %}')"
+      id="kt_fieldschemas_header">
+      <div class="card-title m-0 min-w-200px">
         {% field_schema_choices content_type=content_type %}
       </div>
-      <div class="card-toolbar">
-        <button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n5"
-                id="kt_fieldschemas_close">{% get_svg_icon 'duotune/arrows/arr061.svg' 'svg-icon svg-icon-1' %}</button>
+      <!--begin::Card toolbar-->
+      <div class="card-toolbar pe-5">
+        <!--begin::Close-->
+        <div class="btn btn-sm btn-icon bg-white bg-opacity-25 btn-color-white p-0 w-20px h-20px rounded-1"
+             id="kt_fieldschemas_close">{% get_svg_icon 'duotune/arrows/arr061.svg' 'svg-icon svg-icon-2' %}</div>
+        <!--end::Close-->
       </div>
+      <!--end::Card toolbar-->
     </div>
     <!--end::Header-->
     <!--begin::Body-->

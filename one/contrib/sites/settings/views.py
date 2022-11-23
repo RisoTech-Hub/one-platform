@@ -5,15 +5,17 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import UpdateView
 
-from one.components.views import SuccessMessageMixin
+from one.components.views import FormMixin, SuccessMessageMixin
+from one.contrib.sites.settings.api.serializers import SiteSerializer
 from one.contrib.sites.settings.forms import SettingForm, SiteForm
 
 
-class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class SiteUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateView):
     template_name = "app/update.html"
     model = Site
 
     form_class = SiteForm
+    serializer_class = SiteSerializer
     success_message = _("Site successfully updated")
 
     def get_context_data(self, **kwargs):
@@ -59,4 +61,4 @@ class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return self.form_invalid(form)
 
 
-site_detail_view = SiteDetailView.as_view()
+site_update_view = SiteUpdateView.as_view()
