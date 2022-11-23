@@ -23,6 +23,7 @@ class SiteUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateV
         kwargs = super().get_context_data(**kwargs)
         kwargs["app_name"] = _("Site Settings")
         kwargs["page_title"] = _("Update site settings")
+        kwargs["form_title"] = _("Update site settings")
 
         # setting_form_class = PopupSettingForm if self.is_popup else SettingForm
         setting_form_class = SettingForm

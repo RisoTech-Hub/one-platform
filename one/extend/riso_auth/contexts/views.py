@@ -23,6 +23,7 @@ class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Create
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
+        kwargs["app_name"] = _("Group")
         kwargs["page_title"] = _("Group Create")
         kwargs["page_breadcrumb"] = [
             {"name": _("Groups"), "url": reverse("auth:group-list")},
@@ -60,8 +61,11 @@ class GroupListView(LoginRequiredMixin, ListView):
     template_name = "app/list.html"
     model = Group
 
+    filter_class = GroupFilter
+
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
+        kwargs["app_name"] = _("Group")
         kwargs["page_title"] = _("Group List")
         kwargs["actions"] = [get_core_group_add(), get_core_group_quick_add()]
         kwargs["urls"] = {
@@ -72,7 +76,6 @@ class GroupListView(LoginRequiredMixin, ListView):
             "list": "api:group-list",
             "delete": "api:group-delete",
         }
-        kwargs["filter"] = GroupFilter()
         return kwargs
 
 
@@ -89,6 +92,7 @@ class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Update
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
+        kwargs["app_name"] = _("Group")
         kwargs["page_title"] = _("Group Update")
         kwargs["page_breadcrumb"] = [
             {"name": _("Groups"), "url": reverse("auth:group-list")},
