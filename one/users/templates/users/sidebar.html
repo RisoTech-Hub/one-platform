@@ -41,14 +41,19 @@
             {% get_svg_icon 'duotune/arrows/arr065.svg' 'svg-icon svg-icon-3' %}
           </span>
         </div>
-        <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="{% translate 'Edit profile details' %}">
-          <a href="#"
-             class="btn btn-sm btn-light-primary"
-             type="button"
-             quick-update-button
-             data-action-url="{% url 'users:update' %}?popup=1"
-          >{% translate 'Edit' %}</a>
-        </span>
+        <!--begin::Primary button-->
+        <a
+          class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="{% translate 'Edit profile details' %}"
+
+          quick-update-button
+          data-action-url="{% url 'users:update' %}?popup=1"
+        >
+          {% get_svg_icon 'duotune/art/art005.svg' 'svg-icon svg-icon-3 m-0' %}
+        </a>
+        <!--end::Primary button-->
       </div>
       <!--end::Details toggle-->
       <div class="separator"></div>
