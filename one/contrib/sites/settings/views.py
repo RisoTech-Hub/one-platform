@@ -18,7 +18,8 @@ class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-        kwargs["page_title"] = _("Site Update")
+        kwargs["app_name"] = _("Site Settings")
+        kwargs["page_title"] = _("Update site settings")
 
         setting_form = SettingForm(instance=self.object.setting)
         if self.request.method == "POST":
