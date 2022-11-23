@@ -50,14 +50,7 @@ function appendDrawerWithId(selector = 'body', idDrawer = 'drawer_fake', idForm 
 				<!--begin::Title-->
 				<div class="card-title">
 					<!--begin::User-->
-					<div class="d-flex justify-content-center me-3">
-						<div class="me-4">
-							<img src="" alt="img_thumbnail" class="img-fluid" id="img_thumbnail_file" onerror="this.src='/assets/media/icons/duotune/general/gen006.svg'">
-						</div>
-						<div class="align-self-center">
-							<a href="javascript:void(0);" class="fs-4 fw-bold text-gray-900 text-hover-primary me-1 lh-1" id="span_detail_file_name"></a>
-						</div>
-					</div>
+					Form
 					<!--end::User-->
 				</div>
 				<!--end::Title-->
