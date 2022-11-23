@@ -21,15 +21,15 @@
     <a href="/">
       {% get_html_classes 'body' 'data-kt-app-layout' as bodyAttribute %}
       {% if bodyAttribute == 'dark-sidebar' %}
-        <img alt="Logo" src="{{ site.setting.dark_logo }}" class="h-25px app-sidebar-logo-default"/>
+        <img alt="Logo" src="{{ site.setting.dark_logo_url }}" class="h-25px app-sidebar-logo-default"/>
       {% elif bodyAttribute == 'light-sidebar' %}
-        <img alt="Logo" src="{{ site.setting.logo }}"
+        <img alt="Logo" src="{{ site.setting.logo_url }}"
              class="theme-light-show h-25px app-sidebar-logo-default"/>
-        <img alt="Logo" src="{{ site.setting.dark_logo }}"
+        <img alt="Logo" src="{{ site.setting.dark_logo_url }}"
              class="theme-dark-show h-25px app-sidebar-logo-default"/>
       {% endif %}
 
-      <img alt="Logo" src="{{ site.setting.small_logo }}" class="h-20px app-sidebar-logo-minimize"/>
+      <img alt="Logo" src="{{ site.setting.small_logo_url }}" class="h-20px app-sidebar-logo-minimize"/>
     </a>
     <!--end::Logo image-->
   {% endif %}
