@@ -36,3 +36,17 @@ def test_user_is_online(user: User):
         settings.USER_LAST_SEEN_TIMEOUT,
     )
     assert not user.is_online
+
+
+def test_user_is_online_dot(user: User):
+    """test_user_is_online_dot"""
+    assert "danger" in user.is_online_dot
+
+    now = datetime.datetime.now()
+    cache.set(
+        f"seen_{user.username}",
+        now,
+        settings.USER_LAST_SEEN_TIMEOUT,
+    )
+
+    assert "success" in user.is_online_dot
