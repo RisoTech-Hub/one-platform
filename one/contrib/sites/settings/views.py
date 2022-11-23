@@ -20,12 +20,11 @@ class SiteDetailView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         kwargs = super().get_context_data(**kwargs)
         kwargs["page_title"] = _("Site Update")
 
+        setting_form = SettingForm(instance=self.object.setting)
         if self.request.method == "POST":
             setting_form = SettingForm(
                 self.request.POST, self.request.FILES, instance=self.object.setting
             )
-        else:
-            setting_form = SettingForm(instance=self.object.setting)
         kwargs["nested_forms"] = [
             {
                 "form": setting_form,
