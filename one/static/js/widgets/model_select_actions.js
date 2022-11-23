@@ -115,8 +115,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: action_url, method: "get", data: null,
-            success: function (response) {
+            url: action_url, method: "get", data: null, success: function (response) {
                 // get form html return success
                 // console.log('-----', response)
                 const timestamp = Date.now();
@@ -133,6 +132,11 @@ $(document).ready(function () {
                     var drawerElement = document.querySelector('#' + idDrawer);
                     var drawer = KTDrawer.getInstance(drawerElement);
                     drawer.show();
+
+                    drawer.on("kt.drawer.after.hidden", function () {
+                        console.log("kt.drawer.after.hidden event is fired");
+                        $('#' + idDrawer).remove();
+                    });
                 } else {
                     const idModal = 'modal_fake_' + timestamp;
                     const idForm = 'form_fake_' + timestamp;
