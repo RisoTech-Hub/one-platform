@@ -47,12 +47,30 @@ function appendDrawerWithId(selector = 'body', idDrawer = 'drawer_fake', idForm 
   <!--begin::Messenger-->
   <div class="card rounded-0 w-100">
 			<!--begin::Card header-->
-			<div class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 min-h-75px">
+			<div class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 p-0 min-h-75px">
 				<!--begin::Title-->
-				<div class="card-title m-0 pe-5">
+				<div class="card-title m-0">
 					<!--begin::User-->
-					<span class="span_title text-gray-200"></span>
+<!--					<span class="span_title text-gray-200"></span>-->
 					<!--end::User-->
+					<div class="menu-item">
+          <div class="menu-content d-flex align-items-center px-3">
+            <!--begin::Avatar-->
+
+            <!--end::Avatar-->
+            <!--begin::Username-->
+            <div class="d-flex flex-column">
+              <div class="fw-bold d-flex align-items-center fs-5">
+                <h3 class="card-title fs-3 fw-bold text-white flex-column m-0 span_title">
+                  Root
+                </h3>
+
+              </div>
+
+            </div>
+            <!--end::Username-->
+          </div>
+        </div>
 				</div>
 				<!--end::Title-->
 				<!--begin::Card toolbar-->
@@ -76,9 +94,7 @@ function appendDrawerWithId(selector = 'body', idDrawer = 'drawer_fake', idForm 
 			<!--end::Card header-->
 			<!--begin::Card body-->
 			<div class="card-body pt-5 hover-scroll-overlay-y">
-				<form id="${idForm}" enctype="multiple/data">
 				    ${content}
-                </form>
 			</div>
 			<!--end::Card body-->
 			<!--begin::Card footer-->
@@ -121,10 +137,13 @@ $(document).ready(function () {
                     var idDrawerForm = "kt_form_drawer_fake_" + timestamp
 
                     appendDrawerWithId('body', idDrawer, idDrawerForm, response, target_input, $('#id_btn_close_label').val(), $('#id_btn_save_changes_label').val(),)
+                    $('#' + idDrawer).find('form').attr('id', idDrawerForm)
+
                     $('.span_title').text($('#' + idDrawerForm + ' #id_form_title').val());
                     let selectorHeader = '#' + idDrawer + ' .card-header'
                     console.log('selectorHeader', selectorHeader)
                     $(selectorHeader).css('background-image', 'url(' + $('#' + 'trans_label_div' + ' #id_drawer_header_bg').val() + ')');
+
 
                     KTDrawer.createInstances();
                     var drawerElement = document.querySelector('#' + idDrawer);
