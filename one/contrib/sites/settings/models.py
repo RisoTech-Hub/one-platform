@@ -49,6 +49,9 @@ class Setting(Model):
 
     class Meta:
         app_label = "sites"
+        verbose_name = _("Site Setting")
+        verbose_name_plural = _("Site Settings")
+        db_table = "django_site_setting"
 
     def __str__(self):
         return self.site.name
