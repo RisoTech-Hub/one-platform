@@ -160,8 +160,9 @@ $(document).ready(function () {
                     KTDrawer.createInstances();
                     var drawerElement = document.querySelector('#' + idDrawer);
                     var drawer = KTDrawer.getInstance(drawerElement);
-                    drawer.toggle();
 
+                    drawer.toggle();
+                    KTScroll.createInstances();
                     drawer.on("kt.drawer.after.hidden", function () {
                         $('#' + idDrawer).remove();
                     });
