@@ -154,6 +154,8 @@ $(document).ready(function () {
                         console.log("kt.drawer.after.hidden event is fired");
                         $('#' + idDrawer).remove();
                     });
+
+                    reInitAllWidget();
                 } else {
                     const idModal = 'modal_fake_' + timestamp;
                     const idForm = 'form_fake_' + timestamp;
