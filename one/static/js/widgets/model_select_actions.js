@@ -43,7 +43,8 @@ function appendDrawerWithId(
     content = '',
     target_input = '',
     close_label = '',
-    save_changes_label = 'Save') {
+    save_changes_label = 'Save',
+    waiting_label = 'Waiting...') {
     $(selector).append(`
             <!--begin::Chat drawer-->
             <div quick-action
@@ -107,7 +108,7 @@ function appendDrawerWithId(
                             <span class="indicator-label">${save_changes_label}</span>
                             <!--end::Indicator label-->
                             <!--begin::Indicator progress-->
-                            <span class="indicator-progress">Please wait...
+                            <span class="indicator-progress">${waiting_label}
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                             </span>
                             <!--end::Indicator progress-->
@@ -145,7 +146,10 @@ $(document).ready(function () {
                     var idDrawer = "kt_drawer_fake_" + timestamp
                     var idDrawerForm = "kt_form_drawer_fake_" + timestamp
 
-                    appendDrawerWithId('body', idDrawer, idDrawerForm, response, target_input, $('#id_btn_close_label').val(), $('#id_btn_save_changes_label').val(),)
+                    appendDrawerWithId(
+                        'body', idDrawer, idDrawerForm, response, target_input,
+                        $('#id_btn_close_label').val(), $('#id_btn_save_changes_label').val(), $('#id_btn_waiting_label').val()
+                    )
                     $('#' + idDrawer).find('form').attr('id', idDrawerForm)
 
                     $('.span_title').text($('#' + idDrawerForm + ' #id_form_title').val());
@@ -156,7 +160,7 @@ $(document).ready(function () {
                     KTDrawer.createInstances();
                     var drawerElement = document.querySelector('#' + idDrawer);
                     var drawer = KTDrawer.getInstance(drawerElement);
-                    drawer.show();
+                    drawer.toggle();
 
                     drawer.on("kt.drawer.after.hidden", function () {
                         $('#' + idDrawer).remove();
