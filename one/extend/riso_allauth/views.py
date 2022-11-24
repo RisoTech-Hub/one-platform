@@ -29,6 +29,7 @@ class TemplateListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
+        kwargs["app_name"] = _("Allauth Extended")
         kwargs["page_title"] = _("Template List")
 
         kwargs["urls"] = {
@@ -58,11 +59,11 @@ class TemplateUpdateView(
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
+        kwargs["app_name"] = _("Allauth Extended")
         kwargs["page_title"] = _("Template Update")
         kwargs["page_breadcrumb"] = [
             {"name": _("Templates"), "url": reverse("allauth:template-list")},
         ]
-
         kwargs["form_title"] = _("Template Update")
         return kwargs
 

@@ -14,7 +14,6 @@ from one.components.views import (
     TabCreateView,
     UpdateView,
 )
-from one.core.dynamic.actions import get_core_dynamic_field_schema_drawer
 
 
 class CMSHomeCreateView(
@@ -57,8 +56,11 @@ class CMSHomeListView(LoginRequiredMixin, ListView):
         "dynamic",
     ]
 
+    show_config_button = True
+
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
+        kwargs["app_name"] = _("CMS Home")
         kwargs["page_title"] = _("CMS Home List")
         kwargs["page_breadcrumb"] = [
             {"name": _("CMS Homes"), "url": reverse("cmshome:cmshome-list")},
@@ -66,7 +68,6 @@ class CMSHomeListView(LoginRequiredMixin, ListView):
         kwargs["actions"] = [
             get_cms_home_add(),
             get_cms_home_quick_add(),
-            get_core_dynamic_field_schema_drawer(),
         ]
         kwargs["urls"] = {
             "update": "cmshome:cmshome-update",

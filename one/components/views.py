@@ -145,8 +145,12 @@ class ListView(BaseListView):
     table_exclude_fields = []
     table_exclude_rel = [ManyToManyRel, ManyToOneRel, ManyToManyField]
 
+    # Template control
+    show_config_button = False
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["show_config_button"] = self.show_config_button
         context["table_fields"] = self.get_table_fields()
         context["content_type"] = ContentType.objects.get_for_model(self.model)
         context["filter"] = self.filter_class() if self.filter_class else None

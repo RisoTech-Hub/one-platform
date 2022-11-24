@@ -8,6 +8,20 @@
       {% for action in actions %}
         {% include 'layout/partials/sidebar-layout/toolbar_action_item.html' %}
       {% endfor %}
+
+      {% if show_config_button %}
+        <!--begin::Application Config button-->
+        <a
+          class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="{{ app_name }} {% trans 'Configs' %}"
+          id="id_btn_application_config_toggle"
+        >
+          {% get_svg_icon 'duotune/coding/cod001.svg' 'svg-icon svg-icon-3 m-0' %}
+        </a>
+        <!--end::Application Config button-->
+      {% endif %}
     </div>
     <!--end::Actions-->
   </div>
