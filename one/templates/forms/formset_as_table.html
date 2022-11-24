@@ -8,8 +8,35 @@
   </div>
   <div id="kt_formset_collapsible" class="collapse">
     <div class="card-body">
-
+      <!--begin::Formset Management-->
       {{ formset.formset.management_form }}
+      <!--end::Formset Management-->
+
+      <!--begin::Empty form-->
+      <div class="d-none" id="id_div_empty_form">
+        {% with empty_form=formset.formset.empty_form %}
+          <tr class="border-bottom border-bottom-dashed" data-kt-element="item" data-kt-index="__index__">
+            {% for field in empty_form %}
+              {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
+                <td class="d-none">{{ field }}</td>
+              {% else %}
+                <td>
+                  {% if forloop.last %}
+                    <div class="d-none">{{ field }}</div>
+                    <button type="button" class="btn btn-sm btn-icon btn-active-color-primary"
+                            data-kt-element="remove-item" data-line-index="__index__">
+                      {% get_svg_icon 'duotune/general/gen027.svg' 'svg-icon svg-icon-3' %}
+                    </button>
+                  {% else %}
+                    {{ field }}
+                  {% endif %}
+                </td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+        {% endwith %}
+      </div>
+      <!--begin::Empty form-->
 
       <!--begin::Table-->
       <table class="table g-5 gs-0 mb-0 fw-bold text-gray-700" data-kt-element="items"
@@ -51,35 +78,10 @@
             {% endfor %}
           </tr>
         {% endfor %}
-
-
-        <div class="d-none" id="id_div_empty_form">
-          {% with empty_form=formset.formset.empty_form %}
-            <tr class="border-bottom border-bottom-dashed" data-kt-element="item" data-kt-index="__index__">
-              {% for field in empty_form %}
-                {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
-                  <td class="d-none">{{ field }}</td>
-                {% else %}
-                  <td>
-                    {% if forloop.last %}
-                      <div class="d-none">{{ field }}</div>
-                      <button type="button" class="btn btn-sm btn-icon btn-active-color-primary"
-                              data-kt-element="remove-item" data-line-index="__index__">
-                        {% get_svg_icon 'duotune/general/gen027.svg' 'svg-icon svg-icon-3' %}
-                      </button>
-                    {% else %}
-                      {{ field }}
-                    {% endif %}
-                  </td>
-                {% endif %}
-              {% endfor %}
-            </tr>
-          {% endwith %}
-        </div>
         </tbody>
         <!--end::Table body-->
       </table>
-
+      <!--end::Table-->
 
     </div>
     <div class="card-footer d-flex justify-content-end py-6 px-9">
