@@ -54,12 +54,39 @@ class Setting(Model):
         return self.site.name
 
     @property
+    def favicon_url(self):
+        """Return logo url"""
+        return (
+            "/static/metronic/media/logos/logo-1-dark.svg"
+            if not self.favicon
+            else getattr(self.favicon, "url")
+        )
+
+    @property
     def logo_url(self):
         """Return logo url"""
         return (
             "/static/metronic/media/logos/logo-1-dark.svg"
             if not self.logo
             else getattr(self.logo, "url")
+        )
+
+    @property
+    def dark_logo_url(self):
+        """Return logo url"""
+        return (
+            "/static/metronic/media/logos/logo-1-dark.svg"
+            if not self.dark_logo
+            else getattr(self.dark_logo, "url")
+        )
+
+    @property
+    def small_logo_url(self):
+        """Return logo url"""
+        return (
+            "/static/metronic/media/logos/logo-1-dark.svg"
+            if not self.small_logo
+            else getattr(self.small_logo, "url")
         )
 
     @property

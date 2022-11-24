@@ -9,10 +9,12 @@
     <div class="separator separator-dashed separator-content border-primary mb-5">
       <span class="w-250px fw-bold">{% trans 'General Infomation' %}</span>
     </div>
+
+    <div class="row">
     {% for field in form %}
       <!--begin::Input group-->
       <div
-        class="{% if forloop.last %}mb-0{% else %}mb-6{% endif %} {% if field.name in hidden_fields %}d-none{% endif %}">
+        class="col-6 {% if forloop.last %}mb-0{% else %}mb-6{% endif %} {% if field.name in hidden_fields %}d-none{% endif %}">
         <!--begin::Label-->
         <label class="form-label {% if field.field.required %}required{% endif %}">
           {{ field.label|title }}</label>
@@ -24,15 +26,16 @@
       </div>
       <!--end::Input group-->
     {% endfor %}
+    </div>
 
     {% for nested_form in nested_forms %}
       <div class="separator separator-dashed separator-content border-primary my-10">
         <span class="w-250px fw-bold">{{ nested_form.title|title }}</span>
       </div>
-
+      <div class="row">
       {% for field in nested_form.form %}
         <!--begin::Input group-->
-        <div class="{% if forloop.last %}mb-0{% else %}mb-6{% endif %}">
+        <div class="col-6 {% if forloop.last %}mb-0{% else %}mb-6{% endif %}">
           <!--begin::Label-->
           <label
             class="d-block form-label {% if field.field.required %}required{% endif %}">{{ field.label|title }}</label>
@@ -44,6 +47,7 @@
         </div>
         <!--end::Input group-->
       {% endfor %}
+      </div>
     {% endfor %}
   </div>
   <!--end::Card body-->
