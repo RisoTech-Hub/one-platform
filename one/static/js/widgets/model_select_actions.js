@@ -88,7 +88,7 @@ function appendDrawerWithId(
                     </div>
                     <!--end::Card header-->
                     <!--begin::Card body-->
-                    <div class="card-body position-relative" id="${idDrawer}_body">
+                    <div class="card-body position-relative position-relative scroll-y" id="${idDrawer}_body">
                         <!--begin::Content-->
                         <div id="${idDrawer}_content" class="position-relative scroll-y me-n5 pe-5" data-kt-scroll="true"
                              data-kt-scroll-height="auto" data-kt-scroll-wrappers="#${idDrawer}_body"
