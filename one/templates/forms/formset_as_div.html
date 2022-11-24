@@ -6,17 +6,17 @@
 <!--end::Formset Management-->
 
 <!--begin::Empty form-->
-<div class="d-none" id="id_div_empty_form">
+<div class="d-none" id="id_div_empty_form_div">
   {{ formset.formset.empty_form }}
 </div>
 <!--begin::Empty form-->
 
-<div class="hover-scroll-overlay h-300px px-5">
+<div class="hover-scroll-overlay h-300px px-5" id="id_div_formset_{{ formset.prefix }}">
   {% for form in formset.formset %}
     <div class="row">
       <div class="{% if 'DELETE-BTN' in formset.hidden_fields %}col-md-12{% else %}col-md-11{% endif %} p-0">
         <!--begin::Form group-->
-        <div class="form-group row pe-5">
+        <div class="form-group row pe-5" id="id_wrapper_formset_{{ formset.prefix }}">
           {% for field in form %}
             <div
               class="col-md-auto {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}d-none{% endif %} ">
@@ -43,6 +43,10 @@
             data-bs-delay-hide="1000"
             data-bs-placement="top"
             title="{% trans 'Delete this line' %}"
+            kt-add-line-formset="true"
+            kt-target-total="#id_items-TOTAL_FORMS"
+            kt-target-append="#id_div_formset_{{ formset.prefix }}"
+            kt-target-element="#id_div_empty_form_div"
           >
             {% get_svg_icon "duotune/general/gen027.svg" 'svg-icon svg-icon-3 m-0' %}
           </a>

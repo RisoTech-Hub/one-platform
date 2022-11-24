@@ -13,8 +13,11 @@
       <!--end::Formset Management-->
 
       <!--begin::Empty form-->
-      <div class="d-none" id="id_div_empty_form">
-        {{ formset.formset.empty_form }}
+      <div class="d-none" id="id_div_empty_form_table">
+        {#        TODO: check here .... #}
+        <tr class="border-bottom border-bottom-dashed" data-kt-element="item" data-kt-index="__index__">
+          {{ formset.formset.empty_form }}
+        </tr>
       </div>
       <!--begin::Empty form-->
 
@@ -71,6 +74,10 @@
         data-bs-delay-hide="1000"
         data-bs-placement="top"
         title="{% trans 'Add new line' %}"
+        kt-add-line-formset="true"
+        kt-target-total="#id_items-TOTAL_FORMS"
+        kt-target-append="#id_table_formset_{{ formset.prefix }} tbody"
+        kt-target-element="#id_div_empty_form_table"
       >
         {% get_svg_icon "duotune/arrows/arr075.svg" 'svg-icon svg-icon-3 m-0' %}
       </a>

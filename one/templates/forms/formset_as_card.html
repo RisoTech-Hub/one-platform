@@ -13,12 +13,12 @@
       <!--end::Formset Management-->
 
       <!--begin::Empty form-->
-      <div class="d-none" id="id_div_empty_form">
+      <div class="d-none" id="id_div_empty_form_card">
         {{ formset.formset.empty_form }}
       </div>
       <!--begin::Empty form-->
 
-      <div class="hover-scroll-overlay-y h-300px">
+      <div class="hover-scroll-overlay-y h-300px" id="id_card_formset_{{ formset.prefix }}">
         {% for form in formset.formset %}
           <div class="row">
             <div class="col-md-11">
@@ -65,6 +65,10 @@
         data-bs-delay-hide="1000"
         data-bs-placement="top"
         title="{% trans 'Add new line' %}"
+        kt-add-line-formset="true"
+        kt-target-total="#id_items-TOTAL_FORMS"
+        kt-target-append="#id_card_formset_{{ formset.prefix }}"
+        kt-target-element="#id_div_empty_form_card"
       >
         {% get_svg_icon "duotune/arrows/arr075.svg" 'svg-icon svg-icon-3 m-0' %}
       </a>
