@@ -14,40 +14,74 @@
 
       <!--begin::Empty form-->
       <div class="d-none" id="id_div_empty_form_card">
-        {{ formset.formset.empty_form }}
-      </div>
-      <!--begin::Empty form-->
-
-      <div class="hover-scroll-overlay-y h-300px" id="id_card_formset_{{ formset.prefix }}">
-        {% for form in formset.formset %}
-          <div class="row">
-            <div class="col-md-11">
+        {% with form=formset.formset.empty_form %}
+          <div class="d-flex position-relative pe-10" data-kt-element="items">
+            <div class="flex-fill d-flex">
               <!--begin::Form group-->
-              <div class="form-group row">
-                {% for field in form %}
-                  <div class="col-md-auto">
+              {% for field in form %}
+                {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields or 'DELETE' in field.name %}
+                  <div class="d-none">{{ field }}</div>
+                {% else %}
+                  <div class="me-4 flex-fill">
                     {% if field.field.widget.input_type == 'select' %}
                       {% include "fields/floating-label-select-field.html" %}
-                    {% elif field.field.widget.input_type == 'hidden' %}
-                      {{ field }}
-                    {% elif field.field.widget.input_type == 'checkbox' %}
-                      {{ field }}
-                    {% elif field.name in formset.hidden_fields %}
-                      <div class="d-none">{{ field }}</div>
                     {% else %}
                       {% include "fields/floating-label-field.html" %}
                     {% endif %}
                   </div>
-                {% endfor %}
-              </div>
+                {% endif %}
+              {% endfor %}
               <!--end::Form group-->
             </div>
-            <div class="col-md-auto">
+            <div class="position-absolute align-self-center" style="right: 0;">
               <a
                 class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
                 data-bs-toggle="tooltip"
                 data-bs-delay-hide="1000"
                 data-bs-placement="top"
+                data-kt-element="remove-item"
+                data-index="__prefix__"
+                kt-target-element="#id_{{ formset.prefix }}-__prefix__-DELETE"
+                title="{% trans 'Delete this line' %}"
+              >
+                {% get_svg_icon "duotune/general/gen027.svg" 'svg-icon svg-icon-3 m-0' %}
+              </a>
+            </div>
+          </div>
+        {% endwith %}
+
+      </div>
+      <!--begin::Empty form-->
+
+      <div class="hover-scroll-overlay-y scroll-x h-300px" id="id_card_formset_{{ formset.prefix }}">
+        {% for form in formset.formset %}
+          <div class="d-flex position-relative pe-10" data-kt-element="items" data-kt-is-real>
+            <div class="flex-fill d-flex">
+              <!--begin::Form group-->
+              {% for field in form %}
+                {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields or 'DELETE' in field.name %}
+                  <div class="d-none">{{ field }}</div>
+                {% else %}
+                  <div class="me-4 flex-fill">
+                    {% if field.field.widget.input_type == 'select' %}
+                      {% include "fields/floating-label-select-field.html" %}
+                    {% else %}
+                      {% include "fields/floating-label-field.html" %}
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+              <!--end::Form group-->
+            </div>
+            <div class="position-absolute align-self-center" style="right: 0;">
+              <a
+                class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
+                data-bs-toggle="tooltip"
+                data-bs-delay-hide="1000"
+                data-bs-placement="top"
+                data-kt-element="remove-item"
+                data-index="{{ forloop.counter0 }}"
+                kt-target-element="#id_{{ formset.prefix }}-{{ forloop.counter0 }}-DELETE"
                 title="{% trans 'Delete this line' %}"
               >
                 {% get_svg_icon "duotune/general/gen027.svg" 'svg-icon svg-icon-3 m-0' %}
