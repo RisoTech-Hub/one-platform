@@ -14,27 +14,7 @@
 
       <!--begin::Empty form-->
       <div class="d-none" id="id_div_empty_form">
-        {% with empty_form=formset.formset.empty_form %}
-          <tr class="border-bottom border-bottom-dashed" data-kt-element="item" data-kt-index="__index__">
-            {% for field in empty_form %}
-              {% if field.field.widget.input_type == 'hidden' or field.name in formset.hidden_fields %}
-                <td class="d-none">{{ field }}</td>
-              {% else %}
-                <td>
-                  {% if forloop.last %}
-                    <div class="d-none">{{ field }}</div>
-                    <button type="button" class="btn btn-sm btn-icon btn-active-color-primary"
-                            data-kt-element="remove-item" data-line-index="__index__">
-                      {% get_svg_icon 'duotune/general/gen027.svg' 'svg-icon svg-icon-3' %}
-                    </button>
-                  {% else %}
-                    {{ field }}
-                  {% endif %}
-                </td>
-              {% endif %}
-            {% endfor %}
-          </tr>
-        {% endwith %}
+        {{ formset.formset.empty_form }}
       </div>
       <!--begin::Empty form-->
 

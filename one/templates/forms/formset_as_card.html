@@ -8,7 +8,16 @@
   </div>
   <div id="kt_formset_collapsible" class="collapse">
     <div class="card-body p-0 pt-5">
+      <!--begin::Formset Management-->
       {{ formset.formset.management_form }}
+      <!--end::Formset Management-->
+
+      <!--begin::Empty form-->
+      <div class="d-none" id="id_div_empty_form">
+        {{ formset.formset.empty_form }}
+      </div>
+      <!--begin::Empty form-->
+
       <div class="hover-scroll-overlay-y h-300px">
         {% for form in formset.formset %}
           <div class="row">
@@ -46,16 +55,8 @@
             </div>
           </div>
         {% endfor %}
-
-        <div class="{{ formset.prefix }}-empty-form-div">
-          <div class="{{ formset.prefix }}-__prefix__">
-          {% with empty_form=formset.formset.empty_form %}
-
-          {% endwith %}
-
-          </div>
-        </div>
       </div>
+
     </div>
     <div class="card-footer d-flex justify-content-end py-6 px-9">
       <a

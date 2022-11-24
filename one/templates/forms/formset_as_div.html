@@ -1,8 +1,16 @@
 <div class="separator separator-dashed separator-content border-primary my-10">
   <span class="w-250px fw-bold">{{ formset.title|title }}</span>
 </div>
-
+<!--begin::Formset Management-->
 {{ formset.formset.management_form }}
+<!--end::Formset Management-->
+
+<!--begin::Empty form-->
+<div class="d-none" id="id_div_empty_form">
+  {{ formset.formset.empty_form }}
+</div>
+<!--begin::Empty form-->
+
 <div class="hover-scroll-overlay h-300px px-5">
   {% for form in formset.formset %}
     <div class="row">
@@ -27,7 +35,7 @@
         <!--end::Form group-->
       </div>
       {% if 'DELETE-BTN' in formset.hidden_fields %}
-        {% else %}
+      {% else %}
         <div class="col-md-1">
           <a
             class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
@@ -42,13 +50,4 @@
       {% endif %}
     </div>
   {% endfor %}
-
-  <div class="{{ formset.prefix }}-empty-form-div">
-    <div class="{{ formset.prefix }}-__prefix__">
-
-      {% for field in formset.formset.empty_form %}
-
-      {% endfor %}
-    </div>
-  </div>
 </div>
