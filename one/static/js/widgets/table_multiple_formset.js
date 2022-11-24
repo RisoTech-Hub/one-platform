@@ -5,7 +5,7 @@ $(document).ready(function () {
         $(targetElement).prop('checked', true).trigger('change');
 
         const $parent = $(this).parents('[data-kt-element="items"]');
-
+        $parent.find(':input').prop('required', false);
         $parent.addClass('d-none')
     })
 
