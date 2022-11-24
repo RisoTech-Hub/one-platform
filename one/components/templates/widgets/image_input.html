@@ -61,13 +61,10 @@
 <!--end::Image input-->
 
 <script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", () => {
     KTImageInput.createInstances();
-    let imageInputElement = document.querySelector("#id_div_wrapper_{{ widget.name }}");
-    let imageInput = KTImageInput.getInstance(imageInputElement);
-    imageInput.on("kt.imageinput.removed", function () {
+    let imageInputElement{{ widget.name }} = document.querySelector("#id_div_wrapper_{{ widget.name }}");
+    let imageInput{{ widget.name }} = KTImageInput.getInstance(imageInputElement{{ widget.name }});
+    imageInput{{ widget.name }}.on("kt.imageinput.removed", function () {
       document.querySelector("#{{ widget.checkbox_id }}").checked = true;
     });
-  });
-
 </script>

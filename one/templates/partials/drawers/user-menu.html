@@ -120,10 +120,10 @@
               <div class="menu-item px-3">
                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="English"
                    onclick="submitChangeLanguageForm('en');">
-            <span class="symbol symbol-20px me-4">
-              <img data-kt-element="lang-flag" class="rounded-1" src="{% static 'media/flags/united-states.svg' %}"
-                   alt=""/>
-            </span>
+                  <span class="symbol symbol-20px me-4">
+                    <img data-kt-element="lang-flag" class="rounded-1" src="{% static 'media/flags/united-states.svg' %}"
+                         alt=""/>
+                  </span>
                   <span data-kt-element="lang-name">{% translate 'English' %}</span>
                 </a>
               </div>
@@ -132,9 +132,9 @@
               <div class="menu-item px-3">
                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="Vietnamese"
                    onclick="submitChangeLanguageForm('vi');">
-            <span class="symbol symbol-20px me-4">
-              <img data-kt-element="lang-flag" class="rounded-1" src="{% static 'media/flags/vietnam.svg' %}" alt=""/>
-            </span>
+                  <span class="symbol symbol-20px me-4">
+                    <img data-kt-element="lang-flag" class="rounded-1" src="{% static 'media/flags/vietnam.svg' %}" alt=""/>
+                  </span>
                   <span data-kt-element="lang-name">{% translate 'Vietnamese' %}</span>
                 </a>
               </div>
@@ -148,58 +148,6 @@
         </div>
       </div>
       <!--end::Personal Settings-->
-
-      <!--begin::Application Settings-->
-      <div
-        class="card notice d-flex bg-light-primary rounded border-primary border border-dashed flex-shrink-0 p-3 mb-5">
-        <div class="card-title">
-          {% trans 'Application Settings' %}
-        </div>
-        <div class="card-body py-5">
-          <!--begin::Scroll-->
-          <div class="mh-450px scroll-y me-n5 pe-5">
-            <!--begin::Row-->
-            <div class="row g-2">
-              {% if perms.auth.view_group %}
-                <!--begin::Col-->
-                <div class="col-4">
-                  <a href="{% url "auth:group-list" %}"
-                     class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded py-4 px-3 mb-3">
-                    {% get_svg_icon 'duotune/communication/com014.svg' 'svg-icon svg-icon-2x w-25px h-25px mb-2' %}
-                    <span class="fw-semibold">{% trans 'Groups' %}</span>
-                  </a>
-                </div>
-                <!--end::Col-->
-              {% endif %}
-
-              {% if user.is_superuser %}
-                <!--begin::Col-->
-                <div class="col-4">
-                  <a href="{% url "allauth:template-list" %}"
-                     class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded py-4 px-3 mb-3">
-                    {% get_svg_icon 'duotune/communication/com010.svg' 'svg-icon svg-icon-2x w-25px h-25px mb-2' %}
-                    <span class="fw-semibold">{% trans 'Email Templates' %}</span>
-                  </a>
-                </div>
-                <!--end::Col-->
-
-                <!--begin::Col-->
-                <div class="col-4">
-                  <a href="{% url "menu:menu-list" %}"
-                     class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded py-4 px-3 mb-3">
-                    {% get_svg_icon 'duotune/general/gen059.svg' 'svg-icon svg-icon-2x w-25px h-25px mb-2' %}
-                    <span class="fw-semibold">{% trans 'Menu' %}</span>
-                  </a>
-                </div>
-                <!--end::Col-->
-              {% endif %}
-            </div>
-            <!--end::Row-->
-          </div>
-          <!--end::Scroll-->
-        </div>
-      </div>
-      <!--end::Application Settings-->
     </div>
     <!--end::Card body-->
   </div>

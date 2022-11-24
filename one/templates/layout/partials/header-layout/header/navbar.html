@@ -37,17 +37,7 @@
   {#    <!--end::Menu wrapper-->#}
   {#  </div>#}
   {#  <!--end::Chat-->#}
-  {#  <!--begin::Quick links-->#}
-  {#  <div class="app-navbar-item ms-1 ms-lg-3">#}
-  {#    <!--begin::Menu wrapper-->#}
-  {#    <div#}
-  {#      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px"#}
-  {#      data-kt-menu-trigger="click" data-kt-menu-attach="parent"#}
-  {#      data-kt-menu-placement="bottom-end">{% get_svg_icon 'duotune/general/gen025.svg' 'svg-icon svg-icon-1' %}</div>#}
-  {#    {% include 'partials/menus/_quick-links-menu.html' %}#}
-  {#    <!--end::Menu wrapper-->#}
-  {#  </div>#}
-  {#  <!--end::Quick links-->#}
+
   <!--begin::Theme mode-->
   <div class="app-navbar-item ms-1 ms-lg-3">
     {% include 'partials/theme-mode/main.html' with toggle_btn_class='btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px'  toggle_btn_icon_class='svg-icon svg-icon-2' %}
@@ -67,22 +57,20 @@
     <!--end::Menu wrapper-->
   </div>
   <!--end::User menu-->
-  {% if perms.sites.change_site %}
-    <!--begin::Site-->
+  {% if user.is_superuser %}
+    <!--begin::Quick links-->
     <div class="app-navbar-item ms-1 ms-lg-3">
       <!--begin::Menu wrapper-->
-      <span data-bs-toggle="tooltip" data-bs-placement="top" title="{% trans 'Site Setting' %}">
-        <a
-          class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px position-relative"
-          href="#" quick-update-button data-action-url="{% url 'settings:site' %}?popup=1" data-theme="drawer">
-          {% get_svg_icon 'duotune/general/gen019.svg' 'svg-icon svg-icon-1' %}
-        </a>
-      </span>
+      <div
+        class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px"
+        data-kt-menu-trigger="click" data-kt-menu-attach="parent"
+        data-kt-menu-placement="bottom-end">{% get_svg_icon 'duotune/general/gen025.svg' 'svg-icon svg-icon-1' %}</div>
+      {% include 'partials/menus/admin_quick-links-menu.html' %}
       <!--end::Menu wrapper-->
     </div>
-
-    <!--end::Site-->
+    <!--end::Quick links-->
   {% endif %}
+
   <!--begin::Header menu toggle-->
   <div class="app-navbar-item d-lg-none ms-2 me-n3" title="Show header menu">
     <div class="btn btn-icon btn-active-color-primary w-35px h-35px"

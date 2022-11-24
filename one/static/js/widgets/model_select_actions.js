@@ -46,8 +46,9 @@ function appendDrawerWithId(
     save_changes_label = 'Save') {
     $(selector).append(`
             <!--begin::Chat drawer-->
-            <div id="${idDrawer}" class="bg-body"
-                 quick-action
+            <div quick-action
+                 id="${idDrawer}"
+                 class="bg-body"
                  data-kt-drawer="true"
                  data-kt-drawer-name="${idDrawer}"
                  data-kt-drawer-activate="true"
@@ -56,53 +57,65 @@ function appendDrawerWithId(
                  data-kt-drawer-direction="end"
                  data-kt-drawer-toggle="#${idDrawer}_toggle"
                  data-kt-drawer-close="#${idDrawer}_close">
-                <!--begin::Messenger-->
-                <div class="card w-100 rounded-0 border-0" id="${idDrawer}" >
+                <!--begin::Card-->
+                <div class="card border-0 shadow-none rounded-0 w-100">
                     <!--begin::Card header-->
                     <div class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 py-4"
                          id="${idDrawer}_header">
                         <!--begin::Title-->
-                        <div class="card-title m-0">
-                            <div class="menu-item">
-                              <div class="menu-content d-flex align-items-center px-3">
-                                <!--begin::Title-->
-                                <h3 class="card-title fs-3 fw-bold text-white flex-column m-0 span_title">
-                                </h3>
-                                <!--end::Title-->
-                              </div>
-                            </div>
-                        </div>
+                        <div class="card-title fs-3 fw-bold text-white flex-column m-0 span_title"></div>
                         <!--end::Title-->
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar">
-                            <!--begin::Close-->
-                            <div class="btn btn-sm btn-icon bg-white bg-opacity-25 btn-color-white p-0 w-20px h-20px rounded-1"
-                                 id="${idDrawer}_close"
-                                 data-kt-drawer-dismiss="true">
-                                <span class="svg-icon svg-icon-2">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            <button type="button"
+                                    class="btn btn-sm btn-icon bg-white bg-opacity-25 btn-color-white p-0 w-20px h-20px rounded-1"
+                                    id="${idDrawer}_close">
+                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                <span class="svg-icon svg-icon-3">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                              transform="rotate(-45 6 17.3137)" fill="currentColor"/>
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                              transform="rotate(45 7.41422 6)" fill="currentColor"/>
                                     </svg>
                                 </span>
-                            </div>
-                            <!--end::Close-->
+                                <!--end::Svg Icon-->
+                            </button>
                         </div>
                         <!--end::Card toolbar-->
                     </div>
                     <!--end::Card header-->
                     <!--begin::Card body-->
-                    <div class="card-body pt-5" id="${idDrawer}_body">
-                        ${content}
+                    <div class="card-body position-relative" id="${idDrawer}_body">
+                        <!--begin::Content-->
+                        <div id="${idDrawer}_content" class="position-relative scroll-y me-n5 pe-5" data-kt-scroll="true"
+                             data-kt-scroll-height="auto" data-kt-scroll-wrappers="#${idDrawer}_body"
+                             data-kt-scroll-dependencies="#${idDrawer}_header, #${idDrawer}_footer"
+                             data-kt-scroll-offset="5px">
+                            <!--begin::Form-->
+                            ${content}
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Content-->
                     </div>
                     <!--end::Card body-->
                     <!--begin::Card footer-->
-                    <div class="card-footer text-center" id="${idDrawer}_footer">
-                        <button type="submit" form="${idForm}" class="btn btn-primary">${save_changes_label}</button>
+                    <div class="card-footer border-0 d-flex gap-3 pb-9 pt-0 text-center" id="${idDrawer}_footer">
+                        <button type="submit" form="${idForm}" class="btn btn-primary flex-grow-1 fw-semibold">
+                            <!--begin::Indicator label-->
+                            <span class="indicator-label">${save_changes_label}</span>
+                            <!--end::Indicator label-->
+                            <!--begin::Indicator progress-->
+                            <span class="indicator-progress">Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                            <!--end::Indicator progress-->
+                       </button>
                     </div>
                     <!--end::Card footer-->
                 </div>
-                <!--end::Messenger-->
+                <!--end::Card-->
             </div>
             <!--end::Chat drawer-->
         `)
@@ -229,13 +242,13 @@ $(document).ready(function () {
                 var drawerElement = document.querySelector('#' + $drawer.attr('id'));
                 var drawer = KTDrawer.getInstance(drawerElement);
                 drawer.hide();
-                toastr.success('Successfully');
+                toastr.success($('#id_msg_success').val(), $('#id_msg_label_success').val());
             },
             error: function (request, status, error) {
                 $.each(request.responseJSON, function (key, value) {
                     $.each(value, function (index, _value) {
                         if (key === "__all__") {
-                            toastr.error(_value, "{% translate 'Error' %}");
+                            toastr.error(_value, $('#id_msg_label_error').val());
                         } else {
                             toastr.error(_value, key.toUpperCase());
                         }
