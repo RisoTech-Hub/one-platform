@@ -3,7 +3,7 @@ from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 
 from one.components.serializers import ExtraSerializer
-from one.extend.riso_auth.contexts.models import Context
+from one.contrib.auth.contexts.models import Context
 
 
 class ContextSerializer(ExtraSerializer, ModelSerializer):

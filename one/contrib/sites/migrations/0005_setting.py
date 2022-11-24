@@ -8,24 +8,74 @@ import one.contrib.sites.settings.utils
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sites', '0004_alter_options_ordering_domain'),
+        ("sites", "0004_alter_options_ordering_domain"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Setting',
+            name="Setting",
             fields=[
-                ('site', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, related_name='setting', serialize=False, to='sites.site', verbose_name='site')),
-                ('favicon', models.ImageField(blank=True, null=True, upload_to=one.contrib.sites.settings.utils.setting_images_directory_path, verbose_name='Favicon of site')),
-                ('logo', models.ImageField(blank=True, null=True, upload_to=one.contrib.sites.settings.utils.setting_images_directory_path, verbose_name='Logo of site')),
-                ('dark_logo', models.ImageField(blank=True, null=True, upload_to=one.contrib.sites.settings.utils.setting_images_directory_path, verbose_name='Dark Logo of site')),
-                ('small_logo', models.ImageField(blank=True, null=True, upload_to=one.contrib.sites.settings.utils.setting_images_directory_path, verbose_name='Small Logo of site')),
-                ('mobile_logo', models.ImageField(blank=True, null=True, upload_to=one.contrib.sites.settings.utils.setting_images_directory_path, verbose_name='Mobile logo of site')),
+                (
+                    "site",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        primary_key=True,
+                        related_name="setting",
+                        serialize=False,
+                        to="sites.site",
+                        verbose_name="site",
+                    ),
+                ),
+                (
+                    "favicon",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to=one.contrib.sites.settings.utils.setting_images_directory_path,
+                        verbose_name="Favicon of site",
+                    ),
+                ),
+                (
+                    "logo",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to=one.contrib.sites.settings.utils.setting_images_directory_path,
+                        verbose_name="Logo of site",
+                    ),
+                ),
+                (
+                    "dark_logo",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to=one.contrib.sites.settings.utils.setting_images_directory_path,
+                        verbose_name="Dark Logo of site",
+                    ),
+                ),
+                (
+                    "small_logo",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to=one.contrib.sites.settings.utils.setting_images_directory_path,
+                        verbose_name="Small Logo of site",
+                    ),
+                ),
+                (
+                    "mobile_logo",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to=one.contrib.sites.settings.utils.setting_images_directory_path,
+                        verbose_name="Mobile logo of site",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Site Setting',
-                'verbose_name_plural': 'Site Settings',
-                'db_table': 'django_site_setting',
+                "verbose_name": "Site Setting",
+                "verbose_name_plural": "Site Settings",
+                "db_table": "django_site_setting",
             },
         ),
     ]

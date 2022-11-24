@@ -72,9 +72,10 @@ DJANGO_APPS = [
     "django.forms",
 ]
 EXTENDED_APPS = [
-    "one.extend.riso_allauth",
+    "one.contrib.contenttypes.configs",
     "one.contrib.sites.settings",
-    "one.extend.riso_auth.contexts",
+    "one.extend.riso_allauth",
+    "one.contrib.auth.contexts",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -108,7 +109,11 @@ INSTALLED_APPS = DJANGO_APPS + EXTENDED_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "one.contrib.sites.migrations"}
+MIGRATION_MODULES = {
+    "auth": "one.contrib.auth.migrations",
+    "contenttypes": "one.contrib.contenttypes.migrations",
+    "sites": "one.contrib.sites.migrations",
+}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------

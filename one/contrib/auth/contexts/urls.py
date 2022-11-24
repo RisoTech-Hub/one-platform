@@ -1,6 +1,6 @@
 from django.urls import path
 
-from one.extend.riso_auth.contexts.views import (
+from one.contrib.auth.contexts.views import (
     group_create_view,
     group_list_view,
     group_update_view,

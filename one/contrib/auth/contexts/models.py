@@ -24,8 +24,10 @@ class Context(Model):
     )
 
     class Meta:
+        app_label = "auth"
         verbose_name = _("Context")
         verbose_name_plural = _("Contexts")
+        db_table = "auth_group_context"
 
     def __str__(self):
         return self.group.name

@@ -6,7 +6,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.http import HttpRequest
 from django.test import RequestFactory
 
-from one.extend.riso_auth.contexts.views import GroupCreateView, GroupListView
+from one.contrib.auth.contexts.views import GroupCreateView, GroupListView
 from one.users.models import User
 
 pytestmark = pytest.mark.django_db
