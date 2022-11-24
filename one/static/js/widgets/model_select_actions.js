@@ -158,6 +158,11 @@ $(document).ready(function () {
                     $('#' + idModal).modal('show')
                     $('#' + idModal).find('form').attr('id', idForm)
 
+
+                    $('#' + idModal).on('hidden.bs.modal', function () {
+                        $('#' + idModal).remove();
+                    });
+
                     reInitAllWidget();
                 }
 
