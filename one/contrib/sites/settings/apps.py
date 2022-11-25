@@ -18,7 +18,7 @@ def create_default_site_setting(sender, **kwargs):
 
 class SiteConfig(AppConfig):
     name = "one.contrib.sites.settings"
-    verbose_name = _("Sites")
+    verbose_name = _("Site")
 
     def ready(self):
         post_migrate.connect(create_default_site_setting, sender=self)

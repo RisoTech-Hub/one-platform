@@ -15,7 +15,7 @@
       <div class="col-6">
         <a href="#"
            class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end border-bottom"
-           quick-update-button data-action-url="{% url 'settings:site' %}?popup=1" data-theme="drawer"
+           quick-update-button data-action-url="{% url 'sites:site-update' %}?popup=1" data-theme="drawer"
         >
           {% get_svg_icon 'duotune/general/gen062.svg' 'svg-icon svg-icon-3x svg-icon-primary mb-2' %}
           <span class="fs-5 fw-semibold text-gray-800 mb-0">{% trans 'Site Settings' %}</span>
