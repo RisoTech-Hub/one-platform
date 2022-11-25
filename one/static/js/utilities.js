@@ -17,7 +17,7 @@ function parseErrorAjax(responseJSON) {
             if (key === "__all__") {
                 toastr.error(_value, "{% translate 'Error' %}");
             } else {
-                toastr.error(_value.replace('/field/g', key));
+                toastr.error(_value.replace(/field/g, key));
             }
         });
     });
