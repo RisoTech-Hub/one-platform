@@ -216,15 +216,16 @@ $(document).ready(function () {
 
             },
             error: function (request, status, error) {
-                $.each(request.responseJSON, function (key, value) {
-                    $.each(value, function (index, _value) {
-                        if (key === "__all__") {
-                            toastr.error(_value, "{% translate 'Error' %}");
-                        } else {
-                            toastr.error(_value, key.toUpperCase());
-                        }
-                    });
-                });
+                parseErrorAjax(request.responseJSON)
+                // $.each(request.responseJSON, function (key, value) {
+                //     $.each(value, function (index, _value) {
+                //         if (key === "__all__") {
+                //             toastr.error(_value, "{% translate 'Error' %}");
+                //         } else {
+                //             toastr.error(_value.replace('/field/g', key));
+                //         }
+                //     });
+                // });
             }
         });
     })
