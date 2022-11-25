@@ -1,7 +1,5 @@
-from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.models import Site
-from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import UpdateView
 
@@ -11,26 +9,26 @@ from one.contrib.sites.settings.forms import SettingForm, SiteForm
 
 
 class SiteUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateView):
+    model = Site
+
     template_name = "app/update.html"
     popup_template_name = "forms/drawer_form.html"
-    model = Site
 
     form_class = SiteForm
     serializer_class = SiteSerializer
+
     success_message = _("Site successfully updated")
+    success_url = "/"
+
+    is_popup = True
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-        kwargs["app_name"] = _("Site Settings")
-        kwargs["page_title"] = _("Update site settings")
         kwargs["form_title"] = _("Update site settings")
 
-        # setting_form_class = PopupSettingForm if self.is_popup else SettingForm
-        setting_form_class = SettingForm
-
-        setting_form = setting_form_class(instance=self.object.setting)
+        setting_form = SettingForm(instance=self.object.setting)
         if self.request.method == "POST":
-            setting_form = setting_form_class(
+            setting_form = SettingForm(
                 self.request.POST, self.request.FILES, instance=self.object.setting
             )
         kwargs["nested_forms"] = [
@@ -40,9 +38,6 @@ class SiteUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateV
             }
         ]
         return kwargs
-
-    def get_success_url(self):  # noqa
-        return reverse("settings:site")
 
     def get_object(self):  # noqa
         return Site.objects.get_current(self.request)
@@ -61,7 +56,6 @@ class SiteUpdateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, UpdateV
             if setting_form.is_valid():
                 self.form_valid(setting_form, is_nested=True)
                 return self.form_valid(form)
-            messages.error(request, _("Site settings has error"))
         return self.form_invalid(form)
 
 

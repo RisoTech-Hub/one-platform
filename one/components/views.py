@@ -3,7 +3,7 @@ import json
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import ManyToManyField, ManyToManyRel, ManyToOneRel
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import Http404, HttpResponseRedirect, JsonResponse
 from django.views.generic import CreateView as BaseCreateView
 from django.views.generic import ListView as BaseListView
 from django.views.generic import UpdateView as BaseUpdateView
@@ -29,6 +29,7 @@ class SuccessMessageMixin:
 
     def form_valid(self, form, *args, **kwargs):
         response = super().form_valid(form)  # noqa
+
         success_message = self.get_success_message(form.cleaned_data)
         is_nested = kwargs.get("is_nested", False)
         if success_message and not self.is_popup and not is_nested:  # noqa
@@ -47,7 +48,11 @@ class FormMixin(BaseFormMixin):
     serializer_class = None
 
     def setup(self, request, *args, **kwargs):
-        self.is_popup = request.GET.get("popup", None)
+        self.is_popup = (
+            self.is_popup if self.is_popup else request.GET.get("popup", None)
+        )
+        if self.is_popup and request.GET.get("popup", None) is None:
+            raise Http404
         super().setup(request, *args, **kwargs)  # noqa
 
     def add_error_messages(self, form):
@@ -145,12 +150,9 @@ class ListView(BaseListView):
     table_exclude_fields = []
     table_exclude_rel = [ManyToManyRel, ManyToOneRel, ManyToManyField]
 
-    # Template control
-    show_config_button = False
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["show_config_button"] = self.show_config_button
+        context["show_config_button"] = self.show_config_button()
         context["table_fields"] = self.get_table_fields()
         context["content_type"] = ContentType.objects.get_for_model(self.model)
         context["filter"] = self.filter_class() if self.filter_class else None
@@ -192,6 +194,9 @@ class ListView(BaseListView):
             else:
                 pass
         return sorted(data, key=lambda item: item["order"])
+
+    def show_config_button(self):
+        return self.request.user.is_superuser
 
 
 class UpdateView(BaseUpdateView):
