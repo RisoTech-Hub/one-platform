@@ -186,7 +186,8 @@ $(document).ready(function () {
 
             },
             error: function (request, status, error) {
-                toastr.error(`${JSON.stringify(request)}\n${status}\n${error}`)
+                parseErrorAjax(request.responseJSON)
+                // toastr.error(`${JSON.stringify(request)}\n${status}\n${error}`)
             }
         });
     })
@@ -251,15 +252,16 @@ $(document).ready(function () {
                 toastr.success($('#id_msg_success').val(), $('#id_msg_label_success').val());
             },
             error: function (request, status, error) {
-                $.each(request.responseJSON, function (key, value) {
-                    $.each(value, function (index, _value) {
-                        if (key === "__all__") {
-                            toastr.error(_value, $('#id_msg_label_error').val());
-                        } else {
-                            toastr.error(_value, key.toUpperCase());
-                        }
-                    });
-                });
+                parseErrorAjax(request.responseJSON)
+                // $.each(request.responseJSON, function (key, value) {
+                //     $.each(value, function (index, _value) {
+                //         if (key === "__all__") {
+                //             toastr.error(_value, $('#id_msg_label_error').val());
+                //         } else {
+                //             toastr.error(_value, key.toUpperCase());
+                //         }
+                //     });
+                // });
             }
         });
     })
