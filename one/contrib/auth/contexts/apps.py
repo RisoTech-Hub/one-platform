@@ -18,7 +18,7 @@ def create_default_group_context(sender, **kwargs):
 
 class GroupConfig(AppConfig):
     name = "one.contrib.auth.contexts"
-    verbose_name = _("Groups")
+    verbose_name = _("Group")
 
     def ready(self):
         post_migrate.connect(create_default_group_context, sender=self)

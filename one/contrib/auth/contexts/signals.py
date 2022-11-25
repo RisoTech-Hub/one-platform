@@ -8,8 +8,8 @@ from .models import Context
 
 @receiver(post_save, sender=Group)
 def create_or_update_group_context(sender, instance, **kwargs):
-    """This signal creates/updates a Setting object
-    after creating/updating a Site object.
+    """This signal creates/updates a Context object
+    after creating/updating a Group object.
     """
     context, created = Context.objects.update_or_create(group=instance)
     if not created:

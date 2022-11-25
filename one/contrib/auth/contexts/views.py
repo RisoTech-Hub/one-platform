@@ -2,23 +2,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import UpdateView
 
-from one.components.views import FormMixin, ListView, SuccessMessageMixin
-
-from .actions import get_core_group_add, get_core_group_quick_add
-from .api.serializers import GroupSerializer
-from .filters import GroupFilter
-from .forms import ContextForm, GroupForm
+from one.components.views import CreateView, FormMixin, ListView, SuccessMessageMixin
+from one.contrib.auth.contexts.actions import (
+    get_core_group_add,
+    get_core_group_quick_add,
+)
+from one.contrib.auth.contexts.api.serializers import GroupSerializer
+from one.contrib.auth.contexts.filters import GroupFilter
+from one.contrib.auth.contexts.forms import ContextForm, GroupForm
 
 
 class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, CreateView):
-    template_name = "app/create.html"
     model = Group
 
     form_class = GroupForm
     serializer_class = GroupSerializer
-
     success_message = _("Group created successfully")
 
     def get_context_data(self, **kwargs):
@@ -39,19 +39,24 @@ class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, Create
         return kwargs
 
     def get_success_url(self):  # noqa
+        if self.object:
+            return reverse("auth:group-update", kwargs={"pk": self.object.pk})
         return reverse("auth:group-list")
 
-    def form_valid(self, form):
-        object = form.save()  # noqa
-        context_form = ContextForm(
-            self.request.POST, self.request.FILES, instance=object.context
-        )
-        if context_form.is_valid():
-            context_form.save()
-        else:
-            object.delete()
-            return super().form_invalid(context_form)
-        return super().form_valid(form)
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            context_form = ContextForm(self.request.POST, self.request.FILES)
+            if context_form.is_valid():
+                response = self.form_valid(form)
+                context_form = ContextForm(
+                    self.request.POST, self.request.FILES, instance=self.object.context
+                )
+                context_form.save()
+                return response
+            self.object = None  # noqa
+            self.add_error_messages(context_form)
+        return self.form_invalid(form)
 
 
 group_create_view = GroupCreateView.as_view()
@@ -69,7 +74,6 @@ class GroupListView(LoginRequiredMixin, ListView):
         kwargs["page_title"] = _("Group List")
         kwargs["actions"] = [get_core_group_add(), get_core_group_quick_add()]
         kwargs["urls"] = {
-            # "view": "auth:group-view",
             "update": "auth:group-update",
         }
         kwargs["api_urls"] = {
