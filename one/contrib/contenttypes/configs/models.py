@@ -10,7 +10,7 @@ class Config(Model):
         ContentType,
         on_delete=CASCADE,
         primary_key=True,
-        related_name="configs",
+        related_name="config",
         verbose_name=_("Content Type"),
     )
 
