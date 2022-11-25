@@ -32,21 +32,23 @@
                 {% endif %}
               {% endfor %}
               <!--end::Form group-->
+
+              <div class="position-absolute align-self-center" style="right: 0;">
+                <a
+                  class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
+                  data-bs-toggle="tooltip"
+                  data-bs-delay-hide="1000"
+                  data-bs-placement="top"
+                  data-kt-element="remove-item"
+                  data-index="__prefix__"
+                  kt-target-element="#id_{{ formset.prefix }}-__prefix__-DELETE"
+                  title="{% trans 'Delete this line' %}"
+                >
+                  {% get_svg_icon "duotune/general/gen027.svg" 'svg-icon svg-icon-3 m-0' %}
+                </a>
+              </div>
             </div>
-            <div class="position-absolute align-self-center" style="right: 0;">
-              <a
-                class="btn btn-sm btn-icon btn-color-danger btn-light btn-active-light-danger"
-                data-bs-toggle="tooltip"
-                data-bs-delay-hide="1000"
-                data-bs-placement="top"
-                data-kt-element="remove-item"
-                data-index="__prefix__"
-                kt-target-element="#id_{{ formset.prefix }}-__prefix__-DELETE"
-                title="{% trans 'Delete this line' %}"
-              >
-                {% get_svg_icon "duotune/general/gen027.svg" 'svg-icon svg-icon-3 m-0' %}
-              </a>
-            </div>
+
           </div>
         {% endwith %}
 
