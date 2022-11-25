@@ -24,6 +24,10 @@ Clone submodule
     $ git submodule init
     $ git submodule update
 
+Run populated data commands
+
+    $ python manage.py generate_config
+
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
