@@ -1,0 +1,8 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=one
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+DATABASE_URL="postgres://user:password@localhost:5432/one"
