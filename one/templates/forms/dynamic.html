@@ -1,9 +1,0 @@
-{% for field in form %}
-  {% if field.name == 'dynamic' %}
-    <div class="separator separator-dashed separator-content border-primary my-10">
-      <span class="w-250px fw-bold">{% trans 'Extra Infomation' %}</span>
-    </div>
-    {% include 'fields/dynamic-field.html' %}
-  {% else %}
-  {% endif %}
-{% endfor %}

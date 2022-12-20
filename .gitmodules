@@ -1,3 +1,0 @@
-[submodule "metronic"]
-	path = metronic
-	url = git@github.com:riso-tech/django-metronic.git
