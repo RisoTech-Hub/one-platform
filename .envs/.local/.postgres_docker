@@ -1,8 +1,8 @@
 # PostgreSQL
 # ------------------------------------------------------------------------------
-POSTGRES_HOST=localhost
+POSTGRES_HOST=postgres
 POSTGRES_PORT=5432
 POSTGRES_DB=one
 POSTGRES_USER=eyRoJYbxutjJSPeMlFxjMbsJNsFwSVII
 POSTGRES_PASSWORD=yvSppcqh9RnUMytrIKbe5IiJLR9YYx0qJAN0rRu9D3YFV9Uevl6RcZDoy2ZXlUaN
-DATABASE_URL="postgres://eyRoJYbxutjJSPeMlFxjMbsJNsFwSVII:yvSppcqh9RnUMytrIKbe5IiJLR9YYx0qJAN0rRu9D3YFV9Uevl6RcZDoy2ZXlUaN@localhost:5432/one"
+DATABASE_URL="postgres://eyRoJYbxutjJSPeMlFxjMbsJNsFwSVII:yvSppcqh9RnUMytrIKbe5IiJLR9YYx0qJAN0rRu9D3YFV9Uevl6RcZDoy2ZXlUaN@postgres:5432/one"

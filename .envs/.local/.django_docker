@@ -4,11 +4,11 @@ USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
 # Redis
 # ------------------------------------------------------------------------------
-REDIS_URL=redis://localhost:6379/0
+REDIS_URL=redis://redis:6379/0
 
 # Celery
 # ------------------------------------------------------------------------------
-CELERY_BROKER_URL=redis://localhost:6379/0
+CELERY_BROKER_URL=redis://redis:6379/0
 
 # Flower
 CELERY_FLOWER_USER=rqoPyFfjIssFsVyaIRYxjHdAPKOpSXtr
