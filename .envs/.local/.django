@@ -1,5 +1,6 @@
 # General
 # ------------------------------------------------------------------------------
+ENVIRONMENT=local
 USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
 # Redis

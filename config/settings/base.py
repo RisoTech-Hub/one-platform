@@ -323,5 +323,8 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
 }
+# ENVIRONMENT
+# ------------------------------------------------------------------------------
+ENVIRONMENT = env("ENVIRONMENT", default="development")
 # Your stuff...
 # ------------------------------------------------------------------------------
