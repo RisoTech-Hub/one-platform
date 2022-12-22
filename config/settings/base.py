@@ -58,6 +58,7 @@ DJANGO_CUSTOM_APPS = [
     "admin_tools.theming",
     "admin_tools.menu",
     "admin_tools.dashboard",
+    "adminactions",
     "filebrowser",
 ]
 DJANGO_APPS = [

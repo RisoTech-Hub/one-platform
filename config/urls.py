@@ -22,6 +22,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("attachments/", include("attachments.urls", namespace="attachments")),
     path("admin_tools/", include("admin_tools.urls")),
+    path("adminactions/", include("adminactions.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
