@@ -94,10 +94,10 @@ RUN chmod +x /start-flower
 # copy application code to WORKDIR
 COPY --from=client-builder --chown=django:django ${APP_HOME} ${APP_HOME}
 
-
+RUN mkdir -p
 # make django owner of the WORKDIR directory as well.
 RUN chown django:django ${APP_HOME}
 
-USER django
+USER django ${APP_HOME}/media/uploads
 
 ENTRYPOINT ["/entrypoint"]
