@@ -26,3 +26,4 @@ django-cors-headers==3.13.0 # https://github.com/adamchainz/django-cors-headers
 drf-spectacular==0.24.2  # https://github.com/tfranzel/drf-spectacular
 # Django File
 django-filebrowser-no-grappelli==4.0.1  # https://github.com/smacker/django-filebrowser-no-grappelli
+django-attachments==1.9.1  # https://github.com/bartTC/django-attachments
