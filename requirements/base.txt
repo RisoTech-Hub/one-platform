@@ -27,3 +27,4 @@ drf-spectacular==0.24.2  # https://github.com/tfranzel/drf-spectacular
 # Django File
 django-filebrowser-no-grappelli==4.0.1  # https://github.com/smacker/django-filebrowser-no-grappelli
 django-attachments==1.9.1  # https://github.com/bartTC/django-attachments
+django-import-export==3.0.2  # https://django-import-export.readthedocs.io/en/latest/

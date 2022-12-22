@@ -79,6 +79,7 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "drf_spectacular",
     "attachments",
+    "import_export",
 ]
 
 LOCAL_APPS = [
