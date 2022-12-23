@@ -186,6 +186,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
+                "admin_tools.context_processors.admin_tools",
             ],
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
