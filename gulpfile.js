@@ -123,7 +123,7 @@ function initBrowserSync() {
       open: false,
       // https://www.browsersync.io/docs/options/#option-proxy
       proxy:  {
-        target: 'localhost:8000',
+        target: 'django:8000',
         proxyReq: [
           function(proxyReq, req) {
             // Assign proxy "host" header same as current request at Browsersync server

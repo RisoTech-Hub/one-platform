@@ -305,6 +305,9 @@ Session.vim
 # Auto-generated tag files
 tags
 
+# Redis dump file
+dump.rdb
+
 ### Project template
 one/media/
 
