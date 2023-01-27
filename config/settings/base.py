@@ -5,16 +5,16 @@ from pathlib import Path
 
 import environ
 
-ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # one/
-APPS_DIR = ROOT_DIR / "one"
+APPS_DIR = BASE_DIR / "one"
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
-    env.read_env(str(ROOT_DIR / ".envs" / ".local" / ".django"))
-    env.read_env(str(ROOT_DIR / ".envs" / ".local" / ".postgres"))
+    env.read_env(str(BASE_DIR / ".envs" / ".local" / ".django"))
+    env.read_env(str(BASE_DIR / ".envs" / ".local" / ".postgres"))
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ USE_I18N = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#locale-paths
-LOCALE_PATHS = [str(ROOT_DIR / "locale")]
+LOCALE_PATHS = [str(BASE_DIR / "locale")]
 
 # DATABASES
 # ------------------------------------------------------------------------------
@@ -148,7 +148,7 @@ MIDDLEWARE = [
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(ROOT_DIR / "staticfiles")
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
