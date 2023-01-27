@@ -317,6 +317,7 @@ project.css
 project.min.css
 vendors.js
 *.min.js
+*.min.js.map
 .env
 
 .envs/.production/*
